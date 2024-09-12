@@ -1,0 +1,114 @@
+/* Styling for the Homepage */
+
+.homepage-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+}
+
+.company-overview {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.company-overview h1 {
+    font-size: 36px;
+    color: #333;
+}
+
+.company-overview p {
+    font-size: 18px;
+    color: #555;
+    margin: 0 auto;
+    max-width: 800px;
+}
+
+.job-search-section {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.job-search-section h2 {
+    font-size: 28px;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.search-bar {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.search-bar input {
+    width: 400px;
+    padding: 10px;
+    font-size: 16px;
+    border: 2px solid #ddd;
+    border-radius: 4px;
+}
+
+.search-bar button {
+    padding: 10px 20px;
+    font-size: 16px;
+    color: white;
+    background-color: #007BFF;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.search-bar button:hover {
+    background-color: #0056b3;
+}
+
+.featured-jobs {
+    text-align: center;
+    margin-top: 40px;
+}
+
+.featured-jobs h2 {
+    font-size: 28px;
+    color: #333;
+    margin-bottom: 30px;
+}
+
+.job-listings {
+    display: flex;
+    justify-content: space-around;
+}
+
+.job-card {
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 300px;
+    text-align: left;
+}
+
+.job-card h3 {
+    font-size: 22px;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.job-card p {
+    font-size: 16px;
+    color: #777;
+    margin-bottom: 20px;
+}
+
+.job-card button {
+    background-color: #28a745;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.job-card button:hover {
+    background-color: #218838;
+}
