@@ -1,0 +1,122 @@
+/* Basic Reset and Styling */
+
+  .navbar {
+    display: flex;
+    justify-content: center;
+    background-color: #ffffff; /* White background */
+    border-bottom: 1px solid #ddd; /* Light border for separation */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  }
+  
+  .navbar-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 1200px;
+    padding: 10px 20px;
+  }
+  
+  .navbar-logo {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: #333; /* Dark color for text */
+    font-size: 24px;
+    font-weight: bold;
+  }
+  
+  .logo-image {
+    height: 40px;
+    margin-right: 10px;
+  }
+  
+  .navbar-menu {
+    display: flex;
+    align-items: center;
+  }
+  
+  .navbar-item {
+    margin-left: 15px;
+    text-decoration: none;
+    color: #333;
+    font-size: 16px;
+    position: relative; /* Positioning for dropdowns */
+  }
+  
+  .navbar-item:hover {
+    color: #007bff; /* Change color on hover */
+  }
+  
+  .dropdown-button {
+    background: none;
+    border: none;
+    color: #333;
+    font-size: 16px;
+    cursor: pointer;
+    position: relative; /* Positioning for dropdown */
+  }
+  
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #ffffff; /* White background */
+    border: 1px solid #ddd; /* Border around dropdown */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Shadow for dropdown */
+    z-index: 1000;
+  }
+  
+  .dropdown-content .dropdown-link {
+    display: block;
+    padding: 10px;
+    text-decoration: none;
+    color: #333;
+  }
+  
+  .dropdown-content .dropdown-link:hover {
+    background-color: #f8f9fa; /* Light background on hover */
+  }
+  
+  .dropdown-button:hover + .dropdown-content,
+  .dropdown-content:hover {
+    display: block; /* Show dropdown on hover */
+  }
+  
+  .navbar-item:last-child {
+    margin-left: 20px; /* Extra space for the last item */
+  }
+  
+  .login-register-container {
+    display: flex;
+    align-items: center;
+  }
+  
+  .login-register-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #007bff; /* Button background color */
+    color: #ffffff; /* Text color */
+    font-size: 14px;
+    text-decoration: none;
+    margin-left: 15px;
+    font-weight: bold;
+  }
+  
+  .login-register-button:hover {
+    background-color: #0056b3; /* Darker shade on hover */
+  }
+  
+  .login-register-button:first-child {
+    background-color: #28a745; /* Different color for Register */
+  }
+  
+  .login-register-button:first-child:hover {
+    background-color: #218838; /* Darker shade for Register hover */
+  }
+  
