@@ -1,31 +1,45 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const HomePage = () => {
     return (
         <div className="font-sans bg-cover bg-center bg-fixed min-h-screen" style={{ backgroundImage: 'url(/images/background.png)' }}>
             {/* Navbar */}
             <header className="flex justify-between items-center p-5">
-                <div className="text-3xl font-bold text-black">
-                    Job<span className="text-teal-500">Portal</span>
+                {/* Header Left - Logo */}
+                <div className="text-3xl font-bold">
+                    <span className="text-[#FF9933]">Job</span> {/* Saffron color */}
+                    <span className="text-white">Portal</span> {/* White color */}
+                    <span className="text-[#138808]">by Transmogrify</span> {/* Green color */}
                 </div>
-                <nav className="space-x-8">
-                    <a href="/" className="text-black font-bold text-lg hover:text-teal-800">Home</a>
-                    <a href="/" className="text-black font-bold text-lg hover:text-teal-800">Jobs</a>
-                    <a href="/" className="text-black font-bold text-lg hover:text-teal-800">Browse</a>
+
+                {/* Centered Navigation Links */}
+                <nav className="flex space-x-10 mx-auto">
+                    <a href="/" className="text-black font-bold text-lg hover:text-teal-900">Home</a>
+                    <a href="/" className="text-black font-bold text-lg hover:text-teal-900">Jobs</a>
+                    <a href="/" className="text-black font-bold text-lg hover:text-teal-900">Browse</a>
                 </nav>
+
+                {/* Header Right - Buttons */}
                 <div className="space-x-4">
-                    <button className="text-black border-2 border-gray-300 px-4 py-2 rounded-md hover:bg-gray-100">Login</button>
-                    <button className="text-white bg-teal-600 px-4 py-2 rounded-md hover:bg-teal-700">Signup</button>
+                    <Link to="/login">
+                        <button className="text-black border-2 border-gray-300 px-4 py-2 rounded-md hover:bg-gray-100">
+                            Login
+                        </button>
+                    </Link>
+                    <button className="text-white bg-teal-600 px-4 py-2 rounded-md hover:bg-teal-700">
+                        <Link to="/signup">Signup</Link> {/* Use Link to navigate to Sign Up page */}
+                    </button>
                 </div>
             </header>
 
             {/* Main Content */}
-            <main className="text-center mt-10">
+            <main className="text-center mt-20">
                 <span className="bg-green-100 text-green-600 px-4 py-1 rounded-full text-xs">No. 1 Job Hunt Website</span>
                 <h1 className="text-5xl font-bold mt-20">
                     Search, Apply &amp; <span className="text-teal-800">Land Your Ideal Job</span>
                 </h1>
-                <p className="text-gray-500 mt-20 mb-8">
+                <p className="text-gray-500 mt-20 mb-20">
                     Discover your dream job across industries, cities, and companies.
                 </p>
                 <div className="flex justify-center items-center space-x-2 mb-12">
@@ -34,13 +48,11 @@ const HomePage = () => {
                         placeholder="Find your dream jobs"
                         className="w-full max-w-lg py-3 px-4 border-2 border-gray-300 rounded-l-md focus:ring-2 focus:ring-teal-400 focus:border-teal-400 outline-none"
                     />
-                   <button className="bg-teal-600 text-white py-3 px-5 rounded-r-md hover:bg-teal-700 flex items-center justify-center">
-                   <button className="bg-teal-600 text-white py-3 px-5 rounded-r-md hover:bg-teal-700 flex items-center">
-        <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 19l-6-6 6-6" />
-        </svg>
-    </button>
-    </button>
+                    <button className="bg-teal-600 text-white py-3 px-5 rounded-r-md hover:bg-teal-700 flex items-center justify-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 19l-6-6 6-6" />
+                        </svg>
+                    </button>
                 </div>
 
                 <div className="flex justify-center space-x-6">
@@ -88,14 +100,14 @@ const HomePage = () => {
                 <div className="text-gray-500">
                     © 2024 Transmogrify. All rights reserved.
                 </div>
-                <div className="flex justify-center space-x-12 mt-6">
-                    <a href="/" className="text-gray-400 hover:text-gray-600">
+                <div className="flex justify-center space-x-12 mt-20">
+                    <a href="/" className="text-gray-400 hover:text-gray-800">
                         <i className="fab fa-facebook-f fa-2x"></i>
                     </a>
-                    <a href="/" className="text-gray-400 hover:text-gray-600">
+                    <a href="/" className="text-gray-400 hover:text-gray-800">
                         <i className="fab fa-twitter fa-2x"></i>
                     </a>
-                    <a href="/" className="text-gray-400 hover:text-gray-600">
+                    <a href="/" className="text-gray-400 hover:text-gray-800">
                         <i className="fab fa-linkedin fa-2x"></i>
                     </a>
                 </div>
