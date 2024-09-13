@@ -28,7 +28,7 @@ const HomePage = () => {
                         </button>
                     </Link>
                     <button className="text-white bg-teal-600 px-4 py-2 rounded-md hover:bg-teal-700">
-                        <Link to="/signup">Signup</Link> {/* Use Link to navigate to Sign Up page */}
+                        <Link to="/signup">Sign Up</Link> {/* Use Link to navigate to Sign Up page */}
                     </button>
                 </div>
             </header>
