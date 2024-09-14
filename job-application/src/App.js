@@ -1,15 +1,16 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import HomePage from './components/Home/Homepage';
-import '@fortawesome/fontawesome-free/css/all.min.css';
 import Jobs from './components/JobPage';
 import SignUpPage from "./components/auth/SignUpPage"; // The new SignUp component
-import Login from './pages/Login';
-
+import Login from './components/auth/Login';
+import Navbar from './components/Navbar/Navbar';
+import '@fortawesome/fontawesome-free/css/all.min.css';
 
 const App = () => {
     return (
         <Router>
+             
             <Routes>
                 <Route path="/" element={<HomePage />} />
                 <Route path="/jobs" element={<Jobs />} />
