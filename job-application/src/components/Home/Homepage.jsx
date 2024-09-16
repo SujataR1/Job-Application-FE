@@ -1,11 +1,11 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import Navbar from '../Navbar/Navbar'; // Import the Navbar component
+
+ // Import the Navbar component
 
 const HomePage = () => {
     return (
         <div className="font-sans bg-cover bg-center bg-fixed min-h-screen" style={{ backgroundImage: 'url(/images/background.png)' }}>
-            <Navbar /> {/* Ensure Navbar is placed here */}
+         {/* Ensure Navbar is placed here */}
 
             {/* Main Content */}
             <main className="text-center mt-0">
@@ -69,23 +69,7 @@ const HomePage = () => {
                 </div>
             </section>
 
-            {/* Footer */}
-            <footer className="mt-20 text-center p-5 border-t-2 border-gray-100">
-                <div className="text-gray-500">
-                    © 2024 Transmogrify. All rights reserved.
-                </div>
-                <div className="flex justify-center space-x-12 mt-20">
-                    <a href="/" className="text-gray-400 hover:text-gray-800">
-                        <i className="fab fa-facebook-f fa-2x"></i>
-                    </a>
-                    <a href="/" className="text-gray-400 hover:text-gray-800">
-                        <i className="fab fa-twitter fa-2x"></i>
-                    </a>
-                    <a href="/" className="text-gray-400 hover:text-gray-800">
-                        <i className="fab fa-linkedin fa-2x"></i>
-                    </a>
-                </div>
-            </footer>
+            
         </div>
     );
 };

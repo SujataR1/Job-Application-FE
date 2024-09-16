@@ -1,0 +1,68 @@
+.footer {
+    background-color: #1a202c; /* Dark background color */
+    color: #edf2f7; /* Light text color */
+}
+
+.footer-logo img {
+    max-width: 100%;
+    height: auto;
+}
+
+.footer-social-icons .social-icon {
+    color: #edf2f7; /* Social icon color */
+    font-size: 1.5rem; /* Icon size */
+    transition: color 0.3s; 
+   /* Smooth color transition */
+}
+
+.footer-social-icons .social-icon:hover {
+    color: #1abc9c; /* Icon color on hover */
+}
+
+.app-download-link img {
+    max-width: 100%;
+    height: auto;
+}
+
+.footer-link {
+    color: #edf2f7; /* Link color */
+    text-decoration: none; /* Remove underline */
+}
+
+.footer-link:hover {
+    text-decoration: underline; /* Underline on hover */
+}
+
+.company-info, .help-center, .legal-info, .businesses {
+    margin-bottom: 1.5rem; /* Space between sections */
+}
+
+.footer-bottom h4 {
+    font-size: 1.125rem; /* Section header font size */
+    font-weight: 600; /* Bold font */
+    margin-bottom: 0.5rem; /* Space below header */
+}
+
+.footer-bottom ul {
+    list-style: none; /* Remove default list styling */
+    padding: 0;
+}
+
+.footer-bottom li {
+    margin-bottom: 0.5rem; /* Space between list items */
+}
+
+.footer-bottom li:last-child {
+    margin-bottom: 0; /* Remove margin from last item */
+}
+
+.footer-bottom p {
+    font-size: 0.875rem; /* Smaller font size for footer text */
+}
+.footer-app .app-box {
+    background-color: #2d3748;
+    border: 1px solid #4a5568;
+    border-radius: 0.5rem;
+    padding: 1.5rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
