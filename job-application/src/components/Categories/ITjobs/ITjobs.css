@@ -1,0 +1,87 @@
+/* src/components/JobPage.css */
+ .job-page {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 auto;
+    padding: 1rem;
+    max-width: 1200px;
+}
+
+.job-filters {
+    flex: 1;
+    max-width: 300px;
+    margin-right: 1rem;
+}
+
+.job-filters .filter-section {
+    background: #f8f9fa;
+    border-radius: 8px;
+    padding: 1rem;
+    margin-bottom: 1rem;
+}
+
+.job-filters .filter-section h3 {
+    font-size: 1.125rem;
+    margin-bottom: 1rem;
+}
+
+.job-filters .filter-section ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.job-filters .filter-section ul li {
+    margin-bottom: 0.5rem;
+}
+
+.job-filters .filter-section ul li a {
+    text-decoration: none;
+    color: #007bff;
+}
+
+.job-filters .filter-section ul li a:hover {
+    text-decoration: underline;
+}
+
+.job-listings {
+    flex: 2;
+}
+
+.job-listings .job-item {
+    background: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-bottom: 1rem;
+    padding: 1rem;
+}
+
+.job-listings .job-item h3 {
+    font-size: 1.25rem;
+    margin: 0 0 0.5rem;
+}
+
+.job-listings .job-item .company {
+    font-weight: bold;
+    color: #333;
+}
+
+.job-listings .job-item .experience,
+.job-listings .job-item .location,
+.job-listings .job-item .skills {
+    margin-bottom: 0.5rem;
+}
+
+.job-listings .job-item .apply-link {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    background: #007bff;
+    color: #ffffff;
+    text-decoration: none;
+    border-radius: 4px;
+    font-weight: bold;
+}
+
+.job-listings .job-item .apply-link:hover {
+    background: #0056b3;
+} 
+
