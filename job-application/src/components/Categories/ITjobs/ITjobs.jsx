@@ -1,144 +1,274 @@
-import React from 'react';
-import './ITjobs.css'; // Import your CSS file
+import React, { useState, useMemo, useEffect } from 'react';
+import './ITjobs.css'; // Import the CSS file for styling
+import Modal from '../../ITmodal/ITmodal'; // Import the Modal component
 
-const JobPage = () => {
-    const handleApply = (e) => {
-        e.preventDefault(); // Prevent the default button behavior
-        // Handle apply button click here
+function ITJobs() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [experience, setExperience] = useState(0); // Initialize experience state
+
+  // State for filters
+  const [filters, setFilters] = useState({
+    department: [],
+    workMode: [],
+    experience: [],
+    location: [],
+    salary: [],
+    companyType: [],
+    roleCategory: [],
+    stipend: [],
+    duration: []
+  });
+
+  // Static job data for design purposes
+  const allJobs = useMemo(() => [
+    { id: 1, title: 'Software Engineer', company: 'TechCorp', location: 'Bengaluru', salary: '₹6-10 Lakhs', department: 'Engineering - Software & QA', workMode: 'Remote' },
+    { id: 2, title: 'Data Scientist', company: 'DataTech', location: 'Hyderabad', salary: '₹12-20 Lakhs', department: 'Engineering - Software & QA', workMode: 'Hybrid' },
+    { id: 3, title: 'System Administrator', company: 'SysAdminCo', location: 'Pune', salary: '₹5-8 Lakhs', department: 'IT & Information Security', workMode: 'Work from office' },
+    { id: 4, title: 'Network Engineer', company: 'NetSolutions', location: 'Delhi / NCR', salary: '₹8-12 Lakhs', department: 'Engineering - Hardware & Networks', workMode: 'Hybrid' },
+    { id: 5, title: 'QA Tester', company: 'QualitySoft', location: 'Bengaluru', salary: '₹4-6 Lakhs', department: 'Engineering - Software & QA', workMode: 'Remote' },
+    { id: 6, title: 'IT Support Specialist', company: 'SupportIT', location: 'Mumbai', salary: '₹3-5 Lakhs', department: 'IT & Information Security', workMode: 'Work from office' },
+    { id: 7, title: 'DevOps Engineer', company: 'DevOpsPro', location: 'Delhi / NCR', salary: '₹10-15 Lakhs', department: 'Engineering - Software & QA', workMode: 'Hybrid' },
+    { id: 8, title: 'Technical Lead', company: 'TechLeadInc', location: 'Bengaluru', salary: '₹15-25 Lakhs', department: 'Engineering - Software & QA', workMode: 'Remote' }
+  ], []);
+
+  const [filteredJobs, setFilteredJobs] = useState(allJobs);
+
+  useEffect(() => {
+    const filterJobs = () => {
+      let newFilteredJobs = allJobs;
+
+      Object.keys(filters).forEach(filterType => {
+        if (filters[filterType].length > 0) {
+          newFilteredJobs = newFilteredJobs.filter(job =>
+            filters[filterType].includes(job[filterType])
+          );
+        }
+      });
+
+      setFilteredJobs(newFilteredJobs);
     };
 
-    const handleFilterClick = (filter) => {
-        // Handle filter button clicks here
-        console.log(`Filter clicked: ${filter}`);
-    };
+    filterJobs();
+  }, [filters, experience, allJobs]);
 
-    return (
-        <div className="job-page">
-            {/* Job Filter Sidebar */}
-            <aside className="job-filters">
-                <div className="filter-section">
-                    <h3>Department</h3>
-                    <ul>
-                        <li><button onClick={() => handleFilterClick('Engineering - Hardware & Networks')} className="filter-button">Engineering - Hardware & Networks (1083)</button></li>
-                        <li><button onClick={() => handleFilterClick('Engineering - Software & QA')} className="filter-button">Engineering - Software & QA (13253)</button></li>
-                        <li><button onClick={() => handleFilterClick('IT & Information Security')} className="filter-button">IT & Information Security (2724)</button></li>
-                        <li><button onClick={() => handleFilterClick('Sales & Business Development')} className="filter-button">Sales & Business Development (9007)</button></li>
-                    </ul>
-                </div>
-                <div className="filter-section">
-                    <h3>Work mode</h3>
-                    <ul>
-                        <li><button onClick={() => handleFilterClick('Work from office')} className="filter-button">Work from office (14194)</button></li>
-                        <li><button onClick={() => handleFilterClick('Hybrid')} className="filter-button">Hybrid (2086)</button></li>
-                        <li><button onClick={() => handleFilterClick('Remote')} className="filter-button">Remote (775)</button></li>
-                        <li><button onClick={() => handleFilterClick('Temp. WFH due to covid')} className="filter-button">Temp. WFH due to covid (5)</button></li>
-                    </ul>
-                </div>
-                <div className="filter-section">
-                    <h3>Experience</h3>
-                    <ul>
-                        <li><button onClick={() => handleFilterClick('Any')} className="filter-button">Any</button></li>
-                        <li><button onClick={() => handleFilterClick('0 Yrs')} className="filter-button">0 Yrs</button></li>
-                    </ul>
-                </div>
-                <div className="filter-section">
-                    <h3>Location</h3>
-                    <ul>
-                        <li><button onClick={() => handleFilterClick('Bengaluru')} className="filter-button">Bengaluru (6203)</button></li>
-                        <li><button onClick={() => handleFilterClick('Hyderabad')} className="filter-button">Hyderabad (3447)</button></li>
-                        <li><button onClick={() => handleFilterClick('Pune')} className="filter-button">Pune (2516)</button></li>
-                        <li><button onClick={() => handleFilterClick('Delhi / NCR')} className="filter-button">Delhi / NCR (2383)</button></li>
-                    </ul>
-                </div>
-                <div className="filter-section">
-                    <h3>Salary</h3>
-                    <ul>
-                        <li><button onClick={() => handleFilterClick('0-3 Lakhs')} className="filter-button">0-3 Lakhs (1520)</button></li>
-                        <li><button onClick={() => handleFilterClick('3-6 Lakhs')} className="filter-button">3-6 Lakhs (6344)</button></li>
-                        <li><button onClick={() => handleFilterClick('6-10 Lakhs')} className="filter-button">6-10 Lakhs (10056)</button></li>
-                        <li><button onClick={() => handleFilterClick('10-15 Lakhs')} className="filter-button">10-15 Lakhs (8986)</button></li>
-                    </ul>
-                </div>
-                <div className="filter-section">
-                    <h3>Company type</h3>
-                    <ul>
-                        <li><button onClick={() => handleFilterClick('Foreign MNC')} className="filter-button">Foreign MNC (8603)</button></li>
-                        <li><button onClick={() => handleFilterClick('Corporate')} className="filter-button">Corporate (1697)</button></li>
-                        <li><button onClick={() => handleFilterClick('Indian MNC')} className="filter-button">Indian MNC (1565)</button></li>
-                        <li><button onClick={() => handleFilterClick('Startup')} className="filter-button">Startup (198)</button></li>
-                    </ul>
-                </div>
-                <div className="filter-section">
-                    <h3>Role category</h3>
-                    <ul>
-                        <li><button onClick={() => handleFilterClick('Software Development')} className="filter-button">Software Development (10208)</button></li>
-                        <li><button onClick={() => handleFilterClick('DBA / Data warehousing')} className="filter-button">DBA / Data warehousing (1343)</button></li>
-                        <li><button onClick={() => handleFilterClick('Quality Assurance and Testing')} className="filter-button">Quality Assurance and Testing (1250)</button></li>
-                        <li><button onClick={() => handleFilterClick('IT Support')} className="filter-button">IT Support (814)</button></li>
-                    </ul>
-                </div>
-                <div className="filter-section">
-                    <h3>Stipend</h3>
-                    <ul>
-                        <li><button onClick={() => handleFilterClick('Unpaid')} className="filter-button">Unpaid (9)</button></li>
-                        <li><button onClick={() => handleFilterClick('0-10k')} className="filter-button">0-10k (14)</button></li>
-                        <li><button onClick={() => handleFilterClick('10k-20k')} className="filter-button">10k-20k (7)</button></li>
-                        <li><button onClick={() => handleFilterClick('20k-30k')} className="filter-button">20k-30k (1)</button></li>
-                    </ul>
-                </div>
-                <div className="filter-section">
-                    <h3>Duration</h3>
-                    <ul>
-                        <li><button onClick={() => handleFilterClick('2 Months')} className="filter-button">2 Months (4)</button></li>
-                        <li><button onClick={() => handleFilterClick('3 Months')} className="filter-button">3 Months (12)</button></li>
-                        <li><button onClick={() => handleFilterClick('4 Months')} className="filter-button">4 Months (1)</button></li>
-                        <li><button onClick={() => handleFilterClick('5 Months')} className="filter-button">5 Months (1)</button></li>
-                    </ul>
-                </div>
-                <div className="filter-section">
-                    <h3>Education</h3>
-                    <ul>
-                        <li><button onClick={() => handleFilterClick('Any Postgraduate')} className="filter-button">Any Postgraduate (8676)</button></li>
-                        <li><button onClick={() => handleFilterClick('MCA')} className="filter-button">MCA (1270)</button></li>
-                        <li><button onClick={() => handleFilterClick('B.Tech/B.E.')} className="filter-button">B.Tech/B.E. (10702)</button></li>
-                        <li><button onClick={() => handleFilterClick('Any Graduate')} className="filter-button">Any Graduate (6229)</button></li>
-                    </ul>
-                </div>
-                <div className="filter-section">
-                    <h3>Posted by</h3>
-                    <ul>
-                        <li><button onClick={() => handleFilterClick('Company Jobs')} className="filter-button">Company Jobs (14257)</button></li>
-                        <li><button onClick={() => handleFilterClick('Consultant Jobs')} className="filter-button">Consultant Jobs (2803)</button></li>
-                    </ul>
-                </div>
-                <div className="filter-section">
-                    <h3>Industry</h3>
-                    <ul>
-                        <li><button onClick={() => handleFilterClick('IT Services & Consulting')} className="filter-button">IT Services & Consulting (13636)</button></li>
-                        <li><button onClick={() => handleFilterClick('Software Product')} className="filter-button">Software Product (824)</button></li>
-                        <li><button onClick={() => handleFilterClick('Banking')} className="filter-button">Banking (298)</button></li>
-                        <li><button onClick={() => handleFilterClick('Recruitment / Staffing')} className="filter-button">Recruitment / Staffing (215)</button></li>
-                    </ul>
-                </div>
-            </aside>
+  const openModal = () => {
+    setIsModalOpen(true);
+  };
 
-            {/* Job Listings */}
-            <main className="job-listings">
-                <h2 className="text-xl font-semibold mb-4">Freshness</h2>
-                <div className="job-list">
-                    <article className="job-item">
-                        <h3 className="job-title">Automation Test Engineer</h3>
-                        <p className="company">Cognizant</p>
-                        <p className="experience">6-10 Yrs</p>
-                        <p className="location">Hybrid - Kolkata, Pune, Chennai</p>
-                        <p className="skills">Skill: Automation with Java, Selenium...</p>
-                        <button onClick={handleApply} className="apply-link">Apply Now</button>
-                    </article>
-                    {/* Add more job items as needed */}
-                </div>
-            </main>
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
+
+  // Handle checkbox change
+  const handleFilterChange = (filterType, value) => {
+    setFilters(prevFilters => {
+      const newFilters = { ...prevFilters };
+      if (newFilters[filterType].includes(value)) {
+        newFilters[filterType] = newFilters[filterType].filter(item => item !== value);
+      } else {
+        newFilters[filterType].push(value);
+      }
+      return newFilters;
+    });
+  };
+
+  // Calculate the number of applied filters
+  const getAppliedFilterCount = () => {
+    return Object.values(filters).reduce((count, filterArray) => count + filterArray.length, 0);
+  };
+
+  const appliedFilterCount = getAppliedFilterCount();
+
+  return (
+    <div className="it-jobs-container">
+      <div className="filters-section">
+        <h2>All Filters</h2>
+
+        {/* Applied Filter */}
+        <div className="filter-section">
+          <h3>Applied</h3>
+          {appliedFilterCount > 0 && <p>Applied ({appliedFilterCount})</p>}
         </div>
-    );
-};
+        <hr />
 
-export default JobPage;
+        {/* Department Filter */}
+        <div className="filter-section">
+          <h3>Department</h3>
+          {[
+            'Engineering - Hardware & Networks',
+            'Engineering - Software & QA',
+            'IT & Information Security',
+            'Sales & Business Development'
+          ].map((dept, index) => (
+            <div key={index} className="filter-item">
+              <input
+                type="checkbox"
+                id={`department${index}`}
+                onChange={() => handleFilterChange('department', dept)}
+              />
+              <label htmlFor={`department${index}`}>{dept}</label>
+            </div>
+          ))}
+          <button className="view-more-button" onClick={openModal}>
+            View More
+          </button>
+          {isModalOpen && (
+            <Modal closeModal={closeModal} />
+          )}
+        </div>
+        <hr />
+
+        {/* Work Mode Filter */}
+        <div className="filter-section">
+          <h3>Work mode</h3>
+          {['Work from office', 'Hybrid', 'Remote'].map((mode, index) => (
+            <div key={index} className="filter-item">
+              <input
+                type="checkbox"
+                id={`workMode${index}`}
+                onChange={() => handleFilterChange('workMode', mode)}
+              />
+              <label htmlFor={`workMode${index}`}>{mode}</label>
+            </div>
+          ))}
+        </div>
+        <hr />
+
+        {/* Experience Filter */}
+        <div className="filter-section">
+          <h3>Experience</h3>
+          <div className="experience-slider">
+            <input
+              type="range"
+              min="0"
+              max="30"
+              step="0.1"
+              value={experience}
+              onChange={(e) => setExperience(e.target.value)}
+              className="slider"
+              id="experienceRange"
+            />
+            <div className="slider-labels">
+              <span>{experience} to </span>
+              <span>30 Years</span>
+            </div>
+          </div>
+        </div>
+        <hr />
+
+        {/* Location Filter */}
+        <div className="filter-section">
+          <h3>Location</h3>
+          {['Delhi / NCR', 'Mumbai', 'Bengaluru', 'Hyderabad'].map((loc, index) => (
+            <div key={index} className="filter-item">
+              <input
+                type="checkbox"
+                id={`location${index}`}
+                onChange={() => handleFilterChange('location', loc)}
+              />
+              <label htmlFor={`location${index}`}>{loc}</label>
+            </div>
+          ))}
+        </div>
+        <hr />
+
+        {/* Salary Filter */}
+        <div className="filter-section">
+          <h3>Salary</h3>
+          {['0-3 Lakhs', '3-6 Lakhs', '6-10 Lakhs', '10-15 Lakhs'].map((salary, index) => (
+            <div key={index} className="filter-item">
+              <input
+                type="checkbox"
+                id={`salary${index}`}
+                onChange={() => handleFilterChange('salary', salary)}
+              />
+              <label htmlFor={`salary${index}`}>{salary}</label>
+            </div>
+          ))}
+        </div>
+        <hr />
+
+        {/* Company Type Filter */}
+        <div className="filter-section">
+          <h3>Company type</h3>
+          {['Corporate', 'Indian MNC', 'Startup', 'Foreign MNC'].map((type, index) => (
+            <div key={index} className="filter-item">
+              <input
+                type="checkbox"
+                id={`companyType${index}`}
+                onChange={() => handleFilterChange('companyType', type)}
+              />
+              <label htmlFor={`companyType${index}`}>{type}</label>
+            </div>
+          ))}
+        </div>
+        <hr />
+
+        {/* Role Category Filter */}
+        <div className="filter-section">
+          <h3>Role category</h3>
+          {['Software Development', 'DBA / Data warehousing', 'Quality Assurance and Testing', 'IT Support'].map((category, index) => (
+            <div key={index} className="filter-item">
+              <input
+                type="checkbox"
+                id={`roleCategory${index}`}
+                onChange={() => handleFilterChange('roleCategory', category)}
+              />
+              <label htmlFor={`roleCategory${index}`}>{category}</label>
+            </div>
+          ))}
+        </div>
+        <hr />
+
+        {/* Stipend Filter */}
+        <div className="filter-section">
+          <h3>Stipend</h3>
+          {['0-10k', '10k-20k', '20k-30k'].map((stipend, index) => (
+            <div key={index} className="filter-item">
+              <input
+                type="checkbox"
+                id={`stipend${index}`}
+                onChange={() => handleFilterChange('stipend', stipend)}
+              />
+              <label htmlFor={`stipend${index}`}>{stipend}</label>
+            </div>
+          ))}
+        </div>
+        <hr />
+
+        {/* Duration Filter */}
+        <div className="filter-section">
+          <h3>Duration</h3>
+          {['Less than 3 months', '3-6 months', '6-12 months', 'More than 12 months'].map((duration, index) => (
+            <div key={index} className="filter-item">
+              <input
+                type="checkbox"
+                id={`duration${index}`}
+                onChange={() => handleFilterChange('duration', duration)}
+              />
+              <label htmlFor={`duration${index}`}>{duration}</label>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div className="jobs-section">
+        <h2>Job Listings</h2>
+        <div className="jobs-list">
+          {filteredJobs.map((job) => (
+            <div key={job.id} className="job-item">
+              <h3>{job.title}</h3>
+              <p><strong>Company:</strong> {job.company}</p>
+              <p><strong>Location:</strong> {job.location}</p>
+              <p><strong>Salary:</strong> {job.salary}</p>
+              <p><strong>Department:</strong> {job.department}</p>
+              <p><strong>Work Mode:</strong> {job.workMode}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export default ITJobs;

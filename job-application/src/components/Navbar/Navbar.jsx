@@ -18,7 +18,7 @@ const Navbar = () => {
     const toggleServicesDropdown = () => {
         setShowServicesDropdown(!showServicesDropdown);
     };
-
+ 
     return (
         <div className="navbar-background font-sans">
             {/* Navbar */}
