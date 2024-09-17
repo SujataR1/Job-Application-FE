@@ -1,6 +1,8 @@
+// ITJobs.jsx
+
 import React, { useState, useMemo, useEffect } from 'react';
 import './ITjobs.css'; // Import the CSS file for styling
-import Modal from '../../ITmodal/ITmodal'; // Import the Modal component
+import ITmodal from '../../ITmodal/ITmodal'; // Import the ITmodal component
 
 function ITJobs() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -113,7 +115,7 @@ function ITJobs() {
             View More
           </button>
           {isModalOpen && (
-            <Modal closeModal={closeModal} />
+            <ITmodal closeModal={closeModal} />
           )}
         </div>
         <hr />

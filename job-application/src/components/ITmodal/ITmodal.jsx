@@ -1,191 +1,63 @@
+// Salesjob/Modal.jsx
+
 import React from 'react';
-import './ITmodal.css'; // Ensure you have CSS for styling
+import './ITmodal.css'; // Import the CSS file for styling
 
-// Modal component definition
-function Modal({ closeModal, handleFilterChange, filters }) {
-  // Define filter options
-  const departments = [
-    'Engineering - Hardware & Networks',
-    'Engineering - Software & QA',
-    'IT & Information Security',
-    'Sales & Business Development',
-    'Customer Success, Service & Operations',
-    'Finance & Accounting',
-    'Production, Manufacturing & Engineering',
-    'Human Resources',
-    'Healthcare & Life Sciences',
-    'Marketing & Communication',
-    'BFSI, Investments & Trading',
-    'Consulting',
-    'Other',
-    'Data Science & Analytics',
-    'Procurement & Supply Chain',
-    'Construction & Site Engineering',
-    'Teaching & Training',
-    'Administration & Facilities',
-    'Project & Program Management',
-    'UX, Design & Architecture',
-    'Quality Assurance',
-    'Research & Development',
-    'Food, Beverage & Hospitality',
-    'Legal & Regulatory',
-    'Merchandising, Retail & eCommerce',
-    'Content, Editorial & Journalism',
-    'Risk Management & Compliance',
-    'Product Management',
-    'Environment Health & Safety',
-  ];
-
-  const salaries = [
-    '0-3 Lakhs',
-    '3-6 Lakhs',
-    '6-10 Lakhs',
-    '10-15 Lakhs',
-    '15-25 Lakhs',
-    '25-50 Lakhs',
-    '50-75 Lakhs',
-    '75-100 Lakhs',
-    '1-5 Cr',
-    '5+ Cr',
-  ];
-
-  const locations = [
-    'Bengaluru',
-    'Hyderabad',
-    'Pune',
-    'Delhi / NCR',
-    'Chennai',
-    'Mumbai (All Areas)',
-    'Gurugram',
-    'Mumbai',
-    'Noida',
-    'Kolkata',
-    'Ahmedabad',
-    'Coimbatore',
-    'Jaipur',
-    'Navi Mumbai',
-    'Indore',
-    'Bhubaneswar',
-    'Kochi',
-    'New Delhi',
-    'Bangalore Rural',
-    'Thiruvananthapuram',
-    'Mumbai Suburban',
-    'Nagpur',
-    'Thane',
-    'Mohali',
-    'Vadodara',
-  ];
-
-  const industries = [
-    'IT Services & Consulting',
-    'Software Product',
-    'Hardware & Networking',
-    'Electronic Components / Semiconductors',
-    'Internet',
-    'Electronics Manufacturing',
-    'Emerging Technologies',
-    'Banking',
-    'FinTech / Payments',
-    'Investment Banking / Venture Capital / Private Equity',
-    'Financial Services',
-    'Insurance',
-    'NBFC',
-    'Recruitment / Staffing',
-    'Management Consulting',
-    'Accounting / Auditing',
-    'Legal',
-    'Facility Management Services',
-    'Architecture / Interior Design',
-    'Law Enforcement / Security Services',
-    'BPO / Call Centre',
-    'Analytics / KPO / Research',
-    'Telecom',
-    'Media / Entertainment',
-  ];
-
-  const roles = [
-    'Software Development',
-    'DBA / Data warehousing',
-    'Quality Assurance and Testing',
-    'IT Support',
-    'IT Infrastructure Services',
-    'IT Network',
-    'IT Security',
-    'DevOps',
-    'IT & Information Security - Other',
-    'Hardware',
-    'Telecom',
-    'Hardware and Networks - Other',
-  ];
-
+function Modal({ closeModal }) {
   return (
     <div className="modal-overlay">
       <div className="modal-content">
-        <button className="modal-close" onClick={closeModal}>
+        <button className="modal-close-btn" onClick={closeModal}>
           &times;
         </button>
-        <h2>Filters</h2>
-
-        <section>
-          <h3>Departments</h3>
-          <select onChange={(e) => handleFilterChange('department', e.target.value)}>
-            <option value="">Select Department</option>
-            {departments.map((dept) => (
-              <option key={dept} value={dept}>
-                {dept}
-              </option>
-            ))}
-          </select>
-        </section>
-
-        <section>
-          <h3>Salary</h3>
-          <select onChange={(e) => handleFilterChange('salary', e.target.value)}>
-            <option value="">Select Salary</option>
-            {salaries.map((salary) => (
-              <option key={salary} value={salary}>
-                {salary}
-              </option>
-            ))}
-          </select>
-        </section>
-
-        <section>
-          <h3>Location</h3>
-          <select onChange={(e) => handleFilterChange('location', e.target.value)}>
-            <option value="">Select Location</option>
-            {locations.map((location) => (
-              <option key={location} value={location}>
-                {location}
-              </option>
-            ))}
-          </select>
-        </section>
-
-        <section>
-          <h3>Industry</h3>
-          <select onChange={(e) => handleFilterChange('industry', e.target.value)}>
-            <option value="">Select Industry</option>
-            {industries.map((industry) => (
-              <option key={industry} value={industry}>
-                {industry}
-              </option>
-            ))}
-          </select>
-        </section>
-
-        <section>
-          <h3>Role Category</h3>
-          <select onChange={(e) => handleFilterChange('role', e.target.value)}>
-            <option value="">Select Role</option>
-            {roles.map((role) => (
-              <option key={role} value={role}>
-                {role}
-              </option>
-            ))}
-          </select>
-        </section>
+        <h2>Departments</h2>
+        <div className="modal-body">
+          {[
+            "Engineering - Hardware & Networks(1175)",
+            "Engineering - Software & QA(14878)",
+            "IT & Information Security(2907)",
+            "Sales & Business Development(9283)",
+            "Customer Success, Service & Operations(5768)",
+            "Finance & Accounting(3697)",
+            "Production, Manufacturing & Engineering(2996)",
+            "Human Resources(2632)",
+            "Healthcare & Life Sciences(2334)",
+            "Marketing & Communication(2199)",
+            "BFSI, Investments & Trading(2109)",
+            "Consulting(1667)",
+            "Other(1543)",
+            "Data Science & Analytics(1365)",
+            "Procurement & Supply Chain(1350)",
+            "Construction & Site Engineering(1148)",
+            "Teaching & Training(1136)",
+            "Administration & Facilities(994)",
+            "Project & Program Management(932)",
+            "UX, Design & Architecture(929)",
+            "Quality Assurance(908)",
+            "Research & Development(904)",
+            "Food, Beverage & Hospitality(747)",
+            "Legal & Regulatory(422)",
+            "Merchandising, Retail & eCommerce(409)",
+            "Content, Editorial & Journalism(376)",
+            "Risk Management & Compliance(267)",
+            "Product Management(257)",
+            "Environment Health & Safety(209)",
+            "Strategic & Top Management(181)",
+            "Media Production & Entertainment(168)",
+            "Sports, Fitness & Personal Care(61)",
+            "Security Services(58)",
+            "Aviation & Aerospace(57)",
+            "CSR & Social Service(44)",
+            "Energy & Mining(42)",
+            "Shipping & Maritime(22)"
+          ].map((dept, index) => (
+            <div key={index} className="modal-filter-item">
+              <input type="checkbox" id={`dept${index}`} />
+              <label htmlFor={`dept${index}`}>{dept}</label>
+            </div>
+          ))}
+          <button className="apply-btn">Apply</button>
+        </div>
       </div>
     </div>
   );
