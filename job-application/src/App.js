@@ -10,6 +10,8 @@ import Login from './components/auth/Login';
 import Navbar from './components/Navbar/Navbar';
 import Footer from './components/Footer/Footer'; // Import Footer
 import '@fortawesome/fontawesome-free/css/all.min.css';
+import Marketing from './components/Marketingjobs/Marketing';
+
 const App = () => {
     return (
         <Router>
@@ -21,6 +23,8 @@ const App = () => {
                 <Route path="/login" element={<Login />} />
                 <Route path="/it-jobs" element={<IT />} />
                 <Route path="/sales-jobs" element={<Sales />} /> {/* SalesJobs component */}
+                <Route path="/marketing-jobs" element={<Marketing />} />
+
                 {/* Add more routes here as needed */}
             </Routes>
             <Footer />
