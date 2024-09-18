@@ -1,0 +1,30 @@
+.data-science-jobs-container {
+    display: flex;
+  }
+  
+  .sidebar {
+    width: 20%;
+    background-color: #f0f0f0;
+    padding: 10px;
+  }
+  
+  .main-content {
+    width: 80%;
+    padding: 10px;
+  }
+  
+  .filters {
+    margin-bottom: 20px;
+  }
+  
+  .job-item {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-bottom: 10px;
+    cursor: pointer;
+  }
+  
+  .job-item:hover {
+    background-color: #f9f9f9;
+  }
+  
