@@ -1,0 +1,80 @@
+/* HR.css */
+
+.hr-job-container {
+    display: flex;
+    padding: 20px;
+    gap: 20px;
+  }
+  
+  .filters-section {
+    width: 250px;
+    background-color: #f4f4f4;
+    padding: 15px;
+    border-radius: 8px;
+  }
+  
+  .filters-section h2 {
+    margin-bottom: 20px;
+  }
+  
+  .filter-section {
+    margin-bottom: 20px;
+  }
+  
+  .filter-section h3 {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+  }
+  
+  .filter-item {
+    margin-bottom: 10px;
+  }
+  
+  .filter-item input {
+    margin-right: 5px;
+  }
+  
+  .filter-item label {
+    cursor: pointer;
+  }
+  
+  .view-more-button {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .view-more-button:hover {
+    background-color: #218838;
+  }
+  
+  hr {
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+  
+  .jobs-section {
+    flex-grow: 1;
+    padding: 20px;
+  }
+  
+  .job-card {
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #fff;
+    margin-bottom: 15px;
+  }
+  
+  .job-card h3 {
+    margin: 0 0 10px;
+  }
+  
+  .job-card p {
+    margin: 0;
+    color: #555;
+  }
+  

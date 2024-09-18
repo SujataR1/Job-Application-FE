@@ -12,6 +12,7 @@ import Footer from './components/Footer/Footer'; // Import Footer
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import Marketing from './components/Marketingjobs/Marketing';
 import DataScienceJobs from './components/DataScience/DataScience';
+import HR from './components/Categories/HR/HR';
 
 const App = () => {
     return (
@@ -26,6 +27,7 @@ const App = () => {
                 <Route path="/sales-jobs" element={<Sales />} /> {/* SalesJobs component */}
                 <Route path="/marketing-jobs" element={<Marketing />} />
                 <Route path="/data-science-jobs" element={<DataScienceJobs />} />
+                <Route path="/hr-jobs" element={<HR />} />
 
                 {/* Add more routes here as needed */}
             </Routes>
