@@ -3,7 +3,6 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import HomePage from './components/Home/Homepage';
 import Sales from './components/Categories/SalesJobs/Sales';
 import IT from './components/Categories/ITjobs/ITjobs';
-
 import Jobs from './components/JobPage';
 import SignUpPage from './components/auth/SignUpPage'; // The new SignUp component
 import Login from './components/auth/Login';
@@ -13,6 +12,7 @@ import '@fortawesome/fontawesome-free/css/all.min.css';
 import Marketing from './components/Marketingjobs/Marketing';
 import DataScienceJobs from './components/DataScience/DataScience';
 import HR from './components/Categories/HR/HR';
+import SkilledManPowerjobs from './components/Categories/SkilledmanPower/Skilled'
 
 const App = () => {
     return (
@@ -28,6 +28,7 @@ const App = () => {
                 <Route path="/marketing-jobs" element={<Marketing />} />
                 <Route path="/data-science-jobs" element={<DataScienceJobs />} />
                 <Route path="/hr-jobs" element={<HR />} />
+                <Route path="/manpower-jobs" element={<SkilledManPowerjobs />} />
 
                 {/* Add more routes here as needed */}
             </Routes>

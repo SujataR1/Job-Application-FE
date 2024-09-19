@@ -1,0 +1,133 @@
+/* Skilled.css */
+
+.skilled-manpower-container {
+    display: flex;
+    padding: 20px;
+    background-color: #f9f9f9;
+}
+
+.filters-section {
+    width: 25%;
+    padding: 15px;
+    border-right: 1px solid #ddd;
+    background-color: #fff;
+}
+
+.jobs-section {
+    width: 75%;
+    padding: 15px;
+}
+
+h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.filter-section {
+    margin-bottom: 20px;
+}
+
+.filter-section h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.filter-item {
+    margin-bottom: 8px;
+}
+
+.filter-item input {
+    margin-right: 10px;
+}
+
+.view-more-button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.view-more-button:hover {
+    background-color: #0056b3;
+}
+
+.jobs-list {
+    display: flex;
+    flex-direction: column;
+}
+
+.job-item {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 15px;
+    margin-bottom: 15px;
+    transition: box-shadow 0.3s;
+}
+
+.job-item:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.job-item h3 {
+    margin: 0 0 10px;
+}
+
+.job-item p {
+    margin: 5px 0;
+}
+
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    width: 400px;
+    position: relative;
+}
+
+.modal-close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.modal-body {
+    max-height: 300px;
+    overflow-y: auto;
+    margin-top: 10px;
+}
+
+.modal-filter-item {
+    margin-bottom: 10px;
+}
+
+.apply-btn {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.apply-btn:hover {
+    background-color: #218838;
+}
