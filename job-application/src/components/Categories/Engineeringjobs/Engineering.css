@@ -1,0 +1,64 @@
+.engineering-jobs-container {
+    display: flex;
+}
+
+.filters-section {
+    width: 20%;
+    background-color: #f0f0f0;
+    padding: 10px;
+}
+
+.jobs-section {
+    width: 80%;
+    padding: 10px;
+}
+
+.filter-section {
+    margin-bottom: 20px;
+}
+
+.filter-item {
+    margin-bottom: 10px;
+}
+
+.filter-item input {
+    margin-right: 5px;
+}
+
+.view-more-button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.view-more-button:hover {
+    background-color: #0056b3;
+}
+
+.jobs-list {
+    display: flex;
+    flex-direction: column;
+}
+
+.job-item {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+
+.job-item:hover {
+    background-color: #f9f9f9;
+}
+
+.remove-filter-button {
+    background: none;
+    border: none;
+    color: red;
+    font-size: 1.2em;
+    cursor: pointer;
+  }
+  
