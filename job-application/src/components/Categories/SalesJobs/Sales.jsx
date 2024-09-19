@@ -268,6 +268,7 @@ function Sales() {
               <p><strong>Salary:</strong> {job.salary}</p>
               <p><strong>Department:</strong> {job.department}</p>
               <p><strong>Work Mode:</strong> {job.workMode}</p>
+              <button className="apply-button">Apply Now</button>
             </div>
           ))}
         </div>

@@ -13,6 +13,7 @@ import Marketing from './components/Marketingjobs/Marketing';
 import DataScienceJobs from './components/DataScience/DataScience';
 import HR from './components/Categories/HR/HR';
 import SkilledManPowerjobs from './components/Categories/SkilledmanPower/Skilled'
+import Engineering from './components/Categories/Engineeringjobs/Engineering';
 
 const App = () => {
     return (
@@ -29,6 +30,7 @@ const App = () => {
                 <Route path="/data-science-jobs" element={<DataScienceJobs />} />
                 <Route path="/hr-jobs" element={<HR />} />
                 <Route path="/manpower-jobs" element={<SkilledManPowerjobs />} />
+                <Route path="/engineering-jobs" element={<Engineering />} />
 
                 {/* Add more routes here as needed */}
             </Routes>

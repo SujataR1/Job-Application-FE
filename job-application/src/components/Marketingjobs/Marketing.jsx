@@ -278,6 +278,7 @@ function Marketing() {
               <p>{job.salary}</p>
               <p>{job.department}</p>
               <p>{job.workMode}</p>
+              <button className="apply-button">Apply Now</button>
             </li>
           ))}
         </ul>
