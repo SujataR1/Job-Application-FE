@@ -12,7 +12,9 @@ import '@fortawesome/fontawesome-free/css/all.min.css';
 import Marketing from './components/Categories/Marketingjobs/Marketing';
 import DataScienceJobs from './components/Categories/DataScience/DataScience'
 import HR from './components/Categories/HR/HR';
-import SkilledManPowerjobs from './components/Categories/SkilledmanPower/Skilled'
+import SkilledManPowerjobs from './components/Categories/SkilledmanPower/Skilled';
+import Engineering from './components/Categories/Engineeringjobs/Engineering';
+import FresherJobs from './components/DemandJob/FresherJob/Fresher';
 
 const App = () => {
     return (
@@ -29,6 +31,8 @@ const App = () => {
                 <Route path="/data-science-jobs" element={<DataScienceJobs />} />
                 <Route path="/hr-jobs" element={<HR />} />
                 <Route path="/manpower-jobs" element={<SkilledManPowerjobs />} />
+                <Route path="/engineering-jobs" element={<Engineering />} />
+                <Route path="/fresher-jobs" element={<FresherJobs />} />
 
                 {/* Add more routes here as needed */}
             </Routes>

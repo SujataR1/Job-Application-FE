@@ -1,6 +1,6 @@
 import React, { useState, useMemo } from 'react';
 import './Engineering.css'; // Import your CSS for styling
-import Modal from '../../model/Modal';
+import Modal from '../model/Modal';
 
 function Engineering() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -58,23 +58,34 @@ function Engineering() {
     setShowModal(false);
   };
 
-  const filteredJobs = allJobs; // Replace with actual filtering logic if needed
+  const filteredJobs = useMemo(() => {
+    return allJobs.filter(job => {
+      const matchesDepartment = filters.department.length === 0 || filters.department.includes(job.department);
+      const matchesWorkMode = filters.workMode.length === 0 || filters.workMode.includes(job.workMode);
+      const matchesLocation = filters.location.length === 0 || filters.location.includes(job.location);
+      const matchesSalary = filters.salary.length === 0 || filters.salary.includes(job.salary);
+      const matchesExperience = experience === 0 || parseInt(job.experience.split('-')[0]) <= experience;
+
+      return matchesDepartment && matchesWorkMode && matchesLocation && matchesSalary && matchesExperience;
+    });
+  }, [allJobs, filters, experience]);
 
   return (
     <div className="engineering-jobs-container">
       <div className="filters-section">
         <h2>All Filters</h2>
+
         {/* Department Filter */}
         <div className="filter-section">
           <h3>Department</h3>
-          {['Engineering - Software & QA', 'Data Science & Analytics', 'Marketing & Communication', 'Sales & Business Development'].map((dept, index) => (
-            <div key={index} className="filter-item">
+          {['Engineering - Software & QA', 'Data Science & Analytics', 'Marketing & Communication', 'Sales & Business Development'].map((dept) => (
+            <div key={dept} className="filter-item">
               <input
                 type="checkbox"
-                id={`department${index}`}
+                id={dept}
                 onChange={() => handleFilterChange('department', dept)}
               />
-              <label htmlFor={`department${index}`}>{dept} (12584)</label>
+              <label htmlFor={dept}>{dept} (12584)</label>
             </div>
           ))}
           <button className="view-more-button" onClick={() => openModal('departments')}>
@@ -89,14 +100,14 @@ function Engineering() {
         {/* Work Mode Filter */}
         <div className="filter-section">
           <h3>Work Mode</h3>
-          {['Work from office', 'Hybrid', 'Remote'].map((mode, index) => (
-            <div key={index} className="filter-item">
+          {['Work from office', 'Hybrid', 'Remote'].map((mode) => (
+            <div key={mode} className="filter-item">
               <input
                 type="checkbox"
-                id={`workMode${index}`}
+                id={mode}
                 onChange={() => handleFilterChange('workMode', mode)}
               />
-              <label htmlFor={`workMode${index}`}>{mode}</label>
+              <label htmlFor={mode}>{mode}</label>
             </div>
           ))}
         </div>
@@ -112,7 +123,7 @@ function Engineering() {
               max="30"
               step="1"
               value={experience}
-              onChange={(e) => setExperience(e.target.value)}
+              onChange={(e) => setExperience(Number(e.target.value))}
               className="slider"
               id="experienceRange"
             />
@@ -127,14 +138,14 @@ function Engineering() {
         {/* Location Filter */}
         <div className="filter-section">
           <h3>Location</h3>
-          {['Bengaluru', 'Delhi / NCR', 'Hyderabad', 'Mumbai (All Areas)'].map((loc, index) => (
-            <div key={index} className="filter-item">
+          {['Bengaluru', 'Delhi / NCR', 'Hyderabad', 'Mumbai (All Areas)'].map((loc) => (
+            <div key={loc} className="filter-item">
               <input
                 type="checkbox"
-                id={`location${index}`}
+                id={loc}
                 onChange={() => handleFilterChange('location', loc)}
               />
-              <label htmlFor={`location${index}`}>{loc} (4550)</label>
+              <label htmlFor={loc}>{loc} (4550)</label>
             </div>
           ))}
           <button className="view-more-button" onClick={() => openModal('locations')}>
@@ -146,14 +157,14 @@ function Engineering() {
         {/* Salary Filter */}
         <div className="filter-section">
           <h3>Salary</h3>
-          {['0-3 Lakhs', '3-6 Lakhs', '6-10 Lakhs', '10-15 Lakhs'].map((salary, index) => (
-            <div key={index} className="filter-item">
+          {['0-3 Lakhs', '3-6 Lakhs', '6-10 Lakhs', '10-15 Lakhs'].map((salary) => (
+            <div key={salary} className="filter-item">
               <input
                 type="checkbox"
-                id={`salary${index}`}
+                id={salary}
                 onChange={() => handleFilterChange('salary', salary)}
               />
-              <label htmlFor={`salary${index}`}>{salary}</label>
+              <label htmlFor={salary}>{salary}</label>
             </div>
           ))}
         </div>
@@ -162,14 +173,14 @@ function Engineering() {
         {/* Company Type Filter */}
         <div className="filter-section">
           <h3>Company Type</h3>
-          {['Corporate', 'Indian MNC', 'Startup', 'Foreign MNC'].map((type, index) => (
-            <div key={index} className="filter-item">
+          {['Corporate', 'Indian MNC', 'Startup', 'Foreign MNC'].map((type) => (
+            <div key={type} className="filter-item">
               <input
                 type="checkbox"
-                id={`companyType${index}`}
+                id={type}
                 onChange={() => handleFilterChange('companyType', type)}
               />
-              <label htmlFor={`companyType${index}`}>{type}</label>
+              <label htmlFor={type}>{type}</label>
             </div>
           ))}
         </div>
@@ -178,14 +189,14 @@ function Engineering() {
         {/* Role Category Filter */}
         <div className="filter-section">
           <h3>Role Category</h3>
-          {['Technology', 'Engineering', 'Management', 'Consulting'].map((category, index) => (
-            <div key={index} className="filter-item">
+          {['Technology', 'Engineering', 'Management', 'Consulting'].map((category) => (
+            <div key={category} className="filter-item">
               <input
                 type="checkbox"
-                id={`roleCategory${index}`}
+                id={category}
                 onChange={() => handleFilterChange('roleCategory', category)}
               />
-              <label htmlFor={`roleCategory${index}`}>{category}</label>
+              <label htmlFor={category}>{category}</label>
             </div>
           ))}
         </div>
@@ -194,14 +205,14 @@ function Engineering() {
         {/* Stipend Filter */}
         <div className="filter-section">
           <h3>Stipend</h3>
-          {['0-5K', '5-10K', '10-15K', '15-20K'].map((stipend, index) => (
-            <div key={index} className="filter-item">
+          {['0-5K', '5-10K', '10-15K', '15-20K'].map((stipend) => (
+            <div key={stipend} className="filter-item">
               <input
                 type="checkbox"
-                id={`stipend${index}`}
+                id={stipend}
                 onChange={() => handleFilterChange('stipend', stipend)}
               />
-              <label htmlFor={`stipend${index}`}>{stipend}</label>
+              <label htmlFor={stipend}>{stipend}</label>
             </div>
           ))}
         </div>
@@ -210,14 +221,14 @@ function Engineering() {
         {/* Duration Filter */}
         <div className="filter-section">
           <h3>Duration</h3>
-          {['0-3 Months', '3-6 Months', '6-12 Months', '12-18 Months'].map((duration, index) => (
-            <div key={index} className="filter-item">
+          {['0-3 Months', '3-6 Months', '6-12 Months', '12-18 Months'].map((duration) => (
+            <div key={duration} className="filter-item">
               <input
                 type="checkbox"
-                id={`duration${index}`}
+                id={duration}
                 onChange={() => handleFilterChange('duration', duration)}
               />
-              <label htmlFor={`duration${index}`}>{duration}</label>
+              <label htmlFor={duration}>{duration}</label>
             </div>
           ))}
         </div>
@@ -226,14 +237,14 @@ function Engineering() {
         {/* Education Filter */}
         <div className="filter-section">
           <h3>Education</h3>
-          {['B.Tech', 'M.Tech', 'B.Sc', 'M.Sc'].map((education, index) => (
-            <div key={index} className="filter-item">
+          {['B.Tech', 'M.Tech', 'B.Sc', 'M.Sc'].map((education) => (
+            <div key={education} className="filter-item">
               <input
                 type="checkbox"
-                id={`education${index}`}
+                id={education}
                 onChange={() => handleFilterChange('education', education)}
               />
-              <label htmlFor={`education${index}`}>{education}</label>
+              <label htmlFor={education}>{education}</label>
             </div>
           ))}
         </div>
@@ -242,14 +253,14 @@ function Engineering() {
         {/* Posted By Filter */}
         <div className="filter-section">
           <h3>Posted By</h3>
-          {['Recruiter', 'Employee', 'Company Page'].map((postedBy, index) => (
-            <div key={index} className="filter-item">
+          {['Recruiter', 'Employee', 'Company Page'].map((postedBy) => (
+            <div key={postedBy} className="filter-item">
               <input
                 type="checkbox"
-                id={`postedBy${index}`}
+                id={postedBy}
                 onChange={() => handleFilterChange('postedBy', postedBy)}
               />
-              <label htmlFor={`postedBy${index}`}>{postedBy}</label>
+              <label htmlFor={postedBy}>{postedBy}</label>
             </div>
           ))}
         </div>
@@ -258,14 +269,14 @@ function Engineering() {
         {/* Industry Filter */}
         <div className="filter-section">
           <h3>Industry</h3>
-          {['IT', 'Finance', 'Healthcare', 'Education'].map((industry, index) => (
-            <div key={index} className="filter-item">
+          {['IT', 'Finance', 'Healthcare', 'Education'].map((industry) => (
+            <div key={industry} className="filter-item">
               <input
                 type="checkbox"
-                id={`industry${index}`}
+                id={industry}
                 onChange={() => handleFilterChange('industry', industry)}
               />
-              <label htmlFor={`industry${index}`}>{industry}</label>
+              <label htmlFor={industry}>{industry}</label>
             </div>
           ))}
         </div>
@@ -274,14 +285,14 @@ function Engineering() {
         {/* Top Companies Filter */}
         <div className="filter-section">
           <h3>Top Companies</h3>
-          {['Google', 'Amazon', 'Microsoft', 'Apple'].map((company, index) => (
-            <div key={index} className="filter-item">
+          {['Google', 'Amazon', 'Microsoft', 'Apple'].map((company) => (
+            <div key={company} className="filter-item">
               <input
                 type="checkbox"
-                id={`topCompanies${index}`}
+                id={company}
                 onChange={() => handleFilterChange('topCompanies', company)}
               />
-              <label htmlFor={`topCompanies${index}`}>{company}</label>
+              <label htmlFor={company}>{company}</label>
             </div>
           ))}
           <button className="view-more-button" onClick={() => openModal('topCompanies')}>
@@ -304,7 +315,6 @@ function Engineering() {
               <p><strong>Rating:</strong> {job.rating} ({job.reviews})</p>
               <p><strong>Description:</strong> {job.description}</p>
               <button className="apply-button">Apply Now</button>
-
             </div>
           ))}
         </div>
