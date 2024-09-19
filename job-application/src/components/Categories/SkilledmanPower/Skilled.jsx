@@ -1,6 +1,6 @@
 import React, { useState, useMemo, useEffect } from 'react';
 import './Skilled.css'; 
-import SkilledModal from '../../SkilledManpowerModal/SkilledModal'; 
+import SkilledModal from '../SkilledManpowerModal/SkilledModal'; 
 
 function SkilledManpower() {
   const [isModalOpen, setIsModalOpen] = useState(false);

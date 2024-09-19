@@ -2,7 +2,7 @@
 
 import React, { useState, useMemo, useEffect } from 'react';
 import './HR.css'; // Make sure to create a corresponding CSS file
-import Modal from '../../model/Modal';
+import Modal from '../model/Modal';
 
 function HR() {
   const [isModalOpen, setIsModalOpen] = useState(false);

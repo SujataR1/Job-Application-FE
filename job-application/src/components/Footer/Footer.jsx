@@ -12,7 +12,7 @@ const Footer = () => {
                         <img src="/path-to-your-logo.png" alt="Job Portal Logo" className="w-32 mx-auto md:mx-0" />
                     </div>
                     <div className="footer-social-icons md:w-1/4 text-center">
-                        <h3 className="text-lg font-semibold mb-2">Connect with us</h3>
+                        <h3 className="text-lg font-semibold mb-2" style={{ color: 'white' }}>Connect with us</h3>
                         <div className="flex justify-center space-x-4">
                             {/* Replace '#' with actual social media URLs */}
                             <a href="https://www.facebook.com" className="social-icon" aria-label="Facebook"><i className="fab fa-facebook-f"></i></a>
@@ -23,7 +23,8 @@ const Footer = () => {
                     </div>
                     <div className="footer-app md:w-1/2 text-center md:text-left">
                         <div className="app-box p-6 bg-gray-800 border border-gray-700 rounded-lg shadow-md">
-                            <h3 className="text-lg font-semibold mb-2">Apply on the go</h3>
+                        <h3 className="text-lg font-semibold mb-2" style={{ color: 'white' }}>Apply on the go</h3>
+
                             <p className="mb-4">Get real-time job updates on our App</p>
                             {/* Replace '#' with actual app download links */}
                             <a href="https://play.google.com" className="app-download-link">
