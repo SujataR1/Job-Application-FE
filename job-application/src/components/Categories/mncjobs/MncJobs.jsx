@@ -1,10 +1,8 @@
-// src/components/Categories/HR/HR.jsx
-
 import React, { useState, useMemo, useEffect } from 'react';
-import './HR.css'; // Make sure to create a corresponding CSS file
+import './MncJobs.css'; // Make sure to create a corresponding CSS file
 import Modal from '../model/Modal';
 
-function HR() {
+function MncJobs() {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   // State for filters
@@ -20,18 +18,14 @@ function HR() {
     duration: []
   });
 
-  // Static job data for HR jobs
+  // Static job data for MNC jobs
   const allJobs = useMemo(() => [
-    { id: 1, title: 'HR Manager', company: 'XYZ Corp', location: 'Delhi', salary: '₹8-12 Lakhs', department: 'HR', workMode: 'Remote' },
-    { id: 2, title: 'Recruitment Specialist', company: 'ABC Ltd', location: 'Mumbai', salary: '₹7-11 Lakhs', department: 'HR', workMode: 'Hybrid' },
-    { id: 3, title: 'HR Generalist', company: 'DEF Inc', location: 'Bengaluru', salary: '₹6-10 Lakhs', department: 'HR', workMode: 'Work from office' },
-    { id: 4, title: 'Talent Acquisition Manager', company: 'GHI Ltd', location: 'Delhi', salary: '₹9-13 Lakhs', department: 'HR', workMode: 'Remote' },
-    { id: 5, title: 'HR Business Partner', company: 'JKL Ltd', location: 'Mumbai', salary: '₹10-15 Lakhs', department: 'HR', workMode: 'Hybrid' },
-    { id: 6, title: 'Compensation and Benefits Specialist', company: 'MNO Ltd', location: 'Bengaluru', salary: '₹8-12 Lakhs', department: 'HR', workMode: 'Work from office' },
-    { id: 7, title: 'HR Coordinator', company: 'PQR Ltd', location: 'Delhi', salary: '₹5-8 Lakhs', department: 'HR', workMode: 'Remote' },
-    { id: 8, title: 'Employee Relations Specialist', company: 'STU Ltd', location: 'Mumbai', salary: '₹7-11 Lakhs', department: 'HR', workMode: 'Hybrid' },
-    { id: 9, title: 'HR Consultant', company: 'VWX Ltd', location: 'Bengaluru', salary: '₹9-13 Lakhs', department: 'HR', workMode: 'Work from office' },
-    { id: 10, title: 'Training and Development Manager', company: 'YZA Ltd', location: 'Delhi', salary: '₹10-14 Lakhs', department: 'HR', workMode: 'Remote' }
+    { id: 1, title: 'Software Engineer', company: 'Google', location: 'Bengaluru', salary: '₹15-20 Lakhs', department: 'Engineering', workMode: 'Remote' },
+    { id: 2, title: 'Project Manager', company: 'Amazon', location: 'Hyderabad', salary: '₹18-24 Lakhs', department: 'Management', workMode: 'Hybrid' },
+    { id: 3, title: 'Data Scientist', company: 'Microsoft', location: 'Delhi', salary: '₹20-25 Lakhs', department: 'Data', workMode: 'Work from office' },
+    { id: 4, title: 'System Analyst', company: 'Facebook', location: 'Mumbai', salary: '₹12-18 Lakhs', department: 'IT', workMode: 'Remote' },
+    { id: 5, title: 'Cloud Architect', company: 'IBM', location: 'Pune', salary: '₹16-22 Lakhs', department: 'Cloud', workMode: 'Hybrid' },
+    { id: 6, title: 'Marketing Manager', company: 'Accenture', location: 'Chennai', salary: '₹14-19 Lakhs', department: 'Marketing', workMode: 'Work from office' }
   ], []);
 
   const [filteredJobs, setFilteredJobs] = useState(allJobs);
@@ -81,7 +75,7 @@ function HR() {
   const appliedFilterCount = getAppliedFilterCount();
 
   return (
-    <div className="hr-job-container">
+    <div className="mnc-job-container">
       <div className="filters-section">
         <h2>All Filters</h2>
         <div className="filter-section">
@@ -93,7 +87,7 @@ function HR() {
         {/* Department Filter */}
         <div className="filter-section">
           <h3>Department</h3>
-          {['HR'].map((dept, index) => (
+          {['Engineering', 'Management', 'Data', 'IT', 'Cloud', 'Marketing'].map((dept, index) => (
             <div key={index} className="filter-item">
               <input
                 type="checkbox"
@@ -108,8 +102,8 @@ function HR() {
           </button>
           {isModalOpen && <Modal closeModal={closeModal} />}
         </div>
-        
-        {/* Additional filters (Work mode, experience, etc.) can follow similar structure */}
+
+        {/* Additional filters (Work mode, experience, etc.) can follow a similar structure */}
         
       </div>
       
@@ -133,4 +127,4 @@ function HR() {
   );
 }
 
-export default HR;
+export default MncJobs;

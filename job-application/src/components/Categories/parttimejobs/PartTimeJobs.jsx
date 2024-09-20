@@ -1,37 +1,26 @@
-// src/components/Categories/HR/HR.jsx
+// src/components/Categories/PartTimeJobs/PartTimeJobs.jsx
 
 import React, { useState, useMemo, useEffect } from 'react';
-import './HR.css'; // Make sure to create a corresponding CSS file
+import './PartTimeJobs.css'; // Make sure to create a corresponding CSS file
 import Modal from '../model/Modal';
 
-function HR() {
+function PartTimeJobs() {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   // State for filters
   const [filters, setFilters] = useState({
-    department: [],
     workMode: [],
-    experience: [],
     location: [],
-    salary: [],
-    companyType: [],
-    roleCategory: [],
-    stipend: [],
-    duration: []
+    salary: []
   });
 
-  // Static job data for HR jobs
+  // Static job data for Part-time jobs
   const allJobs = useMemo(() => [
-    { id: 1, title: 'HR Manager', company: 'XYZ Corp', location: 'Delhi', salary: '₹8-12 Lakhs', department: 'HR', workMode: 'Remote' },
-    { id: 2, title: 'Recruitment Specialist', company: 'ABC Ltd', location: 'Mumbai', salary: '₹7-11 Lakhs', department: 'HR', workMode: 'Hybrid' },
-    { id: 3, title: 'HR Generalist', company: 'DEF Inc', location: 'Bengaluru', salary: '₹6-10 Lakhs', department: 'HR', workMode: 'Work from office' },
-    { id: 4, title: 'Talent Acquisition Manager', company: 'GHI Ltd', location: 'Delhi', salary: '₹9-13 Lakhs', department: 'HR', workMode: 'Remote' },
-    { id: 5, title: 'HR Business Partner', company: 'JKL Ltd', location: 'Mumbai', salary: '₹10-15 Lakhs', department: 'HR', workMode: 'Hybrid' },
-    { id: 6, title: 'Compensation and Benefits Specialist', company: 'MNO Ltd', location: 'Bengaluru', salary: '₹8-12 Lakhs', department: 'HR', workMode: 'Work from office' },
-    { id: 7, title: 'HR Coordinator', company: 'PQR Ltd', location: 'Delhi', salary: '₹5-8 Lakhs', department: 'HR', workMode: 'Remote' },
-    { id: 8, title: 'Employee Relations Specialist', company: 'STU Ltd', location: 'Mumbai', salary: '₹7-11 Lakhs', department: 'HR', workMode: 'Hybrid' },
-    { id: 9, title: 'HR Consultant', company: 'VWX Ltd', location: 'Bengaluru', salary: '₹9-13 Lakhs', department: 'HR', workMode: 'Work from office' },
-    { id: 10, title: 'Training and Development Manager', company: 'YZA Ltd', location: 'Delhi', salary: '₹10-14 Lakhs', department: 'HR', workMode: 'Remote' }
+    { id: 1, title: 'Remote Data Entry', company: 'ABC Corp', location: 'Remote', salary: '₹3-5 Lakhs', workMode: 'Remote' },
+    { id: 2, title: 'Virtual Assistant', company: 'XYZ Ltd', location: 'Remote', salary: '₹4-6 Lakhs', workMode: 'Remote' },
+    { id: 3, title: 'Freelance Graphic Designer', company: 'Design Co', location: 'Remote', salary: '₹5-8 Lakhs', workMode: 'Remote' },
+    { id: 4, title: 'Part-time Content Writer', company: 'Content Hub', location: 'Remote', salary: '₹3-5 Lakhs', workMode: 'Remote' },
+    { id: 5, title: 'Social Media Manager', company: 'Marketing Pros', location: 'Remote', salary: '₹4-7 Lakhs', workMode: 'Remote' }
   ], []);
 
   const [filteredJobs, setFilteredJobs] = useState(allJobs);
@@ -81,7 +70,7 @@ function HR() {
   const appliedFilterCount = getAppliedFilterCount();
 
   return (
-    <div className="hr-job-container">
+    <div className="part-time-job-container">
       <div className="filters-section">
         <h2>All Filters</h2>
         <div className="filter-section">
@@ -90,17 +79,17 @@ function HR() {
         </div>
         <hr />
         
-        {/* Department Filter */}
+        {/* Work Mode Filter */}
         <div className="filter-section">
-          <h3>Department</h3>
-          {['HR'].map((dept, index) => (
+          <h3>Work Mode</h3>
+          {['Remote'].map((mode, index) => (
             <div key={index} className="filter-item">
               <input
                 type="checkbox"
-                id={`department${index}`}
-                onChange={() => handleFilterChange('department', dept)}
+                id={`workMode${index}`}
+                onChange={() => handleFilterChange('workMode', mode)}
               />
-              <label htmlFor={`department${index}`}>{dept}</label>
+              <label htmlFor={`workMode${index}`}>{mode}</label>
             </div>
           ))}
           <button className="view-more-button" onClick={openModal}>
@@ -109,7 +98,7 @@ function HR() {
           {isModalOpen && <Modal closeModal={closeModal} />}
         </div>
         
-        {/* Additional filters (Work mode, experience, etc.) can follow similar structure */}
+        {/* Additional filters (Location, Salary, etc.) can follow similar structure */}
         
       </div>
       
@@ -133,4 +122,4 @@ function HR() {
   );
 }
 
-export default HR;
+export default PartTimeJobs;

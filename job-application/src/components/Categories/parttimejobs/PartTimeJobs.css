@@ -1,0 +1,53 @@
+/* src/components/Categories/PartTimeJobs/PartTimeJobs.css */
+
+.part-time-job-container {
+    display: flex;
+    padding: 20px;
+  }
+  
+  .filters-section {
+    width: 30%;
+    padding-right: 20px;
+  }
+  
+  .jobs-section {
+    width: 70%;
+  }
+  
+  .filter-section {
+    margin-bottom: 20px;
+  }
+  
+  .filter-item {
+    display: flex;
+    align-items: center;
+  }
+  
+  .view-more-button {
+    background-color: #007bff; /* Customize your button color */
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .view-more-button:hover {
+    background-color: #0056b3; /* Darker shade on hover */
+  }
+  
+  .job-card {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 15px;
+    margin-bottom: 15px;
+  }
+  
+  .job-card h3 {
+    margin: 0;
+  }
+  
+  .job-card p {
+    margin: 5px 0;
+  }
+  

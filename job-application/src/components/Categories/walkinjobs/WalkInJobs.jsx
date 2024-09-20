@@ -1,37 +1,24 @@
-// src/components/Categories/HR/HR.jsx
+// src/components/Categories/WalkInJobs/WalkInJobs.jsx
 
 import React, { useState, useMemo, useEffect } from 'react';
-import './HR.css'; // Make sure to create a corresponding CSS file
+import './WalkInJobs.css'; // Link to the corresponding CSS file
 import Modal from '../model/Modal';
 
-function HR() {
+function WalkInJobs() {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   // State for filters
   const [filters, setFilters] = useState({
-    department: [],
-    workMode: [],
-    experience: [],
-    location: [],
-    salary: [],
-    companyType: [],
-    roleCategory: [],
-    stipend: [],
-    duration: []
+    workMode: [], // Only workMode filter is relevant for WalkInJobs
   });
 
-  // Static job data for HR jobs
+  // Static job data for Walk-in jobs (only remote)
   const allJobs = useMemo(() => [
-    { id: 1, title: 'HR Manager', company: 'XYZ Corp', location: 'Delhi', salary: '₹8-12 Lakhs', department: 'HR', workMode: 'Remote' },
-    { id: 2, title: 'Recruitment Specialist', company: 'ABC Ltd', location: 'Mumbai', salary: '₹7-11 Lakhs', department: 'HR', workMode: 'Hybrid' },
-    { id: 3, title: 'HR Generalist', company: 'DEF Inc', location: 'Bengaluru', salary: '₹6-10 Lakhs', department: 'HR', workMode: 'Work from office' },
-    { id: 4, title: 'Talent Acquisition Manager', company: 'GHI Ltd', location: 'Delhi', salary: '₹9-13 Lakhs', department: 'HR', workMode: 'Remote' },
-    { id: 5, title: 'HR Business Partner', company: 'JKL Ltd', location: 'Mumbai', salary: '₹10-15 Lakhs', department: 'HR', workMode: 'Hybrid' },
-    { id: 6, title: 'Compensation and Benefits Specialist', company: 'MNO Ltd', location: 'Bengaluru', salary: '₹8-12 Lakhs', department: 'HR', workMode: 'Work from office' },
-    { id: 7, title: 'HR Coordinator', company: 'PQR Ltd', location: 'Delhi', salary: '₹5-8 Lakhs', department: 'HR', workMode: 'Remote' },
-    { id: 8, title: 'Employee Relations Specialist', company: 'STU Ltd', location: 'Mumbai', salary: '₹7-11 Lakhs', department: 'HR', workMode: 'Hybrid' },
-    { id: 9, title: 'HR Consultant', company: 'VWX Ltd', location: 'Bengaluru', salary: '₹9-13 Lakhs', department: 'HR', workMode: 'Work from office' },
-    { id: 10, title: 'Training and Development Manager', company: 'YZA Ltd', location: 'Delhi', salary: '₹10-14 Lakhs', department: 'HR', workMode: 'Remote' }
+    { id: 1, title: 'Software Engineer', company: 'ABC Tech', location: 'Delhi', salary: '₹10-15 Lakhs', department: 'Engineering', workMode: 'Remote' },
+    { id: 2, title: 'Product Manager', company: 'XYZ Inc', location: 'Mumbai', salary: '₹12-18 Lakhs', department: 'Product', workMode: 'Remote' },
+    { id: 3, title: 'UX/UI Designer', company: 'DesignCo', location: 'Bengaluru', salary: '₹8-12 Lakhs', department: 'Design', workMode: 'Remote' },
+    { id: 4, title: 'Data Scientist', company: 'DataWorks', location: 'Hyderabad', salary: '₹15-20 Lakhs', department: 'Data', workMode: 'Remote' },
+    { id: 5, title: 'Marketing Specialist', company: 'Growthly', location: 'Pune', salary: '₹9-13 Lakhs', department: 'Marketing', workMode: 'Remote' },
   ], []);
 
   const [filteredJobs, setFilteredJobs] = useState(allJobs);
@@ -40,13 +27,11 @@ function HR() {
     const filterJobs = () => {
       let newFilteredJobs = allJobs;
 
-      Object.keys(filters).forEach(filterType => {
-        if (filters[filterType].length > 0) {
-          newFilteredJobs = newFilteredJobs.filter(job =>
-            filters[filterType].includes(job[filterType])
-          );
-        }
-      });
+      if (filters.workMode.length > 0) {
+        newFilteredJobs = newFilteredJobs.filter(job =>
+          filters.workMode.includes(job.workMode)
+        );
+      }
 
       setFilteredJobs(newFilteredJobs);
     };
@@ -81,7 +66,7 @@ function HR() {
   const appliedFilterCount = getAppliedFilterCount();
 
   return (
-    <div className="hr-job-container">
+    <div className="walkin-job-container">
       <div className="filters-section">
         <h2>All Filters</h2>
         <div className="filter-section">
@@ -90,17 +75,17 @@ function HR() {
         </div>
         <hr />
         
-        {/* Department Filter */}
+        {/* WorkMode Filter */}
         <div className="filter-section">
-          <h3>Department</h3>
-          {['HR'].map((dept, index) => (
+          <h3>Work Mode</h3>
+          {['Remote'].map((mode, index) => (
             <div key={index} className="filter-item">
               <input
                 type="checkbox"
-                id={`department${index}`}
-                onChange={() => handleFilterChange('department', dept)}
+                id={`workMode${index}`}
+                onChange={() => handleFilterChange('workMode', mode)}
               />
-              <label htmlFor={`department${index}`}>{dept}</label>
+              <label htmlFor={`workMode${index}`}>{mode}</label>
             </div>
           ))}
           <button className="view-more-button" onClick={openModal}>
@@ -108,9 +93,6 @@ function HR() {
           </button>
           {isModalOpen && <Modal closeModal={closeModal} />}
         </div>
-        
-        {/* Additional filters (Work mode, experience, etc.) can follow similar structure */}
-        
       </div>
       
       <div className="jobs-section">
@@ -133,4 +115,4 @@ function HR() {
   );
 }
 
-export default HR;
+export default WalkInJobs;

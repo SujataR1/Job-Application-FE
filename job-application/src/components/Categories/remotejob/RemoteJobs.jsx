@@ -1,16 +1,16 @@
-// src/components/Categories/HR/HR.jsx
+// src/components/Categories/RemoteJobs/RemoteJobs.jsx
 
 import React, { useState, useMemo, useEffect } from 'react';
-import './HR.css'; // Make sure to create a corresponding CSS file
+import './RemoteJobs.css'; // Create a corresponding CSS file
 import Modal from '../model/Modal';
 
-function HR() {
+function RemoteJobs() {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   // State for filters
   const [filters, setFilters] = useState({
     department: [],
-    workMode: [],
+    workMode: ['Remote'], // Pre-set to only allow Remote jobs
     experience: [],
     location: [],
     salary: [],
@@ -20,18 +20,13 @@ function HR() {
     duration: []
   });
 
-  // Static job data for HR jobs
+  // Static job data for remote jobs
   const allJobs = useMemo(() => [
-    { id: 1, title: 'HR Manager', company: 'XYZ Corp', location: 'Delhi', salary: '₹8-12 Lakhs', department: 'HR', workMode: 'Remote' },
-    { id: 2, title: 'Recruitment Specialist', company: 'ABC Ltd', location: 'Mumbai', salary: '₹7-11 Lakhs', department: 'HR', workMode: 'Hybrid' },
-    { id: 3, title: 'HR Generalist', company: 'DEF Inc', location: 'Bengaluru', salary: '₹6-10 Lakhs', department: 'HR', workMode: 'Work from office' },
-    { id: 4, title: 'Talent Acquisition Manager', company: 'GHI Ltd', location: 'Delhi', salary: '₹9-13 Lakhs', department: 'HR', workMode: 'Remote' },
-    { id: 5, title: 'HR Business Partner', company: 'JKL Ltd', location: 'Mumbai', salary: '₹10-15 Lakhs', department: 'HR', workMode: 'Hybrid' },
-    { id: 6, title: 'Compensation and Benefits Specialist', company: 'MNO Ltd', location: 'Bengaluru', salary: '₹8-12 Lakhs', department: 'HR', workMode: 'Work from office' },
-    { id: 7, title: 'HR Coordinator', company: 'PQR Ltd', location: 'Delhi', salary: '₹5-8 Lakhs', department: 'HR', workMode: 'Remote' },
-    { id: 8, title: 'Employee Relations Specialist', company: 'STU Ltd', location: 'Mumbai', salary: '₹7-11 Lakhs', department: 'HR', workMode: 'Hybrid' },
-    { id: 9, title: 'HR Consultant', company: 'VWX Ltd', location: 'Bengaluru', salary: '₹9-13 Lakhs', department: 'HR', workMode: 'Work from office' },
-    { id: 10, title: 'Training and Development Manager', company: 'YZA Ltd', location: 'Delhi', salary: '₹10-14 Lakhs', department: 'HR', workMode: 'Remote' }
+    { id: 1, title: 'Remote Software Engineer', company: 'ABC Corp', location: 'Mumbai', salary: '₹10-15 Lakhs', department: 'Engineering', workMode: 'Remote' },
+    { id: 2, title: 'Remote Data Scientist', company: 'XYZ Ltd', location: 'Bengaluru', salary: '₹12-18 Lakhs', department: 'Data Science', workMode: 'Remote' },
+    { id: 3, title: 'Remote Product Manager', company: 'DEF Ltd', location: 'Delhi', salary: '₹15-20 Lakhs', department: 'Product', workMode: 'Remote' },
+    { id: 4, title: 'Remote Marketing Manager', company: 'GHI Ltd', location: 'Chennai', salary: '₹8-12 Lakhs', department: 'Marketing', workMode: 'Remote' },
+    { id: 5, title: 'Remote HR Specialist', company: 'JKL Ltd', location: 'Hyderabad', salary: '₹6-10 Lakhs', department: 'HR', workMode: 'Remote' }
   ], []);
 
   const [filteredJobs, setFilteredJobs] = useState(allJobs);
@@ -81,7 +76,7 @@ function HR() {
   const appliedFilterCount = getAppliedFilterCount();
 
   return (
-    <div className="hr-job-container">
+    <div className="remote-job-container">
       <div className="filters-section">
         <h2>All Filters</h2>
         <div className="filter-section">
@@ -93,7 +88,7 @@ function HR() {
         {/* Department Filter */}
         <div className="filter-section">
           <h3>Department</h3>
-          {['HR'].map((dept, index) => (
+          {['Engineering', 'Data Science', 'Product', 'Marketing', 'HR'].map((dept, index) => (
             <div key={index} className="filter-item">
               <input
                 type="checkbox"
@@ -109,10 +104,7 @@ function HR() {
           {isModalOpen && <Modal closeModal={closeModal} />}
         </div>
         
-        {/* Additional filters (Work mode, experience, etc.) can follow similar structure */}
-        
       </div>
-      
       <div className="jobs-section">
         <h2>Job Listings</h2>
         <div className="jobs-list">
@@ -133,4 +125,5 @@ function HR() {
   );
 }
 
-export default HR;
+export default RemoteJobs;
+

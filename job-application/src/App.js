@@ -20,6 +20,12 @@ import JobsInBangalore from './components/Categories/jobsinbangalore/JobsInBanga
 import JobsInHyderabad from './components/Categories/jobsinhyderabad/JobsInHyderabad';
 import JobsInChennai from './components/Categories/jobsinchennai/JobsInChennai';
 import JobsInPune from './components/Categories/jobsinpune/JobsInPune';
+import MncJobs from './components/Categories/mncjobs/MncJobs';
+import RemoteJobs from './components/Categories/remotejob/RemoteJobs';
+import WorkFromHomeJobs from './components/Categories/workfromhomejobs/WorkFromHomeJobs';
+import WalkInJobs from './components/Categories/walkinjobs/WalkInJobs';
+import PartTimeJobs from './components/Categories/parttimejobs/PartTimeJobs';
+
 const App = () => {
     return (
         <Router>
@@ -42,6 +48,11 @@ const App = () => {
                 <Route path="/jobs-in-hyderabad" element={<JobsInHyderabad />} />
                 <Route path="/jobs-in-chennai" element={<JobsInChennai />} />
                 <Route path="/jobs-in-pune" element={<JobsInPune />} />
+                <Route path="/mnc-jobs" element={<MncJobs />} /> {/* Route for MNC Jobs */}
+                <Route path="/remote-jobs" element={<RemoteJobs />} />
+                <Route path="/work-from-home-jobs" element ={<WorkFromHomeJobs />} />
+                <Route path="/walk-in-jobs" element ={<WalkInJobs />} />
+                <Route path="/part-time-jobs" element={<PartTimeJobs />} />
 
                 {/* Add more routes here as needed */}
             </Routes>
