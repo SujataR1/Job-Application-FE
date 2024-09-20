@@ -267,21 +267,21 @@ function Marketing() {
         </div>
       </div>
 
-      <div className="job-listing-section">
+      <div className="jobs-section">
         <h2>Job Listings</h2>
-        <ul>
-          {filteredJobs.map(job => (
-            <li key={job.id} className="job-item">
+        <div className="jobs-list">
+          {filteredJobs.map((job) => (
+            <div key={job.id} className="job-item">
               <h3>{job.title}</h3>
-              <p>{job.company}</p>
-              <p>{job.location}</p>
-              <p>{job.salary}</p>
-              <p>{job.department}</p>
-              <p>{job.workMode}</p>
+              <p><strong>Company:</strong> {job.company}</p>
+              <p><strong>Location:</strong> {job.location}</p>
+              <p><strong>Salary:</strong> {job.salary}</p>
+              <p><strong>Department:</strong> {job.department}</p>
+              <p><strong>Work Mode:</strong> {job.workMode}</p>
               <button className="apply-button">Apply Now</button>
-            </li>
+            </div>
           ))}
-        </ul>
+          </div>
       </div>
     </div>
   );

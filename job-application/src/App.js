@@ -14,7 +14,12 @@ import DataScienceJobs from './components/DataScience/DataScience';
 import HR from './components/Categories/HR/HR';
 import SkilledManPowerjobs from './components/Categories/SkilledmanPower/Skilled'
 import Engineering from './components/Categories/Engineeringjobs/Engineering';
-
+import JobsInDelhi from './components/Categories/JobInDelhi/JobsInDelhi';
+import JobsInMumbai from './components/Categories/jobsinmumbai/JobsInMumbai';
+import JobsInBangalore from './components/Categories/jobsinbangalore/JobsInBangalore';
+import JobsInHyderabad from './components/Categories/jobsinhyderabad/JobsInHyderabad';
+import JobsInChennai from './components/Categories/jobsinchennai/JobsInChennai';
+import JobsInPune from './components/Categories/jobsinpune/JobsInPune';
 const App = () => {
     return (
         <Router>
@@ -31,6 +36,12 @@ const App = () => {
                 <Route path="/hr-jobs" element={<HR />} />
                 <Route path="/manpower-jobs" element={<SkilledManPowerjobs />} />
                 <Route path="/engineering-jobs" element={<Engineering />} />
+                <Route path="/jobs-in-delhi" element={<JobsInDelhi />} />
+                <Route path="/jobs-in-mumbai" element={<JobsInMumbai />} />
+                <Route path="/jobs-in-bangalore" element={<JobsInBangalore />} />
+                <Route path="/jobs-in-hyderabad" element={<JobsInHyderabad />} />
+                <Route path="/jobs-in-chennai" element={<JobsInChennai />} />
+                <Route path="/jobs-in-pune" element={<JobsInPune />} />
 
                 {/* Add more routes here as needed */}
             </Routes>

@@ -1,0 +1,111 @@
+/* JobsInMumbai.css */
+
+.jobs-in-mumbai-container {
+    display: flex;
+    padding: 20px;
+    gap: 20px;
+}
+
+.filters-section {
+    width: 250px;
+    background-color: #f4f4f4;
+    padding: 15px;
+    border-radius: 8px;
+}
+
+.filters-section h2 {
+    margin-bottom: 20px;
+}
+
+.filter-section {
+    margin-bottom: 20px;
+}
+
+.filter-section h3 {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+}
+
+.filter-item {
+    margin-bottom: 10px;
+}
+
+.filter-item input {
+    margin-right: 10px;
+}
+
+.filter-item label {
+    margin: 0;
+}
+
+.view-more-button {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.view-more-button:hover {
+    background-color: #218838;
+}
+
+.experience-slider {
+    display: flex;
+    flex-direction: column;
+}
+
+.slider {
+    margin-bottom: 10px;
+}
+
+.slider-labels {
+    display: flex;
+    justify-content: space-between;
+}
+
+.jobs-list-section {
+    flex-grow: 1;
+    padding: 20px;
+}
+
+.jobs-list-section h2 {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+}
+
+.job-item {
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #fff;
+    margin-bottom: 15px;
+}
+
+.job-item h3 {
+    margin: 0 0 10px;
+}
+
+.job-item p {
+    margin: 0;
+    color: #555;
+}
+
+.apply-button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.apply-button:hover {
+    background-color: #0056b3;
+}
+
+hr {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}

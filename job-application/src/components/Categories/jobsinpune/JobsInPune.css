@@ -1,0 +1,97 @@
+/* JobsInPune.css */
+
+.jobs-in-pune-container {
+    display: flex;
+    padding: 20px;
+    gap: 20px;
+}
+
+.filters-section {
+    width: 250px;
+    background-color: #f4f4f4;
+    padding: 15px;
+    border-radius: 8px;
+}
+
+.filters-section h2 {
+    margin-bottom: 20px;
+}
+
+.filter-section {
+    margin-bottom: 20px;
+}
+
+.filter-section h3 {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+}
+
+.filter-section button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 5px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background-color: #fff;
+    cursor: pointer;
+    text-align: left;
+}
+
+.filter-section button:hover {
+    background-color: #e0e0e0;
+}
+
+.jobs-list-section {
+    flex-grow: 1;
+    padding: 20px;
+}
+
+.jobs-list-section h2 {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+}
+
+.job-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.job-item {
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #fff;
+}
+
+.job-item h3 {
+    margin: 0 0 10px;
+}
+
+.job-item p {
+    margin: 0;
+    color: #555;
+}
+
+.filter-item {
+    margin-bottom: 10px;
+}
+
+.view-more-button {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.view-more-button:hover {
+    background-color: #218838;
+}
+
+hr {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
