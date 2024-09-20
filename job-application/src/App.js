@@ -25,7 +25,7 @@ import RemoteJobs from './components/Categories/remotejob/RemoteJobs';
 import WorkFromHomeJobs from './components/Categories/workfromhomejobs/WorkFromHomeJobs';
 import WalkInJobs from './components/Categories/walkinjobs/WalkInJobs';
 import PartTimeJobs from './components/Categories/parttimejobs/PartTimeJobs';
-
+import FresherJobs from './components/DemandJob/FresherJob/Fresher';
 const App = () => {
     return (
         <Router>
@@ -53,6 +53,7 @@ const App = () => {
                 <Route path="/work-from-home-jobs" element ={<WorkFromHomeJobs />} />
                 <Route path="/walk-in-jobs" element ={<WalkInJobs />} />
                 <Route path="/part-time-jobs" element={<PartTimeJobs />} />
+                <Route path="/fresher-jobs" element={<FresherJobs />} />
 
                 {/* Add more routes here as needed */}
             </Routes>
