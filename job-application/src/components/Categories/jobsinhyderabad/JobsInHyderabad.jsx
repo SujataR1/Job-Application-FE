@@ -1,6 +1,6 @@
 import React, { useState, useMemo, useEffect } from 'react';
 import './JobsInHyderabad.css';
-import Modal from '../../model/Modal';
+import Modal from '../model/Modal';
 
 function JobsInHyderabad() {
   const [isModalOpen, setIsModalOpen] = useState(false);

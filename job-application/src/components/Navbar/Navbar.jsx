@@ -180,11 +180,18 @@ const Navbar = () => {
                         )}
                     </div>
                 </nav>
-
-                {/* Header Right - User Actions */}
-                <div className="navbar-actions flex space-x-4">
-                    <Link to="/login" className="text-white font-bold text-lg hover:text-teal-300">Login</Link>
-                    <Link to="/register" className="text-white font-bold text-lg hover:text-teal-300">Register</Link>
+                {/* Header Right - Buttons */}
+                <div className="navbar-buttons flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-4 mt-4">
+                    <Link to="/login">
+                        <button className="login-button text-white border-2 border-gray-300 px-4 py-2 rounded-md hover:bg-teal-700">
+                            Login
+                        </button>
+                    </Link>
+                    <Link to="/signup">
+                        <button className="signup-button text-white border-2 border-gray-300 px-4 py-2 rounded-md hover:bg-teal-700">
+                            Signup
+                        </button>
+                    </Link>
                 </div>
             </header>
         </div>

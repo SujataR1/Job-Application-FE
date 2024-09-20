@@ -1,6 +1,6 @@
 import React, { useState, useMemo, useEffect } from 'react';
 import './Sales.css'; // Import the CSS file for styling
-import Modal from '../../model/Modal'; // Import the Modal component
+import Modal from '../model/Modal'; // Import the Modal component
 
 function Sales() {
   const [isModalOpen, setIsModalOpen] = useState(false);

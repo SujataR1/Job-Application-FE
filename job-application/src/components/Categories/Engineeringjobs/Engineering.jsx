@@ -1,11 +1,10 @@
 import React, { useState, useMemo, useEffect } from 'react';
-import './Engineering.css'; // Ensure this CSS file exists and is styled as needed
-import Modal from '../../model/Modal'; // Adjust the path if necessary
+import './Engineering.css'; // Adjust the CSS path if necessary
+import Modal from '../model/Modal';
 
 function Engineering() {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  // State for filters
   const [filters, setFilters] = useState({
     department: [],
     workMode: [],
@@ -18,7 +17,6 @@ function Engineering() {
     duration: []
   });
 
-  // Static job data for Engineering jobs
   const allJobs = useMemo(() => [
     { id: 1, title: 'Software Engineer', company: 'Tech Solutions', location: 'San Francisco', salary: '$120K - $150K', department: 'Engineering', workMode: 'Remote' },
     { id: 2, title: 'Frontend Developer', company: 'Innovate Inc', location: 'New York', salary: '$100K - $130K', department: 'Engineering', workMode: 'Hybrid' },
@@ -32,21 +30,17 @@ function Engineering() {
     { id: 10, title: 'Network Engineer', company: 'NetSecure', location: 'Seattle', salary: '$105K - $135K', department: 'Engineering', workMode: 'Remote' }
   ], []);
 
-  // Initialize the filtered jobs to show all jobs initially
   const [filteredJobs, setFilteredJobs] = useState(allJobs);
 
   useEffect(() => {
-    // When filters change, apply them to the job list
     const filterJobs = () => {
       let newFilteredJobs = allJobs;
 
-      // If no filters are applied, show all jobs
       if (Object.values(filters).every(filter => filter.length === 0)) {
         setFilteredJobs(allJobs);
         return;
       }
 
-      // Apply filters
       Object.keys(filters).forEach(filterType => {
         if (filters[filterType].length > 0) {
           newFilteredJobs = newFilteredJobs.filter(job =>
@@ -97,7 +91,6 @@ function Engineering() {
         </div>
         <hr />
         
-        {/* Department Filter */}
         <div className="filter-section">
           <h3>Department</h3>
           {['Engineering'].map((dept, index) => (
@@ -115,9 +108,6 @@ function Engineering() {
           </button>
           {isModalOpen && <Modal closeModal={closeModal} />}
         </div>
-        
-        {/* Additional filters (Work mode, experience, etc.) can follow similar structure */}
-        
       </div>
       
       <div className="jobs-section">

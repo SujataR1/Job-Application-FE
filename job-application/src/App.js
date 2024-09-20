@@ -9,10 +9,10 @@ import Login from './components/auth/Login';
 import Navbar from './components/Navbar/Navbar';
 import Footer from './components/Footer/Footer'; // Import Footer
 import '@fortawesome/fontawesome-free/css/all.min.css';
-import Marketing from './components/Marketingjobs/Marketing';
-import DataScienceJobs from './components/DataScience/DataScience';
+import Marketing from './components/Categories/Marketingjobs/Marketing';
+import DataScienceJobs from './components/Categories/DataScience/DataScience'
 import HR from './components/Categories/HR/HR';
-import SkilledManPowerjobs from './components/Categories/SkilledmanPower/Skilled'
+import SkilledManPowerjobs from './components/Categories/SkilledmanPower/Skilled';
 import Engineering from './components/Categories/Engineeringjobs/Engineering';
 import JobsInDelhi from './components/Categories/JobInDelhi/JobsInDelhi';
 import JobsInMumbai from './components/Categories/jobsinmumbai/JobsInMumbai';

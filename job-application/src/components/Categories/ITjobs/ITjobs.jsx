@@ -2,7 +2,7 @@
 
 import React, { useState, useMemo, useEffect } from 'react';
 import './ITjobs.css'; // Import the CSS file for styling
-import ITmodal from '../../ITmodal/ITmodal'; // Import the ITmodal component
+import ITmodal from '../ITmodal/ITmodal'; // Import the ITmodal component
 
 function ITJobs() {
   const [isModalOpen, setIsModalOpen] = useState(false);

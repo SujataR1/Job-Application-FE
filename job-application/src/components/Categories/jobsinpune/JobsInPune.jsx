@@ -1,6 +1,6 @@
 import React, { useState, useMemo, useEffect } from 'react';
 import './JobsInPune.css';
-import Modal from '../../model/Modal';
+import Modal from '../model/Modal';
 
 function JobsInPune() {
   const [isModalOpen, setIsModalOpen] = useState(false);
