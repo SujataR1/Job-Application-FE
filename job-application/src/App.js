@@ -26,6 +26,8 @@ import WorkFromHomeJobs from './components/Categories/workfromhomejobs/WorkFromH
 import WalkInJobs from './components/Categories/walkinjobs/WalkInJobs';
 import PartTimeJobs from './components/Categories/parttimejobs/PartTimeJobs';
 import FresherJobs from './components/DemandJob/FresherJob/Fresher';
+import UnicornCompanies from './components/Company/category/Unicorn/Unicorn';
+import SkilledManpowerCompanies from './components/Company/category/Skilledmanpower/Skilledmanpower';
 const App = () => {
     return (
         <Router>
@@ -54,6 +56,8 @@ const App = () => {
                 <Route path="/walk-in-jobs" element ={<WalkInJobs />} />
                 <Route path="/part-time-jobs" element={<PartTimeJobs />} />
                 <Route path="/fresher-jobs" element={<FresherJobs />} />
+                <Route path="/unicorn-companies" element={<UnicornCompanies />} />
+                <Route path="/skilled-manpower-companies" element={<SkilledManpowerCompanies />} />
 
                 {/* Add more routes here as needed */}
             </Routes>
