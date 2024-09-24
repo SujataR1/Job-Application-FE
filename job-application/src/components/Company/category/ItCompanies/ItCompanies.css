@@ -1,0 +1,39 @@
+.ItCompanies {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+}
+
+.content {
+    display: flex; /* Change to flex to enable side-by-side layout */
+}
+
+.sidebar {
+    width: 20%; /* Keep the width for the sidebar */
+    margin-right: 20px; /* Space between sidebar and lists */
+}
+
+.companies-list {
+    width: 55%; /* Adjust width to accommodate job postings */
+}
+
+.job-postings {
+    width: 25%; /* Set width for job postings */
+    margin-left: 20px; /* Space from the companies list */
+}
+
+.company-card {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 15px;
+    margin: 10px 0;
+}
+
+.job-postings ul {
+    list-style-type: none; /* Remove default list style */
+    padding: 0; /* Remove padding */
+}
+
+.job-postings li {
+    margin-bottom: 10px; /* Space between job postings */
+}

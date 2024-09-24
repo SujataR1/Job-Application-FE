@@ -30,6 +30,9 @@ import SkilledManpowerCompanies from './components/Company/category/Skilledmanpo
 import MncCompanies from './components/Company/category/Mnc/Mnc';
 import StartUpCompanies from './components/Company/category/StartUp/StartUp';
 import ProductBased from './components/Company/category/ProductBased/ProductBased';
+import TopCompanies from './components/Company/category/TopCompanies/TopCompanies';
+import ItCompanies from './components/Company/category/ItCompanies/ItCompanies';
+import FintechCompanies from './components/Company/category/FintechCompanies/FintechCompanies';
 
 const App = () => {
     return (
@@ -63,6 +66,9 @@ const App = () => {
                 <Route path="/mnc-companies" element={<MncCompanies />} />
                 <Route path="/startup-companies" element={<StartUpCompanies />} />
                 <Route path="/product-based-companies" element={<ProductBased />} />
+                <Route path="/top-companies" element={<TopCompanies />} />
+                <Route path="/it-companies" element={<ItCompanies />} />
+                <Route path="/fintech-companies" element={<FintechCompanies />} />
 
                 {/* Add more routes here as needed */}
             </Routes>
