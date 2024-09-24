@@ -20,7 +20,6 @@ import JobsInBangalore from './components/Categories/jobsinbangalore/JobsInBanga
 import JobsInHyderabad from './components/Categories/jobsinhyderabad/JobsInHyderabad';
 import JobsInChennai from './components/Categories/jobsinchennai/JobsInChennai';
 import JobsInPune from './components/Categories/jobsinpune/JobsInPune';
-import MncJobs from './components/Categories/mncjobs/MncJobs';
 import RemoteJobs from './components/Categories/remotejob/RemoteJobs';
 import WorkFromHomeJobs from './components/Categories/workfromhomejobs/WorkFromHomeJobs';
 import WalkInJobs from './components/Categories/walkinjobs/WalkInJobs';
@@ -28,6 +27,10 @@ import PartTimeJobs from './components/Categories/parttimejobs/PartTimeJobs';
 import FresherJobs from './components/DemandJob/FresherJob/Fresher';
 import UnicornCompanies from './components/Company/category/Unicorn/Unicorn';
 import SkilledManpowerCompanies from './components/Company/category/Skilledmanpower/Skilledmanpower';
+import MncCompanies from './components/Company/category/Mnc/Mnc';
+import StartUpCompanies from './components/Company/category/StartUp/StartUp';
+import ProductBased from './components/Company/category/ProductBased/ProductBased';
+
 const App = () => {
     return (
         <Router>
@@ -50,7 +53,6 @@ const App = () => {
                 <Route path="/jobs-in-hyderabad" element={<JobsInHyderabad />} />
                 <Route path="/jobs-in-chennai" element={<JobsInChennai />} />
                 <Route path="/jobs-in-pune" element={<JobsInPune />} />
-                <Route path="/mnc-jobs" element={<MncJobs />} /> {/* Route for MNC Jobs */}
                 <Route path="/remote-jobs" element={<RemoteJobs />} />
                 <Route path="/work-from-home-jobs" element ={<WorkFromHomeJobs />} />
                 <Route path="/walk-in-jobs" element ={<WalkInJobs />} />
@@ -58,6 +60,9 @@ const App = () => {
                 <Route path="/fresher-jobs" element={<FresherJobs />} />
                 <Route path="/unicorn-companies" element={<UnicornCompanies />} />
                 <Route path="/skilled-manpower-companies" element={<SkilledManpowerCompanies />} />
+                <Route path="/mnc-companies" element={<MncCompanies />} />
+                <Route path="/startup-companies" element={<StartUpCompanies />} />
+                <Route path="/product-based-companies" element={<ProductBased />} />
 
                 {/* Add more routes here as needed */}
             </Routes>
