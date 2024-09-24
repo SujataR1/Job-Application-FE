@@ -28,6 +28,8 @@ import PartTimeJobs from './components/Categories/parttimejobs/PartTimeJobs';
 import FresherJobs from './components/DemandJob/FresherJob/Fresher';
 import UnicornCompanies from './components/Company/category/Unicorn/Unicorn';
 import SkilledManpowerCompanies from './components/Company/category/Skilledmanpower/Skilledmanpower';
+import InternetCompanies from './components/Company/category/Internet/Internet'
+
 const App = () => {
     return (
         <Router>
@@ -58,6 +60,7 @@ const App = () => {
                 <Route path="/fresher-jobs" element={<FresherJobs />} />
                 <Route path="/unicorn-companies" element={<UnicornCompanies />} />
                 <Route path="/skilled-manpower-companies" element={<SkilledManpowerCompanies />} />
+                <Route path="/internet-companies" element={<InternetCompanies/>} />
 
                 {/* Add more routes here as needed */}
             </Routes>
