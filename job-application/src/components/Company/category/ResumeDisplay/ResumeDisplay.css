@@ -1,0 +1,57 @@
+.resume-display {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+}
+
+.resume-header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.resume-header h1 {
+    font-size: 2.5em;
+    margin: 0;
+}
+
+.resume-header h2 {
+    font-size: 1.5em;
+    margin: 0;
+    color: #555;
+}
+
+.resume-section {
+    margin-bottom: 20px;
+}
+
+.resume-section h3 {
+    font-size: 1.8em;
+    margin-bottom: 10px;
+    border-bottom: 2px solid #007BFF;
+    padding-bottom: 5px;
+}
+
+.job, .education {
+    margin-bottom: 15px;
+}
+
+.job h4, .education h4 {
+    margin: 0;
+    font-size: 1.2em;
+}
+
+.skills-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+.skills-list li {
+    background-color: #f2f2f2;
+    padding: 5px 10px;
+    margin: 5px 0;
+    border-radius: 5px;
+}

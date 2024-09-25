@@ -163,7 +163,7 @@ const Navbar = () => {
                                         <ul>
                                             <li><Link to="/resume-display" className="dropdown-item">Resume Display</Link></li>
                                             <li><h3 className="dropdown-header">Monthly Subscriptions</h3></li>
-                                            <li><Link to="/basic-premium-plans" className="dropdown-item">Basic & Premium Plans</Link></li>
+                                            <li><Link to="/basic-premium-plans" className="dropdown-item">Basic And Premium Plans</Link></li>
                                         </ul>
                                     </div>
 

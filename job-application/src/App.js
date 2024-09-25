@@ -10,9 +10,9 @@ import Navbar from './components/Navbar/Navbar';
 import Footer from './components/Footer/Footer'; // Import Footer
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import Marketing from './components/Categories/Marketingjobs/Marketing';
-import DataScienceJobs from './components/Categories/DataScience/DataScience'
+import DataScienceJobs from './components/Categories/DataScience/DataScience';
 import HR from './components/Categories/HR/HR';
-import SkilledManPowerjobs from './components/Categories/SkilledmanPower/Skilled';
+import SkilledManPowerJobs from './components/Categories/SkilledmanPower/Skilled';
 import Engineering from './components/Categories/Engineeringjobs/Engineering';
 import JobsInDelhi from './components/Categories/JobInDelhi/JobsInDelhi';
 import JobsInMumbai from './components/Categories/jobsinmumbai/JobsInMumbai';
@@ -44,6 +44,7 @@ import SalaryCalculator from './components/Company/category/SalaryCalculator/Sal
 import TextResume from './components/Company/category/TextResume/TextResume';
 import VisualResume from './components/Company/category/VisualResume/VisualResume';
 import ResumeCritique from './components/Company/category/ResumeCritique/ResumeCritique';
+import ResumeDisplay from './components/Company/category/ResumeDisplay/ResumeDisplay';
 const App = () => {
     return (
         <Router>
@@ -58,7 +59,7 @@ const App = () => {
                 <Route path="/marketing-jobs" element={<Marketing />} />
                 <Route path="/data-science-jobs" element={<DataScienceJobs />} />
                 <Route path="/hr-jobs" element={<HR />} />
-                <Route path="/manpower-jobs" element={<SkilledManPowerjobs />} />
+                <Route path="/manpower-jobs" element={<SkilledManPowerJobs />} />
                 <Route path="/engineering-jobs" element={<Engineering />} />
                 <Route path="/jobs-in-delhi" element={<JobsInDelhi />} />
                 <Route path="/jobs-in-mumbai" element={<JobsInMumbai />} />
@@ -67,8 +68,8 @@ const App = () => {
                 <Route path="/jobs-in-chennai" element={<JobsInChennai />} />
                 <Route path="/jobs-in-pune" element={<JobsInPune />} />
                 <Route path="/remote-jobs" element={<RemoteJobs />} />
-                <Route path="/work-from-home-jobs" element ={<WorkFromHomeJobs />} />
-                <Route path="/walk-in-jobs" element ={<WalkInJobs />} />
+                <Route path="/work-from-home-jobs" element={<WorkFromHomeJobs />} />
+                <Route path="/walk-in-jobs" element={<WalkInJobs />} />
                 <Route path="/part-time-jobs" element={<PartTimeJobs />} />
                 <Route path="/fresher-jobs" element={<FresherJobs />} />
                 <Route path="/unicorn-companies" element={<UnicornCompanies />} />
@@ -90,7 +91,7 @@ const App = () => {
                 <Route path="/text-resume" element={<TextResume />} />
                 <Route path="/visual-resume" element={<VisualResume />} />
                 <Route path="/resume-critique" element={<ResumeCritique />} />
-
+                <Route path="/resume-display" element={<ResumeDisplay />} /> {/* Add ResumeDisplay route */}
                 {/* Add more routes here as needed */}
             </Routes>
             <Footer />
