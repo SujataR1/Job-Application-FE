@@ -43,6 +43,7 @@ import CompanyReview from './components/Company/category/CompanyReviews/CompanyR
 import SalaryCalculator from './components/Company/category/SalaryCalculator/SalaryCalculator';
 import TextResume from './components/Company/category/TextResume/TextResume';
 import VisualResume from './components/Company/category/VisualResume/VisualResume';
+import ResumeCritique from './components/Company/category/ResumeCritique/ResumeCritique';
 const App = () => {
     return (
         <Router>
@@ -88,6 +89,7 @@ const App = () => {
                 <Route path="/salary-calculator" element={<SalaryCalculator />} />
                 <Route path="/text-resume" element={<TextResume />} />
                 <Route path="/visual-resume" element={<VisualResume />} />
+                <Route path="/resume-critique" element={<ResumeCritique />} />
 
                 {/* Add more routes here as needed */}
             </Routes>
