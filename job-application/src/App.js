@@ -47,6 +47,7 @@ import ResumeCritique from './components/Company/category/ResumeCritique/ResumeC
 import ResumeDisplay from './components/Company/category/ResumeDisplay/ResumeDisplay';
 import ResumeQualityScore from './components/Company/category/ResumeQualityScore/ResumeQualityScore';
 import ResumeSamples from './components/Company/category/ResumeSamples/ResumeSamples';
+import JobLetterSamples from './components/Company/category/JobLetterSamples/JobLetterSamples';
 
 const App = () => {
     return (
@@ -97,6 +98,7 @@ const App = () => {
                 <Route path="/resume-display" element={<ResumeDisplay />} />
                 <Route path="/resume-quality-score" element={<ResumeQualityScore />} />
                 <Route path="/resume-samples" element={<ResumeSamples />} />
+                <Route path="/job-letter-samples" element={<JobLetterSamples />} />
                 {/* Add more routes here as needed */}
             </Routes>
             <Footer />
