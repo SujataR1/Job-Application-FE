@@ -35,6 +35,8 @@ import ItCompanies from './components/Company/Collection/ItCompanies/ItCompanies
 import FintechCompanies from './components/Company/Collection/FintechCompanies/FintechCompanies';
 import InternetCompanies from './components/Company/category/Internet/Internet';
 import MncJobs from './components/DemandJob/Mncjob/Mnc';
+import Aboutus from './components/Aboutus/Aboutus';
+import Overview from './components/Aboutus/Overview/Overview';
 
 const App = () => {
     return (
@@ -73,6 +75,8 @@ const App = () => {
                 <Route path="/fintech-companies" element={<FintechCompanies />} />
                 <Route path="/internet-companies" element={<InternetCompanies />} />
                 <Route path="/mnc-jobs" element={<MncJobs />} />
+                <Route path="/about-us" element={<Aboutus />} />
+                <Route path="/overview" element={<Overview />} />
 
                 {/* Add more routes here as needed */}
             </Routes>
