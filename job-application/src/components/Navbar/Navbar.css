@@ -1,0 +1,54 @@
+.navbar-background {
+    background-color: #252930; 
+}
+
+.navbar-header {
+    position: relative;
+}
+
+.dropdown-menu {
+    width: 24rem; 
+}
+
+.dropdown-section {
+    margin-bottom: 1rem; 
+}
+
+.dropdown-header {
+    font-size: 1.125rem; 
+    font-weight: 600;
+    margin-bottom: 0.5rem; 
+    color: white;
+}
+
+.dropdown-item {
+    display: block;
+    padding: 0.5rem 0;
+    color: #edf2f7; 
+    text-decoration: none;
+}
+
+.dropdown-item:hover {
+    background-color: #2d3748; 
+}
+
+.navbar-logo {
+    color: #fff;
+}
+
+.text-saffron {
+    color: #f4a300; 
+}
+
+.text-green {
+    color: #00a859; 
+}
+
+
+.dropdown-section {
+    margin-bottom: 1rem; 
+}
+
+
+
+ 

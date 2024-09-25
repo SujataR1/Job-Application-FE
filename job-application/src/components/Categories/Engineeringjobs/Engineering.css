@@ -1,0 +1,64 @@
+/* Container for the entire page */
+.engineering-job-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 20px;
+}
+
+/* Filters Section */
+.filters-section {
+  flex: 1;
+  max-width: 250px; /* Controls the width of the filters section */
+  margin-right: 20px;
+  background-color: #f7f7f7;
+  padding: 10px;
+  border-radius: 8px;
+}
+
+/* Jobs Section */
+.jobs-section {
+  flex: 3; /* Takes the remaining space after the filters */
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+}
+
+/* Job card styling */
+.job-card {
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 15px;
+  margin-bottom: 10px;
+  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.view-more-button {
+  margin-top: 10px;
+  padding: 8px 12px;
+  background-color: #007bff; /* Blue background */
+  color: white; /* White text */
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.3s ease; /* Smooth background change on hover */
+}
+
+.view-more-button:hover {
+  background-color: #0056b3; /* Darker blue on hover */
+}
+
+
+/* Responsive for smaller screens */
+@media (max-width: 768px) {
+  .engineering-job-container {
+    flex-direction: column;
+  }
+
+  .filters-section,
+  .jobs-section {
+    max-width: 100%;
+    margin: 0;
+  }
+}

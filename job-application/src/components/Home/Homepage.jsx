@@ -1,40 +1,14 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+
+ // Import the Navbar component
 
 const HomePage = () => {
     return (
         <div className="font-sans bg-cover bg-center bg-fixed min-h-screen" style={{ backgroundImage: 'url(/images/background.png)' }}>
-            {/* Navbar */}
-            <header className="flex justify-between items-center p-5">
-                {/* Header Left - Logo */}
-                <div className="text-3xl font-bold">
-                    <span className="text-[#FF9933]">Job</span> {/* Saffron color */}
-                    <span className="text-white">Portal</span> {/* White color */}
-                    <span className="text-[#138808]">by Transmogrify</span> {/* Green color */}
-                </div>
-
-                {/* Centered Navigation Links */}
-                <nav className="flex space-x-10 mx-auto">
-                    <a href="/" className="text-black font-bold text-lg hover:text-teal-900">Home</a>
-                    <a href="/" className="text-black font-bold text-lg hover:text-teal-900">Jobs</a>
-                    <a href="/" className="text-black font-bold text-lg hover:text-teal-900">Browse</a>
-                </nav>
-
-                {/* Header Right - Buttons */}
-                <div className="space-x-4">
-                    <Link to="/login">
-                        <button className="text-black border-2 border-gray-300 px-4 py-2 rounded-md hover:bg-gray-100">
-                            Login
-                        </button>
-                    </Link>
-                    <button className="text-white bg-teal-600 px-4 py-2 rounded-md hover:bg-teal-700">
-                        <Link to="/signup">Signup</Link> {/* Use Link to navigate to Sign Up page */}
-                    </button>
-                </div>
-            </header>
+         {/* Ensure Navbar is placed here */}
 
             {/* Main Content */}
-            <main className="text-center mt-20">
+            <main className="text-center mt-0">
                 <span className="bg-green-100 text-green-600 px-4 py-1 rounded-full text-xs">No. 1 Job Hunt Website</span>
                 <h1 className="text-5xl font-bold mt-20">
                     Search, Apply &amp; <span className="text-teal-800">Land Your Ideal Job</span>
@@ -55,7 +29,7 @@ const HomePage = () => {
                     </button>
                 </div>
 
-                <div className="flex justify-center space-x-6">
+                <div className="flex justify-center space-x-6 mb-12">
                     <button className="bg-teal-100 text-teal-600 border border-teal-200 py-3 px-8 rounded-full hover:bg-teal-200">
                         Frontend Developer
                     </button>
@@ -95,23 +69,7 @@ const HomePage = () => {
                 </div>
             </section>
 
-            {/* Footer */}
-            <footer className="mt-20 text-center p-5 border-t-2 border-gray-100">
-                <div className="text-gray-500">
-                    © 2024 Transmogrify. All rights reserved.
-                </div>
-                <div className="flex justify-center space-x-12 mt-20">
-                    <a href="/" className="text-gray-400 hover:text-gray-800">
-                        <i className="fab fa-facebook-f fa-2x"></i>
-                    </a>
-                    <a href="/" className="text-gray-400 hover:text-gray-800">
-                        <i className="fab fa-twitter fa-2x"></i>
-                    </a>
-                    <a href="/" className="text-gray-400 hover:text-gray-800">
-                        <i className="fab fa-linkedin fa-2x"></i>
-                    </a>
-                </div>
-            </footer>
+            
         </div>
     );
 };

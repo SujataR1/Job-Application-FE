@@ -1,22 +1,105 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import HomePage from './components/Home/Homepage';
-import '@fortawesome/fontawesome-free/css/all.min.css';
+import Sales from './components/Categories/SalesJobs/Sales';
+import IT from './components/Categories/ITjobs/ITjobs';
 import Jobs from './components/JobPage';
-import SignUpPage from "./components/auth/SignUpPage"; // The new SignUp component
-import Login from './pages/Login';
-
+import SignUpPage from './components/auth/SignUpPage'; // The new SignUp component
+import Login from './components/auth/Login';
+import Navbar from './components/Navbar/Navbar';
+import Footer from './components/Footer/Footer'; // Import Footer
+import '@fortawesome/fontawesome-free/css/all.min.css';
+import Marketing from './components/Categories/Marketingjobs/Marketing';
+import DataScienceJobs from './components/Categories/DataScience/DataScience';
+import HR from './components/Categories/HR/HR';
+import SkilledManPowerJobs from './components/Categories/SkilledmanPower/Skilled';
+import Engineering from './components/Categories/Engineeringjobs/Engineering';
+import JobsInDelhi from './components/Categories/JobInDelhi/JobsInDelhi';
+import JobsInMumbai from './components/Categories/jobsinmumbai/JobsInMumbai';
+import JobsInBangalore from './components/Categories/jobsinbangalore/JobsInBangalore';
+import JobsInHyderabad from './components/Categories/jobsinhyderabad/JobsInHyderabad';
+import JobsInChennai from './components/Categories/jobsinchennai/JobsInChennai';
+import JobsInPune from './components/Categories/jobsinpune/JobsInPune';
+import RemoteJobs from './components/Categories/remotejob/RemoteJobs';
+import WorkFromHomeJobs from './components/Categories/workfromhomejobs/WorkFromHomeJobs';
+import WalkInJobs from './components/Categories/walkinjobs/WalkInJobs';
+import PartTimeJobs from './components/Categories/parttimejobs/PartTimeJobs';
+import FresherJobs from './components/DemandJob/FresherJob/Fresher';
+import UnicornCompanies from './components/Company/category/Unicorn/Unicorn';
+import SkilledManpowerCompanies from './components/Company/category/Skilledmanpower/Skilledmanpower';
+import MncCompanies from './components/Company/category/Mnc/Mnc';
+import StartUpCompanies from './components/Company/category/StartUp/StartUp';
+import ProductBased from './components/Company/category/ProductBased/ProductBased';
+import TopCompanies from './components/Company/Collection/TopCompanies/TopCompanies';
+import ItCompanies from './components/Company/Collection/ItCompanies/ItCompanies';
+import FintechCompanies from './components/Company/Collection/FintechCompanies/FintechCompanies';
+import InternetCompanies from './components/Company/category/Internet/Internet';
+import MncJobs from './components/DemandJob/Mncjob/Mnc';
+import SponsoredCompanies from './components/Company/category/SponsoredCompanies/SponsoredCompanies';
+import FeaturedCompanies from './components/Company/category/FeaturedCompanies/FeaturedCompanies';
+import InterviewQuestion from './components/Company/category/InterviewQuestions/InterviewQuestion';
+import CompanySalaries from './components/Company/category/CompanySalaries/CompanySalaries';
+import CompanyReview from './components/Company/category/CompanyReviews/CompanyReviews';
+import SalaryCalculator from './components/Company/category/SalaryCalculator/SalaryCalculator';
+import TextResume from './components/Company/category/TextResume/TextResume';
+import VisualResume from './components/Company/category/VisualResume/VisualResume';
+import ResumeCritique from './components/Company/category/ResumeCritique/ResumeCritique';
+import ResumeDisplay from './components/Company/category/ResumeDisplay/ResumeDisplay';
+import ResumeQualityScore from './components/Company/category/ResumeQualityScore/ResumeQualityScore';
+import ResumeSamples from './components/Company/category/ResumeSamples/ResumeSamples';
 
 const App = () => {
     return (
         <Router>
+            <Navbar />
             <Routes>
                 <Route path="/" element={<HomePage />} />
                 <Route path="/jobs" element={<Jobs />} />
                 <Route path="/signup" element={<SignUpPage />} />  {/* SignUp Page */}
                 <Route path="/login" element={<Login />} />
+                <Route path="/it-jobs" element={<IT />} />
+                <Route path="/sales-jobs" element={<Sales />} /> {/* SalesJobs component */}
+                <Route path="/marketing-jobs" element={<Marketing />} />
+                <Route path="/data-science-jobs" element={<DataScienceJobs />} />
+                <Route path="/hr-jobs" element={<HR />} />
+                <Route path="/manpower-jobs" element={<SkilledManPowerJobs />} />
+                <Route path="/engineering-jobs" element={<Engineering />} />
+                <Route path="/jobs-in-delhi" element={<JobsInDelhi />} />
+                <Route path="/jobs-in-mumbai" element={<JobsInMumbai />} />
+                <Route path="/jobs-in-bangalore" element={<JobsInBangalore />} />
+                <Route path="/jobs-in-hyderabad" element={<JobsInHyderabad />} />
+                <Route path="/jobs-in-chennai" element={<JobsInChennai />} />
+                <Route path="/jobs-in-pune" element={<JobsInPune />} />
+                <Route path="/remote-jobs" element={<RemoteJobs />} />
+                <Route path="/work-from-home-jobs" element={<WorkFromHomeJobs />} />
+                <Route path="/walk-in-jobs" element={<WalkInJobs />} />
+                <Route path="/part-time-jobs" element={<PartTimeJobs />} />
+                <Route path="/fresher-jobs" element={<FresherJobs />} />
+                <Route path="/unicorn-companies" element={<UnicornCompanies />} />
+                <Route path="/skilled-manpower-companies" element={<SkilledManpowerCompanies />} />
+                <Route path="/mnc-companies" element={<MncCompanies />} />
+                <Route path="/startup-companies" element={<StartUpCompanies />} />
+                <Route path="/product-based-companies" element={<ProductBased />} />
+                <Route path="/top-companies" element={<TopCompanies />} />
+                <Route path="/it-companies" element={<ItCompanies />} />
+                <Route path="/fintech-companies" element={<FintechCompanies />} />
+                <Route path="/internet-companies" element={<InternetCompanies />} />
+                <Route path="/mnc-jobs" element={<MncJobs />} />
+                <Route path="/sponsored-companies" element={<SponsoredCompanies />} />
+                <Route path="/featured-companies" element={<FeaturedCompanies />} />
+                <Route path="/interview-questions" element={<InterviewQuestion />} />
+                <Route path="/company-salaries" element={<CompanySalaries />} />
+                <Route path="/company-reviews" element={<CompanyReview />} />
+                <Route path="/salary-calculator" element={<SalaryCalculator />} />
+                <Route path="/text-resume" element={<TextResume />} />
+                <Route path="/visual-resume" element={<VisualResume />} />
+                <Route path="/resume-critique" element={<ResumeCritique />} />
+                <Route path="/resume-display" element={<ResumeDisplay />} />
+                <Route path="/resume-quality-score" element={<ResumeQualityScore />} />
+                <Route path="/resume-samples" element={<ResumeSamples />} />
                 {/* Add more routes here as needed */}
             </Routes>
+            <Footer />
         </Router>
     );
 };

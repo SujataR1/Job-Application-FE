@@ -1,0 +1,52 @@
+.plans-container {
+    padding: 20px;
+    text-align: center;
+}
+
+.plans-list {
+    display: flex;
+    justify-content: center;
+    gap: 20px; /* Space between the plan cards */
+}
+
+.plan-card {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 20px;
+    width: 300px; /* Set a fixed width for the plan cards */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s; /* Smooth scaling effect */
+}
+
+.plan-card:hover {
+    transform: scale(1.05); /* Scale up on hover */
+}
+
+.plan-price {
+    font-size: 24px;
+    font-weight: bold;
+    margin: 10px 0;
+}
+
+.features-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+.feature-item {
+    margin: 5px 0;
+}
+
+.subscribe-button {
+    background-color: #007bff; /* Primary color */
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.subscribe-button:hover {
+    background-color: #0056b3; /* Darker shade on hover */
+}

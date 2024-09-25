@@ -1,0 +1,55 @@
+/* src/components/Categories/WorkFromHomeJobs/WorkFromHomeJobs.css */
+
+.workfromhome-job-container {
+    display: flex;
+    padding: 20px;
+  }
+  
+  .filters-section {
+    width: 25%;
+    padding: 10px;
+    border-right: 1px solid #ccc;
+  }
+  
+  .jobs-section {
+    width: 75%;
+    padding: 10px;
+  }
+  
+  .filter-section {
+    margin-bottom: 15px;
+  }
+  
+  .filter-item {
+    margin: 5px 0;
+  }
+  
+  .view-more-button {
+    background-color: #4CAF50; /* You can adjust this to fit your theme */
+    color: white;
+    padding: 5px 10px;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .view-more-button:hover {
+    background-color: #45a049;
+  }
+  
+  .job-card {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+  }
+  
+  .job-card h3 {
+    margin: 0;
+    font-size: 18px;
+  }
+  
+  .job-card p {
+    margin: 5px 0;
+  }
+  

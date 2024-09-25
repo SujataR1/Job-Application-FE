@@ -1,0 +1,80 @@
+.SkilledManpowerCompanies {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    background-color: #f9f9f9;
+    height: 100vh; /* Full height */
+}
+
+h1 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+.content {
+    display: flex; /* Flexbox for layout */
+    flex: 1; /* Allow the content to fill available space */
+}
+
+.filters-section {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    width: 250px; /* Fixed width for the filter section */
+    height: auto; /* Automatic height */
+    margin-right: 20px; /* Spacing between filters and company/job listings */
+}
+
+.filters-section h2 {
+    margin-bottom: 10px;
+}
+
+.filters-section input[type="text"],
+.filters-section select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.companies-list {
+    flex-grow: 1; /* Take remaining width */
+    display: flex;
+    flex-direction: column;
+    margin-right: 20px; /* Spacing before job postings */
+}
+
+.company-card {
+    background-color: #fff;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    margin-bottom: 15px;
+}
+
+.job-postings {
+    width: 300px; /* Fixed width for job postings */
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.job-postings h2 {
+    margin-bottom: 10px;
+}
+
+.job-postings ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.job-postings li {
+    padding: 10px;
+    background-color: #fff;
+    border-radius: 4px;
+    margin-bottom: 8px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}

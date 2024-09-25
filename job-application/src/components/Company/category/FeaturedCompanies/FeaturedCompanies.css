@@ -1,0 +1,42 @@
+.UnicornCompanies {
+    display: flex;
+    padding: 20px;
+    background-color: #f9f9f9;
+}
+
+.sidebar {
+    width: 25%;
+    padding: 15px;
+    background-color: #fff;
+    border-right: 1px solid #ccc;
+}
+
+.companies-list {
+    width: 75%;
+    padding: 15px;
+}
+
+.company-card {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 15px;
+    margin-bottom: 15px;
+    background-color: #fff;
+}
+
+h1 {
+    color: #333;
+}
+
+h2 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+}
+
+h3 {
+    margin: 10px 0;
+}
+
+p {
+    margin: 5px 0;
+}
