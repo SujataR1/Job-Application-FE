@@ -40,6 +40,7 @@ import FeaturedCompanies from './components/Company/category/FeaturedCompanies/F
 import InterviewQuestion from './components/Company/category/InterviewQuestions/InterviewQuestion';
 import CompanySalaries from './components/Company/category/CompanySalaries/CompanySalaries';
 import CompanyReview from './components/Company/category/CompanyReviews/CompanyReviews';
+import SalaryCalculator from './components/Company/category/SalaryCalculator/SalaryCalculator';
 
 const App = () => {
     return (
@@ -83,6 +84,7 @@ const App = () => {
                 <Route path="/interview-questions" element={<InterviewQuestion />} />
                 <Route path="/company-salaries" element={<CompanySalaries />} />
                 <Route path="/company-reviews" element={<CompanyReview />} />
+                <Route path="/salary-calculator" element={<SalaryCalculator />} />
 
                 {/* Add more routes here as needed */}
             </Routes>
