@@ -1,5 +1,5 @@
 import React from 'react';
-import './BasicAndPremiumPlans.css'; // Import your CSS for styling
+import './BasicPremiumPlans.css'; // Import your CSS for styling
 
 const plansData = [
     {
@@ -24,7 +24,7 @@ const plansData = [
     },
 ];
 
-const BasicAndPremiumPlans = () => {
+const BasicPremiumPlans = () => {
     return (
         <div className="plans-container">
             <h1>Choose Your Plan</h1>
@@ -46,4 +46,4 @@ const BasicAndPremiumPlans = () => {
     );
 };
 
-export default BasicAndPremiumPlans;
+export default BasicPremiumPlans;

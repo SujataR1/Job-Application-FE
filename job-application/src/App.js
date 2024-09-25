@@ -45,6 +45,8 @@ import TextResume from './components/Company/category/TextResume/TextResume';
 import VisualResume from './components/Company/category/VisualResume/VisualResume';
 import ResumeCritique from './components/Company/category/ResumeCritique/ResumeCritique';
 import ResumeDisplay from './components/Company/category/ResumeDisplay/ResumeDisplay';
+import ResumeQualityScore from './components/Company/category/ResumeQualityScore/ResumeQualityScore';
+
 const App = () => {
     return (
         <Router>
@@ -91,7 +93,8 @@ const App = () => {
                 <Route path="/text-resume" element={<TextResume />} />
                 <Route path="/visual-resume" element={<VisualResume />} />
                 <Route path="/resume-critique" element={<ResumeCritique />} />
-                <Route path="/resume-display" element={<ResumeDisplay />} /> {/* Add ResumeDisplay route */}
+                <Route path="/resume-display" element={<ResumeDisplay />} />
+                <Route path="/resume-quality-score" element={<ResumeQualityScore />} />
                 {/* Add more routes here as needed */}
             </Routes>
             <Footer />
