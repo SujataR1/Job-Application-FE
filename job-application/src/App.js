@@ -20,7 +20,6 @@ import JobsInBangalore from './components/Categories/jobsinbangalore/JobsInBanga
 import JobsInHyderabad from './components/Categories/jobsinhyderabad/JobsInHyderabad';
 import JobsInChennai from './components/Categories/jobsinchennai/JobsInChennai';
 import JobsInPune from './components/Categories/jobsinpune/JobsInPune';
-import MncJobs from './components/Categories/mncjobs/MncJobs';
 import RemoteJobs from './components/Categories/remotejob/RemoteJobs';
 import WorkFromHomeJobs from './components/Categories/workfromhomejobs/WorkFromHomeJobs';
 import WalkInJobs from './components/Categories/walkinjobs/WalkInJobs';
@@ -28,7 +27,14 @@ import PartTimeJobs from './components/Categories/parttimejobs/PartTimeJobs';
 import FresherJobs from './components/DemandJob/FresherJob/Fresher';
 import UnicornCompanies from './components/Company/category/Unicorn/Unicorn';
 import SkilledManpowerCompanies from './components/Company/category/Skilledmanpower/Skilledmanpower';
-import InternetCompanies from './components/Company/category/Internet/Internet'
+import MncCompanies from './components/Company/category/Mnc/Mnc';
+import StartUpCompanies from './components/Company/category/StartUp/StartUp';
+import ProductBased from './components/Company/category/ProductBased/ProductBased';
+import TopCompanies from './components/Company/Collection/TopCompanies/TopCompanies';
+import ItCompanies from './components/Company/Collection/ItCompanies/ItCompanies';
+import FintechCompanies from './components/Company/Collection/FintechCompanies/FintechCompanies';
+import InternetCompanies from './components/Company/category/Internet/Internet';
+import MncJobs from './components/DemandJob/Mncjob/Mnc';
 
 const App = () => {
     return (
@@ -52,7 +58,6 @@ const App = () => {
                 <Route path="/jobs-in-hyderabad" element={<JobsInHyderabad />} />
                 <Route path="/jobs-in-chennai" element={<JobsInChennai />} />
                 <Route path="/jobs-in-pune" element={<JobsInPune />} />
-                <Route path="/mnc-jobs" element={<MncJobs />} /> {/* Route for MNC Jobs */}
                 <Route path="/remote-jobs" element={<RemoteJobs />} />
                 <Route path="/work-from-home-jobs" element ={<WorkFromHomeJobs />} />
                 <Route path="/walk-in-jobs" element ={<WalkInJobs />} />
@@ -60,7 +65,14 @@ const App = () => {
                 <Route path="/fresher-jobs" element={<FresherJobs />} />
                 <Route path="/unicorn-companies" element={<UnicornCompanies />} />
                 <Route path="/skilled-manpower-companies" element={<SkilledManpowerCompanies />} />
-                <Route path="/internet-companies" element={<InternetCompanies/>} />
+                <Route path="/mnc-companies" element={<MncCompanies />} />
+                <Route path="/startup-companies" element={<StartUpCompanies />} />
+                <Route path="/product-based-companies" element={<ProductBased />} />
+                <Route path="/top-companies" element={<TopCompanies />} />
+                <Route path="/it-companies" element={<ItCompanies />} />
+                <Route path="/fintech-companies" element={<FintechCompanies />} />
+                <Route path="/internet-companies" element={<InternetCompanies />} />
+                <Route path="/mnc-jobs" element={<MncJobs />} />
 
                 {/* Add more routes here as needed */}
             </Routes>
