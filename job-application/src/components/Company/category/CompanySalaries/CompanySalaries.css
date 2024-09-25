@@ -1,0 +1,55 @@
+.CompanySalaries {
+    display: flex;
+    padding: 20px;
+    background-color: #f8f9fa;
+}
+
+.sidebar {
+    width: 25%;
+    padding-right: 20px;
+    border-right: 1px solid #dee2e6;
+}
+
+.sidebar h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.sidebar h3 {
+    margin-top: 1rem;
+}
+
+.sidebar select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+}
+
+.salaries-list {
+    width: 75%;
+}
+
+.salaries-list h1 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+.salary-card {
+    background: white;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    padding: 15px;
+    margin-bottom: 20px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.salary-card h3 {
+    font-size: 1.25rem;
+    margin-bottom: 10px;
+}
+
+.salary-card p {
+    margin: 5px 0;
+}

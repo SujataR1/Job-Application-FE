@@ -37,6 +37,9 @@ import InternetCompanies from './components/Company/category/Internet/Internet';
 import MncJobs from './components/DemandJob/Mncjob/Mnc';
 import SponsoredCompanies from './components/Company/category/SponsoredCompanies/SponsoredCompanies';
 import FeaturedCompanies from './components/Company/category/FeaturedCompanies/FeaturedCompanies';
+import InterviewQuestion from './components/Company/category/InterviewQuestions/InterviewQuestion';
+import CompanySalaries from './components/Company/category/CompanySalaries/CompanySalaries';
+import CompanyReview from './components/Company/category/CompanyReviews/CompanyReviews';
 
 const App = () => {
     return (
@@ -77,6 +80,9 @@ const App = () => {
                 <Route path="/mnc-jobs" element={<MncJobs />} />
                 <Route path="/sponsored-companies" element={<SponsoredCompanies />} />
                 <Route path="/featured-companies" element={<FeaturedCompanies />} />
+                <Route path="/interview-questions" element={<InterviewQuestion />} />
+                <Route path="/company-salaries" element={<CompanySalaries />} />
+                <Route path="/company-reviews" element={<CompanyReview />} />
 
                 {/* Add more routes here as needed */}
             </Routes>
