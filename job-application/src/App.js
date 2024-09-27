@@ -50,11 +50,6 @@ import ResumeSamples from './components/Company/category/ResumeSamples/ResumeSam
 import JobLetterSamples from './components/Company/category/JobLetterSamples/JobLetterSamples';
 import Aboutus from './components/Aboutus/Aboutus';
 import Overview from './components/Aboutus/Overview/Overview';
-import BasicPremiumPlans from './components/Company/category/BasicPremiumPlans/BasicPremiumPlans';
-import HelpCenter from './components/HelpCenter/HelpCenter';
-import SummonsNotices from './components/SummonsNotices/SummonsNotices';
-import Grievances from './components/Categories/Grievances/Grievances';
-import ReportIssue from './components/ReportIssue/ReportIssue';
 
 const App = () => {
     return (
@@ -107,12 +102,9 @@ const App = () => {
                 <Route path="/resume-samples" element={<ResumeSamples />} />
                 <Route path="/job-letter-samples" element={<JobLetterSamples />} />
                 <Route path="/about-us" element={<Aboutus />} />
-                <Route path="/Overview" element={<Overview />} />
-                <Route path="/basic-premium-plans" element={<BasicPremiumPlans />} />
-                <Route path="/Help-center" element={<HelpCenter />} />
-                <Route path="/summons-notices" element={<SummonsNotices />} />
-                <Route path="/grievances" element={<Grievances />} />
-                <Route path="/report-issue" element={<ReportIssue />} />
+                <Route path="/overview" element={<Overview />} />
+
+                {/* Add more routes here as needed */}
             </Routes>
             <Footer />
         </Router>
