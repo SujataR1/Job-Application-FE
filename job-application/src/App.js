@@ -51,6 +51,7 @@ import JobLetterSamples from './components/Company/category/JobLetterSamples/Job
 import Aboutus from './components/Aboutus/Aboutus';
 import Overview from './components/Aboutus/Overview/Overview';
 import BasicPremiumPlans from './components/Company/category/BasicPremiumPlans/BasicPremiumPlans';
+import HelpCenter from './components/HelpCenter/HelpCenter';
 
 const App = () => {
     return (
@@ -104,8 +105,9 @@ const App = () => {
                 <Route path="/job-letter-samples" element={<JobLetterSamples />} />
                 <Route path="/about-us" element={<Aboutus />} />
                 <Route path="/Overview" element={<Overview />} />
-                <Route path="basic-premium-plans" element={<BasicPremiumPlans />} />
+                <Route path="/basic-premium-plans" element={<BasicPremiumPlans />} />
                 {/* Add more routes here as needed */}
+                <Route path="/Help-center" element={<HelpCenter />} />
             </Routes>
             <Footer />
         </Router>
