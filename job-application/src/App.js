@@ -52,6 +52,8 @@ import Aboutus from './components/Aboutus/Aboutus';
 import Overview from './components/Aboutus/Overview/Overview';
 import BasicPremiumPlans from './components/Company/category/BasicPremiumPlans/BasicPremiumPlans';
 import HelpCenter from './components/HelpCenter/HelpCenter';
+import SummonsNotices from './components/SummonsNotices/SummonsNotices';
+import Grievances from './components/Categories/Grievances/Grievances';
 
 const App = () => {
     return (
@@ -106,8 +108,9 @@ const App = () => {
                 <Route path="/about-us" element={<Aboutus />} />
                 <Route path="/Overview" element={<Overview />} />
                 <Route path="/basic-premium-plans" element={<BasicPremiumPlans />} />
-                {/* Add more routes here as needed */}
                 <Route path="/Help-center" element={<HelpCenter />} />
+                <Route path="/summons-notices" element={<SummonsNotices />} />
+                <Route path="/grievances" element={<Grievances />} />
             </Routes>
             <Footer />
         </Router>
