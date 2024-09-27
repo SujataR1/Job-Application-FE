@@ -1,0 +1,53 @@
+.SponsoredCompanies {
+    display: flex;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+}
+
+.sidebar {
+    width: 25%;
+    padding-right: 20px;
+}
+
+.sidebar h2 {
+    margin-bottom: 10px;
+}
+
+.sidebar h3 {
+    margin: 10px 0;
+}
+
+.sidebar select {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 15px;
+}
+
+.companies-list {
+    width: 75%;
+}
+
+.company-card {
+    border: 1px solid #ccc;
+    padding: 15px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.job-postings {
+    margin-top: 30px;
+}
+
+.job-postings h2 {
+    margin-bottom: 10px;
+}
+
+.job-postings ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.job-postings li {
+    margin-bottom: 5px;
+}

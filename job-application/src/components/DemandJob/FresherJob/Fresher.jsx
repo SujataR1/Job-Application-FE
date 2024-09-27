@@ -44,24 +44,14 @@ const FresherJobs = () => {
         setShowModal(true);
     };
 
-    const handleNext = () => {
-        if (currentIndex < jobCategories.length - itemsPerPage) {
-            setCurrentIndex(currentIndex + itemsPerPage);
-        }
-    };
-
-    const handlePrevious = () => {
-        if (currentIndex > 0) {
-            setCurrentIndex(currentIndex - itemsPerPage);
-        }
-    };
-
     const allJobs = useMemo(() => [
         { id: 1, title: 'Data Analyst Intern', company: 'Tech Corp', location: 'Bengaluru', salary: 'Not disclosed', education: 'Bachelors', description: 'Seeking a motivated data analyst intern to assist with data collection and analysis.' },
         { id: 2, title: 'Junior Software Developer', company: 'Start-Up X', location: 'Delhi', salary: '3-5 Lacs PA', education: 'Bachelors', description: 'Looking for a junior developer with skills in Java and React.' },
         { id: 3, title: 'Marketing Intern', company: 'Innovate LLC', location: 'Hyderabad', salary: '5-8 K PA', education: 'Bachelors', description: 'Assist with digital marketing campaigns and social media management.' },
         { id: 4, title: 'HR Trainee', company: 'Global Inc', location: 'Mumbai', salary: '3-4 Lacs PA', education: 'Bachelors', description: 'Support HR team in recruitment and onboarding processes.' },
         { id: 5, title: 'Data Scientist Intern', company: 'AI Solutions', location: 'Pune', salary: 'Not disclosed', education: 'Masters', description: 'Join our team to work on data modeling and analysis.' },
+        { id: 6, title: 'Product Management Intern', company: 'Innovate Tech', location: 'Gurgaon', salary: '4-6 Lacs PA', education: 'Bachelors', description: 'Collaborate with the product team to analyze market trends.' },
+        // Add more jobs as needed
     ], []);
 
     const filteredJobs = useMemo(() => {
@@ -73,6 +63,24 @@ const FresherJobs = () => {
             return matchesLocation && matchesRoleCategory && matchesSalary && matchesEducation;
         });
     }, [allJobs, filters]);
+
+    // Calculate total number of pages
+    const totalPages = Math.ceil(filteredJobs.length / itemsPerPage);
+
+    // Slice jobs for the current page
+    const displayedJobs = filteredJobs.slice(currentIndex * itemsPerPage, (currentIndex + 1) * itemsPerPage);
+
+    const handleNextPage = () => {
+        if (currentIndex < totalPages - 1) {
+            setCurrentIndex(prevIndex => prevIndex + 1);
+        }
+    };
+
+    const handlePrevPage = () => {
+        if (currentIndex > 0) {
+            setCurrentIndex(prevIndex => prevIndex - 1);
+        }
+    };
 
     return (
         <div className="Fresher">
@@ -91,6 +99,7 @@ const FresherJobs = () => {
                 {/* Filters Section */}
                 <div className="filters-section" style={{ flex: '1', minWidth: '300px' }}>
                     <h2>Filters</h2>
+                    
                     {/* Location Filter */}
                     <div className="filter-section">
                         <h3>Location</h3>
@@ -156,34 +165,58 @@ const FresherJobs = () => {
                             </div>
                         ))}
                     </div>
+
+                    <hr />
+
+                    {/* Job Categories Filter */}
+                    <div className="filter-section">
+                        <h3>Job Categories</h3>
+                        {jobCategories.map((category, index) => (
+                            <div key={index} className="filter-item">
+                                <input
+                                    type="checkbox"
+                                    id={`jobCategory${index}`}
+                                    onChange={() => handleFilterChange('roleCategory', category)}
+                                />
+                                <label htmlFor={`jobCategory${index}`}>{category}</label>
+                            </div>
+                        ))}
+                    </div>
                 </div>
 
                 {/* Jobs Section */}
                 <div className="jobs-section" style={{ flex: '2' }}>
                     <h2>Fresher Jobs</h2>
                     <div className="jobs-list">
-                        {filteredJobs.length > 0 ? (
-                            filteredJobs.map((job) => (
+                        {displayedJobs.length > 0 ? (
+                            displayedJobs.map((job) => (
                                 <div key={job.id} className="job-item">
                                     <h3>{job.title}</h3>
                                     <p><strong>Company:</strong> {job.company}</p>
                                     <p><strong>Location:</strong> {job.location}</p>
                                     <p><strong>Salary:</strong> {job.salary}</p>
-                                    <p><strong>Education:</strong> {job.education}</p>
-                                    <button onClick={() => openModal('jobDetails')} className="view-details-button">
-                                        View Details
-                                    </button>
+                                    <button onClick={() => openModal(job.id)} className="view-details-button">View Details</button>
                                 </div>
                             ))
                         ) : (
-                            <p>No jobs found.</p>
+                            <p>No jobs found matching the filters.</p>
                         )}
                     </div>
+
+                    {/* Pagination Controls */}
+                    <div className="pagination-controls" style={{ display: 'flex', justifyContent: 'space-between', marginTop: '20px' }}>
+                        <button onClick={handlePrevPage} disabled={currentIndex === 0}>
+                            Previous
+                        </button>
+                        <button onClick={handleNextPage} disabled={currentIndex >= totalPages - 1}>
+                            Next
+                        </button>
+                    </div>
+
+                    {/* Modal for Job Details */}
+                    <FresherModal show={showModal} handleClose={() => setShowModal(false)} jobId={modalType} />
                 </div>
             </div>
-
-            {/* Modal for Job Details */}
-            <FresherModal show={showModal} onClose={() => setShowModal(false)} type={modalType} />
         </div>
     );
 };

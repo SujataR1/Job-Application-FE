@@ -10,9 +10,9 @@ import Navbar from './components/Navbar/Navbar';
 import Footer from './components/Footer/Footer'; // Import Footer
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import Marketing from './components/Categories/Marketingjobs/Marketing';
-import DataScienceJobs from './components/Categories/DataScience/DataScience'
+import DataScienceJobs from './components/Categories/DataScience/DataScience';
 import HR from './components/Categories/HR/HR';
-import SkilledManPowerjobs from './components/Categories/SkilledmanPower/Skilled';
+import SkilledManPowerJobs from './components/Categories/SkilledmanPower/Skilled';
 import Engineering from './components/Categories/Engineeringjobs/Engineering';
 import JobsInDelhi from './components/Categories/JobInDelhi/JobsInDelhi';
 import JobsInMumbai from './components/Categories/jobsinmumbai/JobsInMumbai';
@@ -37,6 +37,21 @@ import InternetCompanies from './components/Company/category/Internet/Internet';
 import MncJobs from './components/DemandJob/Mncjob/Mnc';
 import Aboutus from './components/Aboutus/Aboutus';
 import Overview from './components/Aboutus/Overview/Overview';
+import SponsoredCompanies from './components/Company/category/SponsoredCompanies/SponsoredCompanies';
+import FeaturedCompanies from './components/Company/category/FeaturedCompanies/FeaturedCompanies';
+import InterviewQuestion from './components/Company/category/InterviewQuestions/InterviewQuestion';
+import CompanySalaries from './components/Company/category/CompanySalaries/CompanySalaries';
+import CompanyReview from './components/Company/category/CompanyReviews/CompanyReviews';
+import SalaryCalculator from './components/Company/category/SalaryCalculator/SalaryCalculator';
+import TextResume from './components/Company/category/TextResume/TextResume';
+import VisualResume from './components/Company/category/VisualResume/VisualResume';
+import ResumeCritique from './components/Company/category/ResumeCritique/ResumeCritique';
+import ResumeDisplay from './components/Company/category/ResumeDisplay/ResumeDisplay';
+import ResumeQualityScore from './components/Company/category/ResumeQualityScore/ResumeQualityScore';
+import ResumeSamples from './components/Company/category/ResumeSamples/ResumeSamples';
+import JobLetterSamples from './components/Company/category/JobLetterSamples/JobLetterSamples';
+import Careers from './components/Careers/Careers';
+import EmployerHome from './components/EmployerHome/Employerhome';
 
 const App = () => {
     return (
@@ -52,7 +67,7 @@ const App = () => {
                 <Route path="/marketing-jobs" element={<Marketing />} />
                 <Route path="/data-science-jobs" element={<DataScienceJobs />} />
                 <Route path="/hr-jobs" element={<HR />} />
-                <Route path="/manpower-jobs" element={<SkilledManPowerjobs />} />
+                <Route path="/manpower-jobs" element={<SkilledManPowerJobs />} />
                 <Route path="/engineering-jobs" element={<Engineering />} />
                 <Route path="/jobs-in-delhi" element={<JobsInDelhi />} />
                 <Route path="/jobs-in-mumbai" element={<JobsInMumbai />} />
@@ -61,8 +76,8 @@ const App = () => {
                 <Route path="/jobs-in-chennai" element={<JobsInChennai />} />
                 <Route path="/jobs-in-pune" element={<JobsInPune />} />
                 <Route path="/remote-jobs" element={<RemoteJobs />} />
-                <Route path="/work-from-home-jobs" element ={<WorkFromHomeJobs />} />
-                <Route path="/walk-in-jobs" element ={<WalkInJobs />} />
+                <Route path="/work-from-home-jobs" element={<WorkFromHomeJobs />} />
+                <Route path="/walk-in-jobs" element={<WalkInJobs />} />
                 <Route path="/part-time-jobs" element={<PartTimeJobs />} />
                 <Route path="/fresher-jobs" element={<FresherJobs />} />
                 <Route path="/unicorn-companies" element={<UnicornCompanies />} />
@@ -77,7 +92,21 @@ const App = () => {
                 <Route path="/mnc-jobs" element={<MncJobs />} />
                 <Route path="/about-us" element={<Aboutus />} />
                 <Route path="/overview" element={<Overview />} />
-
+                <Route path="/careers" element={<Careers/>} />
+                <Route path="/employer-home" element={<EmployerHome/>} />
+                <Route path="/sponsored-companies" element={<SponsoredCompanies />} />
+                <Route path="/featured-companies" element={<FeaturedCompanies />} />
+                <Route path="/interview-questions" element={<InterviewQuestion />} />
+                <Route path="/company-salaries" element={<CompanySalaries />} />
+                <Route path="/company-reviews" element={<CompanyReview />} />
+                <Route path="/salary-calculator" element={<SalaryCalculator />} />
+                <Route path="/text-resume" element={<TextResume />} />
+                <Route path="/visual-resume" element={<VisualResume />} />
+                <Route path="/resume-critique" element={<ResumeCritique />} />
+                <Route path="/resume-display" element={<ResumeDisplay />} />
+                <Route path="/resume-quality-score" element={<ResumeQualityScore />} />
+                <Route path="/resume-samples" element={<ResumeSamples />} />
+                <Route path="/job-letter-samples" element={<JobLetterSamples />} />
                 {/* Add more routes here as needed */}
             </Routes>
             <Footer />
