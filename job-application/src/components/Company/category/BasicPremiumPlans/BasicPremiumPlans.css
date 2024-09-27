@@ -1,52 +1,47 @@
-.plans-container {
+.BasicPremiumPlans {
+    display: flex;
     padding: 20px;
-    text-align: center;
+    font-family: Arial, sans-serif;
+}
+
+.sidebar {
+    flex: 1;
+    padding-right: 20px;
+    border-right: 1px solid #ccc;
+}
+
+.sidebar h2 {
+    margin-bottom: 10px;
+}
+
+.sidebar h3 {
+    margin: 15px 0 5px;
 }
 
 .plans-list {
-    display: flex;
-    justify-content: center;
-    gap: 20px; /* Space between the plan cards */
+    flex: 3;
 }
 
 .plan-card {
     border: 1px solid #ccc;
     border-radius: 8px;
-    padding: 20px;
-    width: 300px; /* Set a fixed width for the plan cards */
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    transition: transform 0.2s; /* Smooth scaling effect */
+    padding: 15px;
+    margin-bottom: 20px;
+    transition: box-shadow 0.2s;
 }
 
 .plan-card:hover {
-    transform: scale(1.05); /* Scale up on hover */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-.plan-price {
-    font-size: 24px;
-    font-weight: bold;
-    margin: 10px 0;
+h1 {
+    text-align: center;
 }
 
-.features-list {
-    list-style-type: none;
-    padding: 0;
-}
-
-.feature-item {
-    margin: 5px 0;
-}
-
-.subscribe-button {
-    background-color: #007bff; /* Primary color */
-    color: white;
-    padding: 10px 15px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-.subscribe-button:hover {
-    background-color: #0056b3; /* Darker shade on hover */
+input[type="text"] {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
 }

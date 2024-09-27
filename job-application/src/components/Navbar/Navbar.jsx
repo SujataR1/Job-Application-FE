@@ -6,7 +6,7 @@ const Navbar = () => {
     const [showJobsDropdown, setShowJobsDropdown] = useState(false);
     const [showCompaniesDropdown, setShowCompaniesDropdown] = useState(false);
     const [showServicesDropdown, setShowServicesDropdown] = useState(false);
-    
+
     const toggleJobsDropdown = () => {
         setShowJobsDropdown(!showJobsDropdown);
         setShowCompaniesDropdown(false);
@@ -27,18 +27,18 @@ const Navbar = () => {
 
     return (
         <div className="navbar-background font-sans">
-        {/* Navbar */}
-        <header className="navbar-header flex flex-col md:flex-row justify-between items-center p-5 bg-opacity-80 bg-gray-800">
-            {/* Header Left - Logo */}
-            <div className="navbar-logo text-3xl font-bold text-white">
-                <span className="text-saffron">Job</span> {/* Saffron color */}
-                <span className="text-white">Portal</span> {/* White color */}
-                <span className="text-green">by Transmogrify</span> {/* Green color */}
-            </div>
-                
+            {/* Navbar */}
+            <header className="navbar-header flex flex-col md:flex-row justify-between items-center p-5 bg-opacity-80 bg-gray-800">
+                {/* Header Left - Logo */}
+                <div className="navbar-logo text-3xl font-bold text-white">
+                    <span className="text-saffron">Job</span> {/* Saffron color */}
+                    <span className="text-white">Portal</span> {/* White color */}
+                    <span className="text-green">by Transmogrify</span> {/* Green color */}
+                </div>
+
                 <nav className="navbar-nav flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-10 mx-auto">
                     <Link to="/" className="text-white font-bold text-lg hover:text-teal-300">Home</Link>
-                    
+
                     {/* Jobs Dropdown */}
                     <div className="relative">
                         <button onClick={toggleJobsDropdown} className="text-white font-bold text-lg hover:text-teal-300">
@@ -190,6 +190,17 @@ const Navbar = () => {
                             </div>
                         )}
                     </div>
+                    {/* Make a Resume Link */}
+                    <a
+                        href="http://localhost:5173"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-white font-bold text-lg hover:text-teal-300"
+                    >
+                        Make a Resume
+                    </a>
+
+
                 </nav>
 
                 {/* Header Right - Buttons */}
@@ -200,7 +211,7 @@ const Navbar = () => {
                         </button>
                     </Link>
                     <Link to="/signup">
-                       <button className="login-button text-white border-2 border-gray-300 px-4 py-2 rounded-md hover:bg-teal-700">
+                        <button className="login-button text-white border-2 border-gray-300 px-4 py-2 rounded-md hover:bg-teal-700">
                             Signup
                         </button>
                     </Link>
