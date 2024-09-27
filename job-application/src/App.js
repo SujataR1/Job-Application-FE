@@ -54,6 +54,7 @@ import BasicPremiumPlans from './components/Company/category/BasicPremiumPlans/B
 import HelpCenter from './components/HelpCenter/HelpCenter';
 import SummonsNotices from './components/SummonsNotices/SummonsNotices';
 import Grievances from './components/Categories/Grievances/Grievances';
+import ReportIssue from './components/ReportIssue/ReportIssue';
 
 const App = () => {
     return (
@@ -111,6 +112,7 @@ const App = () => {
                 <Route path="/Help-center" element={<HelpCenter />} />
                 <Route path="/summons-notices" element={<SummonsNotices />} />
                 <Route path="/grievances" element={<Grievances />} />
+                <Route path="/report-issue" element={<ReportIssue />} />
             </Routes>
             <Footer />
         </Router>
