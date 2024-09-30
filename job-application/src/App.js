@@ -35,8 +35,6 @@ import ItCompanies from './components/Company/Collection/ItCompanies/ItCompanies
 import FintechCompanies from './components/Company/Collection/FintechCompanies/FintechCompanies';
 import InternetCompanies from './components/Company/category/Internet/Internet';
 import MncJobs from './components/DemandJob/Mncjob/Mnc';
-import Aboutus from './components/Aboutus/Aboutus';
-import Overview from './components/Aboutus/Overview/Overview';
 import SponsoredCompanies from './components/Company/category/SponsoredCompanies/SponsoredCompanies';
 import FeaturedCompanies from './components/Company/category/FeaturedCompanies/FeaturedCompanies';
 import InterviewQuestion from './components/Company/category/InterviewQuestions/InterviewQuestion';
@@ -52,6 +50,21 @@ import ResumeSamples from './components/Company/category/ResumeSamples/ResumeSam
 import JobLetterSamples from './components/Company/category/JobLetterSamples/JobLetterSamples';
 import Careers from './components/Careers/Careers';
 import EmployerHome from './components/EmployerHome/Employerhome';
+import Aboutus from './components/Aboutus/Aboutus';
+import Overview from './components/Aboutus/Overview/Overview';
+import BasicPremiumPlans from './components/Company/category/BasicPremiumPlans/BasicPremiumPlans';
+import SiteMap from './components/Sitemap/Sitemap';
+import Credits from './components/Credits/Credits';
+import HelpCenter from './components/HelpCenter/HelpCenter';
+import SummonsNotices from './components/SummonsNotices/SummonsNotices';
+import Grievances from './components/Categories/Grievances/Grievances';
+import ReportIssue from './components/ReportIssue/ReportIssue';
+import Privacypolicy from './components/LegalInformation/PrivacyPolicy/Privacypolicy';
+import TermsandConditions from './components/LegalInformation/TermsConditions/TermsConsitions';
+import FraudAlert from './components/LegalInformation/FreaudAlert/FraudAlert';
+import TrustSafety from './components/LegalInformation/Trust&Safety/Trust';
+import Hospitality from './components/Industry/ConsumerIndustry/Hospitality/Hospitality';
+
 
 const App = () => {
     return (
@@ -108,6 +121,20 @@ const App = () => {
                 <Route path="/resume-samples" element={<ResumeSamples />} />
                 <Route path="/job-letter-samples" element={<JobLetterSamples />} />
                 {/* Add more routes here as needed */}
+                <Route path="/about-us" element={<Aboutus />} />
+                <Route path="/Overview" element={<Overview />} />
+                <Route path="/basic-premium-plans" element={<BasicPremiumPlans />} />
+                <Route path="/Help-center" element={<HelpCenter />} />
+                <Route path="/summons-notices" element={<SummonsNotices />} />
+                <Route path="/grievances" element={<Grievances />} />
+                <Route path="/report-issue" element={<ReportIssue />} />
+                <Route path="/sitemap" element={<SiteMap />} />
+                <Route path="/credits" element={<Credits />} />
+                <Route path="/privacy-policy" element={<Privacypolicy />} />
+                <Route path="/terms-conditions" element={<TermsandConditions />} />
+                <Route path="/fraud-alert" element={<FraudAlert />} />
+                <Route path="/trust-safety" element={<TrustSafety />} />
+                <Route path="/industries-hospitality" element={<Hospitality />} />
             </Routes>
             <Footer />
         </Router>

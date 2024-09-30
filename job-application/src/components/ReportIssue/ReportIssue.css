@@ -1,0 +1,51 @@
+.report-issue-container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 20px;
+  }
+  
+  .issue-overview {
+    text-align: center;
+  }
+  
+  .issue-section {
+    display: flex;
+    align-items: center;
+    margin: 20px 0;
+  }
+  
+  .issue-image {
+    width: 50%;
+    border-radius: 8px;
+  }
+  
+  .issue-text {
+    padding: 20px;
+  }
+  
+  .issue-section.reverse {
+    flex-direction: row-reverse;
+  }
+  
+  .team-members {
+    text-align: center;
+  }
+  
+  .team-images {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .circle {
+    margin: 10px;
+    border-radius: 50%;
+    overflow: hidden;
+    width: 100px;
+    height: 100px;
+  }
+  
+  .circle img {
+    width: 100%;
+    height: auto;
+  }
+  
