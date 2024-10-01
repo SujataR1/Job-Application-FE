@@ -64,6 +64,9 @@ import TermsandConditions from './components/LegalInformation/TermsConditions/Te
 import FraudAlert from './components/LegalInformation/FreaudAlert/FraudAlert';
 import TrustSafety from './components/LegalInformation/Trust&Safety/Trust';
 import Hospitality from './components/Industry/ConsumerIndustry/Hospitality/Hospitality';
+import Retail from './components/Industry/ConsumerIndustry/Retail/Retail';
+import BankingandcapitalMarkets from './components/Industry/FinancialServices/Bankingandcapitalmarkets/Banking';
+import Financial from './components/Industry/FinancialServices/FinancialServices/Financial';
 
 
 const App = () => {
@@ -135,6 +138,10 @@ const App = () => {
                 <Route path="/fraud-alert" element={<FraudAlert />} />
                 <Route path="/trust-safety" element={<TrustSafety />} />
                 <Route path="/industries-hospitality" element={<Hospitality />} />
+                <Route path="/industries-retail" element={<Retail />} />
+                <Route path="/industries-banking" element={<BankingandcapitalMarkets />} />
+                <Route path="/industries-financial-services" element={<Financial />} />
+
             </Routes>
             <Footer />
         </Router>
