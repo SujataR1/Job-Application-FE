@@ -1,0 +1,36 @@
+.grievances-container {
+    padding: 20px;
+  }
+  
+  .grievance-overview {
+    text-align: center;
+  }
+  
+  .grievances-section {
+    display: flex;
+    align-items: center;
+    margin: 20px 0;
+  }
+  
+  .grievances-section.reverse {
+    flex-direction: row-reverse;
+  }
+  
+  .grievances-image {
+    width: 50%; /* Adjust size as needed */
+    border-radius: 8px;
+  }
+  
+  .grievances-text {
+    padding: 0 20px;
+  }
+  
+  .submit-grievance {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  

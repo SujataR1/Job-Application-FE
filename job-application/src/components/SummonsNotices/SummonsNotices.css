@@ -1,0 +1,22 @@
+.summons-notices-container {
+    padding: 20px;
+    font-family: Arial, sans-serif;
+  }
+  
+  .office-contact-info {
+    margin-bottom: 30px;
+  }
+  
+  .summons-section, .notices-section {
+    margin-top: 20px;
+    border: 1px solid #ccc;
+    padding: 15px;
+    border-radius: 5px;
+  }
+  
+  .summons-image, .notices-image {
+    max-width: 100%;
+    height: auto;
+    border-radius: 5px;
+  }
+  
