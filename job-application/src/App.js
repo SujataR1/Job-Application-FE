@@ -50,7 +50,12 @@ import ResumeSamples from './components/Company/category/ResumeSamples/ResumeSam
 import JobLetterSamples from './components/Company/category/JobLetterSamples/JobLetterSamples';
 import Aboutus from './components/Aboutus/Aboutus';
 import Overview from './components/Aboutus/Overview/Overview';
-
+import HelpCenter from './components/HelpCenter/HelpCenter';
+import SummonsNotices from './components/SummonsNotices/SummonsNotices';
+import Grievances from './components/Categories/Grievances/Grievances';
+import ReportIssue from './components/ReportIssue/ReportIssue';
+import Careers from './components/Careers/Careers';
+import EmployerHome from './components/EmployerHome/Employerhome';
 const App = () => {
     return (
         <Router>
@@ -103,7 +108,12 @@ const App = () => {
                 <Route path="/job-letter-samples" element={<JobLetterSamples />} />
                 <Route path="/about-us" element={<Aboutus />} />
                 <Route path="/overview" element={<Overview />} />
-
+                <Route path="/help-center" element={<HelpCenter />} />
+                <Route path="/summons-notices" element={<SummonsNotices />} />
+                <Route path="/grievances" element={<Grievances />} />
+                <Route path="/report-issue" element={<ReportIssue />} />
+                <Route path="/careers" element={<Careers />} />
+                <Route path="/employer-home" element={<EmployerHome />} />
                 {/* Add more routes here as needed */}
             </Routes>
             <Footer />
