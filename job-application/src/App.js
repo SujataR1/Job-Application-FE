@@ -67,6 +67,8 @@ import Hospitality from './components/Industry/ConsumerIndustry/Hospitality/Hosp
 import Retail from './components/Industry/ConsumerIndustry/Retail/Retail';
 import BankingandcapitalMarkets from './components/Industry/FinancialServices/Bankingandcapitalmarkets/Banking';
 import Financial from './components/Industry/FinancialServices/FinancialServices/Financial';
+import Insurance from './components/Industry/FinancialServices/Insurance/Insurance';
+import InvestmentManagement from './components/Industry/FinancialServices/InvestmentManagement/Investment';
 
 
 const App = () => {
@@ -141,6 +143,8 @@ const App = () => {
                 <Route path="/industries-retail" element={<Retail />} />
                 <Route path="/industries-banking" element={<BankingandcapitalMarkets />} />
                 <Route path="/industries-financial-services" element={<Financial />} />
+                <Route path="/industries-insurance" element={<Insurance />} />
+                <Route path="/industries-investment-management" element={<InvestmentManagement />} />
 
             </Routes>
             <Footer />
