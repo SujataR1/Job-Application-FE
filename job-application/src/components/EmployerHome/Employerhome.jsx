@@ -55,10 +55,12 @@ const EmployerHome = () => {
                   </>
                 )}
                 <div className="form-links">
-                  <a href="#" onClick={toggleRegisterMode}>
+                  <button type="button" onClick={toggleRegisterMode} className="link-button">
                     {isRegisterMode ? 'Already have an account? Login' : 'Don’t have an account? Register'}
-                  </a>
-                  <a href="#">Forgot password?</a>
+                  </button>
+                  <button type="button" className="link-button">
+                    Forgot password?
+                  </button>
                 </div>
                 <button type="submit">{isRegisterMode ? 'Register' : 'Login'}</button>
               </form>

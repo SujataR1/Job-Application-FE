@@ -127,9 +127,8 @@ const App = () => {
                 <Route path="/job-letter-samples" element={<JobLetterSamples />} />
                 {/* Add more routes here as needed */}
                 <Route path="/about-us" element={<Aboutus />} />
-                <Route path="/Overview" element={<Overview />} />
-                <Route path="/basic-premium-plans" element={<BasicPremiumPlans />} />
-                <Route path="/Help-center" element={<HelpCenter />} />
+                <Route path="/overview" element={<Overview />} />
+                <Route path="/help-center" element={<HelpCenter />} />
                 <Route path="/summons-notices" element={<SummonsNotices />} />
                 <Route path="/grievances" element={<Grievances />} />
                 <Route path="/report-issue" element={<ReportIssue />} />
