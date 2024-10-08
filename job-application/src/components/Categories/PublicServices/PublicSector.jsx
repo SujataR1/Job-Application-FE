@@ -2,52 +2,82 @@ import React from "react";
 import "./PublicSector.css";
 
 const PublicSector = () => {
-    return (
-        <div className="publicsector-container">
-            <header className="publicsector-header">
-                <h1>Public Sector</h1>
-            </header>
+  return (
+    <div className="public-sector-container">
+      <header className="public-sector-header">
+        <h1>Public Sector Services</h1>
+      </header>
 
-            <section className="publicsector-overview">
-                <h2>Overview</h2>
-                <p>
-                    The public sector encompasses government services that are provided to citizens, including education, healthcare, transportation, and more. Our public sector solutions focus on improving transparency, efficiency, and service delivery to meet the needs of the public and ensure sustainable development.
-                </p>
-            </section>
+      <section className="public-sector-overview">
+        <h2>Overview</h2>
+        <p>
+          The Public Sector plays a pivotal role in shaping the country's economy, providing essential services to citizens, and improving quality of life. This page provides an overview of the various services and initiatives aimed at promoting public welfare, sustainable development, and economic growth.
+        </p>
+      </section>
 
-            <section className="publicsector-services">
-                <h2>Our Services</h2>
-                <div className="service">
-                    <h3>Public Infrastructure</h3>
-                    <p>We provide expertise in the design, development, and management of public infrastructure projects to improve connectivity and ensure sustainable urban growth.</p>
-                </div>
-                <div className="service">
-                    <h3>Governance & Policy</h3>
-                    <p>Our services support government agencies in creating policies, enhancing governance, and promoting accountability within public institutions.</p>
-                </div>
-                <div className="service">
-                    <h3>Public Health Systems</h3>
-                    <p>We develop solutions that strengthen public health systems by enhancing service delivery, reducing costs, and improving patient outcomes.</p>
-                </div>
-            </section>
-
-            <section className="publicsector-innovation">
-                <h2>Innovation in Public Service</h2>
-                <p>
-                    Our innovative approach leverages modern technology such as cloud computing, data analytics, and AI to enhance public service delivery, increase transparency, and improve citizen engagement.
-                </p>
-            </section>
-
-            <section className="publicsector-appointments">
-                <h2>Get in Touch</h2>
-                <button className="appointment-btn">Contact Us</button>
-            </section>
-
-            <footer className="publicsector-footer">
-                <p>© 2024 Public Sector. All rights reserved.</p>
-            </footer>
+      <section className="public-sector-services">
+        <h2>Public Sector Services</h2>
+        <div className="service">
+          <h3>Infrastructure Development</h3>
+          <p>
+            Public sector organizations invest in and maintain critical infrastructure such as roads, bridges, airports, and utilities, fostering sustainable growth and improving quality of life.
+          </p>
         </div>
-    );
+        <div className="service">
+          <h3>Healthcare Services</h3>
+          <p>
+            Access to healthcare is a fundamental right. Government healthcare programs ensure that all citizens receive essential medical services, improving public health and well-being.
+          </p>
+        </div>
+        <div className="service">
+          <h3>Public Education & Training</h3>
+          <p>
+            A strong education system forms the foundation of a prosperous society. Public sector initiatives provide quality education and training programs to build a skilled workforce for the future.
+          </p>
+        </div>
+        <div className="service">
+          <h3>Environmental Protection</h3>
+          <p>
+            Public sector efforts are focused on protecting natural resources, reducing pollution, and ensuring the sustainable use of land, water, and air for future generations.
+          </p>
+        </div>
+      </section>
+
+      <section className="public-sector-initiatives">
+        <h2>Public Sector Initiatives</h2>
+        <div className="initiative">
+          <h3>Community Development</h3>
+          <p>
+            Public sector initiatives promote community development through affordable housing, public spaces, and local engagement, helping create vibrant, sustainable communities.
+          </p>
+        </div>
+        <div className="initiative">
+          <h3>Job Creation & Economic Development</h3>
+          <p>
+            The public sector helps stimulate job creation through infrastructure projects, workforce development, and support for local businesses and entrepreneurs.
+          </p>
+        </div>
+        <div className="initiative">
+          <h3>Social Welfare Programs</h3>
+          <p>
+            Government initiatives provide support to individuals and families in need, ensuring access to food, housing, and basic services through social welfare programs.
+          </p>
+        </div>
+      </section>
+
+      <section className="public-sector-cta">
+        <h2>Get Involved</h2>
+        <p>
+          Join the public sector efforts to enhance quality of life. Explore various opportunities to contribute to community development and government programs.
+        </p>
+        <button className="cta-button">Learn More</button>
+      </section>
+
+      <footer className="public-sector-footer">
+        <p>© 2024 Public Sector Services. All rights reserved.</p>
+      </footer>
+    </div>
+  );
 };
 
 export default PublicSector;

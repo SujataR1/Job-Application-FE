@@ -5,46 +5,74 @@ const LifeScience = () => {
     return (
         <div className="lifescience-container">
             <header className="lifescience-header">
-                <h1>Life Sciences</h1>
+                <h1>Life Sciences and Innovation</h1>
+                <p>Advancing Research and Healthcare for a Better Tomorrow</p>
             </header>
-            
+
             <section className="lifescience-overview">
                 <h2>Overview</h2>
                 <p>
-                    Life sciences encompass the study of living organisms and their vital processes. We provide comprehensive solutions and services that support research, drug development, biotechnology, and healthcare. Our goal is to advance scientific discovery and improve human health through innovation and collaboration.
+                    Life Sciences encompasses the study of living organisms and the application of scientific discoveries to improve health, agriculture, and environmental sustainability. This section highlights major advancements in life science research and their impact on society.
                 </p>
             </section>
 
-            <section className="lifescience-services">
-                <h2>Our Services</h2>
-                <div className="service">
-                    <h3>Biotechnology Research</h3>
-                    <p>We offer cutting-edge research in biotechnology to develop novel therapeutic solutions and improve agricultural practices.</p>
+            <section className="lifescience-areas">
+                <h2>Key Areas of Focus</h2>
+                <div className="area-card">
+                    <h3>Biotechnology</h3>
+                    <p>
+                        Biotechnology is revolutionizing healthcare and agriculture by harnessing biological systems to develop cutting-edge therapies and sustainable agricultural practices.
+                    </p>
                 </div>
-                <div className="service">
-                    <h3>Pharmaceutical Development</h3>
-                    <p>Our pharmaceutical services support the entire drug development lifecycle, from initial discovery to clinical trials and commercialization.</p>
+                <div className="area-card">
+                    <h3>Genomics</h3>
+                    <p>
+                        Advances in genomics enable personalized medicine, helping tailor treatments to individual genetic profiles for more effective outcomes.
+                    </p>
                 </div>
-                <div className="service">
-                    <h3>Healthcare Solutions</h3>
-                    <p>We offer innovative healthcare solutions aimed at improving patient outcomes through personalized medicine, diagnostic tools, and advanced treatments.</p>
+                <div className="area-card">
+                    <h3>Pharmaceutical Research</h3>
+                    <p>
+                        Pharmaceutical research is constantly evolving, with new drug developments and treatment strategies aimed at curing diseases that were once considered untreatable.
+                    </p>
                 </div>
             </section>
 
-            <section className="lifescience-research">
-                <h2>Research and Innovation</h2>
+            <section className="lifescience-innovations">
+                <h2>Recent Innovations</h2>
+                <div className="innovation">
+                    <h3>CRISPR Technology</h3>
+                    <p>
+                        CRISPR technology allows scientists to edit genes with unprecedented precision, offering the potential to cure genetic disorders and revolutionize medical treatments.
+                    </p>
+                </div>
+                <div className="innovation">
+                    <h3>Stem Cell Therapy</h3>
+                    <p>
+                        Stem cell research is at the forefront of regenerative medicine, offering hope for healing tissues and organs damaged by disease or injury.
+                    </p>
+                </div>
+                <div className="innovation">
+                    <h3>AI in Drug Discovery</h3>
+                    <p>
+                        Artificial intelligence is being integrated into drug discovery processes, speeding up the identification of new compounds and reducing the time to market for new treatments.
+                    </p>
+                </div>
+            </section>
+
+            <section className="lifescience-education">
+                <h2>Life Sciences Education & Careers</h2>
                 <p>
-                    Our research team focuses on the development of novel treatments for chronic diseases such as cancer, diabetes, and cardiovascular conditions. We utilize advanced technologies, including CRISPR, artificial intelligence, and genomics, to accelerate breakthroughs in the life sciences.
+                    The future of Life Sciences lies in education and innovation. Schools, universities, and research institutions are nurturing the next generation of scientists and researchers to drive the future of biology, medicine, and environmental science.
                 </p>
             </section>
 
-            <section className="lifescience-appointments">
-                <h2>Schedule a Consultation</h2>
-                <button className="appointment-btn">Contact Us</button>
+            <section className="lifescience-footer">
+                <button className="learn-more-btn">Learn More About Life Sciences</button>
             </section>
 
             <footer className="lifescience-footer">
-                <p>© 2024 Life Sciences. All rights reserved.</p>
+                <p>© 2024 Life Sciences Innovations. All rights reserved.</p>
             </footer>
         </div>
     );

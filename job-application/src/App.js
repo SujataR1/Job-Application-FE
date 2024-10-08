@@ -74,7 +74,6 @@ import Healthcare from './components/Categories/HealthcareAndLifeSciences/Health
 import LifeScience from './components/Categories/HealthcareAndLifeSciences/LifeSciences';
 import ProfessionalBusinessServices from './components/Categories/Professional&BusinessServices/Professional&BusinessServices';
 import HigherEducation from './components/Categories/PublicServices/HigherEducation';
-import Nonprofit from './components/Categories/PublicServices/Nonprofit';
 import PublicSector from './components/Categories/PublicServices/PublicSector';
 import SpecialDistricts from './components/Categories/PublicServices/SpecialDistricts';
 import StateLocalGovernment from './components/Categories/PublicServices/StateLocalGovernment';
@@ -163,7 +162,6 @@ const App = () => {
                 <Route path="/industries-life-sciences" element={<LifeScience />} />
                 <Route path="/industries-business-services" element={<ProfessionalBusinessServices /> } />
                 <Route path="/industries-higher-education" element={<HigherEducation />} />
-                <Route path="/industries-nonprofit" element={<Nonprofit />} />
                 <Route path="/industries-public-sector" element={<PublicSector />} />
                 <Route path="/industries-special-districts" element={<SpecialDistricts />} />
                 <Route path="/industries-state-local-government" element={<StateLocalGovernment />} />

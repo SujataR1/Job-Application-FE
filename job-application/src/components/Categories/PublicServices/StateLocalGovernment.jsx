@@ -3,54 +3,72 @@ import "./StateLocalGovernment.css";
 
 const StateLocalGovernment = () => {
     return (
-        <div className="gov-container">
-            <header className="gov-header">
-                <h1>State & Local Government</h1>
+        <div className="state-local-container">
+            <header className="state-local-header">
+                <h1>State & Local Government Services</h1>
             </header>
 
-            <section className="gov-overview">
+            <section className="state-local-overview">
                 <h2>Overview</h2>
                 <p>
-                    State and local governments play a crucial role in creating and implementing policies that directly affect communities. From managing public safety to ensuring efficient transportation systems, we offer solutions that enhance governance, promote transparency, and improve service delivery.
+                    State and Local Governments play a pivotal role in delivering essential public services that directly affect our daily lives. From education and healthcare to infrastructure development and public safety, these services help maintain the well-being and prosperity of our communities.
                 </p>
             </section>
 
-            <section className="gov-services">
-                <h2>Our Services</h2>
+            <section className="state-local-services">
+                <h2>Core Services</h2>
                 <div className="service">
-                    <h3>Public Safety and Security</h3>
-                    <p>We provide solutions to enhance law enforcement capabilities, emergency response systems, and disaster management to ensure the safety of communities.</p>
+                    <h3>Education & Schools</h3>
+                    <p>
+                        State and Local governments provide critical funding for schools, colleges, and vocational training centers, ensuring quality education and career opportunities for all.
+                    </p>
                 </div>
                 <div className="service">
-                    <h3>Public Health and Welfare</h3>
-                    <p>Our services support public health initiatives, social welfare programs, and the effective management of healthcare resources for citizens.</p>
+                    <h3>Public Health & Safety</h3>
+                    <p>
+                        Local and state health agencies deliver healthcare services, manage public health crises, and coordinate safety measures for communities to ensure a secure and healthy environment.
+                    </p>
                 </div>
                 <div className="service">
-                    <h3>Infrastructure and Transportation</h3>
-                    <p>We offer innovative solutions for public infrastructure development, including roadways, public transport systems, and urban planning.</p>
+                    <h3>Transportation & Infrastructure</h3>
+                    <p>
+                        Local governments manage and maintain transportation networks, including roads, bridges, and public transit systems, contributing to safe and efficient mobility.
+                    </p>
+                </div>
+                <div className="service">
+                    <h3>Emergency Response & Disaster Management</h3>
+                    <p>
+                        State and local authorities work together to provide emergency response services, disaster preparedness, and recovery efforts, ensuring resilience in times of crisis.
+                    </p>
                 </div>
             </section>
 
-            <section className="gov-initiatives">
-                <h2>Government Initiatives</h2>
+            <section className="state-local-collaboration">
+                <h2>Collaboration with Federal Government</h2>
                 <p>
-                    Our government initiatives focus on enhancing public engagement, increasing civic participation, and improving access to essential services. We work closely with local governments to facilitate transparency, provide real-time data, and support decision-making for better public outcomes.
+                    State and local governments partner with the federal government on numerous programs and projects, such as education grants, disaster relief funds, and infrastructure development to support and enhance community well-being.
                 </p>
             </section>
 
-            <section className="gov-partnerships">
-                <h2>Strategic Partnerships</h2>
+            <section className="state-local-initiatives">
+                <h2>Current Initiatives</h2>
+                <ul>
+                    <li>Smart City Projects - Enhancing urban living with advanced technology and infrastructure.</li>
+                    <li>Healthcare Accessibility - Providing affordable healthcare and improving local health facilities.</li>
+                    <li>Community Safety Programs - Strengthening neighborhood policing, public health, and emergency preparedness.</li>
+                    <li>Environmental Sustainability - Developing green initiatives to protect and preserve natural resources.</li>
+                </ul>
+            </section>
+
+            <section className="state-local-contact">
+                <h2>Contact Your Local Government</h2>
                 <p>
-                    We collaborate with both public and private sector entities to strengthen governance frameworks, develop smart cities, and create solutions for better resource allocation.
+                    Get in touch with your local government office to learn more about the available services and initiatives in your area.
                 </p>
+                <button className="contact-btn">Find Local Services</button>
             </section>
 
-            <section className="gov-contact">
-                <h2>Contact Us for More Information</h2>
-                <button className="gov-btn">Get In Touch</button>
-            </section>
-
-            <footer className="gov-footer">
+            <footer className="state-local-footer">
                 <p>© 2024 State & Local Government Services. All rights reserved.</p>
             </footer>
         </div>

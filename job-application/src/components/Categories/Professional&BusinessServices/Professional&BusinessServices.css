@@ -1,110 +1,147 @@
-/* ProfessionalBusinessServices.css */
-.pbs-container {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+/* ProfessionalAndBusinessServices.css */
+.professional-services-container {
+    font-family: 'Arial', sans-serif;
     margin: 0 auto;
     padding: 20px;
     max-width: 1200px;
-}
-
-.pbs-header {
+    color: #333;
+  }
+  
+  .services-header {
     text-align: center;
-    background-color: #34495e;
-    padding: 30px;
+    background-color: #004d99;
     color: white;
-    border-radius: 5px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-}
-
-.pbs-header h1 {
+    padding: 40px 20px;
+    border-radius: 10px;
+  }
+  
+  .services-header h1 {
     margin: 0;
     font-size: 2.5rem;
-}
-
-.pbs-overview, .pbs-services, .pbs-industry-focus, .pbs-appointment {
+  }
+  
+  .services-header p {
+    font-size: 1.2rem;
+    margin-top: 10px;
+  }
+  
+  .services-overview {
     margin: 40px 0;
-}
-
-.pbs-overview h2 {
+  }
+  
+  .services-overview h2 {
     font-size: 2rem;
-    margin-bottom: 15px;
-    color: #2980b9;
-}
-
-.pbs-overview p {
+    color: #004d99;
+    margin-bottom: 10px;
+  }
+  
+  .services-overview p {
     font-size: 1.1rem;
     color: #7f8c8d;
-}
-
-.pbs-services {
-    background-color: #ecf0f1;
-    padding: 20px;
-    border-radius: 5px;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-}
-
-.pbs-services h2 {
+  }
+  
+  .service-category {
+    margin: 40px 0;
+  }
+  
+  .service-category h2 {
     font-size: 2rem;
+    color: #004d99;
     margin-bottom: 20px;
-    color: #34495e;
-}
-
-.service {
-    background-color: white;
-    padding: 15px;
-    border-radius: 5px;
-    margin-bottom: 15px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.05);
-}
-
-.service h3 {
+  }
+  
+  .service-card {
+    background-color: #f4f4f4;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .service-card:hover {
+    transform: translateY(-5px);
+  }
+  
+  .service-card h3 {
+    margin-top: 0;
     font-size: 1.5rem;
-    margin: 0;
-    color: #e67e22;
-}
-
-.service p {
+    color: #003366;
+  }
+  
+  .service-card p {
     font-size: 1.1rem;
     color: #7f8c8d;
-}
-
-.pbs-industry-focus h2 {
+  }
+  
+  .testimonial-section {
+    margin: 40px 0;
+  }
+  
+  .testimonial-section h2 {
     font-size: 2rem;
-    margin-bottom: 15px;
-    color: #2980b9;
-}
-
-.pbs-industry-focus p {
+    color: #004d99;
+    margin-bottom: 20px;
+  }
+  
+  .testimonial-card {
+    background-color: #ffffff;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    margin-bottom: 20px;
     font-size: 1.1rem;
     color: #7f8c8d;
-}
-
-.pbs-appointment {
+  }
+  
+  .testimonial-card span {
+    display: block;
+    margin-top: 10px;
+    font-size: 1.1rem;
+    color: #004d99;
+    font-weight: bold;
+  }
+  
+  .contact-section {
     text-align: center;
     margin: 40px 0;
-}
-
-.appointment-btn {
-    background-color: #e67e22;
+  }
+  
+  .contact-section h2 {
+    font-size: 2rem;
+    color: #004d99;
+    margin-bottom: 20px;
+  }
+  
+  .contact-section p {
+    font-size: 1.1rem;
+    color: #7f8c8d;
+    margin-bottom: 20px;
+  }
+  
+  .contact-btn {
+    background-color: #004d99;
     color: white;
-    padding: 12px 25px;
+    padding: 12px 30px;
     font-size: 1.2rem;
     border: none;
-    border-radius: 5px;
+    border-radius: 8px;
     cursor: pointer;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-}
-
-.appointment-btn:hover {
-    background-color: #d35400;
-}
-
-.pbs-footer {
+    transition: background-color 0.3s ease;
+  }
+  
+  .contact-btn:hover {
+    background-color: #0066cc;
+  }
+  
+  .services-footer {
     text-align: center;
     margin: 40px 0;
     font-size: 1rem;
     color: #7f8c8d;
-}
-
-.pbs-footer p {
+  }
+  
+  .services-footer p {
     margin: 0;
-}
+  }
+  

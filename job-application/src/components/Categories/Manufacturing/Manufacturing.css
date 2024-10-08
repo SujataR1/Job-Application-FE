@@ -1,17 +1,18 @@
 /* Manufacturing.css */
 .manufacturing-container {
-    font-family: Arial, sans-serif;
+    font-family: 'Arial', sans-serif;
     margin: 0 auto;
     padding: 20px;
     max-width: 1200px;
+    color: #333;
 }
 
 .manufacturing-header {
     text-align: center;
-    background-color: #34495e;
-    padding: 20px;
+    background-color: #1a73e8;
+    padding: 40px;
     color: white;
-    border-radius: 5px;
+    border-radius: 10px;
 }
 
 .manufacturing-header h1 {
@@ -19,74 +20,103 @@
     font-size: 2.5rem;
 }
 
-.manufacturing-overview, .manufacturing-services, .manufacturing-appointments {
-    margin: 20px 0;
+.manufacturing-header p {
+    margin-top: 10px;
+    font-size: 1.2rem;
+    color: #e0e0e0;
 }
 
-.manufacturing-overview h2 {
+.manufacturing-overview, .manufacturing-services, .manufacturing-innovation, .manufacturing-sustainability, .manufacturing-contact {
+    margin: 40px 0;
+}
+
+.manufacturing-overview h2, .manufacturing-services h2, .manufacturing-innovation h2, .manufacturing-sustainability h2 {
     font-size: 2rem;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
+    color: #1a73e8;
 }
 
-.manufacturing-overview p {
+.manufacturing-overview p, .manufacturing-services p, .manufacturing-innovation p, .manufacturing-sustainability p {
     font-size: 1.1rem;
-    color: #7f8c8d;
+    color: #555;
+    line-height: 1.6;
 }
 
 .manufacturing-services {
-    background-color: #ecf0f1;
+    background-color: #f5f5f5;
     padding: 20px;
-    border-radius: 5px;
-}
-
-.manufacturing-services h2 {
-    font-size: 2rem;
-    margin-bottom: 10px;
+    border-radius: 10px;
 }
 
 .service {
-    background-color: #fff;
-    padding: 15px;
-    border-radius: 5px;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-    margin-bottom: 15px;
+    background-color: white;
+    margin: 20px 0;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .service h3 {
     margin: 0;
-    font-size: 1.5rem;
-    color: #2980b9;
+    font-size: 1.6rem;
+    color: #1a73e8;
 }
 
 .service p {
+    margin-top: 10px;
     font-size: 1.1rem;
-    color: #7f8c8d;
+    color: #777;
 }
 
-.manufacturing-appointments {
+.manufacturing-innovation, .manufacturing-sustainability {
+    background-color: #e3f2fd;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.manufacturing-innovation h2, .manufacturing-sustainability h2 {
+    font-size: 2rem;
+    color: #0d47a1;
+}
+
+.manufacturing-contact {
     text-align: center;
-    margin: 20px 0;
+    padding: 40px;
+    background-color: #ffeb3b;
+    border-radius: 10px;
 }
 
-.appointment-btn {
-    background-color: #2980b9;
+.manufacturing-contact h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.manufacturing-contact p {
+    font-size: 1.2rem;
+    color: #555;
+}
+
+.contact-btn {
+    background-color: #1a73e8;
     color: white;
-    padding: 10px 20px;
+    padding: 15px 30px;
     font-size: 1.2rem;
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    margin-top: 20px;
 }
 
-.appointment-btn:hover {
-    background-color: #3498db;
+.contact-btn:hover {
+    background-color: #0d47a1;
 }
 
 .manufacturing-footer {
     text-align: center;
     margin: 40px 0;
     font-size: 1rem;
-    color: #7f8c8d;
+    color: #777;
 }
 
 .manufacturing-footer p {
