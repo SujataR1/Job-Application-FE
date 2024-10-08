@@ -48,6 +48,7 @@ import ResumeDisplay from './components/Company/category/ResumeDisplay/ResumeDis
 import ResumeQualityScore from './components/Company/category/ResumeQualityScore/ResumeQualityScore';
 import ResumeSamples from './components/Company/category/ResumeSamples/ResumeSamples';
 import JobLetterSamples from './components/Company/category/JobLetterSamples/JobLetterSamples';
+import EmployerHome from './components/EmployerHome/Employerhome';
 import Aboutus from './components/Aboutus/Aboutus';
 import Overview from './components/Aboutus/Overview/Overview';
 import BasicPremiumPlans from './components/Company/category/BasicPremiumPlans/BasicPremiumPlans';
@@ -58,7 +59,6 @@ import SummonsNotices from './components/SummonsNotices/SummonsNotices';
 import Grievances from './components/Categories/Grievances/Grievances';
 import ReportIssue from './components/ReportIssue/ReportIssue';
 import Careers from './components/Careers/Careers';
-import EmployerHome from './components/EmployerHome/Employerhome';
 import Privacypolicy from './components/LegalInformation/PrivacyPolicy/Privacypolicy';
 import TermsandConditions from './components/LegalInformation/TermsConditions/TermsConsitions';
 import FraudAlert from './components/LegalInformation/FreaudAlert/FraudAlert';
@@ -69,6 +69,9 @@ import BankingandcapitalMarkets from './components/Industry/FinancialServices/Ba
 import Financial from './components/Industry/FinancialServices/FinancialServices/Financial';
 import Insurance from './components/Industry/FinancialServices/Insurance/Insurance';
 import InvestmentManagement from './components/Industry/FinancialServices/InvestmentManagement/Investment';
+import ProfessionalServices from './components/Industry/ProfessionalBusinessServices/ProfessionalBusiness';
+import HigherEducationPage from './components/Industry/PublicServices/HigherEducation/Education';
+import Nonprofit from './components/Industry/PublicServices/NonProfit/Profit';
 import Manufacturing from './components/Categories/Manufacturing/Manufacturing';
 import Healthcare from './components/Categories/HealthcareAndLifeSciences/Healthcare';
 import LifeScience from './components/Categories/HealthcareAndLifeSciences/LifeSciences';
@@ -78,6 +81,8 @@ import PublicSector from './components/Categories/PublicServices/PublicSector';
 import SpecialDistricts from './components/Categories/PublicServices/SpecialDistricts';
 import StateLocalGovernment from './components/Categories/PublicServices/StateLocalGovernment';
 import USFederalGovernment from './components/Categories/PublicServices/USFederalGovernment';
+
+
 
 
 const App = () => {
@@ -157,6 +162,9 @@ const App = () => {
                 <Route path="/industries-insurance" element={<Insurance />} />
                 <Route path="/industries-investment-management" element={<InvestmentManagement />} />
                 <Route path="/basic-premium-plans" element={<BasicPremiumPlans />} />
+                <Route path="/industries-business-services" element={<ProfessionalServices />} />
+                <Route path="/industries-higher-education" element={<HigherEducationPage />} />
+                <Route path="/industries-nonprofit" element={<Nonprofit/>} />
                 <Route path="/industries-manufacturing" element={<Manufacturing />} />
                 <Route path="/industries-healthcare" element={<Healthcare />} />
                 <Route path="/industries-life-sciences" element={<LifeScience />} />

@@ -1,0 +1,124 @@
+/* Nonprofit.css */
+
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f4f8; /* Soft background color */
+}
+
+.nonprofit-container {
+    padding: 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.nonprofit-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.nonprofit-header h1 {
+    font-size: 2.5rem;
+    color: #2c3e50;
+}
+
+.nonprofit-header p {
+    font-size: 1.2rem;
+    color: #34495e;
+}
+
+.nonprofit-content {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 40px;
+}
+
+.nonprofit-left {
+    flex: 1;
+    background-color: #ffffff;
+    border-radius: 10px;
+    padding: 30px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.nonprofit-left h2 {
+    font-size: 1.8rem;
+    color: #2c3e50;
+}
+
+.nonprofit-left p {
+    margin-bottom: 20px;
+    color: #555;
+}
+
+.view-demo {
+    background-color: #3498db;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 12px 20px;
+    cursor: pointer;
+    margin-bottom: 20px;
+    transition: background-color 0.3s;
+}
+
+.view-demo:hover {
+    background-color: #2980b9;
+}
+
+.nonprofit-right {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.nonprofit-image {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+/* Modal styles */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    background: white;
+    border-radius: 8px;
+    padding: 20px;
+    width: 600px; /* Adjust width as necessary */
+}
+
+.close-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .nonprofit-content {
+        flex-direction: column;
+    }
+
+    .nonprofit-left,
+    .nonprofit-right {
+        width: 100%;
+    }
+}
