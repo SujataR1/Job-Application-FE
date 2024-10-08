@@ -1,11 +1,77 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import './Navbar.css'; // Import the CSS file at the top of your Navbar.js component
+import './Navbar.css'; // Import the CSS file for styles
+
+const IndustriesModal = ({ isOpen, onClose }) => {
+    return (
+        isOpen && (
+            <div className="modal-overlay">
+                <div className="modal-content">
+                    <h2>Industries</h2>
+                    <button onClick={onClose} className="modal-close-button">Close</button>
+                    
+                    <h3>Consumer Industries</h3>
+                    <ul>
+                        <li><Link to="/industries-hospitality">Hospitality</Link></li>
+                        <li><Link to="/industries-retail">Retail</Link></li>
+                    </ul>
+                    
+                    <h3>Financial Services</h3>
+                    <ul>
+                        <li><Link to="/industries-banking">Banking and Capital Markets</Link></li>
+                        <li><Link to="/industries-financial-services">Financial Services</Link></li>
+                        <li><Link to="/industries-insurance">Insurance</Link></li>
+                        <li><Link to="/industries-investment-management">Investment Management</Link></li>
+                    </ul>
+                    
+                    <h3>Healthcare and Life Sciences</h3>
+                    <ul>
+                        <li><Link to="/industries-healthcare">Healthcare</Link></li>
+                        <li><Link to="/industries-life-sciences">Life Sciences</Link></li>
+                    </ul>
+                    
+                    <h3>Manufacturing</h3>
+                    <ul>
+                        <li><Link to="/industries-manufacturing">Manufacturing</Link></li>
+                    </ul>
+                    
+                    <h3>Professional & Business Services</h3>
+                    <ul>
+                        <li><Link to="/industries-business-services">Professional & Business Services</Link></li>
+                    </ul>
+
+                    <h3>Public Services</h3>
+                    <ul>
+                        <li><Link to="/industries-higher-education">Higher Education</Link></li>
+                        <li><Link to="/industries-nonprofit">Nonprofit</Link></li>
+                        <li><Link to="/industries-public-sector">Public Sector</Link></li>
+                        <li><Link to="/industries-special-districts">Special Districts</Link></li>
+                        <li><Link to="/industries-state-local-government">State & Local Government</Link></li>
+                        <li><Link to="/industries-us-federal-government">U.S. Federal Government</Link></li>
+                    </ul>
+                    
+                    <h3>Technology, Media and Communications</h3>
+                    <ul>
+                        <li><Link to="/industries-communications">Communications</Link></li>
+                        <li><Link to="/industries-media-entertainment">Media & Entertainment</Link></li>
+                        <li><Link to="/industries-technology">Technology</Link></li>
+                    </ul>
+                    
+                    <h3>All Industries</h3>
+                    <ul>
+                        <li><Link to="/industries-all">All Industries</Link></li>
+                    </ul>
+                </div>
+            </div>
+        )
+    );
+};
 
 const Navbar = () => {
     const [showJobsDropdown, setShowJobsDropdown] = useState(false);
     const [showCompaniesDropdown, setShowCompaniesDropdown] = useState(false);
     const [showServicesDropdown, setShowServicesDropdown] = useState(false);
+    const [showIndustriesModal, setShowIndustriesModal] = useState(false);
 
     const toggleJobsDropdown = () => {
         setShowJobsDropdown(!showJobsDropdown);
@@ -25,15 +91,17 @@ const Navbar = () => {
         setShowCompaniesDropdown(false);
     };
 
+    const toggleIndustriesModal = () => {
+        setShowIndustriesModal(!showIndustriesModal);
+    };
+
     return (
         <div className="navbar-background font-sans">
-            {/* Navbar */}
             <header className="navbar-header flex flex-col md:flex-row justify-between items-center p-5 bg-opacity-80 bg-gray-800">
-                {/* Header Left - Logo */}
                 <div className="navbar-logo text-3xl font-bold text-white">
-                    <span className="text-saffron">Job</span> {/* Saffron color */}
-                    <span className="text-white">Portal</span> {/* White color */}
-                    <span className="text-green">by Transmogrify</span> {/* Green color */}
+                    <span className="text-saffron">Job</span>
+                    <span className="text-white">Portal</span>
+                    <span className="text-green">by Transmogrify</span>
                 </div>
 
                 <nav className="navbar-nav flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-10 mx-auto">
@@ -190,6 +258,12 @@ const Navbar = () => {
                             </div>
                         )}
                     </div>
+
+                    {/* Industries Modal Trigger */}
+                    <button onClick={toggleIndustriesModal} className="text-white font-bold text-lg hover:text-teal-300">
+                        Industries
+                    </button>
+
                     {/* Make a Resume Link */}
                     <a
                         href="http://localhost:5173"
@@ -199,8 +273,6 @@ const Navbar = () => {
                     >
                         Make a Resume
                     </a>
-
-
                 </nav>
 
                 {/* Header Right - Buttons */}
@@ -217,6 +289,9 @@ const Navbar = () => {
                     </Link>
                 </div>
             </header>
+
+            {/* Industries Modal */}
+            <IndustriesModal isOpen={showIndustriesModal} onClose={toggleIndustriesModal} />
         </div>
     );
 };

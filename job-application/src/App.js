@@ -50,12 +50,30 @@ import ResumeSamples from './components/Company/category/ResumeSamples/ResumeSam
 import JobLetterSamples from './components/Company/category/JobLetterSamples/JobLetterSamples';
 import Aboutus from './components/Aboutus/Aboutus';
 import Overview from './components/Aboutus/Overview/Overview';
+import BasicPremiumPlans from './components/Company/category/BasicPremiumPlans/BasicPremiumPlans';
+import SiteMap from './components/Sitemap/Sitemap';
+import Credits from './components/Credits/Credits';
 import HelpCenter from './components/HelpCenter/HelpCenter';
 import SummonsNotices from './components/SummonsNotices/SummonsNotices';
 import Grievances from './components/Categories/Grievances/Grievances';
 import ReportIssue from './components/ReportIssue/ReportIssue';
 import Careers from './components/Careers/Careers';
 import EmployerHome from './components/EmployerHome/Employerhome';
+import Privacypolicy from './components/LegalInformation/PrivacyPolicy/Privacypolicy';
+import TermsandConditions from './components/LegalInformation/TermsConditions/TermsConsitions';
+import FraudAlert from './components/LegalInformation/FreaudAlert/FraudAlert';
+import TrustSafety from './components/LegalInformation/Trust&Safety/Trust';
+import Hospitality from './components/Industry/ConsumerIndustry/Hospitality/Hospitality';
+import Retail from './components/Industry/ConsumerIndustry/Retail/Retail';
+import BankingandcapitalMarkets from './components/Industry/FinancialServices/Bankingandcapitalmarkets/Banking';
+import Financial from './components/Industry/FinancialServices/FinancialServices/Financial';
+import Insurance from './components/Industry/FinancialServices/Insurance/Insurance';
+import InvestmentManagement from './components/Industry/FinancialServices/InvestmentManagement/Investment';
+import Manufacturing from './components/Categories/Manufacturing/Manufacturing';
+import Healthcare from './components/Categories/HealthcareAndLifeSciences/Healthcare';
+import LifeScience from './components/Categories/HealthcareAndLifeSciences/LifeSciences';
+
+
 const App = () => {
     return (
         <Router>
@@ -93,6 +111,10 @@ const App = () => {
                 <Route path="/fintech-companies" element={<FintechCompanies />} />
                 <Route path="/internet-companies" element={<InternetCompanies />} />
                 <Route path="/mnc-jobs" element={<MncJobs />} />
+                <Route path="/about-us" element={<Aboutus />} />
+                <Route path="/overview" element={<Overview />} />
+                <Route path="/careers" element={<Careers/>} />
+                <Route path="/employer-home" element={<EmployerHome/>} />
                 <Route path="/sponsored-companies" element={<SponsoredCompanies />} />
                 <Route path="/featured-companies" element={<FeaturedCompanies />} />
                 <Route path="/interview-questions" element={<InterviewQuestion />} />
@@ -106,6 +128,7 @@ const App = () => {
                 <Route path="/resume-quality-score" element={<ResumeQualityScore />} />
                 <Route path="/resume-samples" element={<ResumeSamples />} />
                 <Route path="/job-letter-samples" element={<JobLetterSamples />} />
+                {/* Add more routes here as needed */}
                 <Route path="/about-us" element={<Aboutus />} />
                 <Route path="/overview" element={<Overview />} />
                 <Route path="/help-center" element={<HelpCenter />} />
@@ -115,6 +138,23 @@ const App = () => {
                 <Route path="/careers" element={<Careers />} />
                 <Route path="/employer-home" element={<EmployerHome />} />
                 {/* Add more routes here as needed */}
+                <Route path="/sitemap" element={<SiteMap />} />
+                <Route path="/credits" element={<Credits />} />
+                <Route path="/privacy-policy" element={<Privacypolicy />} />
+                <Route path="/terms-conditions" element={<TermsandConditions />} />
+                <Route path="/fraud-alert" element={<FraudAlert />} />
+                <Route path="/trust-safety" element={<TrustSafety />} />
+                <Route path="/industries-hospitality" element={<Hospitality />} />
+                <Route path="/industries-retail" element={<Retail />} />
+                <Route path="/industries-banking" element={<BankingandcapitalMarkets />} />
+                <Route path="/industries-financial-services" element={<Financial />} />
+                <Route path="/industries-insurance" element={<Insurance />} />
+                <Route path="/industries-investment-management" element={<InvestmentManagement />} />
+                <Route path="/basic-premium-plans" element={<BasicPremiumPlans />} />
+                <Route path="/industries-manufacturing" element={<Manufacturing />} />
+                <Route path="/industries-healthcare" element={<Healthcare />} />
+                <Route path="/industries-life-sciences" element={<LifeScience />} />
+
             </Routes>
             <Footer />
         </Router>

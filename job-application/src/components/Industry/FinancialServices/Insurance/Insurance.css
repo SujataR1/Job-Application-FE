@@ -1,0 +1,280 @@
+
+body {
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f0f4f8; /* Soft background color */
+}
+
+.insurance-container {
+  padding: 40px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Hero Section */
+.hero-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 40px;
+}
+
+.content {
+  flex: 1;
+  margin-right: 20px;
+  display: flex;
+  flex-direction: column; /* Ensure vertical alignment */
+}
+
+.content h1 {
+  font-size: 2.5rem;
+  color: #2c3e50;
+  margin-bottom: 20px;
+}
+
+.content p {
+  margin: 20px 0;
+  font-size: 1.2rem;
+  color: #34495e;
+}
+
+.button-container {
+  display: flex;
+  gap: 10px; /* Space between buttons */
+}
+
+.demo-button, .ebook-button {
+  background-color: #2980b9;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-size: 1rem;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+.ebook-button {
+  background-color: #27ae60;
+}
+
+.demo-button:hover, .ebook-button:hover {
+  background-color: #1f6a8a; /* Darker shade on hover */
+}
+
+.image img {
+  max-width: 100%;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Section Styles */
+.industry-section, .success-section, .features-section, .customer-success, .resources, .contact-section {
+  margin-bottom: 40px;
+  padding: 20px;
+  background: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+  color: #2980b9;
+  margin-bottom: 20px;
+}
+
+/* Industry Section */
+.industry {
+  margin-bottom: 20px;
+}
+
+.industry h3 {
+  font-size: 1.5rem;
+  color: #2c3e50;
+}
+
+.industry p {
+  margin: 10px 0;
+  color: #34495e;
+}
+
+/* Success Section */
+.companies {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.company {
+  flex: 1 1 22%;
+  text-align: center;
+  margin: 10px;
+  padding: 20px;
+  border: 1px solid #ecf0f1;
+  border-radius: 8px;
+  transition: transform 0.2s ease;
+}
+
+.company:hover {
+  transform: scale(1.05);
+}
+
+/* Features Section */
+.features-section {
+  display: flex;
+  flex-direction: column;
+}
+
+.features-box {
+  background: #ecf0f1;
+  padding: 20px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+
+/* Customer Success */
+.success-stories {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.story {
+  flex: 1 1 22%;
+  text-align: center;
+  margin: 10px;
+  padding: 20px;
+  border: 1px solid #ecf0f1;
+  border-radius: 8px;
+  transition: transform 0.2s ease;
+}
+
+.story img {
+  max-width: 100px; /* Set a max-width for logos */
+}
+
+.story:hover {
+  transform: scale(1.05);
+}
+
+/* Resources Section */
+
+
+/* Contact Section */
+.contact-button {
+  background-color: #2980b9;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-size: 1rem;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+.contact-button:hover {
+  background-color: #1f6a8a; /* Darker shade on hover */
+}
+
+
+label {
+  margin-bottom: 10px;
+}
+
+input {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+button[type="submit"] {
+  background-color: #27ae60;
+  color: white;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+button[type="submit"]:hover {
+  background-color: #219150; /* Darker shade on hover */
+}
+/* Resources Section */
+.resources {
+  display: flex;
+  flex-direction: column; /* Stack heading on top */
+  margin-bottom: 40px;
+  padding: 20px;
+  background: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.resources h2 {
+  color: #2980b9;
+  margin-bottom: 20px;
+}
+
+.resources ul {
+  display: flex; /* Change to flex for side-by-side layout */
+  flex-wrap: wrap; /* Allow wrapping to the next line */
+  list-style: none;
+  padding: 0;
+  gap: 20px; /* Space between items */
+}
+
+.resources li {
+  flex: 0 0 0%; /* Adjust width of each resource button */
+  min-width: 200px; /* Minimum width to maintain layout */
+}
+
+.resources button {
+  width: 50%; /* Make buttons take full width of list item */
+  padding: 10px;
+  background-color: #1fca83;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.resources button:hover {
+  background-color: #1f8a43; /* Darker shade on hover */
+}
+ .learn-more-button, .see-story-button, .watch-video-button, .contact-button {
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.learn-more-button {
+  background-color: #007BFF; /* Blue */
+  color: white;
+}
+
+.learn-more-button:hover {
+  background-color: #0056b3; /* Darker shade on hover */
+}
+
+.see-story-button {
+  background-color: #28a745; /* Green */
+  color: white;
+}
+
+.see-story-button:hover {
+  background-color: #218838; /* Darker shade on hover */
+}
+
+.watch-video-button {
+  background-color: #ffc107; /* Yellow */
+  color: black;
+}
+
+.watch-video-button:hover {
+  background-color: #e0a800; /* Darker shade on hover */
+}

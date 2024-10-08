@@ -1,0 +1,184 @@
+.financial-container {
+    padding: 20px;
+}
+
+.financial-header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+
+
+.industries-served {
+    display: flex;
+    justify-content: space-between; /* Space out the items */
+    flex-wrap: wrap; /* Allow items to wrap on smaller screens */
+    margin-bottom: 40px;
+}
+
+.industry-box {
+    border: 1px solid #ddd;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+    flex: 1; /* Allow boxes to grow and shrink */
+    min-width: 280px; /* Minimum width for responsive design */
+    margin: 10px; /* Add some space between boxes */
+}
+
+.industry-image {
+    width: 100%; /* Adjust width as needed */
+    height: auto; /* Maintain aspect ratio */
+}
+
+.learn-more {
+    margin-top: 10px;
+    background-color: #007BFF; /* Button color */
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 10px 15px;
+    cursor: pointer;
+}
+
+.marketplace-container {
+    display: flex;
+    margin-top: 20px;
+}
+
+.marketplace-left {
+    flex: 1;
+    padding-right: 20px;
+}
+
+.marketplace-right {
+    flex: 1;
+}
+
+.marketplace-image {
+    width: 100%;
+    height: auto; /* Maintain aspect ratio */
+}
+
+
+
+.talk-to-sales {
+    margin-top: 20px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 10px 15px;
+    cursor: pointer;
+}
+
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-content {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    width: 500px; /* Set width as needed */
+}
+
+.close-button {
+    background: transparent;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+
+.marketplace-container {
+    display: flex;
+    margin-top: 20px;
+}
+
+.marketplace-left {
+    flex: 1;
+    padding-right: 20px;
+}
+
+.marketplace-right {
+    flex: 1;
+}
+
+.marketplace-image {
+    width: 100%;
+    height: auto; /* Maintain aspect ratio */
+}
+
+
+
+.talk-to-sales {
+    margin-top: 20px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 10px 15px;
+    cursor: pointer;
+}
+
+.use-case-container {
+    display: flex;
+    justify-content: space-between; /* Space out the items */
+    flex-wrap: wrap; /* Allow items to wrap on smaller screens */
+    gap: 20px; /* Space between boxes */
+    margin-bottom: 40px; /* Space below the section */
+}
+
+.use-case-box {
+    border: 1px solid #ddd;
+    padding: 15px;
+    border-radius: 8px;
+    text-align: center;
+    flex: 1 1 calc(24% - 20px); /* Four boxes in a row with space for gap */
+    min-width: 220px; /* Minimum width for responsive design */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Optional: add shadow for better look */
+}
+
+.use-case-icon {
+    font-size: 30px; /* Adjust icon size as needed */
+    margin-bottom: 10px; /* Space below the icon */
+}
+.financial-intro {
+    display: flex; /* Use flexbox for layout */
+    align-items: center; /* Vertically center items */
+    margin: 20px 0; /* Margin for the section */
+}
+
+.intro-content {
+    display: flex; /* Nested flexbox for text and image */
+    width: 100%; /* Full width of the parent */
+}
+
+.intro-text {
+    flex: 1; /* Take up available space */
+    padding-right: 20px; /* Space between text and image */
+}
+
+.intro-image-container {
+    position: relative; /* Enable positioning for the button */
+    flex: 0 0 300px; /* Fixed width for the image container */
+    max-width: 100%; /* Ensure it doesn't overflow */
+}
+
+.intro-image {
+    width: 100%; /* Image takes full width of its container */
+    height: auto; /* Maintain aspect ratio */
+}
+

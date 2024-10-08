@@ -1,0 +1,33 @@
+.privacy-policy-container {
+    padding: 20px;
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9; /* Light background color */
+    color: #333; /* Dark text color for better readability */
+    max-width: 800px; /* Limit width for better readability */
+    margin: 20px auto; /* Center the container */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+.privacy-policy-title {
+    text-align: center;
+    color: #0056b3; /* Dark blue color for title */
+}
+
+.effective-date {
+    font-style: italic;
+    margin-bottom: 20px; /* Space below the effective date */
+}
+
+h2 {
+    color: #0056b3; /* Dark blue for section titles */
+    margin-top: 20px; /* Space above section titles */
+}
+
+ul {
+    margin: 10px 0 10px 20px; /* Space around list items */
+}
+
+li {
+    margin-bottom: 10px; /* Space between list items */
+}
