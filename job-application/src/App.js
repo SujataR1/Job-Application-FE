@@ -79,6 +79,7 @@ import ProfessionalBusinessServices from './components/Categories/Professional&B
 import HigherEducation from './components/Categories/PublicServices/HigherEducation';
 import PublicSector from './components/Categories/PublicServices/PublicSector';
 import SpecialDistricts from './components/Categories/PublicServices/SpecialDistricts';
+import Communications from './components/Industry/TechnologyMediaComunications/Communication/Communication';
 
 
 
@@ -171,6 +172,8 @@ const App = () => {
                 <Route path="/industries-nonprofit" element={<Nonprofit />} />
                 <Route path="/industries-public-sector" element={<PublicSector />} />
                 <Route path="/industries-special-districts" element={<SpecialDistricts />} />
+                <Route path="/industries-communications" element={<Communications />} />
+
 
             </Routes>
             <Footer />

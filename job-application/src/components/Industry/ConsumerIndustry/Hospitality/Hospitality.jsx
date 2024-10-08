@@ -151,7 +151,7 @@ const HospitalityPage = () => {
                 </div>
 
                 <h3>Ready to talk?</h3>
-                <button className="talk-to-sales">Get in touch</button>
+                <button className="talk-to-sales">Get in touch </button>
 
                 {/* Modal for eBook */}
                 {showModal && (
