@@ -153,7 +153,7 @@ const App = () => {
                 <Route path="/basic-premium-plans" element={<BasicPremiumPlans />} />
                 <Route path="/industries-business-services" element={<ProfessionalServices />} />
                 <Route path="/industries-higher-education" element={<HigherEducationPage />} />
-                <Route path="/industries-nonprofit" element={<HigherEducationPage />} />
+                <Route path="/industries-nonprofit" element={<Nonprofit/>} />
 
             </Routes>
             <Footer />
