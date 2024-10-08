@@ -69,6 +69,12 @@ import BankingandcapitalMarkets from './components/Industry/FinancialServices/Ba
 import Financial from './components/Industry/FinancialServices/FinancialServices/Financial';
 import Insurance from './components/Industry/FinancialServices/Insurance/Insurance';
 import InvestmentManagement from './components/Industry/FinancialServices/InvestmentManagement/Investment';
+import ProfessionalServices from './components/Industry/ProfessionalBusinessServices/ProfessionalBusiness';
+
+import HigherEducationPage from './components/Industry/PublicServices/HigherEducation/Education';
+import Nonprofit from './components/Industry/PublicServices/NonProfit/Profit';
+
+
 
 
 const App = () => {
@@ -144,6 +150,10 @@ const App = () => {
                 <Route path="/industries-financial-services" element={<Financial />} />
                 <Route path="/industries-insurance" element={<Insurance />} />
                 <Route path="/industries-investment-management" element={<InvestmentManagement />} />
+                <Route path="/basic-premium-plans" element={<BasicPremiumPlans />} />
+                <Route path="/industries-business-services" element={<ProfessionalServices />} />
+                <Route path="/industries-higher-education" element={<HigherEducationPage />} />
+                <Route path="/industries-nonprofit" element={<HigherEducationPage />} />
 
             </Routes>
             <Footer />
