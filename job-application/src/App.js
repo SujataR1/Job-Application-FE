@@ -72,6 +72,7 @@ import InvestmentManagement from './components/Industry/FinancialServices/Invest
 import Manufacturing from './components/Categories/Manufacturing/Manufacturing';
 import Healthcare from './components/Categories/HealthcareAndLifeSciences/Healthcare';
 import LifeScience from './components/Categories/HealthcareAndLifeSciences/LifeSciences';
+import ProfessionalBusinessServices from './components/Categories/Professional&BusinessServices/Professional&BusinessServices';
 
 
 const App = () => {
@@ -154,6 +155,7 @@ const App = () => {
                 <Route path="/industries-manufacturing" element={<Manufacturing />} />
                 <Route path="/industries-healthcare" element={<Healthcare />} />
                 <Route path="/industries-life-sciences" element={<LifeScience />} />
+                <Route path="/industries-business-services" element={<ProfessionalBusinessServices /> } />
 
             </Routes>
             <Footer />
