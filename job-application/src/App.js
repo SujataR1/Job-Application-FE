@@ -77,6 +77,8 @@ import HigherEducation from './components/Categories/PublicServices/HigherEducat
 import Nonprofit from './components/Categories/PublicServices/Nonprofit';
 import PublicSector from './components/Categories/PublicServices/PublicSector';
 import SpecialDistricts from './components/Categories/PublicServices/SpecialDistricts';
+import StateLocalGovernment from './components/Categories/PublicServices/StateLocalGovernment';
+import USFederalGovernment from './components/Categories/PublicServices/USFederalGovernment';
 
 
 const App = () => {
@@ -164,6 +166,8 @@ const App = () => {
                 <Route path="/industries-nonprofit" element={<Nonprofit />} />
                 <Route path="/industries-public-sector" element={<PublicSector />} />
                 <Route path="/industries-special-districts" element={<SpecialDistricts />} />
+                <Route path="/industries-state-local-government" element={<StateLocalGovernment />} />
+                <Route path="/industries-us-federal-government" element ={<USFederalGovernment />} />
 
             </Routes>
             <Footer />

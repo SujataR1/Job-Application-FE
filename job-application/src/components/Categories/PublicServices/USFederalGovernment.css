@@ -1,0 +1,117 @@
+/* USFederalGovernment.css */
+.usgov-container {
+    font-family: 'Arial', sans-serif;
+    margin: 0 auto;
+    padding: 20px;
+    max-width: 1200px;
+    color: #2c3e50;
+}
+
+.usgov-header {
+    text-align: center;
+    background-color: #003366;
+    padding: 20px;
+    color: white;
+    border-radius: 5px;
+}
+
+.usgov-header h1 {
+    margin: 0;
+    font-size: 2.5rem;
+}
+
+.usgov-overview, .usgov-services, .usgov-state-local, .usgov-research, .usgov-appointments {
+    margin: 20px 0;
+}
+
+.usgov-overview h2 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+}
+
+.usgov-overview p {
+    font-size: 1.1rem;
+    color: #7f8c8d;
+}
+
+.usgov-services {
+    background-color: #f1f1f1;
+    padding: 20px;
+    border-radius: 5px;
+}
+
+.usgov-services h2 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+}
+
+.service {
+    background-color: #fff;
+    padding: 15px;
+    border-radius: 5px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    margin-bottom: 15px;
+}
+
+.service h3 {
+    margin: 0;
+    font-size: 1.5rem;
+    color: #2980b9;
+}
+
+.service p {
+    font-size: 1.1rem;
+    color: #7f8c8d;
+}
+
+.usgov-state-local {
+    margin-top: 40px;
+    background-color: #ecf0f1;
+    padding: 20px;
+    border-radius: 5px;
+}
+
+.usgov-state-local h2 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+}
+
+.usgov-research h2 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+}
+
+.usgov-research p {
+    font-size: 1.1rem;
+    color: #7f8c8d;
+}
+
+.usgov-appointments {
+    text-align: center;
+    margin: 20px 0;
+}
+
+.appointment-btn {
+    background-color: #2980b9;
+    color: white;
+    padding: 10px 20px;
+    font-size: 1.2rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.appointment-btn:hover {
+    background-color: #3498db;
+}
+
+.usgov-footer {
+    text-align: center;
+    margin: 40px 0;
+    font-size: 1rem;
+    color: #7f8c8d;
+}
+
+.usgov-footer p {
+    margin: 0;
+}
