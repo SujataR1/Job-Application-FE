@@ -1,0 +1,43 @@
+/* src/components/Credits.css */
+.credits {
+    padding: 20px;
+    max-width: 800px;
+    margin: auto;
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+}
+
+.credits h1 {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.credits-section {
+    margin-bottom: 20px;
+}
+
+.credits-section h2 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+    border-bottom: 2px solid #007bff;
+    padding-bottom: 5px;
+}
+
+.credits-section ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.credits-section ul li {
+    margin: 5px 0;
+}
+
+.credits-section a {
+    text-decoration: none;
+    color: #007bff;
+}
+
+.credits-section a:hover {
+    color: #0056b3;
+    text-decoration: underline;
+}
