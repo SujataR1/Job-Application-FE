@@ -79,6 +79,10 @@ import ProfessionalBusinessServices from './components/Categories/Professional&B
 import HigherEducation from './components/Categories/PublicServices/HigherEducation';
 import PublicSector from './components/Categories/PublicServices/PublicSector';
 import SpecialDistricts from './components/Categories/PublicServices/SpecialDistricts';
+import StateLocalGovernment from './components/Categories/PublicServices/StateLocalGovernment';
+import USFederalGovernment from './components/Categories/PublicServices/USFederalGovernment';
+import Technology from './components/Categories/TechnologyMediaandCommunications/Technology';
+import AllIndustries from './components/Categories/AllIndustries/AllIndustries';
 
 
 
@@ -168,9 +172,12 @@ const App = () => {
                 <Route path="/industries-life-sciences" element={<LifeScience />} />
                 <Route path="/industries-business-services" element={<ProfessionalBusinessServices /> } />
                 <Route path="/industries-higher-education" element={<HigherEducation />} />
-                <Route path="/industries-nonprofit" element={<Nonprofit />} />
                 <Route path="/industries-public-sector" element={<PublicSector />} />
                 <Route path="/industries-special-districts" element={<SpecialDistricts />} />
+                <Route path="/industries-state-local-government" element={<StateLocalGovernment />} />
+                <Route path="/industries-us-federal-government" element ={<USFederalGovernment />} />
+                <Route path="/industries-technology" element={<Technology />} />
+                <Route path="/industries-all" element={<AllIndustries />} />
 
             </Routes>
             <Footer />

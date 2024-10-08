@@ -1,18 +1,18 @@
 /* SpecialDistricts.css */
 .special-districts-container {
-    font-family: 'Helvetica', sans-serif;
+    font-family: 'Roboto', sans-serif;
     margin: 0 auto;
     padding: 20px;
     max-width: 1200px;
+    color: #2c3e50;
 }
 
 .special-districts-header {
     text-align: center;
-    background-color: #34495e;
-    padding: 20px;
+    background-color: #16a085;
+    padding: 30px;
     color: white;
-    border-radius: 8px;
-    margin-bottom: 40px;
+    border-radius: 5px;
 }
 
 .special-districts-header h1 {
@@ -20,68 +20,71 @@
     font-size: 2.8rem;
 }
 
-.special-districts-overview, .special-districts-services, .special-districts-research, .special-districts-contact {
-    margin: 20px 0;
+.special-districts-header p {
+    font-size: 1.2rem;
+    color: #ecf0f1;
+    margin-top: 10px;
+}
+
+.special-districts-overview, .special-districts-services, .special-districts-initiatives, .special-districts-contact {
+    margin: 30px 0;
 }
 
 .special-districts-overview h2 {
-    font-size: 2rem;
-    margin-bottom: 15px;
-    color: #2980b9;
+    font-size: 2.2rem;
+    margin-bottom: 10px;
 }
 
 .special-districts-overview p {
-    font-size: 1.15rem;
+    font-size: 1.1rem;
     color: #7f8c8d;
 }
 
 .special-districts-services {
-    padding: 30px;
-    background-color: #f1f1f1;
-    border-radius: 8px;
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 10px;
 }
 
 .special-districts-services h2 {
-    font-size: 2rem;
+    font-size: 2.2rem;
     margin-bottom: 20px;
-    color: #16a085;
 }
 
 .service {
-    background-color: white;
+    background-color: #fff;
     padding: 20px;
-    border-radius: 8px;
+    border-radius: 10px;
     margin-bottom: 20px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    transition: all 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 }
 
 .service h3 {
     margin: 0;
-    font-size: 1.7rem;
-    color: #e67e22;
+    font-size: 1.8rem;
+    color: #16a085;
 }
 
 .service p {
-    font-size: 1.15rem;
+    font-size: 1.1rem;
     color: #7f8c8d;
     margin-top: 10px;
 }
 
-.service:hover {
-    transform: scale(1.03);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+.special-districts-initiatives h2 {
+    font-size: 2.2rem;
+    margin-bottom: 20px;
 }
 
-.special-districts-research h2 {
-    font-size: 2rem;
+.special-districts-initiatives ul {
+    list-style: none;
+    padding: 0;
+}
+
+.special-districts-initiatives ul li {
+    font-size: 1.2rem;
     margin-bottom: 15px;
-    color: #c0392b;
-}
-
-.special-districts-research p {
-    font-size: 1.15rem;
-    color: #7f8c8d;
+    color: #34495e;
 }
 
 .special-districts-contact {
@@ -90,23 +93,23 @@
 }
 
 .contact-btn {
-    background-color: #e67e22;
+    background-color: #16a085;
     color: white;
-    padding: 12px 30px;
+    padding: 12px 25px;
     font-size: 1.2rem;
     border: none;
-    border-radius: 25px;
+    border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s ease;
 }
 
 .contact-btn:hover {
-    background-color: #d35400;
+    background-color: #1abc9c;
 }
 
 .special-districts-footer {
     text-align: center;
-    margin-top: 60px;
+    margin: 40px 0;
     font-size: 1rem;
     color: #7f8c8d;
 }
