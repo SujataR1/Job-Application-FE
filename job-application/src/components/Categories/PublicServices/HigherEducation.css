@@ -1,0 +1,102 @@
+/* HigherEducation.css */
+.highereducation-container {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0 auto;
+    padding: 20px;
+    max-width: 1200px;
+}
+
+.highereducation-header {
+    text-align: center;
+    background-color: #003366;
+    color: white;
+    padding: 40px;
+    border-radius: 8px;
+}
+
+.highereducation-header h1 {
+    margin: 0;
+    font-size: 3rem;
+    font-weight: 600;
+}
+
+.highereducation-overview,
+.highereducation-programs,
+.highereducation-research,
+.highereducation-admissions {
+    margin: 40px 0;
+}
+
+.highereducation-overview h2,
+.highereducation-programs h2,
+.highereducation-research h2,
+.highereducation-admissions h2 {
+    font-size: 2rem;
+    color: #003366;
+    margin-bottom: 15px;
+}
+
+.highereducation-overview p,
+.highereducation-research p,
+.highereducation-admissions p {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    color: #555;
+}
+
+.highereducation-programs {
+    background-color: #f4f4f4;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.program {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.program h3 {
+    font-size: 1.5rem;
+    color: #003366;
+    margin: 0 0 10px;
+}
+
+.program p {
+    font-size: 1.1rem;
+    color: #555;
+}
+
+.highereducation-admissions {
+    text-align: center;
+    padding: 40px;
+}
+
+.admissions-btn {
+    background-color: #003366;
+    color: white;
+    padding: 15px 30px;
+    font-size: 1.1rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.admissions-btn:hover {
+    background-color: #005bb5;
+}
+
+.highereducation-footer {
+    text-align: center;
+    margin: 40px 0;
+    font-size: 1rem;
+    color: #777;
+}
+
+.highereducation-footer p {
+    margin: 0;
+}

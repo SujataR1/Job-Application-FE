@@ -21,7 +21,7 @@ const ReportIssue = () => {
       <div className="issue-section">
         <img src={issueReportImage} alt="Report Issue" className="issue-image" />
         <div className="issue-text">
-          <h2>Welcome to Our Issue Reporting Portal</h2>
+          <h2>Welcome to our Issue Reporting Portal</h2>
           <p>
             We take your concerns seriously. Use the form below to report any
             issues you might be facing with our services. Our team is ready to help you.

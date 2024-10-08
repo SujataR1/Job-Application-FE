@@ -1,0 +1,111 @@
+/* PublicSector.css */
+.publicsector-container {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0 auto;
+    padding: 20px;
+    max-width: 1200px;
+    background-color: #f0f4f8;
+}
+
+.publicsector-header {
+    text-align: center;
+    background-color: #007bff;
+    padding: 20px;
+    color: white;
+    border-radius: 8px;
+}
+
+.publicsector-header h1 {
+    margin: 0;
+    font-size: 2.8rem;
+    font-weight: 600;
+}
+
+.publicsector-overview, .publicsector-services, .publicsector-innovation, .publicsector-appointments {
+    margin: 20px 0;
+}
+
+.publicsector-overview h2 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+    color: #007bff;
+}
+
+.publicsector-overview p {
+    font-size: 1.1rem;
+    color: #555;
+}
+
+.publicsector-services {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.publicsector-services h2 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+    color: #007bff;
+}
+
+.service {
+    background-color: #e9f7fe;
+    padding: 15px;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.service h3 {
+    margin: 0;
+    font-size: 1.5rem;
+    color: #0056b3;
+}
+
+.service p {
+    font-size: 1.1rem;
+    color: #555;
+}
+
+.publicsector-innovation h2 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+    color: #007bff;
+}
+
+.publicsector-innovation p {
+    font-size: 1.1rem;
+    color: #555;
+}
+
+.publicsector-appointments {
+    text-align: center;
+    margin: 20px 0;
+}
+
+.appointment-btn {
+    background-color: #28a745;
+    color: white;
+    padding: 10px 25px;
+    font-size: 1.2rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.appointment-btn:hover {
+    background-color: #218838;
+}
+
+.publicsector-footer {
+    text-align: center;
+    margin: 40px 0;
+    font-size: 1rem;
+    color: #555;
+}
+
+.publicsector-footer p {
+    margin: 0;
+}
