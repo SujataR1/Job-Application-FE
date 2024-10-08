@@ -48,7 +48,6 @@ import ResumeDisplay from './components/Company/category/ResumeDisplay/ResumeDis
 import ResumeQualityScore from './components/Company/category/ResumeQualityScore/ResumeQualityScore';
 import ResumeSamples from './components/Company/category/ResumeSamples/ResumeSamples';
 import JobLetterSamples from './components/Company/category/JobLetterSamples/JobLetterSamples';
-import Careers from './components/Careers/Careers';
 import EmployerHome from './components/EmployerHome/Employerhome';
 import Aboutus from './components/Aboutus/Aboutus';
 import Overview from './components/Aboutus/Overview/Overview';
@@ -59,6 +58,7 @@ import HelpCenter from './components/HelpCenter/HelpCenter';
 import SummonsNotices from './components/SummonsNotices/SummonsNotices';
 import Grievances from './components/Categories/Grievances/Grievances';
 import ReportIssue from './components/ReportIssue/ReportIssue';
+import Careers from './components/Careers/Careers';
 import Privacypolicy from './components/LegalInformation/PrivacyPolicy/Privacypolicy';
 import TermsandConditions from './components/LegalInformation/TermsConditions/TermsConsitions';
 import FraudAlert from './components/LegalInformation/FreaudAlert/FraudAlert';
@@ -70,9 +70,15 @@ import Financial from './components/Industry/FinancialServices/FinancialServices
 import Insurance from './components/Industry/FinancialServices/Insurance/Insurance';
 import InvestmentManagement from './components/Industry/FinancialServices/InvestmentManagement/Investment';
 import ProfessionalServices from './components/Industry/ProfessionalBusinessServices/ProfessionalBusiness';
-
 import HigherEducationPage from './components/Industry/PublicServices/HigherEducation/Education';
 import Nonprofit from './components/Industry/PublicServices/NonProfit/Profit';
+import Manufacturing from './components/Categories/Manufacturing/Manufacturing';
+import Healthcare from './components/Categories/HealthcareAndLifeSciences/Healthcare';
+import LifeScience from './components/Categories/HealthcareAndLifeSciences/LifeSciences';
+import ProfessionalBusinessServices from './components/Categories/Professional&BusinessServices/Professional&BusinessServices';
+import HigherEducation from './components/Categories/PublicServices/HigherEducation';
+import PublicSector from './components/Categories/PublicServices/PublicSector';
+import SpecialDistricts from './components/Categories/PublicServices/SpecialDistricts';
 
 
 
@@ -138,6 +144,9 @@ const App = () => {
                 <Route path="/summons-notices" element={<SummonsNotices />} />
                 <Route path="/grievances" element={<Grievances />} />
                 <Route path="/report-issue" element={<ReportIssue />} />
+                <Route path="/careers" element={<Careers />} />
+                <Route path="/employer-home" element={<EmployerHome />} />
+                {/* Add more routes here as needed */}
                 <Route path="/sitemap" element={<SiteMap />} />
                 <Route path="/credits" element={<Credits />} />
                 <Route path="/privacy-policy" element={<Privacypolicy />} />
@@ -154,6 +163,14 @@ const App = () => {
                 <Route path="/industries-business-services" element={<ProfessionalServices />} />
                 <Route path="/industries-higher-education" element={<HigherEducationPage />} />
                 <Route path="/industries-nonprofit" element={<Nonprofit/>} />
+                <Route path="/industries-manufacturing" element={<Manufacturing />} />
+                <Route path="/industries-healthcare" element={<Healthcare />} />
+                <Route path="/industries-life-sciences" element={<LifeScience />} />
+                <Route path="/industries-business-services" element={<ProfessionalBusinessServices /> } />
+                <Route path="/industries-higher-education" element={<HigherEducation />} />
+                <Route path="/industries-nonprofit" element={<Nonprofit />} />
+                <Route path="/industries-public-sector" element={<PublicSector />} />
+                <Route path="/industries-special-districts" element={<SpecialDistricts />} />
 
             </Routes>
             <Footer />

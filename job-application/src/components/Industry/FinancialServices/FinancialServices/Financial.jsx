@@ -20,27 +20,25 @@ const FinancialPage = () => {
 
     return (
         <div className="financial-container">
-        <header className="financial-header">
-            <h1>Financial Services</h1>
-            <p>Navigate the new normal with ease.</p>
-        </header>
-    
-        <section className="financial-intro">
-            <div className="intro-content">
-                <div className="intro-text">
-                    <p>
-                        Market shifts, changing customer expectations, and a new wave of FinTech disruption require you to act fast. 
-                        Workday empowers you to accelerate your digital transformation and gain the agility to meet change head-on.
-                    </p>
+            <header className="financial-header">
+                <h1>Financial Services</h1>
+                <p>Navigate the new normal with ease.</p>
+            </header>
+            
+            <section className="financial-intro">
+                <div className="intro-content">
+                    <div className="intro-text">
+                        <p>
+                            Market shifts, changing customer expectations, and a new wave of FinTech disruption require you to act fast. 
+                            Workday empowers you to accelerate your digital transformation and gain the agility to meet change head-on.
+                        </p>
+                    </div>
+                    <div className="intro-image-container">
+                        <img src={Finance} alt="Financial Services" className="intro-image" />
+                        <button className="view-demo" onClick={handleReadEbookClick}>Watch the Video</button>
+                    </div>
                 </div>
-                <div className="intro-image-container">
-                    <img src={Finance} alt="Financial Services" className="intro-image" />
-                    <button className="view-demo">Watch the Video</button>
-                </div>
-            </div>
-        </section>
-    
-    
+            </section>
     
             <h3>INDUSTRIES SERVED</h3>
             <div className="industries-served">
