@@ -82,6 +82,7 @@ import SpecialDistricts from './components/Categories/PublicServices/SpecialDist
 import StateLocalGovernment from './components/Categories/PublicServices/StateLocalGovernment';
 import USFederalGovernment from './components/Categories/PublicServices/USFederalGovernment';
 import Technology from './components/Categories/TechnologyMediaandCommunications/Technology';
+import AllIndustries from './components/Categories/AllIndustries/AllIndustries';
 
 
 
@@ -176,6 +177,7 @@ const App = () => {
                 <Route path="/industries-state-local-government" element={<StateLocalGovernment />} />
                 <Route path="/industries-us-federal-government" element ={<USFederalGovernment />} />
                 <Route path="/industries-technology" element={<Technology />} />
+                <Route path="/industries-all" element={<AllIndustries />} />
 
             </Routes>
             <Footer />
