@@ -1,104 +1,145 @@
 /* LifeScience.css */
 .lifescience-container {
-    font-family: Arial, sans-serif;
+    font-family: 'Roboto', sans-serif;
     margin: 0 auto;
     padding: 20px;
     max-width: 1200px;
+    color: #2c3e50;
+    background-color: #f4f4f9;
 }
 
 .lifescience-header {
     text-align: center;
-    background-color: #2c3e50;
-    padding: 20px;
+    background-color: #1e88e5;
+    padding: 50px;
     color: white;
-    border-radius: 5px;
+    border-radius: 8px;
+    margin-bottom: 40px;
 }
 
 .lifescience-header h1 {
     margin: 0;
-    font-size: 2.5rem;
+    font-size: 3rem;
+    font-weight: 700;
 }
 
-.lifescience-overview, .lifescience-services, .lifescience-research, .lifescience-appointments {
-    margin: 20px 0;
+.lifescience-header p {
+    font-size: 1.2rem;
+    margin-top: 10px;
+    color: #ecf0f1;
+}
+
+.lifescience-overview {
+    margin-bottom: 40px;
+    text-align: center;
 }
 
 .lifescience-overview h2 {
     font-size: 2rem;
     margin-bottom: 10px;
+    color: #34495e;
 }
 
 .lifescience-overview p {
-    font-size: 1.1rem;
-    color: #7f8c8d;
-}
-
-.lifescience-services {
-    background-color: #ecf0f1;
-    padding: 20px;
-    border-radius: 5px;
-}
-
-.lifescience-services h2 {
-    font-size: 2rem;
-    margin-bottom: 10px;
-}
-
-.service {
-    background-color: #fff;
-    padding: 15px;
-    border-radius: 5px;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-    margin-bottom: 15px;
-}
-
-.service h3 {
-    margin: 0;
-    font-size: 1.5rem;
-    color: #27ae60;
-}
-
-.service p {
-    font-size: 1.1rem;
-    color: #7f8c8d;
-}
-
-.lifescience-research h2 {
-    font-size: 2rem;
-    margin-bottom: 10px;
-}
-
-.lifescience-research p {
-    font-size: 1.1rem;
-    color: #7f8c8d;
-}
-
-.lifescience-appointments {
-    text-align: center;
-    margin: 20px 0;
-}
-
-.appointment-btn {
-    background-color: #27ae60;
-    color: white;
-    padding: 10px 20px;
     font-size: 1.2rem;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
+    color: #7f8c8d;
+    max-width: 800px;
+    margin: 0 auto;
 }
 
-.appointment-btn:hover {
-    background-color: #2ecc71;
+.lifescience-areas {
+    margin: 40px 0;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.area-card {
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    margin: 10px;
+    width: 30%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease-in-out;
+}
+
+.area-card h3 {
+    font-size: 1.5rem;
+    color: #1e88e5;
+}
+
+.area-card p {
+    font-size: 1rem;
+    color: #7f8c8d;
+}
+
+.area-card:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+}
+
+.lifescience-innovations {
+    margin: 40px 0;
+}
+
+.innovation {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.innovation h3 {
+    font-size: 1.6rem;
+    color: #1e88e5;
+}
+
+.innovation p {
+    font-size: 1rem;
+    color: #7f8c8d;
+}
+
+.lifescience-education {
+    text-align: center;
+    margin: 40px 0;
+}
+
+.lifescience-education h2 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+}
+
+.lifescience-education p {
+    font-size: 1.2rem;
+    color: #7f8c8d;
+    max-width: 800px;
+    margin: 0 auto;
 }
 
 .lifescience-footer {
     text-align: center;
     margin: 40px 0;
-    font-size: 1rem;
-    color: #7f8c8d;
+}
+
+.learn-more-btn {
+    background-color: #1e88e5;
+    color: white;
+    padding: 10px 30px;
+    font-size: 1.2rem;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.learn-more-btn:hover {
+    background-color: #0d6efd;
 }
 
 .lifescience-footer p {
-    margin: 0;
+    font-size: 1rem;
+    color: #7f8c8d;
+    margin: 20px 0;
 }

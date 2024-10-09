@@ -3,48 +3,64 @@ import "./HigherEducation.css";
 
 const HigherEducation = () => {
     return (
-        <div className="highereducation-container">
-            <header className="highereducation-header">
-                <h1>Higher Education</h1>
+        <div className="higher-education-container">
+            <header className="higher-education-header">
+                <h1>Higher Education Opportunities</h1>
             </header>
 
-            <section className="highereducation-overview">
+            <section className="higher-education-overview">
                 <h2>Overview</h2>
                 <p>
-                    Higher education is crucial for the development of advanced skills, knowledge, and expertise in various fields. Our programs are designed to foster academic excellence, leadership, and innovation. With a focus on research, critical thinking, and real-world application, we aim to empower the next generation of leaders.
+                    Higher education plays a crucial role in personal development, career advancement, and societal progress. It provides students with the skills, knowledge, and experiences necessary to thrive in a rapidly changing world. Explore various programs, scholarships, and resources to help you succeed in your academic journey.
                 </p>
             </section>
 
-            <section className="highereducation-programs">
-                <h2>Our Programs</h2>
-                <div className="program">
-                    <h3>Undergraduate Degrees</h3>
-                    <p>Our undergraduate programs provide foundational education and prepare students for entry into professional careers and higher studies.</p>
+            <section className="higher-education-programs">
+                <h2>Academic Programs</h2>
+                <div className="program-card">
+                    <h3>Undergraduate Programs</h3>
+                    <p>Explore diverse undergraduate degrees that prepare students for a wide range of careers, from engineering and science to arts and humanities.</p>
                 </div>
-                <div className="program">
-                    <h3>Graduate Degrees</h3>
-                    <p>Our graduate programs offer specialized knowledge and skills, giving students the opportunity to become experts in their chosen fields.</p>
+                <div className="program-card">
+                    <h3>Postgraduate Programs</h3>
+                    <p>Advance your knowledge and expertise with postgraduate degrees that offer specialization in various fields, including business, law, medicine, and more.</p>
                 </div>
-                <div className="program">
-                    <h3>Online Education</h3>
-                    <p>We provide flexible online learning options that allow students to pursue their education from anywhere, at their own pace.</p>
+                <div className="program-card">
+                    <h3>Online Learning</h3>
+                    <p>Access flexible and innovative online learning platforms offering degree programs and certifications from top universities globally.</p>
                 </div>
             </section>
 
-            <section className="highereducation-research">
-                <h2>Research and Innovation</h2>
+            <section className="higher-education-scholarships">
+                <h2>Scholarships & Financial Aid</h2>
+                <div className="scholarship-card">
+                    <h3>Merit-Based Scholarships</h3>
+                    <p>Explore a range of merit-based scholarships for students with outstanding academic achievements. These scholarships are awarded based on academic performance, leadership, and community involvement.</p>
+                </div>
+                <div className="scholarship-card">
+                    <h3>Need-Based Financial Aid</h3>
+                    <p>Financial assistance is available to help students meet their educational expenses. Learn about federal and state financial aid programs that provide support based on financial need.</p>
+                </div>
+                <div className="scholarship-card">
+                    <h3>International Scholarships</h3>
+                    <p>Students from abroad can access scholarships to study in leading universities across the globe. These scholarships provide financial support for international students pursuing higher education in different countries.</p>
+                </div>
+            </section>
+
+            <section className="higher-education-careers">
+                <h2>Career Development & Internships</h2>
                 <p>
-                    Our institutions are home to groundbreaking research in diverse fields such as engineering, business, healthcare, and the arts. By supporting interdisciplinary research, we aim to solve real-world challenges and push the boundaries of knowledge.
+                    Higher education is not just about academic success, it's also about preparing for a successful career. Explore career services, internships, and job placement programs designed to help you land your dream job.
                 </p>
             </section>
 
-            <section className="highereducation-admissions">
-                <h2>Admissions</h2>
-                <p>Apply today to join a community dedicated to academic excellence and transformative learning. Our admissions process is simple and designed to help you succeed. Take the first step towards a brighter future!</p>
-                <button className="admissions-btn">Apply Now</button>
+            <section className="higher-education-contact">
+                <h2>Get In Touch</h2>
+                <p>If you have any questions about our programs or would like more information, don't hesitate to reach out. We're here to help you on your educational journey!</p>
+                <button className="contact-btn">Contact Us</button>
             </section>
 
-            <footer className="highereducation-footer">
+            <footer className="higher-education-footer">
                 <p>© 2024 Higher Education. All rights reserved.</p>
             </footer>
         </div>

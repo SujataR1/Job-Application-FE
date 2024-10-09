@@ -1,0 +1,181 @@
+/* AllIndustries.css */
+.industries-container {
+    font-family: 'Lora', serif;
+    color: #333;
+    padding: 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+
+/* Header Section */
+.industries-header {
+    text-align: center;
+    background: linear-gradient(135deg, #6a11cb, #2575fc);
+    padding: 80px 20px;
+    color: white;
+    border-radius: 12px;
+    margin-bottom: 50px;
+}
+
+.industries-header h1 {
+    font-size: 3rem;
+    font-weight: 700;
+    margin: 0 0 15px;
+}
+
+.industries-header p {
+    font-size: 1.25rem;
+    font-weight: 300;
+}
+
+/* Intro Section */
+.industries-intro {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.industries-intro h2 {
+    font-size: 2.5rem;
+    color: #212121;
+    margin-bottom: 20px;
+    font-weight: 600;
+}
+
+.industries-intro p {
+    font-size: 1.15rem;
+    color: #6a6a6a;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* Industries List */
+.industries-list {
+    margin-bottom: 60px;
+}
+
+.industries-list h2 {
+    text-align: center;
+    font-size: 2.5rem;
+    color: #212121;
+    margin-bottom: 40px;
+    font-weight: 600;
+}
+
+.industries-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+    margin-bottom: 60px;
+}
+
+.industry-card {
+    background: #f4f4f9;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 200px;
+    text-align: center;
+}
+
+.industry-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+}
+
+.industry-card h3 {
+    font-size: 1.7rem;
+    color: #212121;
+    margin-bottom: 15px;
+    font-weight: 700;
+}
+
+.industry-card p {
+    font-size: 1.1rem;
+    color: #6a6a6a;
+    font-weight: 400;
+}
+
+/* Call to Action Section */
+.industries-cta {
+    text-align: center;
+    margin: 80px 0;
+}
+
+.industries-cta h2 {
+    font-size: 2.5rem;
+    color: #212121;
+    margin-bottom: 20px;
+    font-weight: 600;
+}
+
+.industries-cta p {
+    font-size: 1.2rem;
+    color: #6a6a6a;
+    margin: 0 0 30px;
+}
+
+.contact-btn {
+    background: #2575fc;
+    color: white;
+    padding: 15px 40px;
+    font-size: 1.15rem;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.contact-btn:hover {
+    background: #6a11cb;
+}
+
+/* Footer Section */
+.industries-footer {
+    text-align: center;
+    padding: 30px;
+    background: #f4f4f9;
+    border-top: 1px solid #e1e1e1;
+    margin-top: 80px;
+}
+
+.industries-footer p {
+    color: #6a6a6a;
+    font-size: 1rem;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .industries-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .industries-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .industries-header h1 {
+        font-size: 2.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .industries-header {
+        padding: 60px 20px;
+    }
+
+    .industries-header h1 {
+        font-size: 2rem;
+    }
+
+    .contact-btn {
+        width: 100%;
+        font-size: 1rem;
+    }
+}

@@ -5,45 +5,55 @@ const SpecialDistricts = () => {
     return (
         <div className="special-districts-container">
             <header className="special-districts-header">
-                <h1>Special Districts</h1>
+                <h1>Special Districts and Local Governance</h1>
+                <p>Empowering communities through specialized services and governance.</p>
             </header>
-            
+
             <section className="special-districts-overview">
-                <h2>Overview</h2>
+                <h2>What Are Special Districts?</h2>
                 <p>
-                    Special districts are government units created to address specific needs within a defined area, such as public safety, education, transportation, and water management. These districts operate autonomously to fulfill specific functions that benefit the local community.
+                    Special Districts are unique governmental entities created to address specific needs within communities,
+                    such as water, fire, transit, healthcare, and educational services. These districts operate autonomously,
+                    while working in partnership with local governments to enhance quality of life.
                 </p>
             </section>
 
             <section className="special-districts-services">
-                <h2>Our Services</h2>
+                <h2>Key Services of Special Districts</h2>
                 <div className="service">
-                    <h3>Public Safety</h3>
-                    <p>We provide specialized law enforcement, fire protection, and emergency medical services to ensure the safety and well-being of the community.</p>
+                    <h3>Water & Sanitation Services</h3>
+                    <p>Special districts provide clean and safe water, along with waste management services to ensure public health and hygiene.</p>
                 </div>
                 <div className="service">
-                    <h3>Education and Libraries</h3>
-                    <p>Our special districts enhance educational access and provide well-maintained public libraries to foster lifelong learning.</p>
+                    <h3>Fire & Emergency Services</h3>
+                    <p>Fire departments within special districts offer rapid response to emergencies, saving lives and protecting property.</p>
                 </div>
                 <div className="service">
-                    <h3>Transportation</h3>
-                    <p>We manage and maintain roads, transit systems, and bike paths to improve connectivity and reduce congestion.</p>
+                    <h3>Public Transportation</h3>
+                    <p>Through transit districts, communities have access to reliable public transportation systems, reducing congestion and promoting eco-friendly travel.</p>
                 </div>
                 <div className="service">
-                    <h3>Water Management</h3>
-                    <p>Our water districts ensure clean water supply and efficient management of water resources, promoting sustainability and conservation.</p>
+                    <h3>Healthcare & Social Services</h3>
+                    <p>Special districts manage healthcare facilities, including clinics and hospitals, providing essential medical services and improving community well-being.</p>
+                </div>
+                <div className="service">
+                    <h3>Education & Community Development</h3>
+                    <p>Districts focus on developing local education systems and creating safe community spaces for youth and families.</p>
                 </div>
             </section>
 
-            <section className="special-districts-research">
-                <h2>Research & Future Initiatives</h2>
-                <p>
-                    We continuously conduct research and engage with community members to explore new ways to enhance services, improve operational efficiency, and respond to future challenges. Our future initiatives include developing smart city solutions and sustainable infrastructure projects.
-                </p>
+            <section className="special-districts-initiatives">
+                <h2>Recent Initiatives & Achievements</h2>
+                <ul>
+                    <li><strong>Smart Water Management:</strong> Implementing smart technologies to conserve water and improve supply management.</li>
+                    <li><strong>Emergency Response Upgrades:</strong> Enhanced training and equipment for fire and rescue operations.</li>
+                    <li><strong>Public Transit Expansion:</strong> Increasing access to public transportation routes and reducing carbon emissions.</li>
+                </ul>
             </section>
 
             <section className="special-districts-contact">
-                <h2>Contact Us</h2>
+                <h2>Contact Your Local Special District</h2>
+                <p>If you have questions or would like to learn more about the services offered in your area, reach out to your local special district.</p>
                 <button className="contact-btn">Get in Touch</button>
             </section>
 
