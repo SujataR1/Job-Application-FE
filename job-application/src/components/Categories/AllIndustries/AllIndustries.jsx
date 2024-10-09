@@ -61,7 +61,7 @@ const AllIndustries = () => {
             </section>
 
             <footer className="industries-footer">
-                <p>© 2024 All Industries Solutions. All rights reserved.</p>
+                <p>© 2024 Transmogrify . All rights reserved.</p>
             </footer>
         </div>
     );
