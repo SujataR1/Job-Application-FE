@@ -79,10 +79,12 @@ import ProfessionalBusinessServices from './components/Categories/Professional&B
 import HigherEducation from './components/Categories/PublicServices/HigherEducation';
 import PublicSector from './components/Categories/PublicServices/PublicSector';
 import SpecialDistricts from './components/Categories/PublicServices/SpecialDistricts';
+import Communications from './components/Industry/TechnologyMediaComunications/Communication/Communication';
 import StateLocalGovernment from './components/Categories/PublicServices/StateLocalGovernment';
 import USFederalGovernment from './components/Categories/PublicServices/USFederalGovernment';
 import Technology from './components/Categories/TechnologyMediaandCommunications/Technology';
 import AllIndustries from './components/Categories/AllIndustries/AllIndustries';
+import MediaEntertainment from './components/Industry/TechnologyMediaComunications/MediaEntertainment/Media';
 
 
 
@@ -174,10 +176,13 @@ const App = () => {
                 <Route path="/industries-higher-education" element={<HigherEducation />} />
                 <Route path="/industries-public-sector" element={<PublicSector />} />
                 <Route path="/industries-special-districts" element={<SpecialDistricts />} />
+                <Route path="/industries-communications" element={<Communications />} />
+
                 <Route path="/industries-state-local-government" element={<StateLocalGovernment />} />
                 <Route path="/industries-us-federal-government" element ={<USFederalGovernment />} />
                 <Route path="/industries-technology" element={<Technology />} />
-                <Route path="/industries-all" element={<AllIndustries />} />
+              <Route path="/industries-media-entertainment" element={<MediaEntertainment />} />
+              <Route path="/industries-all" element={<AllIndustries />} />
 
             </Routes>
             <Footer />

@@ -1,5 +1,5 @@
 import React from 'react';
-import './Privacypolicy.css'; // Import the CSS file
+import './Privacypolicy.css'; 
 
 const JobApplicationPrivacyPolicy = () => {
   return (
