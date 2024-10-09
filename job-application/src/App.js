@@ -182,6 +182,7 @@ const App = () => {
                 <Route path="/industries-us-federal-government" element ={<USFederalGovernment />} />
                 <Route path="/industries-technology" element={<Technology />} />
               <Route path="/industries-media-entertainment" element={<MediaEntertainment />} />
+              <Route path="/industries-all" element={<AllIndustries />} />
 
             </Routes>
             <Footer />
