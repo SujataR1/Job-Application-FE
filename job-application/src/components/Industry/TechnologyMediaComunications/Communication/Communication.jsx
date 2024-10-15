@@ -12,9 +12,12 @@ const Communications = () => {
                     <p>
                         Spin up new service offerings, deliver on the power of 5G, and create new partnerships overnight. Only Workday delivers the speed and insights you need to stay competitive and accelerate digital finance.
                     </p>
-                    <a href="#" className="datasheet-link">Read Datasheet</a>
+                    {/* Replaced <a> with <button> for accessibility */}
+                    <button className="datasheet-link" onClick={() => alert('Read Datasheet clicked!')}>
+                        Read Datasheet
+                    </button>                    
                     <h3>Workday and Maxis</h3>
-                    <p>The world’s leading communications companies partner with Workday.</p>
+                    <p>The worlds leading communications companies partner with Workday.</p>
                     <div className="partner-logos">
                         <img src="/path/to/sky-logo.png" alt="Sky UK Limited logo" />
                         <img src="/path/to/att-logo.png" alt="AT&T, Services Inc. logo" />

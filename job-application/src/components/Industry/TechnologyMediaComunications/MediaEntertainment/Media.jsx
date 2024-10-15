@@ -1,7 +1,5 @@
-// src/components/MediaEntertainment.js
-
 import React from 'react';
-import './Media.css'; // Import the CSS file for styling
+import './Media.css'; // Import the CSS file for styling now
 import mediaImage from '../../../images/media.png'; // Adjust the path as necessary
 
 const MediaEntertainment = () => {
@@ -15,7 +13,10 @@ const MediaEntertainment = () => {
                         From content creation to monetization, the media and entertainment industry is evolving—fast. 
                         Workday delivers the agility and insight you need to pivot quickly and embrace the future with confidence.
                     </p>
-                    <a href="#" className="view-demo">View Demo (3:20)</a>
+                    {/* Replaced <a> with <button> */}
+                    <button className="view-demo" onClick={() => alert('Demo viewed')}>
+                        View Demo (3:20)
+                    </button>
                 </div>
                 <div className="content-right">
                     <img src={mediaImage} alt="Media and Entertainment" />
@@ -28,7 +29,10 @@ const MediaEntertainment = () => {
                     Explore how technology transforms the landscape of media and entertainment. 
                     From streaming services to digital content creation, the future is bright for innovators.
                 </p>
-                <a href="#" className="view-more">Learn More</a>
+                {/* Replaced <a> with <button> */}
+                <button className="view-more" onClick={() => alert('Learn more')}>
+                    Learn More
+                </button>
             </section>
 
             <section className="latest-trends">
@@ -37,7 +41,10 @@ const MediaEntertainment = () => {
                     Stay ahead of the curve with the latest trends in media and entertainment. 
                     From AI-driven content recommendations to immersive experiences, technology is reshaping how audiences engage.
                 </p>
-                <a href="#" className="view-more">Discover Trends</a>
+                {/* Replaced <a> with <button> */}
+                <button className="view-more" onClick={() => alert('Discover trends')}>
+                    Discover Trends
+                </button>
             </section>
         </>
     );
