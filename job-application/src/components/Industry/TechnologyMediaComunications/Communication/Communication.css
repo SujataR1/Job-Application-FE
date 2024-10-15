@@ -1,0 +1,56 @@
+.communications-container {
+    max-width: 1200px; /* Max width for the content */
+    margin: 0 auto; /* Center the container */
+    padding: 20px; /* Add some padding */
+}
+
+.communications-content {
+    display: flex; /* Flexbox for side-by-side layout */
+    align-items: center; /* Center items vertically */
+    justify-content: space-between; /* Space between text and image */
+    margin-bottom: 40px; /* Space below the first section */
+}
+
+.text-section {
+    flex: 1; /* Allow text section to grow */
+    padding-right: 20px; /* Space between text and image */
+}
+
+.image-section {
+    flex: 1; /* Allow image section to grow */
+}
+
+.image-section img {
+    max-width: 100%; /* Responsive image */
+    height: auto; /* Maintain aspect ratio */
+}
+
+.partner-logos {
+    display: flex; /* Flexbox for logo layout */
+    flex-wrap: wrap; /* Allow logos to wrap */
+    margin-top: 20px; /* Space above logos */
+}
+
+.partner-logos img {
+    max-width: 100px; /* Set a max width for logos */
+    margin-right: 15px; /* Space between logos */
+    margin-bottom: 10px; /* Space below logos */
+}
+
+.services-section {
+    padding: 20px; /* Add padding around the section */
+    background-color: #f1f1f1; /* Light background for the services section */
+    border-radius: 8px; /* Rounded corners */
+}
+
+.service-item {
+    margin-bottom: 20px; /* Space between service items */
+}
+
+.service-item h3 {
+    margin-bottom: 10px; /* Space below the heading */
+}
+
+.service-item p {
+    margin: 0; /* Remove default margin */
+}

@@ -7,7 +7,7 @@ import Jobs from './components/JobPage';
 import SignUpPage from './components/auth/SignUpPage'; // The new SignUp component
 import Login from './components/auth/Login';
 import Navbar from './components/Navbar/Navbar';
-import Footer from './components/Footer/Footer'; // Import Footer
+import Footer from './components/Footer/Footer'; // Import Footer 
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import Marketing from './components/Categories/Marketingjobs/Marketing';
 import DataScienceJobs from './components/Categories/DataScience/DataScience';
@@ -79,12 +79,12 @@ import ProfessionalBusinessServices from './components/Categories/Professional&B
 import HigherEducation from './components/Categories/PublicServices/HigherEducation';
 import PublicSector from './components/Categories/PublicServices/PublicSector';
 import SpecialDistricts from './components/Categories/PublicServices/SpecialDistricts';
+import Communications from './components/Industry/TechnologyMediaComunications/Communication/Communication';
 import StateLocalGovernment from './components/Categories/PublicServices/StateLocalGovernment';
 import USFederalGovernment from './components/Categories/PublicServices/USFederalGovernment';
 import Technology from './components/Categories/TechnologyMediaandCommunications/Technology';
 import AllIndustries from './components/Categories/AllIndustries/AllIndustries';
-
-
+import MediaEntertainment from './components/Industry/TechnologyMediaComunications/MediaEntertainment/Media';
 
 
 const App = () => {
@@ -97,6 +97,7 @@ const App = () => {
                 <Route path="/signup" element={<SignUpPage />} />  {/* SignUp Page */}
                 <Route path="/login" element={<Login />} />
                 <Route path="/it-jobs" element={<IT />} />
+                
                 <Route path="/sales-jobs" element={<Sales />} /> {/* SalesJobs component */}
                 <Route path="/marketing-jobs" element={<Marketing />} />
                 <Route path="/data-science-jobs" element={<DataScienceJobs />} />
@@ -141,6 +142,7 @@ const App = () => {
                 <Route path="/resume-quality-score" element={<ResumeQualityScore />} />
                 <Route path="/resume-samples" element={<ResumeSamples />} />
                 <Route path="/job-letter-samples" element={<JobLetterSamples />} />
+
                 {/* Add more routes here as needed */}
                 <Route path="/about-us" element={<Aboutus />} />
                 <Route path="/overview" element={<Overview />} />
@@ -150,6 +152,7 @@ const App = () => {
                 <Route path="/report-issue" element={<ReportIssue />} />
                 <Route path="/careers" element={<Careers />} />
                 <Route path="/employer-home" element={<EmployerHome />} />
+
                 {/* Add more routes here as needed */}
                 <Route path="/sitemap" element={<SiteMap />} />
                 <Route path="/credits" element={<Credits />} />
@@ -174,10 +177,14 @@ const App = () => {
                 <Route path="/industries-higher-education" element={<HigherEducation />} />
                 <Route path="/industries-public-sector" element={<PublicSector />} />
                 <Route path="/industries-special-districts" element={<SpecialDistricts />} />
+                <Route path="/industries-communications" element={<Communications />} />
+
+
                 <Route path="/industries-state-local-government" element={<StateLocalGovernment />} />
                 <Route path="/industries-us-federal-government" element ={<USFederalGovernment />} />
                 <Route path="/industries-technology" element={<Technology />} />
-                <Route path="/industries-all" element={<AllIndustries />} />
+              <Route path="/industries-media-entertainment" element={<MediaEntertainment />} />
+              <Route path="/industries-all" element={<AllIndustries />} />
 
             </Routes>
             <Footer />
