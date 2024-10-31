@@ -85,7 +85,7 @@ import USFederalGovernment from './components/Categories/PublicServices/USFedera
 import Technology from './components/Categories/TechnologyMediaandCommunications/Technology';
 import AllIndustries from './components/Categories/AllIndustries/AllIndustries';
 import MediaEntertainment from './components/Industry/TechnologyMediaComunications/MediaEntertainment/Media';
-
+import Jobs4u from './components/Company/category/Findjobs/jobs4u';
 
 const App = () => {
     return (
@@ -185,6 +185,7 @@ const App = () => {
                 <Route path="/industries-technology" element={<Technology />} />
               <Route path="/industries-media-entertainment" element={<MediaEntertainment />} />
               <Route path="/industries-all" element={<AllIndustries />} />
+              <Route path="/jobs4u" element={<Jobs4u />} />
 
             </Routes>
             <Footer />
