@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import './Insurance.css'; // Import CSS for styling
 import InsuranceImage from '../../../images/Insurance1.png'; // Import the main insurance image
@@ -76,7 +75,7 @@ const InsuranceLandingPage = () => {
                     <div className="company">
                         <FaShieldAlt />
                         <h3>AIA</h3>
-                        <p>Gains 24/7 insights into staff development and improves communication with talent management.</p>
+                        <p> Gains 24/7 insights into staff development and improves communication with talent management </p>
                         <button className="see-story-button">See Story</button>
                     </div>
                 </div>
@@ -156,12 +155,15 @@ const InsuranceLandingPage = () => {
                 <h2>Resources</h2>
                 <h3>Insurance industry insights and trends.</h3>
                 <button className="see-all-resources">See All Resources</button>
-                <ul>
-                    <li><button>Report: How to Build a Strong Foundation to Take Advantage of Emerging Tech</button></li>
-                    <li><button>Report: The Future of Insurance: Aiming for Agility</button></li>
-                    <li><button>Blog: How AI Can Help Solve the Insurance Industry’s Talent Crisis</button></li>
-                    <li><button>Datasheet: Workday Differentiators: Global Insurance Industry at a Crossroads to Shaping Long-Term Success</button></li>
-                </ul>
+                <button onClick={handleToggleResources}>Toggle Resources</button>
+                {showResources && (
+                    <ul>
+                        <li><button>Report: How to Build a Strong Foundation to Take Advantage of Emerging Tech</button></li>
+                        <li><button>Report: The Future of Insurance: Aiming for Agility</button></li>
+                        <li><button>Blog: How AI Can Help Solve the Insurance Industry’s Talent Crisis</button></li>
+                        <li><button>Datasheet: Workday Differentiators: Global Insurance Industry at a Crossroads to Shaping Long-Term Success</button></li>
+                    </ul>
+                )}
             </section>
 
             <section className="contact-section">

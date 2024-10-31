@@ -26,6 +26,8 @@ const EmployerHome = () => {
           {isSalesEnquiryOpen && (
             <div className="form-container">
               <h2>Sales Enquiry</h2>
+
+
               <form>
                 <input type="text" placeholder="Company Name" required />
                 <input type="number" placeholder="Number of Employees" required />
