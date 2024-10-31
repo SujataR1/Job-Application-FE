@@ -90,7 +90,7 @@ const Signup = () => {
                                     onChange={handleChange}
                                     className="mr-2"
                                 />
-                                Student
+                                Looking for Apply
                             </label>
                             <label className="flex items-center">
                                 <input
@@ -100,7 +100,7 @@ const Signup = () => {
                                     onChange={handleChange}
                                     className="mr-2"
                                 />
-                                Recruiter
+                                Looking for Recruit
                             </label>
                         </div>
                     </div>

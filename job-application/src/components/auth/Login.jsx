@@ -17,7 +17,7 @@ const Login = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log(loginData); // Here, you can send the login data to your backend for authentication
+        console.log(loginData); // Here,
     };
 
     return (
@@ -58,7 +58,7 @@ const Login = () => {
                                     onChange={handleChange}
                                     className="mr-2"
                                 />
-                                Student
+                                Looking For Apply
                             </label>
                             <label className="flex items-center">
                                 <input
@@ -68,7 +68,7 @@ const Login = () => {
                                     onChange={handleChange}
                                     className="mr-2"
                                 />
-                                Recruiter
+                                Looking For Recruit
                             </label>
                         </div>
                     </div>

@@ -96,10 +96,10 @@ const App = () => {
             <Routes>
                 <Route path="/" element={<HomePage />} />
                 <Route path="/jobs" element={<Jobs />} />
-                <Route path="/signup" element={<SignUpPage />} />  {/* SignUp Page */}
+                <Route path="/signup" element={<SignUpPage />} />  {/* */}
                 <Route path="/login" element={<Login />} />
                 <Route path="/it-jobs" element={<IT />} />
-                
+
                 <Route path="/sales-jobs" element={<Sales />} /> {/* SalesJobs component */}
                 <Route path="/marketing-jobs" element={<Marketing />} />
                 <Route path="/data-science-jobs" element={<DataScienceJobs />} />
@@ -129,8 +129,8 @@ const App = () => {
                 <Route path="/mnc-jobs" element={<MncJobs />} />
                 <Route path="/about-us" element={<Aboutus />} />
                 <Route path="/overview" element={<Overview />} />
-                <Route path="/careers" element={<Careers/>} />
-                <Route path="/employer-home" element={<EmployerHome/>} />
+                <Route path="/careers" element={<Careers />} />
+                <Route path="/employer-home" element={<EmployerHome />} />
                 <Route path="/sponsored-companies" element={<SponsoredCompanies />} />
                 <Route path="/featured-companies" element={<FeaturedCompanies />} />
                 <Route path="/interview-questions" element={<InterviewQuestion />} />
@@ -171,11 +171,11 @@ const App = () => {
                 <Route path="/basic-premium-plans" element={<BasicPremiumPlans />} />
                 <Route path="/industries-business-services" element={<ProfessionalServices />} />
                 <Route path="/industries-higher-education" element={<HigherEducationPage />} />
-                <Route path="/industries-nonprofit" element={<Nonprofit/>} />
+                <Route path="/industries-nonprofit" element={<Nonprofit />} />
                 <Route path="/industries-manufacturing" element={<Manufacturing />} />
                 <Route path="/industries-healthcare" element={<Healthcare />} />
                 <Route path="/industries-life-sciences" element={<LifeScience />} />
-                <Route path="/industries-business-services" element={<ProfessionalBusinessServices /> } />
+                <Route path="/industries-business-services" element={<ProfessionalBusinessServices />} />
                 <Route path="/industries-higher-education" element={<HigherEducation />} />
                 <Route path="/industries-public-sector" element={<PublicSector />} />
                 <Route path="/industries-special-districts" element={<SpecialDistricts />} />
@@ -183,13 +183,13 @@ const App = () => {
 
 
                 <Route path="/industries-state-local-government" element={<StateLocalGovernment />} />
-                <Route path="/industries-us-federal-government" element ={<USFederalGovernment />} />
+                <Route path="/industries-us-federal-government" element={<USFederalGovernment />} />
                 <Route path="/industries-technology" element={<Technology />} />
-              <Route path="/industries-media-entertainment" element={<MediaEntertainment />} />
-              <Route path="/industries-all" element={<AllIndustries />} />
-              <Route path="/jobs4u" element={<Jobs4u />} />
-              <Route path="/priority-applicant" element={<PriorityApplicant />} />
-              <Route path="/contact-us" element={<ContactUs />} />
+                <Route path="/industries-media-entertainment" element={<MediaEntertainment />} />
+                <Route path="/industries-all" element={<AllIndustries />} />
+                <Route path="/jobs4u" element={<Jobs4u />} />
+                <Route path="/priority-applicant" element={<PriorityApplicant />} />
+                <Route path="/contact-us" element={<ContactUs />} />
 
             </Routes>
             <Footer />
