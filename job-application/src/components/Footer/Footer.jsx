@@ -89,7 +89,7 @@ const Footer = () => {
 
                     {/* Footer Bottom Text */}
                     <div className="text-center mt-6">
-                        <p className="text-sm">All trademarks are the property of their respective owners. All rights reserved © 2024 Info Edge (India) Ltd.</p>
+                        <p className="text-sm"> All trademarks are the property of their respective owners. All rights reserved ©2024 Transmogrify Global </p>
                     </div>
                 </div>
             </div>
