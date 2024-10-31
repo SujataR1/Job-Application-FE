@@ -18,7 +18,7 @@ const EmployerHome = () => {
         <img src={bannerImage} alt="Banner" className="banner-image" />
         <div className="banner-text">
           <h1>Hire talent with JobPortal!</h1>
-          <p>Find, engage, and hire talent on India’s leading recruitment platform</p>
+          <p>Find, engage, and hire talent on India’s leading recruitment platform </p>
           <button onClick={handleSalesEnquiry}>Sales Enquiry</button>
           <button onClick={handleLoginRegister}>Login/Register</button>
         </div>

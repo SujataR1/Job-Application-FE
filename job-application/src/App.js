@@ -145,7 +145,7 @@ const App = () => {
                 <Route path="/resume-samples" element={<ResumeSamples />} />
                 <Route path="/job-letter-samples" element={<JobLetterSamples />} />
 
-                {/* Add more routes here as needed */}
+                {/* Add more routes here as needed here is how it's work like whats happen*/}
                 <Route path="/about-us" element={<Aboutus />} />
                 <Route path="/overview" element={<Overview />} />
                 <Route path="/help-center" element={<HelpCenter />} />
