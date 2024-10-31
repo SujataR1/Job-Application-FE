@@ -1,0 +1,99 @@
+.contact-us-container {
+    padding: 40px;
+    background-color: #f2f2f2;
+    text-align: center;
+}
+
+h1 {
+    color: #007bff;
+    margin-bottom: 30px;
+}
+
+.contact-details {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    margin-bottom: 30px;
+}
+
+.detail-card {
+    border-radius: 8px;
+    padding: 20px;
+    width: 200px;
+    margin: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    color: #333; /* Dark text for visibility */
+    transition: background-color 0.3s, transform 0.3s; /* Smooth transition */
+}
+
+.card-company {
+    background-color: #98eb98; /* Pastel Green */
+}
+
+.card-phone {
+    background-color: #ffcc80; /* Light Orange */
+}
+
+.card-email {
+    background-color: #98eb98; /* Pastel Green */
+}
+
+.card-follow {
+    background-color: #ffcc80; /* Light Orange */
+}
+
+/* Hover Effects */
+.detail-card:hover {
+    transform: scale(1.05); /* Slightly enlarge the card */
+    cursor: pointer; /* Change cursor on hover */
+}
+
+.detail-card.card-company:hover {
+    background-color: #87d787; /* Darker Pastel Green */
+}
+
+.detail-card.card-phone:hover {
+    background-color: #ffb74d; /* Darker Light Orange */
+}
+
+.detail-card.card-email:hover {
+    background-color: #87d787; /* Darker Pastel Green */
+}
+
+.detail-card.card-follow:hover {
+    background-color: #ffb74d; /* Darker Light Orange */
+}
+
+.contact-form {
+    background-color: #ffffff;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.contact-form h2 {
+    margin-bottom: 20px;
+}
+
+.contact-form input, 
+.contact-form textarea {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #cccccc;
+    border-radius: 5px;
+}
+
+.contact-form button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 15px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.contact-form button:hover {
+    background-color: #0056b3;
+}

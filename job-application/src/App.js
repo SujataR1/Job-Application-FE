@@ -86,6 +86,8 @@ import Technology from './components/Categories/TechnologyMediaandCommunications
 import AllIndustries from './components/Categories/AllIndustries/AllIndustries';
 import MediaEntertainment from './components/Industry/TechnologyMediaComunications/MediaEntertainment/Media';
 import Jobs4u from './components/Company/category/Findjobs/jobs4u';
+import PriorityApplicant from './components/Company/category/Findjobs/priorityapplicant';
+import ContactUs from './components/Company/category/Findjobs/contactus';
 
 const App = () => {
     return (
@@ -186,6 +188,8 @@ const App = () => {
               <Route path="/industries-media-entertainment" element={<MediaEntertainment />} />
               <Route path="/industries-all" element={<AllIndustries />} />
               <Route path="/jobs4u" element={<Jobs4u />} />
+              <Route path="/priority-applicant" element={<PriorityApplicant />} />
+              <Route path="/contact-us" element={<ContactUs />} />
 
             </Routes>
             <Footer />
