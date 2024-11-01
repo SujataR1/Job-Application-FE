@@ -1,11 +1,31 @@
-import React from 'react';
+import React, { useState } from 'react';
 
- // Import the Navbar component
+// Import the Navbar component
 
 const HomePage = () => {
+    const [showMoreJobs, setShowMoreJobs] = useState(false);
+
+    const toggleMoreJobs = () => {
+        setShowMoreJobs(!showMoreJobs);
+    };
+
+    const jobs = [
+        { title: "Frontend Dev", company: "Transmogrify", location: "Kolkata" },
+        { title: "Backend Dev", company: "Transmogrify", location: "Kolkata" },
+        { title: "UI/UX Designer", company: "Transmogrify", location: "Kolkata" },
+        // Add more core jobs here
+    ];
+
+    const additionalJobs = [
+        { title: "Data Scientist", company: "TechCorp", location: "Delhi" },
+        { title: "Product Manager", company: "InnovateInc", location: "Bangalore" },
+        { title: "DevOps Engineer", company: "CloudSolutions", location: "Hyderabad" },
+        // Add more additional jobs here
+    ];
+
     return (
         <div className="font-sans bg-cover bg-center bg-fixed min-h-screen" style={{ backgroundImage: 'url(/images/background.png)' }}>
-         {/* Ensure Navbar is placed here */}
+            {/* Ensure Navbar is placed here */}
 
             {/* Main Content */}
             <main className="text-center mt-0">
@@ -49,29 +69,67 @@ const HomePage = () => {
                 </h2>
                 <div className="text-center mt-20">
                     <div className="flex justify-center flex-wrap gap-6">
-                        <div className="p-4 bg-white shadow-md rounded-lg">
-                            <p className="text-xl font-bold">Frontend Dev</p>
-                            <p className="text-gray-600">Transmogrify</p>
-                            <p className="text-gray-500">Kolkata</p>
-                        </div>
-                        <div className="p-4 bg-white shadow-md rounded-lg">
-                            <p className="text-xl font-bold">Backend Dev</p>
-                            <p className="text-gray-600">Transmogrify</p>
-                            <p className="text-gray-500">Kolkata</p>
-                        </div>
-                        <div className="p-4 bg-white shadow-md rounded-lg">
-                            <p className="text-xl font-bold">UI/UX Designer</p>
-                            <p className="text-gray-600">Transmogrify</p>
-                            <p className="text-gray-500">Kolkata</p>
-                        </div>
-                        {/* Add more job openings here */}
+                        {jobs.map((job, index) => (
+                            <div key={index} className="p-4 bg-white shadow-md rounded-lg">
+                                <p className="text-xl font-bold">{job.title}</p>
+                                <p className="text-gray-600">{job.company}</p>
+                                <p className="text-gray-500">{job.location}</p>
+                            </div>
+                        ))}
                     </div>
+
+                    {/* View More Jobs Button */}
+                    <button
+                        onClick={toggleMoreJobs}
+                        className="mt-4 text-teal-600 hover:underline"
+                    >
+                        {showMoreJobs ? 'Show Less' : 'View More'}
+                    </button>
+
+                    {/* Additional Jobs */}
+                    {showMoreJobs && (
+                        <div className="flex justify-center flex-wrap gap-6 mt-4">
+                            {additionalJobs.map((job, index) => (
+                                <div key={index} className="p-4 bg-white shadow-md rounded-lg">
+                                    <p className="text-xl font-bold">{job.title}</p>
+                                    <p className="text-gray-600">{job.company}</p>
+                                    <p className="text-gray-500">{job.location}</p>
+                                </div>
+                            ))}
+                        </div>
+                    )}
                 </div>
             </section>
 
-            
+            {/* Featured Companies Section */}
+            <section className="mt-20">
+                <h2 className="text-2xl font-semibold text-teal-700 text-center">
+                    Featured Companies Actively Hiring
+                </h2>
+                <div className="text-center mt-10">
+                    <div className="flex justify-center flex-wrap gap-6">
+                        {[
+                            { name: "Navi Technologies", rating: "N/A", description: "Fastest growing financial services companies in India." },
+                            { name: "JPMorgan Chase Bank", rating: "4.1", description: "Leader in financial services." },
+                            { name: "Standard Chartered", rating: "3.8", description: "Expand your horizons." },
+                            
+                        ].map((company, index) => (
+                            <div key={index} className="p-4 bg-white shadow-md rounded-lg">
+                                <p className="text-xl font-bold">{company.name}</p>
+                                {company.rating && <p className="text-gray-500">Rating: {company.rating}</p>}
+                                <p className="text-gray-600">{company.description}</p>
+                                <button className="mt-2 bg-teal-600 text-white py-1 px-3 rounded hover:bg-teal-700">
+                                    View jobs
+                                </button>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </section>
         </div>
     );
 };
 
 export default HomePage;
+
+
