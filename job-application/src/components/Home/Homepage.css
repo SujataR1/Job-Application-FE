@@ -66,6 +66,7 @@
 .featured-jobs {
     text-align: center;
     margin-top: 40px;
+    padding-bottom: 40px; /* Added padding to prevent overlap with footer */
 }
 
 .featured-jobs h2 {
@@ -76,7 +77,9 @@
 
 .job-listings {
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
+    flex-wrap: wrap; /* Allow wrapping of job cards */
+    gap: 20px; /* Add space between job cards */
 }
 
 .job-card {
@@ -111,4 +114,23 @@
 
 .job-card button:hover {
     background-color: #218838;
+}
+
+.view-more {
+    margin-top: 20px;
+    color: #007BFF;
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.view-more:hover {
+    color: #0056b3;
+}
+
+/* Ensure proper spacing for footer */
+.footer {
+    margin-top: 40px; /* Add margin to footer */
+    text-align: center;
+    padding: 20px;
+    background-color: #f1f1f1;
 }
