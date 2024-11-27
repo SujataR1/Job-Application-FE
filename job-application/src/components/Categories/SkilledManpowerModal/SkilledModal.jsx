@@ -1,6 +1,6 @@
 // SkilledModal.js
 import React from 'react';
-import './SkilledModal.css'; // Import the CSS file for styling
+import './SkilledModal.css'; 
 
 const SkilledModal = ({ closeModal }) => {
     const jobTypes = [

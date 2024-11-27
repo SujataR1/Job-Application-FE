@@ -1,13 +1,11 @@
-// src/components/Categories/HR/HR.jsx
-
 import React, { useState, useMemo, useEffect } from 'react';
-import './HR.css'; // Make sure to create a corresponding CSS file
+import './HR.css'; 
 import Modal from '../model/Modal';
 
 function HR() {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  // State for filters
+ 
   const [filters, setFilters] = useState({
     department: [],
     workMode: [],
@@ -20,7 +18,7 @@ function HR() {
     duration: []
   });
 
-  // Static job data for HR jobs
+ 
   const allJobs = useMemo(() => [
     { id: 1, title: 'HR Manager', company: 'XYZ Corp', location: 'Delhi', salary: '₹8-12 Lakhs', department: 'HR', workMode: 'Remote' },
     { id: 2, title: 'Recruitment Specialist', company: 'ABC Ltd', location: 'Mumbai', salary: '₹7-11 Lakhs', department: 'HR', workMode: 'Hybrid' },
@@ -109,7 +107,7 @@ function HR() {
           {isModalOpen && <Modal closeModal={closeModal} />}
         </div>
         
-        {/* Additional filters (Work mode, experience, etc.) can follow similar structure */}
+      
         
       </div>
       

@@ -22,7 +22,7 @@ function JobsInPune() {
     { id: 2, title: 'Product Manager', company: 'ABC Corp', location: 'Pune', salary: '₹8-15 Lakhs', department: 'Product', workMode: 'Hybrid' },
     { id: 3, title: 'Data Scientist', company: 'LMN Inc', location: 'Pune', salary: '₹10-20 Lakhs', department: 'Data', workMode: 'Work from office' },
     { id: 4, title: 'Frontend Developer', company: 'JKL Ltd', location: 'Pune', salary: '₹5-10 Lakhs', department: 'Engineering', workMode: 'Remote' },
-    // Add more jobs here as needed
+
   ], []);
 
   const [filteredJobs, setFilteredJobs] = useState(allJobs);

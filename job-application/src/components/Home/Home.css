@@ -1,0 +1,62 @@
+.home-page {
+    background-color: #f3f4f6;
+  }
+  
+  .home-content {
+    display: flex;
+    flex-direction: row;
+    padding: 2rem;
+  }
+  
+  .create-post-form {
+    background-color: white;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+  }
+  
+  .post-textarea {
+    font-size: 1rem;
+    border-radius: 8px;
+    resize: vertical;
+  }
+  
+  .submit-post-button {
+    background-color: #0073b1;
+    border: none;
+    color: white;
+    font-weight: bold;
+  }
+  
+  .submit-post-button:hover {
+    background-color: #006a9e;
+  }
+  
+  .feed {
+    margin-top: 2rem;
+  }
+  
+  .post {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .post-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .post-content {
+    font-size: 1.1rem;
+  }
+  
+  .post-actions {
+    margin-top: 1rem;
+  }
+  
+  .likes, .comments {
+    font-size: 0.9rem;
+  }
+  
