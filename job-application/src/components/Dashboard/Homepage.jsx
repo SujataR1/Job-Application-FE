@@ -1,4 +1,5 @@
 import React from 'react';
+import Header from '../Header/Header';
 
  // Import the Navbar component
 
@@ -6,7 +7,7 @@ const HomePage = () => {
     return (
         <div className="font-sans bg-cover bg-center bg-fixed min-h-screen" style={{ backgroundImage: 'url(/images/background.png)' }}>
          {/* Ensure Navbar is placed here */}
-
+         <Header />
             {/* Main Content */}
             <main className="text-center mt-0">
                 <span className="bg-green-100 text-green-600 px-4 py-1 rounded-full text-xs">No. 1 Job Hunt Website</span>

@@ -305,10 +305,10 @@
 
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { FaHome, FaUsers, FaBriefcase, FaEnvelope, FaSignOutAlt } from 'react-icons/fa';  // Import icons from react-icons
-import './Navbar.css';  // Import the CSS file for styles
+import { FaHome, FaUsers, FaBriefcase, FaEnvelope } from 'react-icons/fa';  // Import icons from react-icons
+import './Header.css';  // Import the CSS file for styles
 
-const Navbar = () => {
+const Header = () => {
     return (
         <div className="navbar-background font-sans">
             <header className="navbar-header flex flex-col md:flex-row justify-between items-center p-5 bg-opacity-80 bg-gray-800">
@@ -319,7 +319,7 @@ const Navbar = () => {
                 </div>
 
                 <nav className="navbar-nav flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-10 mx-auto">
-                    <Link to="/" className="text-white font-bold text-lg hover:text-teal-300">
+                    <Link to="/home" className="text-white font-bold text-lg hover:text-teal-300">
                         <FaHome className="inline-block mr-2" /> Home
                     </Link>
                     <Link to="/network" className="text-white font-bold text-lg hover:text-teal-300">
@@ -336,7 +336,12 @@ const Navbar = () => {
                 <div className="navbar-buttons flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-4 mt-4">
                     <Link to="/login">
                         <button className="login-button text-white border-2 border-gray-300 px-4 py-2 rounded-md hover:bg-teal-700">
-                            <FaSignOutAlt className="inline-block mr-2" /> Logout
+                            Login
+                        </button>
+                    </Link>
+                    <Link to="/signup">
+                        <button className="login-button text-white border-2 border-gray-300 px-4 py-2 rounded-md hover:bg-teal-700">
+                            Signup
                         </button>
                     </Link>
                 </div>
@@ -345,4 +350,4 @@ const Navbar = () => {
     );
 };
 
-export default Navbar;
+export default Header;

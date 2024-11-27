@@ -1,12 +1,12 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import HomePage from './components/Home/Homepage';
+import { BrowserRouter as Router, Route, Routes,useLocation} from 'react-router-dom';
+import Dasboard from './components/Dashboard/Homepage';
 import Sales from './components/Categories/SalesJobs/Sales';
 import IT from './components/Categories/ITjobs/ITjobs';
 import Jobs from './components/JobPage';
 import SignUpPage from './components/auth/SignUpPage'; // The new SignUp component
 import Login from './components/auth/Login';
-import Navbar from './components/Navbar/Navbar';
+import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer'; // Import Footer
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import Marketing from './components/Categories/Marketingjobs/Marketing';
@@ -85,16 +85,28 @@ import USFederalGovernment from './components/Categories/PublicServices/USFedera
 import Technology from './components/Categories/TechnologyMediaandCommunications/Technology';
 import AllIndustries from './components/Categories/AllIndustries/AllIndustries';
 import MediaEntertainment from './components/Industry/TechnologyMediaComunications/MediaEntertainment/Media';
+import HomePage from './components/Home/Home';
+import Sidebar from './components/Sidebar/Sidebar';
+import Feed from './components/Feed/Feed';
+import Navbar from './components/Navbar/Navbar';
 
-
+//This component is used to conditionally render Navbar based on the current path
+const ConditionalNavbar = () => {
+   const location = useLocation();  // Get current location to conditionally render Navbar
+  
+    //Render Navbar only if the path is not '/dashboard'
+    return location.pathname !== '/' && <Navbar />;
+  };
 
 
 const App = () => {
+  
     return (
         <Router>
-            <Navbar />
+            
+            <ConditionalNavbar />
             <Routes>
-                <Route path="/" element={<HomePage />} />
+                <Route path="/" element={<Dasboard />} />
                 <Route path="/jobs" element={<Jobs />} />
                 <Route path="/signup" element={<SignUpPage />} />  {/* SignUp Page */}
                 <Route path="/login" element={<Login />} />
@@ -183,6 +195,11 @@ const App = () => {
                 <Route path="/industries-technology" element={<Technology />} />
               <Route path="/industries-media-entertainment" element={<MediaEntertainment />} />
               <Route path="/industries-all" element={<AllIndustries />} />
+              <Route path="/home" element={<HomePage />} />
+              <Route path="/sidebar" element={<Sidebar/>} />
+              <Route path="/feed" element={<Feed/>} />
+
+
 
             </Routes>
             <Footer />
@@ -191,3 +208,5 @@ const App = () => {
 };
 
 export default App;
+
+
