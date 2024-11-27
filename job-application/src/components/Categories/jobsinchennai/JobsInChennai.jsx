@@ -6,7 +6,7 @@ function JobsInChennai() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [experience, setExperience] = useState(0);
 
-  // State for filters
+  
   const [filters, setFilters] = useState({
     department: [],
     workMode: [],
@@ -15,13 +15,13 @@ function JobsInChennai() {
     companyType: [],
   });
 
-  // Static job data for design purposes
+  
   const allJobs = useMemo(() => [
     { id: 1, title: 'Software Engineer', company: 'XYZ Ltd', location: 'Chennai', salary: '₹7-12 Lakhs', department: 'Engineering', workMode: 'Remote' },
     { id: 2, title: 'Product Manager', company: 'ABC Corp', location: 'Chennai', salary: '₹8-15 Lakhs', department: 'Product', workMode: 'Hybrid' },
     { id: 3, title: 'Data Scientist', company: 'LMN Inc', location: 'Chennai', salary: '₹10-20 Lakhs', department: 'Data', workMode: 'Work from office' },
     { id: 4, title: 'Frontend Developer', company: 'JKL Ltd', location: 'Chennai', salary: '₹5-10 Lakhs', department: 'Engineering', workMode: 'Remote' },
-    // Add more jobs here as needed
+    
   ], []);
 
   const [filteredJobs, setFilteredJobs] = useState(allJobs);
@@ -52,7 +52,7 @@ function JobsInChennai() {
     setIsModalOpen(false);
   };
 
-  // Handle checkbox change
+  
   const handleFilterChange = (filterType, value) => {
     setFilters(prevFilters => {
       const newFilters = { ...prevFilters };
@@ -65,7 +65,7 @@ function JobsInChennai() {
     });
   };
 
-  // Calculate the number of applied filters
+  
   const getAppliedFilterCount = () => {
     return Object.values(filters).reduce((count, filterArray) => count + filterArray.length, 0);
   };
@@ -77,14 +77,14 @@ function JobsInChennai() {
       <div className="filters-section">
         <h2>All Filters</h2>
 
-        {/* Applied Filter */}
+       
         <div className="filter-section">
           <h3>Applied</h3>
           {appliedFilterCount > 0 && <p>Applied ({appliedFilterCount})</p>}
         </div>
         <hr />
 
-        {/* Department Filter */}
+       
         <div className="filter-section">
           <h3>Department</h3>
           {['Engineering', 'Product', 'Data', 'Marketing', 'Sales'].map((dept, index) => (
@@ -106,7 +106,7 @@ function JobsInChennai() {
         </div>
         <hr />
 
-        {/* Work Mode Filter */}
+       
         <div className="filter-section">
           <h3>Work Mode</h3>
           {['Work from office', 'Hybrid', 'Remote'].map((mode, index) => (
@@ -122,7 +122,7 @@ function JobsInChennai() {
         </div>
         <hr />
 
-        {/* Experience Filter */}
+      
         <div className="filter-section">
           <h3>Experience</h3>
           <div className="experience-slider">
@@ -144,7 +144,7 @@ function JobsInChennai() {
         </div>
         <hr />
 
-        {/* Salary Filter */}
+        
         <div className="filter-section">
           <h3>Salary</h3>
           {['0-3 Lakhs', '3-6 Lakhs', '6-10 Lakhs', '10-20 Lakhs'].map((salary, index) => (
@@ -160,7 +160,7 @@ function JobsInChennai() {
         </div>
         <hr />
 
-        {/* Company Type Filter */}
+        
         <div className="filter-section">
           <h3>Company Type</h3>
           {['Corporate', 'Startup', 'MNC'].map((type, index) => (

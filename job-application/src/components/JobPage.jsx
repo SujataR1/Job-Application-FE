@@ -10,7 +10,7 @@ const initialJobs = [
 ];
 
 const Jobs = () => {
-    // If you don't need to use `filters` or `setJobs`, remove them
+    
     // const [filters, setFilters] = useState({});
     // const [jobs, setJobs] = useState(initialJobs);
 
