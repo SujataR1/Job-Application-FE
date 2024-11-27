@@ -153,7 +153,6 @@ const Login = () => {
             setError(error.message); // Show error message
         }
     };
-
     return (
         <div className="flex justify-center items-center min-h-screen bg-gray-100">
             <div className="bg-white p-8 rounded-lg shadow-lg max-w-lg w-full">
