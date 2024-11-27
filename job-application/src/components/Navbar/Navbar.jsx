@@ -318,7 +318,8 @@ const Navbar = () => {
                 </div>
 
                 <nav className="navbar-nav flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-10 mx-auto">
-                    <Link to="/" className="text-white font-bold text-lg hover:text-teal-300">Home</Link>
+                    <Link to="/" className="text-white font-bold text-lg hover:text-teal-300"></Link>
+                    <Link to="home" className="text-white font-bold text-lg hover:text-teal-300">Home</Link>
                     <Link to="/network" className="text-white font-bold text-lg hover:text-teal-300">My Network</Link>
                     <Link to="/jobs" className="text-white font-bold text-lg hover:text-teal-300">Jobs</Link>
                     <Link to="/messages" className="text-white font-bold text-lg hover:text-teal-300">Messages</Link>
