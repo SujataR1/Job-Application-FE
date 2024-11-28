@@ -95,8 +95,10 @@ const ConditionalNavbar = () => {
    const location = useLocation();  // Get current location to conditionally render Navbar
   
     //Render Navbar only if the path is not '/dashboard'
-    return location.pathname !== '/' && <Navbar />;
+   
+    return !['/login', '/signup','/'].includes(location.pathname) && <Navbar />;
   };
+
 
 
 const App = () => {
