@@ -1,132 +1,215 @@
-/* NewsFeed Container */
+/* General Styles */
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #f4f4f4;
+  margin: 0;
+  padding: 0;
+}
+
+/* Container for News Feed */
 .newsfeed-container {
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
-    padding: 2rem;
-    max-width: 1200px;
-    margin: 0 auto;
+  width: 80%;
+  margin: 20px auto;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Search Bar Styles */
+.search-bar-container {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.search-input,
+.location-input {
+  padding: 10px;
+  width: 48%;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.search-button {
+  padding: 10px 20px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.search-button:hover {
+  background-color: #45a049;
+}
+
+/* Post Card Styles */
+.posts {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.post-card {
+  background-color: #fff;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.post-header {
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+  color: #555;
+  margin-bottom: 10px;
+}
+
+.repost-indicator {
+  font-size: 12px;
+  color: #888;
+}
+
+.post-user {
+  font-weight: bold;
+}
+
+.post-time {
+  color: #888;
+}
+
+/* Content of the Post */
+.post-content {
+  font-size: 16px;
+  color: #333;
+  margin-bottom: 15px;
+}
+
+.post-media {
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+.post-video {
+  width: 100%;
+  max-width: 600px;
+  border-radius: 5px;
+}
+
+.post-image {
+  width: 100%;
+  max-width: 600px;
+  border-radius: 5px;
+}
+
+/* Post Actions (Like, Comment, Share, Repost) */
+.post-actions {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15px;
+}
+
+.like-button,
+.comment-button,
+.share-button,
+.repost-button,
+.interested-button {
+  padding: 8px 15px;
+  border: none;
+  border-radius: 5px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.like-button {
+  background-color: #f0f0f0;
+}
+
+.comment-button {
+  background-color: #f7f7f7;
+}
+
+.share-button {
+  background-color: #e9e9e9;
+}
+
+.repost-button {
+  background-color: #f0f0f0;
+}
+
+.interested-button {
+  background-color: #4CAF50;
+  color: white;
+  margin-top: 10px;
+}
+
+button:hover {
+  opacity: 0.8;
+}
+
+/* Comment Section */
+.comments {
+  margin-top: 15px;
+  font-size: 14px;
+}
+
+.comment-form {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.comment-input {
+  width: 80%;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+}
+
+.submit-comment-button {
+  padding: 10px 15px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.submit-comment-button:hover {
+  background-color: #45a049;
+}
+
+.comment {
+  background-color: #f9f9f9;
+  padding: 8px;
+  border-radius: 5px;
+  margin-bottom: 8px;
+}
+
+.comment strong {
+  color: #333;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .newsfeed-container {
+    width: 95%;
   }
-  
-  /* Post Form */
-  .post-form {
-    display: flex;
+
+  .search-bar-container {
     flex-direction: column;
-    gap: 1rem;
   }
-  
-  .post-input {
+
+  .search-input,
+  .location-input {
     width: 100%;
-    padding: 1rem;
-    border-radius: 8px;
-    border: 1px solid #e1e4e8;
-    font-size: 1rem;
-    outline: none;
-    resize: none;
-    background-color: #f7f9fa;
+    margin-bottom: 10px;
   }
-  
-  .post-button {
-    background-color: #0a66c2;
-    color: white;
-    border: none;
-    padding: 0.5rem 1rem;
-    border-radius: 6px;
-    font-size: 1rem;
-    cursor: pointer;
-    align-self: flex-end;
-  }
-  
-  .post-button:hover {
-    background-color: #004182;
-  }
-  
-  /* Post Card */
-  .post-card {
-    background-color: white;
-    border-radius: 8px;
-    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
-    padding: 1.5rem;
-    margin-bottom: 2rem;
-  }
-  
-  .post-header {
-    display: flex;
-    justify-content: space-between;
-    font-size: 1.1rem;
-    color: #333;
-  }
-  
-  .post-user {
-    font-weight: bold;
-  }
-  
-  .post-time {
-    color: #888;
-    font-size: 0.9rem;
-  }
-  
-  .post-content {
-    font-size: 1.1rem;
-    color: #444;
-    margin: 1rem 0;
-  }
-  
+
   .post-actions {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 1rem;
-    font-size: 1rem;
-  }
-  
-  .like-button, .comment-button, .share-button {
-    background: none;
-    border: none;
-    color: #0073b1;
-    cursor: pointer;
-  }
-  
-  .like-button:hover, .comment-button:hover, .share-button:hover {
-    color: #0a66c2;
-  }
-  
-  .comments {
-    margin-top: 1.5rem;
-  }
-  
-  .comment {
-    font-size: 1rem;
-    color: #444;
-    margin-bottom: 0.5rem;
-  }
-  
-  .comment-form {
-    display: flex;
     flex-direction: column;
-    gap: 0.5rem;
+    gap: 10px;
   }
-  
-  .comment-input {
-    width: 100%;
-    padding: 0.8rem;
-    border-radius: 6px;
-    border: 1px solid #e1e4e8;
-    font-size: 1rem;
-    background-color: #f7f9fa;
-  }
-  
-  .submit-comment-button {
-    background-color: #0a66c2;
-    color: white;
-    border: none;
-    padding: 0.5rem 1rem;
-    border-radius: 6px;
-    font-size: 1rem;
-    cursor: pointer;
-    align-self: flex-end;
-  }
-  
-  .submit-comment-button:hover {
-    background-color: #004182;
-  }
-  
+}
