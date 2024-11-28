@@ -1,0 +1,100 @@
+/* Global Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f6f9;
+    color: #333;
+  }
+  
+  /* Container for the whole interview scheduling page */
+  .interview-container {
+    max-width: 1000px;
+    margin: auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .dashboard-title {
+    font-size: 2rem;
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+  }
+  
+  /* Styles for the applications section */
+  .applications-container {
+    margin-top: 20px;
+  }
+  
+  .application-card {
+    padding: 20px;
+    margin-bottom: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    border: 1px solid #ddd;
+  }
+  
+  .applicant-name {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+  }
+  
+  .application-card p {
+    font-size: 1rem;
+    margin: 10px 0;
+  }
+  
+  .download-link {
+    color: #007bff;
+    text-decoration: none;
+  }
+  
+  .download-link:hover {
+    text-decoration: underline;
+  }
+  
+  /* Styles for the interview scheduling section */
+  .schedule-container {
+    margin-top: 20px;
+  }
+  
+  .date-input {
+    padding: 8px;
+    width: 200px;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+    margin-right: 10px;
+    font-size: 1rem;
+  }
+  
+  .schedule-button {
+    padding: 10px 20px;
+    background-color: #28a745;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1rem;
+  }
+  
+  .schedule-button:hover {
+    background-color: #218838;
+  }
+  
+  /* Styles for Interview Scheduled message */
+  .interview-scheduled {
+    color: #28a745;
+    font-size: 1rem;
+    font-weight: 600;
+    margin-top: 10px;
+  }
+  

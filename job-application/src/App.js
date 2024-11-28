@@ -85,11 +85,18 @@ import USFederalGovernment from './components/Categories/PublicServices/USFedera
 import Technology from './components/Categories/TechnologyMediaandCommunications/Technology';
 import AllIndustries from './components/Categories/AllIndustries/AllIndustries';
 import MediaEntertainment from './components/Industry/TechnologyMediaComunications/MediaEntertainment/Media';
-import HomePage from './components/Home/Home';
-import Sidebar from './components/Sidebar/Sidebar';
-import Feed from './components/Feed/Feed';
-import Navbar from './components/Navbar/Navbar';
-
+import HomePage from './components/Applicant/Home/Home';
+import Sidebar from './components/Applicant/Sidebar/Sidebar';
+import Feed from './components/Applicant/Feed/Feed';
+import Navbar from './components/Applicant/Navbar/Navbar';
+import Message from './components/Applicant/Message/Message';
+import EmployerProfile from './components/Employer/Profile/Profile';
+import EmployerDashboard from './components/Employer/EmployerDashboard/EmployDashboard';
+import InterviewScheduling from './components/Employer/InterviewScheduling/Interview';
+import JobpostingManagement from './components/Employer/JobPostingManagement/Jobposting';
+import Notifications from './components/Employer/Notifications/Notification';
+import CandidateManagement from './components/Employer/CandidateManagement/Candidate';
+import Analytics from './components/Employer/Analytics/Analytics';
 //This component is used to conditionally render Navbar based on the current path
 const ConditionalNavbar = () => {
    const location = useLocation();  // Get current location to conditionally render Navbar
@@ -191,7 +198,6 @@ const App = () => {
                 <Route path="/industries-public-sector" element={<PublicSector />} />
                 <Route path="/industries-special-districts" element={<SpecialDistricts />} />
                 <Route path="/industries-communications" element={<Communications />} />
-
                 <Route path="/industries-state-local-government" element={<StateLocalGovernment />} />
                 <Route path="/industries-us-federal-government" element ={<USFederalGovernment />} />
                 <Route path="/industries-technology" element={<Technology />} />
@@ -200,10 +206,17 @@ const App = () => {
               <Route path="/home" element={<HomePage />} />
               <Route path="/sidebar" element={<Sidebar/>} />
               <Route path="/feed" element={<Feed/>} />
+              <Route path="/messages" element={<Message/>} />
+              <Route path="/analytics" element={<Analytics/>} />
+              <Route path="/employerdashboard" element={<EmployerDashboard/>} />
+              <Route path="/interview" element={<InterviewScheduling/>} />
+              <Route path="/candidate" element={<CandidateManagement/>} />
+               <Route path="/candidate" element={<CandidateManagement/>} />
+               <Route path="/jobposting" element={<JobpostingManagement/>} />
+               <Route path="/employerprofile" element={<EmployerProfile/>} />
+               <Route path="/notifications" element={<Notifications/>} />
 
-
-
-            </Routes>
+              </Routes>
             <Footer />
         </Router>
     );

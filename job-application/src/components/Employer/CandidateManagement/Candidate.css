@@ -1,0 +1,130 @@
+/* General styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+    color: #333;
+    margin: 0;
+    padding: 0;
+  }
+  
+  /* Main container */
+  .candidate-management {
+    max-width: 900px;
+    margin: auto;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+  }
+  
+  /* Header */
+  .header {
+    text-align: center;
+    font-size: 28px;
+    color: #4a90e2;
+    margin-bottom: 20px;
+  }
+  
+  /* No applications message */
+  .no-applications {
+    text-align: center;
+    font-size: 18px;
+    color: #999;
+  }
+  
+  /* Container for applicant cards */
+  .applications-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  /* Application card styling */
+  .application-card {
+    padding: 20px;
+    background-color: #f3f3f3;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .applicant-info {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  
+  .applicant-name {
+    font-size: 20px;
+    font-weight: bold;
+    color: #333;
+  }
+  
+  .resume {
+    margin-top: 10px;
+  }
+  
+  /* Action buttons styling */
+  .action-buttons {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+  }
+  
+  .shortlist-button,
+  .reject-button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+  }
+  
+  .shortlist-button {
+    background-color: #4caf50;
+    color: #fff;
+  }
+  
+  .reject-button {
+    background-color: #f44336;
+    color: #fff;
+  }
+  
+  .shortlist-button:hover,
+  .reject-button:hover {
+    opacity: 0.9;
+  }
+  
+  /* Status indicators */
+  .status-indicator {
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-weight: bold;
+  }
+  
+  .shortlisted {
+    background-color: #4caf50;
+    color: white;
+  }
+  
+  .rejected {
+    background-color: #f44336;
+    color: white;
+  }
+  
+  /* Download resume button */
+  .download-resume-button {
+    padding: 8px 15px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .download-resume-button:hover {
+    background-color: #0056b3;
+  }
+  
