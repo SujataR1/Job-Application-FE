@@ -1,4 +1,9 @@
+<<<<<<< HEAD:job-application/src/components/Home/Homepage.jsx
 import React, { useState } from 'react';
+=======
+import React from 'react';
+import Header from '../Header/Header';
+>>>>>>> eb45332f263b50696ea6ceeb95eed0800a981d2f:job-application/src/components/Dashboard/Homepage.jsx
 
 // Import the Navbar component
 
@@ -25,8 +30,13 @@ const HomePage = () => {
 
     return (
         <div className="font-sans bg-cover bg-center bg-fixed min-h-screen" style={{ backgroundImage: 'url(/images/background.png)' }}>
+<<<<<<< HEAD:job-application/src/components/Home/Homepage.jsx
             {/* Ensure Navbar is placed here */}
 
+=======
+         {/* Ensure Navbar is placed here */}
+         <Header />
+>>>>>>> eb45332f263b50696ea6ceeb95eed0800a981d2f:job-application/src/components/Dashboard/Homepage.jsx
             {/* Main Content */}
             <main className="text-center mt-0">
                 <span className="bg-green-100 text-green-600 px-4 py-1 rounded-full text-xs">No. 1 Job Hunt Website</span>

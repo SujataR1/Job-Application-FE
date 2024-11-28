@@ -1,6 +1,6 @@
-// Modal.js
+
 import React from 'react';
-import './DataModal.css'; // Import the CSS file for styling
+import './DataModal.css'; 
 
 function Modal({ closeModal, type }) {
   const departments = [

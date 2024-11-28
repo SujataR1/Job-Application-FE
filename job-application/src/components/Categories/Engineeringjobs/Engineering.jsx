@@ -1,5 +1,5 @@
 import React, { useState, useMemo, useEffect } from 'react';
-import './Engineering.css'; // Adjust the CSS path if necessary
+import './Engineering.css'; 
 import Modal from '../model/Modal';
 
 function Engineering() {
