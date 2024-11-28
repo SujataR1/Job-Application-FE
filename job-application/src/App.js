@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes,useLocation} from 'react-router-dom';
 import Dasboard from './components/Dashboard/Homepage';
@@ -6,13 +7,8 @@ import IT from './components/Categories/ITjobs/ITjobs';
 import Jobs from './components/JobPage';
 import SignUpPage from './components/auth/SignUpPage'; // The new SignUp component
 import Login from './components/auth/Login';
-<<<<<<< HEAD
-import Navbar from './components/Navbar/Navbar';
-import Footer from './components/Footer/Footer'; // Import Footer 
-=======
 import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer'; // Import Footer
->>>>>>> eb45332f263b50696ea6ceeb95eed0800a981d2f
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import Marketing from './components/Categories/Marketingjobs/Marketing';
 import DataScienceJobs from './components/Categories/DataScience/DataScience';
@@ -90,15 +86,12 @@ import USFederalGovernment from './components/Categories/PublicServices/USFedera
 import Technology from './components/Categories/TechnologyMediaandCommunications/Technology';
 import AllIndustries from './components/Categories/AllIndustries/AllIndustries';
 import MediaEntertainment from './components/Industry/TechnologyMediaComunications/MediaEntertainment/Media';
-<<<<<<< HEAD
-import Jobs4u from './components/Company/category/Findjobs/jobs4u';
-import PriorityApplicant from './components/Company/category/Findjobs/priorityapplicant';
-import ContactUs from './components/Company/category/Findjobs/contactus';
-=======
 import HomePage from './components/Home/Home';
 import Sidebar from './components/Sidebar/Sidebar';
 import Feed from './components/Feed/Feed';
 import Navbar from './components/Navbar/Navbar';
+import Network from './components/Network/Network';
+
 
 //This component is used to conditionally render Navbar based on the current path
 const ConditionalNavbar = () => {
@@ -110,7 +103,6 @@ const ConditionalNavbar = () => {
   };
 
 
->>>>>>> eb45332f263b50696ea6ceeb95eed0800a981d2f
 
 const App = () => {
   
@@ -121,10 +113,9 @@ const App = () => {
             <Routes>
                 <Route path="/" element={<Dasboard />} />
                 <Route path="/jobs" element={<Jobs />} />
-                <Route path="/signup" element={<SignUpPage />} />  {/* */}
+                <Route path="/signup" element={<SignUpPage />} />  {/* SignUp Page */}
                 <Route path="/login" element={<Login />} />
                 <Route path="/it-jobs" element={<IT />} />
-
                 <Route path="/sales-jobs" element={<Sales />} /> {/* SalesJobs component */}
                 <Route path="/marketing-jobs" element={<Marketing />} />
                 <Route path="/data-science-jobs" element={<DataScienceJobs />} />
@@ -154,8 +145,8 @@ const App = () => {
                 <Route path="/mnc-jobs" element={<MncJobs />} />
                 <Route path="/about-us" element={<Aboutus />} />
                 <Route path="/overview" element={<Overview />} />
-                <Route path="/careers" element={<Careers />} />
-                <Route path="/employer-home" element={<EmployerHome />} />
+                <Route path="/careers" element={<Careers/>} />
+                <Route path="/employer-home" element={<EmployerHome/>} />
                 <Route path="/sponsored-companies" element={<SponsoredCompanies />} />
                 <Route path="/featured-companies" element={<FeaturedCompanies />} />
                 <Route path="/interview-questions" element={<InterviewQuestion />} />
@@ -169,8 +160,7 @@ const App = () => {
                 <Route path="/resume-quality-score" element={<ResumeQualityScore />} />
                 <Route path="/resume-samples" element={<ResumeSamples />} />
                 <Route path="/job-letter-samples" element={<JobLetterSamples />} />
-
-                {/* Add more routes here as needed here is how it's work like whats happen*/}
+                {/* Add more routes here as needed */}
                 <Route path="/about-us" element={<Aboutus />} />
                 <Route path="/overview" element={<Overview />} />
                 <Route path="/help-center" element={<HelpCenter />} />
@@ -179,7 +169,6 @@ const App = () => {
                 <Route path="/report-issue" element={<ReportIssue />} />
                 <Route path="/careers" element={<Careers />} />
                 <Route path="/employer-home" element={<EmployerHome />} />
-
                 {/* Add more routes here as needed */}
                 <Route path="/sitemap" element={<SiteMap />} />
                 <Route path="/credits" element={<Credits />} />
@@ -196,35 +185,28 @@ const App = () => {
                 <Route path="/basic-premium-plans" element={<BasicPremiumPlans />} />
                 <Route path="/industries-business-services" element={<ProfessionalServices />} />
                 <Route path="/industries-higher-education" element={<HigherEducationPage />} />
-                <Route path="/industries-nonprofit" element={<Nonprofit />} />
+                <Route path="/industries-nonprofit" element={<Nonprofit/>} />
                 <Route path="/industries-manufacturing" element={<Manufacturing />} />
                 <Route path="/industries-healthcare" element={<Healthcare />} />
                 <Route path="/industries-life-sciences" element={<LifeScience />} />
-                <Route path="/industries-business-services" element={<ProfessionalBusinessServices />} />
+                <Route path="/industries-business-services" element={<ProfessionalBusinessServices /> } />
                 <Route path="/industries-higher-education" element={<HigherEducation />} />
                 <Route path="/industries-public-sector" element={<PublicSector />} />
                 <Route path="/industries-special-districts" element={<SpecialDistricts />} />
                 <Route path="/industries-communications" element={<Communications />} />
 
-
                 <Route path="/industries-state-local-government" element={<StateLocalGovernment />} />
-                <Route path="/industries-us-federal-government" element={<USFederalGovernment />} />
+                <Route path="/industries-us-federal-government" element ={<USFederalGovernment />} />
                 <Route path="/industries-technology" element={<Technology />} />
-<<<<<<< HEAD
-                <Route path="/industries-media-entertainment" element={<MediaEntertainment />} />
-                <Route path="/industries-all" element={<AllIndustries />} />
-                <Route path="/jobs4u" element={<Jobs4u />} />
-                <Route path="/priority-applicant" element={<PriorityApplicant />} />
-                <Route path="/contact-us" element={<ContactUs />} />
-=======
               <Route path="/industries-media-entertainment" element={<MediaEntertainment />} />
               <Route path="/industries-all" element={<AllIndustries />} />
               <Route path="/home" element={<HomePage />} />
               <Route path="/sidebar" element={<Sidebar/>} />
               <Route path="/feed" element={<Feed/>} />
+              <Route path="/network" element={<Network />} />
+              <Route path="/header" element={<Header />} />
 
 
->>>>>>> eb45332f263b50696ea6ceeb95eed0800a981d2f
 
             </Routes>
             <Footer />
@@ -232,10 +214,4 @@ const App = () => {
     );
 };
 
-<<<<<<< HEAD
 export default App;
-=======
-export default App;
-
-
->>>>>>> eb45332f263b50696ea6ceeb95eed0800a981d2f
