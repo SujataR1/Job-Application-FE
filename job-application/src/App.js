@@ -9,10 +9,6 @@ import SignUpPage from './components/auth/SignUpPage'; // The new SignUp compone
 import Login from './components/auth/Login';
 import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer'; // Import Footer
-import Header from './components/Header/Header';
-import Footer from './components/Footer/Footer'; // Import Footer
-import Navbar from './components/Navbar/Navbar';
-import Footer from './components/Footer/Footer'; // Import Footer 
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import Marketing from './components/Categories/Marketingjobs/Marketing';
 import DataScienceJobs from './components/Categories/DataScience/DataScience';
@@ -106,9 +102,7 @@ const ConditionalNavbar = () => {
     return !['/login', '/signup','/'].includes(location.pathname) && <Navbar />;
   };
 
-import Jobs4u from './components/Company/category/Findjobs/jobs4u';
-import PriorityApplicant from './components/Company/category/Findjobs/priorityapplicant';
-import ContactUs from './components/Company/category/Findjobs/contactus';
+
 
 const App = () => {
   
@@ -213,11 +207,6 @@ const App = () => {
               <Route path="/header" element={<Header />} />
 
 
-                <Route path="/industries-media-entertainment" element={<MediaEntertainment />} />
-                <Route path="/industries-all" element={<AllIndustries />} />
-                <Route path="/jobs4u" element={<Jobs4u />} />
-                <Route path="/priority-applicant" element={<PriorityApplicant />} />
-                <Route path="/contact-us" element={<ContactUs />} />
 
             </Routes>
             <Footer />
@@ -226,5 +215,3 @@ const App = () => {
 };
 
 export default App;
-
-
