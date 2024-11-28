@@ -46,7 +46,7 @@ const JobApplicantAndCandidateManagement = () => {
     );
   };
 
-  // Reject the applicant
+  //Reject the applicant
   const handleReject = (applicantId) => {
     setJobApplications((prevState) =>
       prevState.map((app) =>
@@ -54,6 +54,8 @@ const JobApplicantAndCandidateManagement = () => {
       )
     );
   };
+
+  
 
   return (
     <div className="candidate-management">

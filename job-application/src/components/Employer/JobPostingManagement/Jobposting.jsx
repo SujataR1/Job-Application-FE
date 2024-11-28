@@ -19,7 +19,7 @@ const JobPost = ({ job, onSave }) => {
     };
     onSave(updatedJob);
   };
-
+  
   return (
     <div className="job-post-container">
       <h2 className="header">{job ? 'Edit Job' : 'Post a New Job'}</h2>
@@ -90,12 +90,14 @@ const JobPost = ({ job, onSave }) => {
 };
 
 // Dummy job data for testing
-const dummyJobData = {
+const dummydata = {
   title: 'Software Engineer',
   description: 'Looking for an experienced software engineer to join our IT team. Work on building scalable applications.',
-  salary: '50,000 - 70,000 USD',
+  salary: '₹50,000 - ₹70,000 ',
   location: 'New York, NY',
   employmentType: 'full-time',
 };
 
 export default JobPost;
+
+

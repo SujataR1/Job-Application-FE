@@ -6,7 +6,6 @@ import IT from './components/Categories/ITjobs/ITjobs';
 import Jobs from './components/JobPage';
 import SignUpPage from './components/auth/SignUpPage'; // The new SignUp component
 import Login from './components/auth/Login';
-import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer'; // Import Footer
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import Marketing from './components/Categories/Marketingjobs/Marketing';

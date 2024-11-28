@@ -1,0 +1,68 @@
+/* Container for the profile management */
+.profile-container {
+    padding: 20px;
+    border: 1px solid #ddd;
+    max-width: 600px;
+    margin: 0 auto;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+  }
+  
+  /* Heading styling */
+  .profile-container h2 {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 20px;
+  }
+  
+  /* Image container for logo */
+  .profile-logo {
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  
+  /* Styling for the company logo */
+  .profile-logo img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+  
+  /* Styling for company name and description */
+  .profile-info {
+    text-align: center;
+  }
+  
+  .profile-info h3 {
+    font-size: 20px;
+    color: #4CAF50;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  .profile-info p {
+    font-size: 16px;
+    color: #666;
+  }
+  
+  /* Button Styling */
+  .profile-button {
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+    display: block;
+    margin: 20px auto;
+  }
+  
+  .profile-button:hover {
+    background-color: #45a049;
+  }
+  
+  
