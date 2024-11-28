@@ -180,92 +180,89 @@
 
 
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';  // Import the useNavigate hook from react-router-dom
 
 const Signup = () => {
     const [formData, setFormData] = useState({
         fullName: '',
         email: '',
-        phone: '',
+        phoneNumber: '',
         password: '',
-        userType: '',
-        profile: null,
+        userType: '', // 'applicant' or 'recruiter'
+        profileImage: null, // To store file input
+        lookingForApply: '0', // String representation for the applicant type
+        lookingForRecruit: false, // Boolean for recruiter type
     });
 
-    const navigate = useNavigate(); // Initialize the navigate function
-
+    // Handle input changes
     const handleChange = (e) => {
         const { name, value } = e.target;
-        setFormData({
-            ...formData,
+        setFormData((prevData) => ({
+            ...prevData,
             [name]: value,
-        });
+        }));
     };
 
+    // Handle file input change
     const handleFileChange = (e) => {
-        setFormData({
-            ...formData,
-            profile: e.target.files[0],
-        });
+        const file = e.target.files[0];
+        setFormData((prevData) => ({
+            ...prevData,
+            profileImage: file,
+        }));
     };
 
+    // Handle form submission
     const handleSubmit = async (e) => {
         e.preventDefault();
-
+    
         // Create FormData object to send form data along with file
         const data = new FormData();
         data.append('fullName', formData.fullName);
         data.append('email', formData.email);
-        data.append('phoneNumber', formData.phone);  // Make sure backend expects 'phoneNumber'
+        data.append('phoneNumber', formData.phoneNumber);
         data.append('password', formData.password);
-        data.append('userType', formData.userType);
-
-        // Handle radio buttons (lookingForApply and lookingForRecruit)
-        if (formData.userType === 'Student') {
-            data.append('lookingForApply', 'yes');
-            data.append('lookingForRecruit', false);
-        } else if (formData.userType === 'Recruiter') {
-            data.append('lookingForRecruit', true);
-            data.append('lookingForApply', 'no');
+        data.append('userType', formData.userType); // Send userType as 'applicant' or 'recruiter'
+    
+        // Append the profile image correctly if selected
+        if (formData.profileImage) {
+            data.append('profileImage', formData.profileImage);
         }
-
-        // Check if profile file exists before appending
-        if (formData.profile) {
-            data.append('profile', formData.profile);
+    
+        // Handle lookingForApply and lookingForRecruit based on userType
+        if (formData.userType === 'applicant') {
+            data.append('lookingForApply', '1'); // Looking for Apply (string)
+            data.append('lookingForRecruit', 'false'); // Looking to Recruit (boolean -> string 'false')
+        } else if (formData.userType === 'recruiter') {
+            data.append('lookingForRecruit', true); // Looking to Recruit (boolean)
+            data.append('lookingForApply', '0'); // Not looking for Apply (string)
         }
-
-        // Debug: Log FormData to ensure everything is appended correctly
-        for (let pair of data.entries()) {
-            console.log(pair[0] + ": " + pair[1]);
+    
+        // Ensure that 'userType' is selected
+        if (!formData.userType) {
+            alert('Please select a user type (applicant or recruiter)');
+            return;
         }
-
+    
         try {
-            // Send POST request to the backend API with FormData
+            // Send POST request with FormData
             const response = await fetch('http://localhost:7000/auth/sign-up', {
                 method: 'POST',
-                body: data,  // Pass the FormData as the body
+                body: data,
             });
-
-            // Check if the response is successful
+    
             if (!response.ok) {
                 throw new Error('Signup failed');
             }
-
-            // Get the JSON response
+    
             const responseData = await response.json();
             console.log('Signup successful:', responseData);
-
-            // Optionally, redirect the user or handle success
-            alert('Signup successful! Please log in.');
-            // Redirect to login page after successful signup
-            window.location.href = '/login'; // Redirect to login page
-
+            alert('Signup successful!');
         } catch (error) {
             console.error('Error during signup:', error);
             alert('Signup failed. Please try again.');
         }
     };
-
+    
 
 
     return (
@@ -299,8 +296,8 @@ const Signup = () => {
                         <label className="block text-gray-700">Phone Number</label>
                         <input
                             type="tel"
-                            name="phone"
-                            value={formData.phone}
+                            name="phoneNumber"
+                            value={formData.phoneNumber}
                             onChange={handleChange}
                             placeholder="Phone Number"
                             className="w-full p-3 border border-gray-300 rounded"
@@ -324,26 +321,28 @@ const Signup = () => {
                                 <input
                                     type="radio"
                                     name="userType"
-                                    value="Student"
+                                    value="applicant"
+                                    checked={formData.userType === 'applicant'}
                                     onChange={handleChange}
                                     className="mr-2"
                                 />
-                                Looking for Apply
+                                Looking for Apply (Applicant)
                             </label>
                             <label className="flex items-center">
                                 <input
                                     type="radio"
                                     name="userType"
-                                    value="Recruiter"
+                                    value="recruiter"
+                                    checked={formData.userType === 'recruiter'}
                                     onChange={handleChange}
                                     className="mr-2"
                                 />
-                                Looking for Recruit
+                                Looking to Recruit (Recruiter)
                             </label>
                         </div>
                     </div>
                     <div className="mb-6">
-                        <label className="block text-gray-700">Profile</label>
+                        <label className="block text-gray-700">Profile Image</label>
                         <input
                             type="file"
                             onChange={handleFileChange}
@@ -366,3 +365,4 @@ const Signup = () => {
 };
 
 export default Signup;
+

@@ -1,0 +1,31 @@
+/* HomePage CSS */
+
+.home-page {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .navbar-header {
+    background-color: #333;
+    padding: 1rem;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+  }
+  
+  .account-icon {
+    cursor: pointer;
+  }
+  
+  .home-content {
+    display: flex;
+    margin-top: 20px;
+  }
+  
+  .main-content {
+    flex: 1;
+    padding: 20px;
+  }
+  
+  /* Optional: You can add more styles to improve the look */
+  
