@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import EmployerNavbar from '../Navbar/Navbar';
+import EmployerSidebar from '../Sidebar/Sidebar';
 
 // Static Data for Applications (to simulate real data)
 const applications = [
@@ -32,6 +34,13 @@ const Interview = () => {
   };
 
   return (
+    <div className="home-page">
+    {/* Navbar/Header */}
+   <EmployerNavbar/>
+
+    <div className="home-content flex flex-row">
+      {/* Sidebar */}
+      <EmployerSidebar />
     <div style={{ maxWidth: '800px', margin: 'auto', padding: '20px' }}>
      
       <div>
@@ -92,6 +101,8 @@ const Interview = () => {
           ))}
         </div>
       </div>
+    </div>
+    </div>
     </div>
   );
 };

@@ -96,13 +96,19 @@ import JobpostingManagement from './components/Employer/JobPostingManagement/Job
 import Notifications from './components/Employer/Notifications/Notification';
 import CandidateManagement from './components/Employer/CandidateManagement/Candidate';
 import Analytics from './components/Employer/Analytics/Analytics';
+import EmployerNavbar from './components/Employer/Navbar/Navbar';
+import EmployerSidebar from './components/Employer/Sidebar/Sidebar';
+import Efeed from './components/Employer/Efeed/Efeed';
+import EMessage from './components/Employer/EmployerMessage/EMessage';
+import ESetting from './components/Employer/Settings/Setting';
 //This component is used to conditionally render Navbar based on the current path
 const ConditionalNavbar = () => {
    const location = useLocation();  // Get current location to conditionally render Navbar
   
     //Render Navbar only if the path is not '/dashboard'
    
-    return !['/login', '/signup','/'].includes(location.pathname) && <Navbar />;
+    return !['/login', '/signup','/','/Enavbar','/Esidebar','/employerdashboard','/candidate','/jobposting','/analytics','/interview','/employerprofile','/notifications','/analytics','/message','/jobposting','/Esetting'].includes(location.pathname) && <Navbar />;
+   
   };
 
 
@@ -113,7 +119,8 @@ const App = () => {
         <Router>
             
             <ConditionalNavbar />
-            <Routes>
+           
+             <Routes>
                 <Route path="/" element={<Dasboard />} />
                 <Route path="/jobs" element={<Jobs />} />
                 <Route path="/signup" element={<SignUpPage />} />  {/* SignUp Page */}
@@ -200,20 +207,25 @@ const App = () => {
                 <Route path="/industries-state-local-government" element={<StateLocalGovernment />} />
                 <Route path="/industries-us-federal-government" element ={<USFederalGovernment />} />
                 <Route path="/industries-technology" element={<Technology />} />
-              <Route path="/industries-media-entertainment" element={<MediaEntertainment />} />
-              <Route path="/industries-all" element={<AllIndustries />} />
-              <Route path="/home" element={<HomePage />} />
-              <Route path="/sidebar" element={<Sidebar/>} />
-              <Route path="/feed" element={<Feed/>} />
-              <Route path="/messages" element={<Message/>} />
-              <Route path="/analytics" element={<Analytics/>} />
-              <Route path="/employerdashboard" element={<EmployerDashboard/>} />
-              <Route path="/interview" element={<InterviewScheduling/>} />
-              <Route path="/candidate" element={<CandidateManagement/>} />
-               <Route path="/candidate" element={<CandidateManagement/>} />
-               <Route path="/jobposting" element={<JobpostingManagement/>} />
-               <Route path="/employerprofile" element={<EmployerProfile/>} />
-               <Route path="/notifications" element={<Notifications/>} />
+                <Route path="/industries-media-entertainment" element={<MediaEntertainment />} />
+                <Route path="/industries-all" element={<AllIndustries />} />
+                <Route path="/home" element={<HomePage />} />
+                <Route path="/sidebar" element={<Sidebar/>} />
+                <Route path="/feed" element={<Feed/>} />
+                <Route path="/messages" element={<Message/>} />
+                <Route path="/analytics" element={<Analytics/>} />
+                <Route path="/employerdashboard" element={<EmployerDashboard/>} />
+                <Route path="/interview" element={<InterviewScheduling/>} />
+                <Route path="/candidate" element={<CandidateManagement/>} />
+                <Route path="/jobposting" element={<JobpostingManagement/>} />
+                <Route path="/employerprofile" element={<EmployerProfile/>} />
+                <Route path="/notifications" element={<Notifications/>} />
+                <Route path="/Enavbar" element={<EmployerNavbar/>}/>
+                <Route path="/Esidebar" element={<EmployerSidebar/>}/>
+                <Route path="/Efeed" element={<Efeed/>}/>
+                <Route path="/message" element={<EMessage/>}/>
+                <Route path="/Esetting" element={<ESetting/>}/>
+
 
               </Routes>
             <Footer />

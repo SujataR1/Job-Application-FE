@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
-import './JobPosting.css';  // Importing the CSS file
+import './JobPosting.css'; 
+import EmployerNavbar from '../Navbar/Navbar';
+import EmployerSidebar from '../Sidebar/Sidebar'; // Importing the CSS file
 
 const JobPost = ({ job, onSave }) => {
   const [title, setTitle] = useState(job ? job.title : '');
@@ -21,6 +23,14 @@ const JobPost = ({ job, onSave }) => {
   };
   
   return (
+    <div className="home-page">
+    {/* Navbar/Header */}
+   <EmployerNavbar/>
+
+    <div className="home-content flex flex-row">
+      {/* Sidebar */}
+      <EmployerSidebar />
+
     <div className="job-post-container">
       <h2 className="header">{job ? 'Edit Job' : 'Post a New Job'}</h2>
       <form className="job-post-form" onSubmit={handleSubmit}>
@@ -85,6 +95,8 @@ const JobPost = ({ job, onSave }) => {
           {job ? 'Update Job' : 'Post Job'}
         </button>
       </form>
+    </div>
+    </div>
     </div>
   );
 };

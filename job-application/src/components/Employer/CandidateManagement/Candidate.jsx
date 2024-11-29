@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import './Candidate.css';  // Importing the CSS file
+import './Candidate.css';
+import EmployerNavbar from '../Navbar/Navbar'; 
+import EmployerSidebar from '../Sidebar/Sidebar'; // Importing the CSS file
 
 // Dummy data for applicants
 const applicantsData = [
@@ -58,7 +60,15 @@ const JobApplicantAndCandidateManagement = () => {
   
 
   return (
+    <div className="home-page">
+      {/* Navbar/Header */}
+     <EmployerNavbar/>
+
+      <div className="home-content flex flex-row">
+        {/* Sidebar */}
+        <EmployerSidebar />
     <div className="candidate-management">
+    
       <h2 className="header">Job Applications</h2>
 
       {jobApplications.length === 0 ? (
@@ -101,6 +111,8 @@ const JobApplicantAndCandidateManagement = () => {
           ))}
         </div>
       )}
+    </div>
+    </div>
     </div>
   );
 };
