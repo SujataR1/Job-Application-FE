@@ -40,8 +40,8 @@
 
 
 import React, { useState } from 'react';
-import EmployerNavbar from '../Navbar/Navbar';
-import EmployerSidebar from '../Sidebar/Sidebar';
+import EmployerNavbar from '../../Applicant/Navbar/Navbar';
+import EmployerSidebar from '../../Applicant/Sidebar/Sidebar';
 import './Profile.css';
 
 const ProfileManagement = () => {
@@ -100,11 +100,7 @@ const ProfileManagement = () => {
   };
 
   return (
-    <div className="profile-management-page">
-      <EmployerNavbar />
-
-      <div className="profile-management-content">
-        <EmployerSidebar />
+    
 
         <div className="profile-main-content">
           <div className="profile-header">
@@ -219,8 +215,7 @@ const ProfileManagement = () => {
             </div>
           </div>
         </div>
-      </div>
-    </div>
+      
   );
 };
 

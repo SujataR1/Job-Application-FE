@@ -1,7 +1,7 @@
 
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { FaUserCircle, FaUsers, FaBriefcase, FaEnvelope, FaCog } from 'react-icons/fa'; // Import necessary React Icons
+import { FaUserCircle, FaUsers, FaBriefcase, FaEnvelope, FaClipboardList } from 'react-icons/fa'; // Import necessary React Icons
 import './Sidebar.css';
 
 const Sidebar = () => {
@@ -40,16 +40,17 @@ const Sidebar = () => {
               </Link>
             </li>
             <li>
+              <Link to="/application" className="sidebar-item">
+                <FaClipboardList  className="sidebar-icon" /> My Application
+              </Link>
+            </li>
+            <li>
               <Link to="/messages" className="sidebar-item">
                 <FaEnvelope className="sidebar-icon" /> Messages
               </Link>
             </li>
            
-            <li>
-              <Link to="/settings" className="sidebar-item">
-                <FaCog className="sidebar-icon" /> Settings
-              </Link>
-            </li>
+           
           </ul>
         </div>
       )}

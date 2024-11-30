@@ -89,7 +89,7 @@ import Sidebar from './components/Applicant/Sidebar/Sidebar';
 import Feed from './components/Applicant/Feed/Feed';
 import Navbar from './components/Applicant/Navbar/Navbar';
 import Message from './components/Applicant/Message/Message';
-import EmployerProfile from './components/Employer/Profile/Profile';
+import Profile from './components/Applicant/Profile/Profile';
 import EmployerDashboard from './components/Employer/EmployerDashboard/EmployDashboard';
 import InterviewScheduling from './components/Employer/InterviewScheduling/Interview';
 import JobpostingManagement from './components/Employer/JobPostingManagement/Jobposting';
@@ -107,7 +107,7 @@ const ConditionalNavbar = () => {
   
     //Render Navbar only if the path is not '/dashboard'
    
-    return !['/login', '/signup','/','/Enavbar','/Esidebar','/employerdashboard','/candidate','/jobposting','/analytics','/interview','/employerprofile','/notifications','/analytics','/message','/jobposting','/Esetting'].includes(location.pathname) && <Navbar />;
+    return !['/login', '/signup','/','/Enavbar','/Esidebar','/employerdashboard','/candidate','/jobposting','/analytics','/interview','/notifications','/analytics','/message','/jobposting','/Esetting'].includes(location.pathname) && <Navbar />;
    
   };
 
@@ -218,7 +218,7 @@ const App = () => {
                 <Route path="/interview" element={<InterviewScheduling/>} />
                 <Route path="/candidate" element={<CandidateManagement/>} />
                 <Route path="/jobposting" element={<JobpostingManagement/>} />
-                <Route path="/employerprofile" element={<EmployerProfile/>} />
+                <Route path="/profile" element={<Profile/>} />
                 <Route path="/notifications" element={<Notifications/>} />
                 <Route path="/Enavbar" element={<EmployerNavbar/>}/>
                 <Route path="/Esidebar" element={<EmployerSidebar/>}/>
