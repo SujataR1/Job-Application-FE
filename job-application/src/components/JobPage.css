@@ -1,0 +1,148 @@
+/* src/JobPage.css */
+.job-page {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start; /* Align items to the start */
+  min-height: 100vh;
+  padding: 50px;
+  background-color: #f4f4f4;
+  margin-left: 500px; /* Add more space on the left */
+  margin-bottom: 50px
+}
+
+
+
+
+.filters-section {
+  padding: 20px; /* Reduced padding for a smaller vertical size */
+  background-color: #ffffff;
+  border-radius: 50px;
+  width: 100%;
+  max-width: 2000px; /* Increased max-width for even wider section */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Optional: add shadow for better look */
+  margin-top: 10px;
+}
+
+
+h2 {
+  font-size: 1.5em; /* Adjusted size for header */
+  margin-bottom: 15px;
+  text-align: center;
+  color: #333;
+}
+
+.filter-container {
+  display: flex;
+  flex-direction: column;
+  gap: 15px; /* Reduced gap between filters for a more compact look */
+}
+
+.filter {
+  display: flex;
+  flex-direction: column;
+}
+
+.filter label {
+  display: block;
+  font-size: 1em;
+  margin-bottom: 8px;
+  color: #555;
+}
+
+.filter input[type="text"],
+.filter input[type="number"],
+.filter select {
+  width: 100%;
+  padding: 8px; /* Reduced padding for smaller size */
+  font-size: 1em;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-sizing: border-box;
+}
+
+/* Make sure the filter container has enough space */
+.filter {
+  display: flex;
+  align-items: center; /* Center the checkbox and label vertically */
+  margin-bottom: 10px; /* Add space between filter options */
+  white-space: nowrap; /* Prevent text from wrapping to next line */
+}
+
+.filter label {
+  display: flex;
+  align-items: center;
+  width: auto; /* Allow the label to take as much space as needed */
+}
+
+.filter input[type="checkbox"] {
+  margin-right: 10px; /* Space between checkbox and label */
+}
+
+/* Add spacing between the filters to prevent them from being too tight */
+.filter-row {
+  display: flex;
+  gap: 20px; /* Add space between different filter options */
+}
+
+
+
+.salary-range {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.salary-range button {
+  background: none;
+  border: none;
+  font-size: 1.5em;
+  cursor: pointer;
+  padding: 0 10px;
+}
+
+.salary-labels {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+.clear-all {
+  background-color: #4da6ff;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-size: 1em;
+  cursor: pointer;
+  width: 100%;
+}
+
+.or-divider {
+  text-align: center;
+  margin: 15px 0; /* Reduced space between OR divider */
+}
+
+.or-divider span {
+  font-weight: bold;
+  color: #888;
+}
+
+.search-box {
+  display: flex;
+  align-items: center;
+}
+
+.search-box input[type="text"] {
+  width: auto; /* Adjust width to leave space for the search button */
+  padding: 10px;
+  font-size: 1em;
+}
+
+.search-box button {
+  background: none;
+  border: none;
+  font-size: 1.5em;
+  cursor: pointer;
+  padding: 10px;
+}
