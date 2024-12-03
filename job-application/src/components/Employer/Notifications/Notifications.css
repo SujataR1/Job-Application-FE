@@ -1,0 +1,64 @@
+
+.notifications-container {
+    padding: 20px;
+    max-width: 600px;
+    margin: 0 auto;
+    background-color: #f8f9fa;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+
+  .notifications-container h3 {
+    font-size: 22px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  
+  
+  .no-notifications {
+    font-size: 16px;
+    color: #888;
+    text-align: center;
+  }
+  
+
+  .notifications-list {
+    list-style-type: none;
+    padding-left: 0;
+  }
+  
+
+  .notification-item {
+    background-color: #ffffff;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    font-size: 16px;
+    color: #333;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+  }
+  
+ 
+  .notification-item:hover {
+    background-color: #f1f1f1;
+    transform: scale(1.02);
+  }
+  
+  
+  .new-application {
+    border-left: 5px solid #4CAF50;
+  }
+  
+  .interview-scheduled {
+    border-left: 5px solid #FF9800;
+  }
+  
+  .status-update {
+    border-left: 5px solid #2196F3;
+  }
+  

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { FaHome, FaUsers, FaBriefcase, FaEnvelope, FaSignOutAlt, FaUserCircle } from 'react-icons/fa';  // Import icons from react-icons
+import { FaHome, FaUsers, FaBriefcase, FaEnvelope, FaSignOutAlt, FaUserCircle,FaBell } from 'react-icons/fa';  // Import icons from react-icons
 import Sidebar from '../Sidebar/Sidebar'; // Import Sidebar component
 import './Navbar.css';  // Import the CSS file for styles
 
@@ -29,7 +29,7 @@ const Navbar = () => {
 
     return (
         <div className="navbar-background font-sans">
-            <header className="navbar-header flex flex-col md:flex-row justify-between items-center p-5 bg-opacity-80 bg-gray-800">
+            <header className="employer-navbar">
                 {/* Account Icon */}
                 <div className="account-icon" onClick={toggleSidebar}>
                     <FaUserCircle size={30} color="#fff" />
@@ -47,6 +47,9 @@ const Navbar = () => {
                     </Link>
                     <Link to="/messages" className="text-white font-bold text-lg hover:text-teal-300">
                         <FaEnvelope className="inline-block mr-2" /> Messages
+                    </Link>
+                    <Link to="/bell" className="text-white font-bold text-lg hover:text-teal-300">
+                        <FaBell className="inline-block mr-2" /> Notification
                     </Link>
                 </nav>
 

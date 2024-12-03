@@ -1,0 +1,218 @@
+/* General Feed Layout */
+.newsfeed-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    background-color: #f4f6f9;
+  }
+  
+  .search-bar-container {
+    width: 100%;
+    max-width: 800px;
+    margin-bottom: 20px;
+  }
+  
+  .search-input {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+  
+  .posts {
+    width: 100%;
+    max-width: 800px;
+  }
+  
+  .post-card {
+    background-color: #fff;
+    margin-bottom: 20px;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s;
+  }
+  
+  .post-card:hover {
+    transform: translateY(-5px);
+  }
+  
+  .post-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  
+  .post-user {
+    font-weight: bold;
+    font-size: 18px;
+  }
+  
+  .post-time {
+    font-size: 14px;
+    color: #777;
+  }
+  
+  .repost-indicator {
+    font-size: 14px;
+    color: #007bff;
+  }
+  
+  .post-content {
+    font-size: 16px;
+    margin-bottom: 10px;
+  }
+  
+  .post-media {
+    margin: 10px 0;
+  }
+  
+  .post-video,
+  .post-image {
+    width: 100%;
+    max-height: 400px;
+    object-fit: cover;
+    border-radius: 8px;
+  }
+  
+  .post-actions {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+  }
+  
+  .like-button,
+  .comment-button,
+  .share-button,
+  .repost-button,
+  .submit-comment-button {
+    border: none;
+    background-color: #f0f0f0;
+    padding: 8px 16px;
+    font-size: 14px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .like-button.liked {
+    background-color: #007bff;
+    color: #fff;
+  }
+  
+  .like-button:hover,
+  .comment-button:hover,
+  .share-button:hover,
+  .repost-button:hover {
+    background-color: #e0e0e0;
+  }
+  
+  .submit-comment-button {
+    background-color: #007bff;
+    color: white;
+  }
+  
+  .repost-button {
+    background-color: #f1f1f1;
+  }
+  
+  .comment-button {
+    background-color: #e7e7e7;
+  }
+  
+  .comments {
+    margin-top: 10px;
+  }
+  
+  .comment {
+    font-size: 14px;
+    margin-bottom: 5px;
+  }
+  
+  .comment-form {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .comment-input {
+    width: 100%;
+    padding: 8px;
+    font-size: 14px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    margin-bottom: 8px;
+    resize: none;
+  }
+  
+  .job-info {
+    margin-top: 15px;
+    font-size: 14px;
+    border-top: 1px solid #ddd;
+    padding-top: 10px;
+  }
+  
+  .job-status {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: bold;
+  }
+  
+  .job-status button {
+    background-color: #007bff;
+    color: white;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .job-status button:hover {
+    background-color: #0056b3;
+  }
+  
+  .applicant-count {
+    font-size: 14px;
+    margin-top: 5px;
+    color: #007bff;
+  }
+  
+  /* Add responsiveness */
+  @media (max-width: 768px) {
+    .newsfeed-container {
+      padding: 15px;
+    }
+  
+    .search-input {
+      font-size: 14px;
+      padding: 8px;
+    }
+  
+    .post-card {
+      padding: 10px;
+    }
+  
+    .post-user {
+      font-size: 16px;
+    }
+  
+    .post-content {
+      font-size: 14px;
+    }
+  
+    .like-button,
+    .comment-button,
+    .share-button,
+    .repost-button,
+    .submit-comment-button {
+      font-size: 12px;
+      padding: 6px 12px;
+    }
+  }
+  
