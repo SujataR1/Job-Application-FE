@@ -12,6 +12,7 @@ import investee4 from '../images/investee4.webp';
 import investee5 from '../images/investee5.jpg';
 import aboutus from '../images/about1.jpg';
 
+
 const Careers = () => {
   return (
     <div className="careers-container">

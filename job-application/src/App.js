@@ -7,7 +7,6 @@ import IT from './components/Categories/ITjobs/ITjobs';
 import Jobs from './components/JobPage';
 import SignUpPage from './components/auth/SignUpPage'; // The new SignUp component
 import Login from './components/auth/Login';
-import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer'; // Import Footer
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import Marketing from './components/Categories/Marketingjobs/Marketing';
@@ -86,23 +85,33 @@ import USFederalGovernment from './components/Categories/PublicServices/USFedera
 import Technology from './components/Categories/TechnologyMediaandCommunications/Technology';
 import AllIndustries from './components/Categories/AllIndustries/AllIndustries';
 import MediaEntertainment from './components/Industry/TechnologyMediaComunications/MediaEntertainment/Media';
-import HomePage from './components/Home/Home';
-import Sidebar from './components/Sidebar/Sidebar';
-import Feed from './components/Feed/Feed';
-import Navbar from './components/Navbar/Navbar';
-import Network from './components/Network/Network';
-
-
+import HomePage from './components/Applicant/Home/Home';
+import Sidebar from './components/Applicant/Sidebar/Sidebar';
+import Feed from './components/Applicant/Feed/Feed';
+import Navbar from './components/Applicant/Navbar/Navbar';
+import Message from './components/Applicant/Message/Message';
+import Profile from './components/Applicant/Profile/Profile';
+import EmployerDashboard from './components/Employer/EmployerDashboard/EmployDashboard';
+import InterviewScheduling from './components/Employer/InterviewScheduling/Interview';
+import JobpostingManagement from './components/Employer/JobPostingManagement/Jobposting';
+import Notifications from './components/Employer/Notifications/Notification';
+import JobApplication from './components/Employer/CandidateManagement/Candidate';
+import Analytics from './components/Employer/Analytics/Analytics';
+import EmployerNavbar from './components/Employer/Navbar/Navbar';
+import EmployerSidebar from './components/Employer/Sidebar/Sidebar';
+import Efeed from './components/Employer/Efeed/Efeed';
+import EMessage from './components/Employer/EmployerMessage/EMessage';
+import ESetting from './components/Employer/Settings/Setting';
 //This component is used to conditionally render Navbar based on the current path
 const ConditionalNavbar = () => {
    const location = useLocation();  // Get current location to conditionally render Navbar
   
+   
     //Render Navbar only if the path is not '/dashboard'
    
-    return !['/login', '/signup','/'].includes(location.pathname) && <Navbar />;
+    return !['/login', '/signup','/','/Enavbar','/Esidebar','/employerdashboard','/application','/jobposting','/analytics','/interview','/notifications','/analytics','/message','/jobposting','/Esetting'].includes(location.pathname) && <Navbar />;
+   
   };
-
-
 
 const App = () => {
   
@@ -110,7 +119,8 @@ const App = () => {
         <Router>
             
             <ConditionalNavbar />
-            <Routes>
+           
+             <Routes>
                 <Route path="/" element={<Dasboard />} />
                 <Route path="/jobs" element={<Jobs />} />
                 <Route path="/signup" element={<SignUpPage />} />  {/* SignUp Page */}
@@ -160,6 +170,7 @@ const App = () => {
                 <Route path="/resume-quality-score" element={<ResumeQualityScore />} />
                 <Route path="/resume-samples" element={<ResumeSamples />} />
                 <Route path="/job-letter-samples" element={<JobLetterSamples />} />
+
                 {/* Add more routes here as needed */}
                 <Route path="/about-us" element={<Aboutus />} />
                 <Route path="/overview" element={<Overview />} />
@@ -169,6 +180,7 @@ const App = () => {
                 <Route path="/report-issue" element={<ReportIssue />} />
                 <Route path="/careers" element={<Careers />} />
                 <Route path="/employer-home" element={<EmployerHome />} />
+                
                 {/* Add more routes here as needed */}
                 <Route path="/sitemap" element={<SiteMap />} />
                 <Route path="/credits" element={<Credits />} />
@@ -194,21 +206,30 @@ const App = () => {
                 <Route path="/industries-public-sector" element={<PublicSector />} />
                 <Route path="/industries-special-districts" element={<SpecialDistricts />} />
                 <Route path="/industries-communications" element={<Communications />} />
-
                 <Route path="/industries-state-local-government" element={<StateLocalGovernment />} />
                 <Route path="/industries-us-federal-government" element ={<USFederalGovernment />} />
                 <Route path="/industries-technology" element={<Technology />} />
-              <Route path="/industries-media-entertainment" element={<MediaEntertainment />} />
-              <Route path="/industries-all" element={<AllIndustries />} />
-              <Route path="/home" element={<HomePage />} />
-              <Route path="/sidebar" element={<Sidebar/>} />
-              <Route path="/feed" element={<Feed/>} />
-              <Route path="/network" element={<Network />} />
-              <Route path="/header" element={<Header />} />
+                <Route path="/industries-media-entertainment" element={<MediaEntertainment />} />
+                <Route path="/industries-all" element={<AllIndustries />} />
+                <Route path="/home" element={<HomePage />} />
+                <Route path="/sidebar" element={<Sidebar/>} />
+                <Route path="/feed" element={<Feed/>} />
+                <Route path="/messages" element={<Message/>} />
+                <Route path="/analytics" element={<Analytics/>} />
+                <Route path="/employerdashboard" element={<EmployerDashboard/>} />
+                <Route path="/interview" element={<InterviewScheduling/>} />
+                <Route path="/application" element={<JobApplication/>} />
+                <Route path="/jobposting" element={<JobpostingManagement/>} />
+                <Route path="/profile" element={<Profile/>} />
+                <Route path="/notifications" element={<Notifications/>} />
+                <Route path="/Enavbar" element={<EmployerNavbar/>}/>
+                <Route path="/Esidebar" element={<EmployerSidebar/>}/>
+                <Route path="/Efeed" element={<Efeed/>}/>
+                <Route path="/message" element={<EMessage/>}/>
+                <Route path="/Esetting" element={<ESetting/>}/>
 
 
-
-            </Routes>
+              </Routes>
             <Footer />
         </Router>
     );

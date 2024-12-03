@@ -1,6 +1,6 @@
-.footer {
-    background-color: #1a202c; /* Dark background color */
-    color: #edf2f7; /* Light text color */
+ .footer {
+    background-color: #1a202c; 
+    color: #edf2f7; 
 }
 
 .footer-logo img {
@@ -9,14 +9,14 @@
 }
 
 .footer-social-icons .social-icon {
-    color: #edf2f7; /* Social icon color */
-    font-size: 1.5rem; /* Icon size */
+    color: #edf2f7; 
+    font-size: 1.5rem; 
     transition: color 0.3s; 
-   /* Smooth color transition */
+   
 }
 
 .footer-social-icons .social-icon:hover {
-    color: #1abc9c; /* Icon color on hover */
+    color: #1abc9c; 
 }
 
 .app-download-link img {
@@ -25,39 +25,39 @@
 }
 
 .footer-link {
-    color: #edf2f7; /* Link color */
-    text-decoration: none; /* Remove underline */
+    color: #edf2f7;
+    text-decoration: none; 
 }
 
 .footer-link:hover {
-    text-decoration: underline; /* Underline on hover */
+    text-decoration: underline; 
 }
 
 .company-info, .help-center, .legal-info, .businesses {
-    margin-bottom: 1.5rem; /* Space between sections */
+    margin-bottom: 1.5rem; 
 }
 
 .footer-bottom h4 {
-    font-size: 1.125rem; /* Section header font size */
-    font-weight: 600; /* Bold font */
-    margin-bottom: 0.5rem; /* Space below header */
+    font-size: 1.125rem; 
+    font-weight: 600; 
+    margin-bottom: 0.5rem; 
 }
 
 .footer-bottom ul {
-    list-style: none; /* Remove default list styling */
+    list-style: none; 
     padding: 0;
 }
 
 .footer-bottom li {
-    margin-bottom: 0.5rem; /* Space between list items */
+    margin-bottom: 0.5rem; 
 }
 
 .footer-bottom li:last-child {
-    margin-bottom: 0; /* Remove margin from last item */
+    margin-bottom: 0; 
 }
 
 .footer-bottom p {
-    font-size: 0.875rem; /* Smaller font size for footer text */
+    font-size: 0.875rem; 
 }
 .footer-app .app-box {
     background-color: #2d3748;
@@ -66,3 +66,6 @@
     padding: 1.5rem;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
+
+
+  

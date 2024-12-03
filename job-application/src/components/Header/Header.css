@@ -1,5 +1,5 @@
-.navbar-background {
-    background-color: #252930; 
+ .navbar-background {
+    background-color: #2c3e50;
 }
 
 .navbar-header {
@@ -48,9 +48,6 @@
 .dropdown-section {
     margin-bottom: 1rem; 
 }
-
-
-
  
   .modal-overlay {
     position: fixed;
@@ -88,3 +85,27 @@
 .modal-close-button:hover {
     background: #0a5e76;
 }
+.dropdown-menu {
+    display: block;
+    background-color: rgb(54, 91, 133);
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    position: absolute;
+    right: 0;
+    z-index: 10;
+    width: 200px;
+  }
+  
+  .dropdown-item {
+    display: block;
+    padding: 10px;
+    font-size: 16px;
+    text-decoration: none;
+    color: #333;
+  }
+  
+  .dropdown-item:hover {
+    background-color: #80e0d6;
+    color: #fff;
+  }
+   

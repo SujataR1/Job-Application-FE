@@ -1,0 +1,36 @@
+/* This container holds the people list and should allow horizontal scrolling */
+.people-list {
+  display: flex;
+  flex-direction: row;  /* Arrange the cards horizontally */
+  gap: 20px;  /* Space between each person card */
+  overflow-x: auto;  /* Allow horizontal scrolling */
+  padding-bottom: 20px; /* Optional: adds padding to avoid bottom overlap */
+  margin-top: 20px;
+}
+
+/* Each person card */
+.person-card {
+  width: 120px;  /* You can adjust the width */
+  text-align: center;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+}
+
+/* Styling for the images inside the person card */
+.person-image {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+/* Person name styling */
+.person-card p {
+  margin-top: 10px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+  

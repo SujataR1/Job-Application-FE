@@ -311,7 +311,7 @@ import './Header.css';  // Import the CSS file for styles
 const Header = () => {
     return (
         <div className="navbar-background font-sans">
-            <header className="navbar-header flex flex-col md:flex-row justify-between items-center p-5 bg-opacity-80 bg-gray-800">
+            <header className="employer-navbar">
                 <div className="navbar-logo text-3xl font-bold text-white">
                     <span className="text-saffron">Job</span>
                     <span className="text-white">Portal</span>
@@ -323,7 +323,7 @@ const Header = () => {
                         <FaHome className="inline-block mr-2" /> Home
                     </Link>
                     <Link to="/network" className="text-white font-bold text-lg hover:text-teal-300">
-                        <FaUsers className="inline-block mr-2" /> My Network
+                        <FaUsers className="inline-block mr-2" /> People
                     </Link>
                     <Link to="/jobs" className="text-white font-bold text-lg hover:text-teal-300">
                         <FaBriefcase className="inline-block mr-2" /> Jobs
@@ -351,3 +351,5 @@ const Header = () => {
 };
 
 export default Header;
+
+
