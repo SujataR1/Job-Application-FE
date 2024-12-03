@@ -23,7 +23,7 @@ const Footer = () => {
                     </div>
                     <div className="footer-app md:w-1/2 text-center md:text-left">
                         <div className="app-box p-6 bg-gray-800 border border-gray-700 rounded-lg shadow-md">
-                        <h3 className="text-lg font-semibold mb-2" style={{ color: 'white' }}>Apply on the go</h3>
+                            <h3 className="text-lg font-semibold mb-2" style={{ color: 'white' }}>Apply on the go</h3>
 
                             <p className="mb-4">Get real-time job updates on our App</p>
                             {/* Replace '#' with actual app download links */}

@@ -97,12 +97,11 @@ import Network from './components/Network/Network';
 const ConditionalNavbar = () => {
    const location = useLocation();  // Get current location to conditionally render Navbar
   
+   
     //Render Navbar only if the path is not '/dashboard'
    
     return !['/login', '/signup','/'].includes(location.pathname) && <Navbar />;
   };
-
-
 
 const App = () => {
   
@@ -160,6 +159,7 @@ const App = () => {
                 <Route path="/resume-quality-score" element={<ResumeQualityScore />} />
                 <Route path="/resume-samples" element={<ResumeSamples />} />
                 <Route path="/job-letter-samples" element={<JobLetterSamples />} />
+
                 {/* Add more routes here as needed */}
                 <Route path="/about-us" element={<Aboutus />} />
                 <Route path="/overview" element={<Overview />} />
@@ -169,6 +169,7 @@ const App = () => {
                 <Route path="/report-issue" element={<ReportIssue />} />
                 <Route path="/careers" element={<Careers />} />
                 <Route path="/employer-home" element={<EmployerHome />} />
+                
                 {/* Add more routes here as needed */}
                 <Route path="/sitemap" element={<SiteMap />} />
                 <Route path="/credits" element={<Credits />} />
@@ -192,8 +193,7 @@ const App = () => {
                 <Route path="/industries-business-services" element={<ProfessionalBusinessServices /> } />
                 <Route path="/industries-higher-education" element={<HigherEducation />} />
                 <Route path="/industries-public-sector" element={<PublicSector />} />
-                <Route path="/industries-special-districts" element={<SpecialDistricts />} />
-                <Route path="/industries-communications" element={<Communications />} />
+                 <Route path="/industries-communications" element={<Communications />} />
 
                 <Route path="/industries-state-local-government" element={<StateLocalGovernment />} />
                 <Route path="/industries-us-federal-government" element ={<USFederalGovernment />} />
