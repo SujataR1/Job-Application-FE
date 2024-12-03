@@ -4,7 +4,7 @@ const Login = () => {
     const [loginData, setLoginData] = useState({
         email: '',
         password: '',
-        userType: '',
+      
     });
 
     const handleChange = (e) => {
@@ -21,7 +21,8 @@ const Login = () => {
     };
 
     return (
-        <div className="flex justify-center items-center min-h-screen bg-gray-100">
+        
+        <div className="flex justify-center items-center min-h-screen bg-gray-100" style={{ backgroundImage: 'url(/images/background.png)'}}>
             <div className="bg-white p-8 rounded-lg shadow-lg max-w-lg w-full">
                 <h2 className="text-2xl font-bold mb-6">Login</h2>
                 <form onSubmit={handleSubmit}>
@@ -46,31 +47,6 @@ const Login = () => {
                             placeholder="Password"
                             className="w-full p-3 border border-gray-300 rounded"
                         />
-                    </div>
-                    <div className="mb-4">
-                        <label className="block text-gray-700">User Type</label>
-                        <div className="flex space-x-4">
-                            <label className="flex items-center">
-                                <input
-                                    type="radio"
-                                    name="userType"
-                                    value="Student"
-                                    onChange={handleChange}
-                                    className="mr-2"
-                                />
-                                Student
-                            </label>
-                            <label className="flex items-center">
-                                <input
-                                    type="radio"
-                                    name="userType"
-                                    value="Recruiter"
-                                    onChange={handleChange}
-                                    className="mr-2"
-                                />
-                                Recruiter
-                            </label>
-                        </div>
                     </div>
                     <button
                         type="submit"

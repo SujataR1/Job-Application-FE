@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './Candidate.css';
 import EmployerNavbar from '../Navbar/Navbar'; 
-import EmployerSidebar from '../Sidebar/Sidebar'; // Importing the CSS file
+import EmployerSidebar from '../Sidebar/Sidebar'; 
 
 // Dummy data for applicants
 const applicantsData = [

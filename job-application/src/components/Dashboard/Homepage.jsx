@@ -6,6 +6,7 @@ import Header from '../Header/Header';
 const HomePage = () => {
     return (
         <div className="font-sans bg-cover bg-center bg-fixed min-h-screen" style={{ backgroundImage: 'url(/images/background.png)' }}>
+        
          {/* Ensure Navbar is placed here */}
          <Header />
             {/* Main Content */}

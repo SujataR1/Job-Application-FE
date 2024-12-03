@@ -35,8 +35,8 @@ const ESidebar = () => {
               </Link>
             </li>
             <li>
-              <Link to="/candidate" className="sidebar-item">
-                <FaBuilding className="sidebar-icon" /> Candidate Management
+              <Link to="/application" className="sidebar-item">
+                <FaBuilding className="sidebar-icon" /> Job Application
               </Link>
             </li>
             <li>
