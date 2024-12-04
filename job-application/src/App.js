@@ -102,6 +102,7 @@ import EmployerSidebar from './components/Employer/Sidebar/Sidebar';
 import Efeed from './components/Employer/Efeed/Efeed';
 import EMessage from './components/Employer/EmployerMessage/EMessage';
 import ESetting from './components/Employer/Settings/Setting';
+import JobDetailsPage from './components/JobDetailsPage';
 
 //This component is used to conditionally render Navbar based on the current path
 const ConditionalNavbar = () => {
@@ -228,7 +229,7 @@ const App = () => {
                 <Route path="/Efeed" element={<Efeed/>}/>
                 <Route path="/message" element={<EMessage/>}/>
                 <Route path="/Esetting" element={<ESetting/>}/>
-
+                <Route path="/job/:jobId" element={<JobDetailsPage />} />
 
               </Routes>
             <Footer />
