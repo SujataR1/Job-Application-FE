@@ -1,294 +1,92 @@
-/* Network.css */
-
 /* Container */
 .network-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
-    font-family: 'Roboto', sans-serif;
-    background-color: #f5f7fa;
-  }
-  
-  /* Header Section */
-  .network-header {
-    background-color: #ffffff;
-    border-radius: 10px;
-    padding: 20px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    text-align: center;
-    margin-bottom: 30px;
-  }
-  
-  .network-header h1 {
-    font-size: 36px;
-    font-weight: 600;
-    color: #333;
-  }
-  
-  .header-stats {
-    font-size: 16px;
-    color: #555;
-    margin-top: 8px;
-  }
-  
-  /* Main Content Area */
-  .network-content {
-    display: flex;
-    justify-content: space-between;
-    gap: 30px;
-    margin-top: 30px;
-    flex-wrap: wrap;
-  }
-  
-  /* Left Column */
-  .left-column {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    gap: 30px;
-    width: 100%;
-  }
-  
-  /* Right Column */
-  .right-column {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    gap: 30px;
-    width: 100%;
-  }
-  
-  /* Section Style */
-  .section {
-    background-color: #fff;
-    border-radius: 12px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-    margin-bottom: 30px;
-    transition: all 0.3s ease;
-  }
-  
-  /* Section Header */
-  .section h3 {
-    font-size: 24px;
-    font-weight: 600;
-    color: #333;
-    margin-bottom: 20px;
-    padding-bottom: 10px;
-    border-bottom: 2px solid #eee;
-  }
-  
-  /* Connections, Suggestions, Groups, Invitations */
-  ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-  }
-  
-  .connection-item,
-  .suggestion-item,
-  .group-item,
-  .invitation-item {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 15px;
-    background-color: #fff;
-    border-radius: 12px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
-    margin-bottom: 15px;
-    transition: all 0.3s ease;
-  }
-  
-  .connection-item:hover,
-  .suggestion-item:hover,
-  .group-item:hover,
-  .invitation-item:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-  }
-  
-  /* Text in Connections, Suggestions, etc. */
-  .connection-info,
-  .suggestion-info,
-  .group-info,
-  .invitation-info {
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-  }
-  
-  .connection-name,
-  .suggestion-name,
-  .group-name,
-  .invitation-name {
-    font-size: 18px;
-    font-weight: 600;
-    color: #333;
-  }
-  
-  .connection-position,
-  .suggestion-position,
-  .group-members,
-  .invitation-message {
-    font-size: 14px;
-    color: #777;
-  }
-  
-  .connection-img img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-  
-  /* Buttons */
-  button {
-    padding: 10px 20px;
-    font-size: 14px;
-    font-weight: 600;
-    background-color: #0073b1;
-    color: #fff;
-    border: none;
-    border-radius: 25px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-  }
-  
-  button:hover {
-    background-color: #005f8a;
-  }
-  
-  button:disabled {
-    background-color: #e4e6eb;
-    color: #bbb;
-  }
-  
-  button.connect-button {
-    background-color: #0073b1;
-  }
-  
-  button.message-button,
-  button.view-group-button,
-  button.accept-button,
-  button.decline-button {
-    background-color: #e4e6eb;
-    color: #0073b1;
-    border-radius: 20px;
-    border: 1px solid #e4e6eb;
-  }
-  
-  button.connect-button:hover,
-  button.message-button:hover,
-  button.view-group-button:hover,
-  button.accept-button:hover,
-  button.decline-button:hover {
-    background-color: #0073b1;
-    color: #fff;
-    border: 1px solid #0073b1;
-  }
-  
-  /* Card Layout */
-  .card {
-    background-color: #fff;
-    border-radius: 12px;
-    padding: 20px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-  }
-  
-  .card h3 {
-    font-size: 22px;
-    margin-bottom: 15px;
-    font-weight: 600;
-  }
-  
-  /* Divider line for sections */
-  .section-divider {
-    border-bottom: 2px solid #eee;
-    margin-bottom: 20px;
-  }
-  
-  /* Responsive Design */
-  @media (max-width: 768px) {
-    .network-content {
-      flex-direction: column;
-    }
-  
-    .left-column,
-    .right-column {
-      flex: none;
-      width: 100%;
-    }
-  }
-  
-  @media (max-width: 480px) {
-    .network-header h1 {
-      font-size: 28px;
-    }
-  
-    h3 {
-      font-size: 20px;
-    }
-  
-    button {
-      padding: 8px 16px;
-      font-size: 12px;
-    }
-  }
-   
-  .network-container {
-    display: flex;
-    flex-direction: column;
-    height: 100vh;
-  }
-  
-  .network-body {
-    display: flex;
-    flex: 1;
-  }
-  
-  .network-sidebar {
-    width: 250px;
-    background-color: #f4f4f4;
-    padding: 10px;
-  }
-  
-  .network-sidebar ul {
-    list-style: none;
-    padding: 0;
-  }
-  
-  .network-sidebar li {
-    padding: 10px;
-    cursor: pointer;
-  }
-  
-  .network-sidebar li a {
-    text-decoration: none;
-    color: #333;
-  }
-  
-  .network-sidebar li:hover {
-    background-color: #e0e0e0;
-  }
-  
-  .network-content {
-    flex: 1;
-    padding: 20px;
-  }
-  
-  /* network.css */
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: 'Roboto', sans-serif;
+  background-color: #f5f7fa;
+  box-sizing: border-box;
+}
 
-.network-container {
+/* Main Content Area */
+.network-body {
+  display: flex; /* Flexbox layout for left and right columns */
+  justify-content: flex-start; /* Align columns to the left */
+  gap: 20px; /* Set a small gap between the columns */
+  margin-top: 30px;
+}
+
+/* Left Column */
+.left-column {
+  flex: 0 0 250px; /* Set fixed width for the left column */
   display: flex;
   flex-direction: column;
-  height: 100vh;
+  gap: 20px;
 }
 
-.network-body {
+/* Right Column */
+.right-column {
+  flex: 1; /* Allow right column to take the remaining space */
   display: flex;
-  flex: 1;
+  flex-direction: column;
+  gap: 20px;
+  padding: 20px;
+  background-color: #f9f9f9;  /* Optional background color */
+  margin-left: 0;  /* Remove margin-left to reduce the gap */
+  box-sizing: border-box;  /* Ensure padding doesn't cause overflow */
 }
 
+/* Section Style */
+.section {
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  margin-bottom: 30px;
+  transition: all 0.3s ease;
+}
+
+/* Section Header */
+.section h3 {
+  font-size: 24px;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #eee;
+}
+
+/* Connections, Suggestions, Groups, Invitations */
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.connection-item,
+.suggestion-item,
+.group-item,
+.invitation-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px;
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+  margin-bottom: 15px;
+  transition: all 0.3s ease;
+}
+
+.connection-item:hover,
+.suggestion-item:hover,
+.group-item:hover,
+.invitation-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Sidebar - Navigation */
 .network-sidebar {
   width: 250px;
   background-color: #f4f4f4;
@@ -298,28 +96,80 @@
 .network-sidebar ul {
   list-style: none;
   padding: 0;
+  margin: 0;
 }
 
 .network-sidebar li {
-  padding: 10px;
+  padding: 15px;  /* Increased padding for better spacing */
   cursor: pointer;
 }
 
+/* Links inside the sidebar */
 .network-sidebar li a {
   text-decoration: none;
   color: #333;
+  font-size: 18px;  /* Set the font size of the options */
+  font-weight: 500;  /* Set the font weight for better readability */
+  display: block;  /* Ensure the link takes up the full width of the li */
+  transition: all 0.3s ease;  /* Smooth transition for hover effect */
+  padding: 10px;  /* Padding for the clickable area */
+  border-radius: 5px;  /* Rounded corners for each option */
 }
 
 .network-sidebar li a:hover {
-  background-color: #e0e0e0;
+  background-color: #e0e0e0;  /* Background color change on hover */
+  color: #0073b1;  /* Text color on hover */
+  font-weight: 600;  /* Make the font bolder on hover */
 }
 
-.network-content {
-  flex: 1;
-  padding: 20px;
+/* Active State */
+.network-sidebar li a.active {
+  background-color: #0073b1;  /* Background color for the active state */
+  color: white;  /* Text color for active state */
+  font-weight: 600;  /* Bold the active link */
 }
 
-.active {
-  background-color: #e0e0e0;  /* Highlight active link */
-  font-weight: bold;
+/* Buttons */
+button {
+  padding: 10px 20px;
+  font-size: 14px;
+  font-weight: 600;
+  background-color: #0073b1;
+  color: #fff;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+button:hover {
+  background-color: #005f8a;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .network-body {
+    flex-direction: column; /* Stack the columns vertically on smaller screens */
+    gap: 10px; /* Reduce gap between stacked columns */
+  }
+
+  .left-column,
+  .right-column {
+    width: 100%; /* Take full width in smaller screens */
+  }
+}
+
+@media (max-width: 480px) {
+  .network-header h1 {
+    font-size: 28px;
+  }
+
+  h3 {
+    font-size: 80px;
+  }
+
+  button {
+    padding: 8px 16px;
+    font-size: 12px;
+  }
 }
