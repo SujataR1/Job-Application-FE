@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import './EMessage.css';
+import EmployerNavbar from '../Navbar/Navbar';
+import EmployerSidebar from '../Sidebar/Sidebar';
 
 // Dummy connection data (users you're connected with)
 const connections = [
@@ -56,6 +58,13 @@ const EMessage = () => {
   };
 
   return (
+    <div className="home-page">
+    {/* Navbar/Header */}
+   <EmployerNavbar/>
+
+    <div className="home-content flex flex-row">
+      {/* Sidebar */}
+      <EmployerSidebar />
     <div className="app">
       {selectedConnection ? (
         <div className="chat-page">
@@ -105,7 +114,8 @@ const EMessage = () => {
           </form>
         </div>
       ) : (
-        <div className="connections-list">
+        <div className="connections-list" style={{ width: '700px' }}>
+
           <h2>Your Connections</h2>
           <ul>
             {connections.map((connection) => (
@@ -125,6 +135,8 @@ const EMessage = () => {
           </ul>
         </div>
       )}
+    </div>
+    </div>
     </div>
   );
 };

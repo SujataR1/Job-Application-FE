@@ -1,4 +1,4 @@
-/* General styles */
+General styles
 body {
     font-family: 'Arial', sans-serif;
     background-color: #f4f7fc;
@@ -78,4 +78,6 @@ body {
   .submit-button:focus {
     outline: none;
   }
-  
+   
+
+

@@ -19,12 +19,12 @@ function EmployerNavbar({ toggleSidebar, profileImageUrl }) {
             </Link>
           </li>
           <li>
-            <Link to="/my-network" className="nav-item">
+            <Link to="/network" className="nav-item">
               <FaNetworkWired className="nav-icon" /> My Network
             </Link>
           </li>
           <li>
-            <Link to="/my-posts" className="nav-item">
+            <Link to="/application" className="nav-item">
               <FaClipboardList className="nav-icon" /> My Posts
             </Link>
           </li>
@@ -54,3 +54,4 @@ function EmployerNavbar({ toggleSidebar, profileImageUrl }) {
 }
 
 export default EmployerNavbar;
+

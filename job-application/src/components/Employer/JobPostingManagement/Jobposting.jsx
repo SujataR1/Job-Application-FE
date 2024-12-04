@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './JobPosting.css'; 
 import EmployerNavbar from '../Navbar/Navbar';
 import EmployerSidebar from '../Sidebar/Sidebar'; // Importing the CSS file
-
+import { useNavigate } from 'react-router-dom'; 
 const JobPost = ({ job, onSave }) => {
   const [title, setTitle] = useState(job ? job.title : '');
   const [description, setDescription] = useState(job ? job.description : '');
@@ -21,7 +21,10 @@ const JobPost = ({ job, onSave }) => {
     };
     onSave(updatedJob);
   };
-  
+  const navigate = useNavigate();
+  const handleViewPosts = () => {
+    navigate('/application');  // Redirect to the "previous posts" page
+  };
   return (
     <div className="home-page">
     {/* Navbar/Header */}
@@ -30,7 +33,20 @@ const JobPost = ({ job, onSave }) => {
     <div className="home-content flex flex-row">
       {/* Sidebar */}
       <EmployerSidebar />
-
+      <div className="button-container">
+            <button 
+              onClick={() => navigate('/jobposting')} 
+              className="nav-button"
+            >
+              Post Job
+          </button>
+            <button 
+              onClick={handleViewPosts} 
+              className="nav-button"
+            >
+              View Previous Posts
+            </button>
+          </div>
     <div className="job-post-container">
       <h2 className="header">{job ? 'Edit Job' : 'Post a New Job'}</h2>
       <form className="job-post-form" onSubmit={handleSubmit}>
@@ -111,5 +127,4 @@ const dummydata = {
 };
 
 export default JobPost;
-
 

@@ -1,0 +1,192 @@
+
+  .network-page {
+    display: flex;
+    flex-direction: column;
+    background-color: #f5f6f7;
+    height: 100vh; /* Full viewport height */
+  }
+  
+  .network-content {
+    display: flex;
+    flex: 1; /* Allow content to take remaining space */
+    padding: 20px;
+    overflow: auto;
+  }
+  
+  .network-main-content {
+    flex-grow: 1;
+    margin-left: 220px;
+    padding: 20px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    overflow: auto; /* Ensure content doesn't overflow */
+  }
+  
+  h3 {
+    font-size: 22px;
+    font-weight: 600;
+    color: #0073b1;
+    margin-bottom: 15px;
+  }
+  
+
+  .connection-requests-section, 
+  .people-you-may-know, 
+  .your-connections, 
+  .followed-companies {
+    margin-bottom: 30px;
+  }
+  
+  ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .connection-infor, 
+  .company-infor, 
+  .connection-items {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 15px;
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease;
+  }
+  
+  .connection-infor:hover, 
+  .company-infor:hover, 
+  .connection-items:hover {
+    background-color: #f8f9fa;
+  }
+  .cancel-request-button {
+    background-color: #e0e0e0;
+    color: #333;
+  }
+  
+  .cancel-request-button:hover {
+    background-color: #b3b3b3;
+  }
+  
+  /* Profile Images */
+  .profile-image, .company-image {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 15px;
+  }
+  
+  /* Text Styling */
+  h4 {
+    font-size: 16px;
+    font-weight: 500;
+    color: #333;
+  }
+  
+  p {
+    font-size: 14px;
+    color: #666;
+  }
+  
+  button {
+    padding: 8px 15px;
+    border: none;
+    border-radius: 5px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  button:disabled {
+    background-color: #e0e0e0;
+    cursor: not-allowed;
+  }
+  
+  /* Action Buttons */
+  .accept-button {
+    background-color: #4CAF50;
+    color: white;
+  }
+  
+  .accept-button:hover {
+    background-color: #45a049;
+  }
+  
+  .cancel-button {
+    background-color: #e55353;
+    color: white;
+  }
+  
+  .cancel-button:hover {
+    background-color: #e14141;
+  }
+  
+  .add-to-network-button {
+    background-color: #0073b1;
+    color: white;
+  }
+  
+  .add-to-network-button:hover {
+    background-color: #005f8f;
+  }
+  
+  .follow-button {
+    background-color: #f0b400;
+    color: white;
+  }
+  
+  .follow-button:hover {
+    background-color: #e09f00;
+  }
+  
+  .unfollow-button {
+    background-color: #ccc;
+    color: #fff;
+  }
+  
+  .unfollow-button:hover {
+    background-color: #b0b0b0;
+  }
+  
+  /* Connection Grid for Mobile / Larger Screen */
+  .connection-lists {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    gap: 20px;
+  }
+  
+  .connection-items {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+  
+  .connection-items img {
+    margin-bottom: 10px;
+  }
+  
+  /* Footer Styling (Ensure it stays at the bottom) */
+  
+  
+  /* Media Queries */
+  @media (max-width: 768px) {
+    .network-content {
+      flex-direction: column;
+    }
+  
+    .network-main-content {
+      margin-left: 0;
+      margin-top: 20px;
+    }
+  
+    .connection-lists {
+      grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+    }
+  }
+  

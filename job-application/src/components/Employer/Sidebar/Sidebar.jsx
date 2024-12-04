@@ -25,7 +25,7 @@ const ESidebar = () => {
         <div className="sidebar-links">
           <ul className="sidebar-links">
             <li>
-              <Link to="/employerprofile" className="sidebar-item">
+              <Link to="/companyprofile" className="sidebar-item">
                 <FaChartBar className="sidebar-icon" /> View Profile
               </Link>
             </li>
