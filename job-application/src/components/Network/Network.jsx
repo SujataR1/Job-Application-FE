@@ -9,6 +9,7 @@ import PeopleIFollow from './PeopleIFollow';  // Ensure this file exists
 import NewsLetter from './NewsLetter';  // Ensure this file exists
 import Hashtags from './Hashtags';  // Ensure this file exists
 
+
 // Dummy data for "People I Know"
 const peopleIKnow = [
   { id: 1, name: 'John Doe', position: 'Software Engineer', imgUrl: 'https://randomuser.me/api/portraits/men/1.jpg' },
@@ -23,7 +24,7 @@ const Network = () => {
       <Header />
       <div className="network-body">
 
-        {/* Sidebar */}
+        {/* Sidebar */} 
         <div className="network-sidebar">
           <ul>
             <li>
