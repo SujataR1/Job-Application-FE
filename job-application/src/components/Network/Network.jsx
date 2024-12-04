@@ -83,7 +83,7 @@ const Network = () => {
           {/* Right Column - People I Know */}
           <div className="right-column">
             <div className="section">
-              <h3>People I Know</h3>
+              <h3> Suggestions </h3>
               <ul>
                 {peopleIKnow.map((person) => (
                   <li key={person.id} className="suggestion-item">
