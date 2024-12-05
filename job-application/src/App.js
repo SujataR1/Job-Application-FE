@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes,useLocation} from 'react-router-dom';
 import Dasboard from './components/Dashboard/Homepage';
@@ -104,6 +103,7 @@ import EMessage from './components/Employer/EmployerMessage/EMessage';
 import ESetting from './components/Employer/Settings/Setting';
 import JobDetailsPage from './components/JobDetailsPage';
 import Network from './components/Network/Network';
+import Connections from './components/Network/Connections';
 
 //This component is used to conditionally render Navbar based on the current path
 const ConditionalNavbar = () => {
@@ -232,6 +232,7 @@ const App = () => {
                 <Route path="/Esetting" element={<ESetting/>}/>
                 <Route path="/job/:jobId" element={<JobDetailsPage />} />
                 <Route path="/network" element={<Network />} />
+                <Route path="/connections" element={<Connections />} />
 
               </Routes>
             <Footer />

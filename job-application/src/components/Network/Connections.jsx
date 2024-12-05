@@ -1,70 +1,68 @@
-// import React from 'react';
-// import './Network.css';
-
-// const Connections = () => {
-//   // Add image property to each connection
-//   const connections = [
-//     { name: 'John Doe', position: 'Software Engineer', image: 'https://via.placeholder.com/' },
-//     { name: 'Jane Smith', position: 'Product Manager', image: 'https://via.placeholder.com/' },
-//     { name: 'Mark Johnson', position: 'Data Scientist', image: 'https://via.placeholder.com/' },
-//     { name: 'Mark Jukerbarg', position: 'Owner', image: 'https://via.placeholder.com/' },
-//   ];
-
-//   return (
-//     <div className="connections">
-//       <h3>Your Connections</h3>
-//       <ul>
-//         {connections.map((connection, index) => (
-//           <li key={index} className="connection-item">
-//             <div className="connection-info">
-//               {/* Add image with name and position */}
-//               <div className="connection-img">
-//                 <img src={connection.image} alt={connection.name} />
-//               </div>
-//               <div className="connection-details">
-//                 <span className="connection-name">{connection.name}</span>
-//                 <span className="connection-position">{connection.position}</span>
-//               </div>
-//             </div>
-//             <button className="message-button">Message</button>
-//           </li>
-//         ))}
-//       </ul>
-//     </div>
-//   );
-// };
-
-
-import React from 'react';
-// Sample data for people you may know (you can replace this with real data)
-const peopleYouMayKnow = [
-  { id: 1, name: 'Alice Johnson', image: 'https://randomuser.me/api/portraits/women/1.jpg' },
-  { id: 2, name: 'Bob Smith', image: 'https://randomuser.me/api/portraits/men/1.jpg' },
-  { id: 3, name: 'Charlie Brown', image: 'https://randomuser.me/api/portraits/men/2.jpg' },
-  { id: 4, name: 'David Lee', image: 'https://randomuser.me/api/portraits/men/3.jpg' },
-  { id: 5, name: 'Eve Taylor', image: 'https://randomuser.me/api/portraits/women/2.jpg' },
-];
+import React, { useState } from 'react';
+import './connections.css'; // Import the CSS file for styling
 
 const Connections = () => {
-  return (
-    <div>
-      <h2>Connections</h2>
-      <p></p>
+    // Sample data for connections (you can fetch this data from an API in a real-world app)
+    const connectionsList = [
+        { id: 1, name: 'John Doe', imgUrl: 'https://randomuser.me/api/portraits/men/1.jpg'},
+        { id: 2, name: 'Jane Smith' , imgUrl: 'https://randomuser.me/api/portraits/women/1.jpg' },
+        { id: 3, name: 'Robert Brown' , imgUrl: 'https://randomuser.me/api/portraits/women/2.jpg'},
+        { id: 4, name: 'Emily Johnson', imgUrl: 'https://randomuser.me/api/portraits/men/2.jpg' },
+        { id: 5, name: 'Michael Williams' , imgUrl: 'https://randomuser.me/api/portraits/men/2.jpg' },
+    ];
 
-      {/* People you may know from your college */}
-      <section>
-        <h3>People you may know from your college</h3>
-        <div className="people-list">
-          {peopleYouMayKnow.map(person => (
-            <div key={person.id} className="person-card">
-              <img src={person.image} alt={person.name} className="person-image" />
-              <p>{person.name}</p>
+    const [activeConnection, setActiveConnection] = useState(null);
+
+    // Function to handle clicking the "Message" button
+    const handleMessageClick = (connection) => {
+        setActiveConnection(connection);
+    };
+
+    return (
+        <div className="connections-container">
+            {/* Header displaying the total number of connections */}
+            <div className="connections-header">
+                <h2>My Connections</h2>
+                <p>Total Connections: {connectionsList.length}</p>
             </div>
-          ))}
+
+            {/* List of Connections */}
+            <div className="connections-list">
+                {connectionsList.map((connection) => (
+                    <div key={connection.id} className="connection-item">
+                        <img 
+                            src={connection.imgUrl} 
+                            alt={connection.name} 
+                            className="connection-image" // Class for styling the image
+                        />
+                        <span>{connection.name}</span>
+                        <button 
+                            className="message-button"
+                            onClick={() => handleMessageClick(connection)}
+                        >
+                            Message
+                        </button>
+                    </div>
+                ))}
+            </div>
+
+            {/* Chat Window for the active connection */}
+            {activeConnection && (
+                <div className="chat-window">
+                    <h3>Chat with {activeConnection.name}</h3>
+                    <div className="chat-box">
+                        <p>Chat feature is under construction.</p>
+                    </div>
+                    <button 
+                        className="close-chat"
+                        onClick={() => setActiveConnection(null)}
+                    >
+                        Close Chat
+                    </button>
+                </div>
+            )}
         </div>
-      </section>
-    </div>
-  );
+    );
 };
 
 export default Connections;

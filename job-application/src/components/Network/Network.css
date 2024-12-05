@@ -12,7 +12,7 @@
 .network-body {
   display: flex; /* Flexbox layout for left and right columns */
   justify-content: flex-start; /* Align columns to the left */
-  gap: 20px; /* Set a small gap between the columns */
+  gap: 15px; /* Reduced gap for a tighter layout */
   margin-top: 30px;
 }
 
@@ -21,7 +21,7 @@
   flex: 0 0 250px; /* Set fixed width for the left column */
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 15px; /* Reduced gap for better space distribution */
 }
 
 /* Right Column */
@@ -29,7 +29,7 @@
   flex: 1; /* Allow right column to take the remaining space */
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 15px;
   padding: 20px;
   background-color: #f9f9f9;  /* Optional background color */
   margin-left: 0;  /* Remove margin-left to reduce the gap */
@@ -48,10 +48,10 @@
 
 /* Section Header */
 .section h3 {
-  font-size: 24px;
+  font-size: 20px;  /* Reduced font size for header */
   font-weight: 600;
   color: #333;
-  margin-bottom: 20px;
+  margin-bottom: 15px;
   padding-bottom: 10px;
   border-bottom: 2px solid #eee;
 }
@@ -70,20 +70,25 @@ ul {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 15px;
+  padding: 10px 12px; /* Reduced padding */
   background-color: #fff;
-  border-radius: 12px;
+  border-radius: 10px; /* Slightly reduced border radius */
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
-  margin-bottom: 15px;
+  margin-bottom: 12px; /* Reduced margin */
   transition: all 0.3s ease;
+  font-size: 12px; /* Reduced font size */
+  font-weight: 500; /* Slightly lighter font weight */
+  text-rendering: optimizeLegibility;  /* Helps improve text rendering */
+  color: #333; /* Set a clear text color */
 }
 
+/* Hover Effect for List Items */
 .connection-item:hover,
 .suggestion-item:hover,
 .group-item:hover,
 .invitation-item:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  transform: translateY(-3px); /* Reduced hover effect */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 /* Sidebar - Navigation */
@@ -100,7 +105,7 @@ ul {
 }
 
 .network-sidebar li {
-  padding: 15px;  /* Increased padding for better spacing */
+  padding: 10px 12px;  /* Reduced padding for tighter layout */
   cursor: pointer;
 }
 
@@ -108,11 +113,11 @@ ul {
 .network-sidebar li a {
   text-decoration: none;
   color: #333;
-  font-size: 18px;  /* Set the font size of the options */
+  font-size: 12px;  /* Adjust font size for a smaller, balanced appearance */
   font-weight: 500;  /* Set the font weight for better readability */
   display: block;  /* Ensure the link takes up the full width of the li */
   transition: all 0.3s ease;  /* Smooth transition for hover effect */
-  padding: 10px;  /* Padding for the clickable area */
+  padding: 8px;  /* Padding for the clickable area */
   border-radius: 5px;  /* Rounded corners for each option */
 }
 
@@ -131,8 +136,8 @@ ul {
 
 /* Buttons */
 button {
-  padding: 10px 20px;
-  font-size: 14px;
+  padding: 8px 16px;
+  font-size: 12px; /* Reduced font size for smaller buttons */
   font-weight: 600;
   background-color: #0073b1;
   color: #fff;
@@ -150,7 +155,7 @@ button:hover {
 @media (max-width: 768px) {
   .network-body {
     flex-direction: column; /* Stack the columns vertically on smaller screens */
-    gap: 10px; /* Reduce gap between stacked columns */
+    gap: 10px; /* Reduced gap between stacked columns */
   }
 
   .left-column,
@@ -161,11 +166,11 @@ button:hover {
 
 @media (max-width: 480px) {
   .network-header h1 {
-    font-size: 28px;
+    font-size: 24px;
   }
 
   h3 {
-    font-size: 80px;
+    font-size: 20px;  /* Reduced size for smaller screens */
   }
 
   button {

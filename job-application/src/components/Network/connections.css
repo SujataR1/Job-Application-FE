@@ -1,36 +1,123 @@
-/* This container holds the people list and should allow horizontal scrolling */
-.people-list {
+/* Connections Container */
+.connections-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: 'Roboto', sans-serif;
+  background-color: #f5f7fa;
+}
+
+/* Header styling */
+.connections-header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.connections-header h2 {
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.connections-header p {
+  font-size: 16px;
+  color: #777;
+}
+
+/* List of connections */
+.connections-list {
   display: flex;
-  flex-direction: row;  /* Arrange the cards horizontally */
-  gap: 20px;  /* Space between each person card */
-  overflow-x: auto;  /* Allow horizontal scrolling */
-  padding-bottom: 20px; /* Optional: adds padding to avoid bottom overlap */
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* Connection Item */
+.connection-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 15px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  font-size: 16px;
+}
+
+.connection-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+/* Connection Image */
+.connection-image {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-right: 10px;
+}
+
+/* Name and Message button */
+.connection-name {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  font-weight: 500;
+  color: #333;
+}
+
+.message-button {
+  background-color: #0073b1;
+  color: #fff;
+  padding: 6px 12px;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.message-button:hover {
+  background-color: #005f8a;
+}
+
+/* Chat Window */
+.chat-window {
+  position: fixed;
+  bottom: 20px; /* Distance from the bottom */
+  right: 20px; /* Distance from the right */
+  background-color: #fff;
+  padding: 30px; /* Increased padding for larger space inside */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+  margin-top: 20px;
+  border-radius: 10px;
+  z-index: 1000; /* Ensure it appears above other content */
+  width: 500px; /* Increased width to make the chat window larger */
+  max-height: 80vh; /* Increased max-height */
+  overflow-y: auto; /* Allow scrolling if content exceeds the height */
+}
+
+.chat-window h3 {
+  font-size: 24px; /* Increased font size for the header */
+  margin-bottom: 20px;
+}
+
+.chat-box {
+  background-color: #f1f1f1;
+  padding: 20px; /* Increased padding for more space in chat box */
+  border-radius: 10px;
+}
+
+.close-chat {
+  background-color: #f44336;
+  color: white;
+  padding: 12px 25px; /* Increased padding for the close button */
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
   margin-top: 20px;
 }
 
-/* Each person card */
-.person-card {
-  width: 120px;  /* You can adjust the width */
-  text-align: center;
-  padding: 10px;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  background-color: #f9f9f9;
+.close-chat:hover {
+  background-color: #d32f2f;
 }
-
-/* Styling for the images inside the person card */
-.person-image {
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  object-fit: cover;
-}
-
-/* Person name styling */
-.person-card p {
-  margin-top: 10px;
-  font-size: 14px;
-  font-weight: 600;
-}
-
-  
