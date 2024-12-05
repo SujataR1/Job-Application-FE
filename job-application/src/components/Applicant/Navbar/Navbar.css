@@ -7,29 +7,41 @@
 }
 
 .dropdown-menu {
-    width: 24rem; 
-}
-
-.dropdown-section {
-    margin-bottom: 1rem; 
-}
-
-.dropdown-header {
-    font-size: 1.125rem; 
-    font-weight: 600;
-    margin-bottom: 0.5rem; 
-    color: white;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #2d3748;
+    width: 200px;
+    border-radius: 8px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    z-index: 10;
 }
 
 .dropdown-item {
-    display: block;
-    padding: 0.5rem 0;
-    color: #edf2f7; 
+    padding: 10px;
+    color: #ffffff; /* Text color for options */
     text-decoration: none;
+    display: block;
+    cursor: pointer;
 }
 
 .dropdown-item:hover {
-    background-color: #2d3748; 
+    background-color: #34495e; /* Background color on hover */
+    color: #ffffff; /* Ensuring text stays white when hovering */
+}
+
+.dropdown-submenu {
+    display: none;
+    position: absolute;
+    left: 100%;
+    top: 0;
+    background-color: #2d3748;
+    width: 180px;
+    border-radius: 8px;
+}
+
+.dropdown-item:hover .dropdown-submenu {
+    display: block;
 }
 
 .navbar-logo {
@@ -37,57 +49,44 @@
 }
 
 .text-saffron {
-    color: #f4a300; 
+    color: #f4a300;
 }
 
 .text-green {
-    color: #00a859; 
+    color: #00a859;
 }
 
-
-.dropdown-section {
-    margin-bottom: 1rem; 
+.navbar-nav .relative {
+    position: relative;
 }
 
-
-
- 
-  .modal-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(0, 0, 0, 0.7);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 1000;
+.navbar-nav a {
+    font-size: 1rem;
 }
 
-.modal-content {
-    background: #f0f8ff;
-    color: #0c5460;
-    padding: 20px;
-    border-radius: 8px;
-    max-width: 500px;
-    width: 80%;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+/* Hover effect and submenu */
+.dropdown-menu .dropdown-item {
+    position: relative;
 }
 
-.modal-close-button {
-    background: #0b6d93;
-    color: white;
-    padding: 10px 15px;
-    border: none;
-    border-radius: 5px;
+.dropdown-submenu {
+    padding: 10px;
+    display: none;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+ul li {
+    padding: 8px 0;
+    font-size: 1rem;
+    color: #ffffff; /* Ensuring submenu text is white */
+}
+
+ul li:hover {
+    color: #ffffff; /* Text color stays white even on hover */
+    background-color: #34495e; /* Background color for submenu items */
     cursor: pointer;
-    margin-bottom: 15px;
 }
-
-.modal-close-button:hover {
-    background: #0a5e76;
-}
-
-
-

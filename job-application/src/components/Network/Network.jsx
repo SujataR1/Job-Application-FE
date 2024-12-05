@@ -2,13 +2,13 @@ import React from 'react';
 import { Route, Routes, NavLink } from 'react-router-dom';  // Import components you need for routing
 // Import your components
 //import Connections from './Connections';
+
 import Groups from './Groups';
 import Header from './Header';
 import Contacts from './Contacts';  // Ensure this file exists
 import PeopleIFollow from './PeopleIFollow';  // Ensure this file exists
 import NewsLetter from './NewsLetter';  // Ensure this file exists
 import Hashtags from './Hashtags';  // Ensure this file exists
-
 
 // Dummy data for "People I Know"
 const peopleIKnow = [
@@ -18,13 +18,14 @@ const peopleIKnow = [
   { id: 4, name: 'Bob Brown', position: 'UI/UX Designer', imgUrl: 'https://randomuser.me/api/portraits/men/2.jpg' },
 ];
 
+
 const Network = () => {
   return (
     <div className="network-container">
       <Header />
       <div className="network-body">
 
-        {/* Sidebar */} 
+        {/* Sidebar */}
         <div className="network-sidebar">
           <ul>
             <li>
@@ -35,11 +36,10 @@ const Network = () => {
 
             <li>
               <NavLink to="/contacts" activeClassName="active">
-                Contacts
+                Others
               </NavLink>
             </li>
-
-            <li>
+            {/* <li>
               <NavLink to="/people-i-follow" activeClassName="active">
                 People I Follow
               </NavLink>
@@ -50,6 +50,7 @@ const Network = () => {
                 Groups
               </NavLink>
             </li>
+
 
             <li>
               <NavLink to="/newsletter" activeClassName="active">
@@ -62,6 +63,7 @@ const Network = () => {
                 Hashtags
               </NavLink>
             </li>
+            */}
           </ul>
         </div>
 
@@ -101,7 +103,6 @@ const Network = () => {
               </ul>
             </div>
           </div>
-
         </div>
       </div>
     </div>
