@@ -105,6 +105,8 @@ import CompanyProfile from './components/Employer/CompanyProfile/Profile';
 import Network from './components/Employer/Network/Network';
 import ApplicantNetwork from './components/Network/Network';
 import JobDetailsPage from './components/JobDetailsPage';
+import CompanyAnalyticsPage from './components/Employer/CompanyAnalytics/CompanyAnalytics';
+import ForgetPassword from './components/auth/ForgetPassword';
 
 //This component is used to conditionally render Navbar based on the current path
 const ConditionalNavbar = () => {
@@ -116,7 +118,7 @@ const ConditionalNavbar = () => {
     // Render Navbar only if the path is not in the excluded list and not a job analytics page
     return !['/login', '/signup', '/', '/Enavbar', '/Esidebar', '/employerdashboard', '/application', 
              '/jobposting', '/job-analytics/:jobId', '/interview', '/notifications', '/analytics', 
-             '/message', '/jobposting', '/Esetting','/companyprofile','/network'].includes(location.pathname) && !jobAnalyticsMatch && <Navbar />;
+             '/message', '/jobposting', '/Esetting','/companyprofile','/network','/companyanalytics','/forgot-password'].includes(location.pathname) && !jobAnalyticsMatch && <Navbar />;
   };
    
     // return !['/login', '/signup','/','/Enavbar','/Esidebar','/employerdashboard','/application','/jobposting','/job-analytics/:jobId','/interview','/notifications','/analytics','/message','/jobposting','/Esetting'].includes(location.pathname) && <Navbar />;
@@ -242,6 +244,9 @@ const App = () => {
                 <Route path="/network" element={<Network/>}/>
                 <Route path="/networks" element={<ApplicantNetwork/>}/>
                 <Route path="/job/:jobId" element={<JobDetailsPage />} />
+                <Route path="/companyanalytics" element={<CompanyAnalyticsPage />} />
+                <Route path="/forgot-password" element={<ForgetPassword />} />
+
 
 
 

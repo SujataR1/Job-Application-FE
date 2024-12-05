@@ -45,7 +45,7 @@ const ESidebar = () => {
               </Link>
             </li>
             <li>
-              <Link to="/analytics" className="sidebar-item">
+              <Link to="/companyanalytics" className="sidebar-item">
                 <FaChartBar className="sidebar-icon" /> Analytics
               </Link>
             </li>

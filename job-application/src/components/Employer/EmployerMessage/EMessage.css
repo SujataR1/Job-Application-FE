@@ -12,7 +12,7 @@
   }
   
  
-  .connections-lists {
+  .connections-list {
     background-color: #fff;
     padding: 20px;
     border-radius: 10px;
@@ -20,13 +20,13 @@
     width: 100%;
   }
   
-  .connections-lists h2 {
+  .connections-list h2 {
     color: #333;
     font-size: 24px;
     margin-bottom: 20px;
   }
   
-  .connections-lists ul {
+  .connections-list ul {
     list-style-type: none;
     padding: 0;
    

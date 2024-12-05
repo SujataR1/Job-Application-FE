@@ -1,51 +1,68 @@
-/* Progress.css */
-.hiring-process-page {
-    margin: 20px;
+ .hiring-process-page {
     font-family: Arial, sans-serif;
-    margin-left: 100px;
+    padding: 20px;
+    margin-left: 600px;
   }
   
   .applicant-list {
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    margin-bottom: 20px;
   }
   
   .applicant-card {
-    border: 1px solid #ddd;
-    padding: 20px;
+    border: 1px solid #ccc;
+    padding: 15px;
+    margin: 10px 0;
     border-radius: 5px;
     background-color: #f9f9f9;
   }
   
+  .applicant-card h3 {
+    margin-bottom: 5px;
+  }
+  
+  .applicant-card p {
+    margin: 5px 0;
+  }
+  
   button {
-    padding: 10px 20px;
+    padding: 10px 15px;
     margin-top: 10px;
     cursor: pointer;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 5px;
   }
   
   button:hover {
-    background-color: #007bff;
-    color: white;
+    background-color: #218838;
   }
   
-  .interview-schedule-form,
-  .joining-letter-form {
+  .selected-candidates-table {
+    width: 100%;
+    border-collapse: collapse;
     margin-top: 20px;
   }
   
-  .interview-schedule-form input,
-  .joining-letter-form input,
-  .interview-schedule-form select {
-    width: 100%;
-    padding: 8px;
-    margin: 10px 0;
-    border-radius: 5px;
-    border: 1px solid #ddd;
+  .selected-candidates-table th, .selected-candidates-table td {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: left;
   }
   
-  label {
-    font-size: 14px;
-    color: #333;
+  .selected-candidates-table th {
+    background-color: #f8f9fa;
   }
   
+  .selected-candidates-table tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+  
+  .selected-candidates-table tr:hover {
+    background-color: #ddd;
+  }
+   
+
+    

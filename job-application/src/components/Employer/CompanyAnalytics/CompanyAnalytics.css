@@ -1,0 +1,158 @@
+
+
+.company-analytics-page {
+    font-family: 'Arial', sans-serif;
+    padding: 20px;
+    background-color: #f4f4f4;
+    min-height: 100vh;
+    margin-left: 500px;
+  }
+  
+  h1 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 30px;
+  }
+  
+  .overview {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 40px;
+  }
+  
+  .overview-item {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 22%;
+    text-align: center;
+  }
+  
+  .overview-item h2 {
+    font-size: 18px;
+    color: #555;
+    margin-bottom: 10px;
+  }
+  
+  .overview-item p {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+  }
+  
+  .chart-container {
+    background-color: #fff;
+    padding: 30px;
+    margin-bottom: 40px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .chart-container h2 {
+    font-size: 22px;
+    color: #333;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  
+  .applicant-list {
+    margin-top: 40px;
+  }
+  
+  .applicant-card {
+    background-color: #fff;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .applicant-card h3 {
+    font-size: 20px;
+    color: #333;
+    margin-bottom: 10px;
+  }
+  
+  .applicant-card p {
+    font-size: 16px;
+    color: #555;
+  }
+  
+  .applicant-list h2 {
+    font-size: 22px;
+    color: #333;
+    margin-bottom: 20px;
+  }
+  
+  .selected-candidates-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 40px;
+  }
+  
+  .selected-candidates-table th,
+  .selected-candidates-table td {
+    border: 1px solid #ddd;
+    padding: 12px 20px;
+    text-align: left;
+  }
+  
+  .selected-candidates-table th {
+    background-color: #f2f2f2;
+    color: #333;
+  }
+  
+  .selected-candidates-table tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+  
+  .selected-candidates-table tr:hover {
+    background-color: #f1f1f1;
+  }
+ 
+.applicant-status-distribution {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: 20px 0;
+  }
+  
+  .applicant-status-card {
+    background-color: #fff;
+    padding: 15px 20px;
+    margin: 10px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 180px; 
+    text-align: center;
+  }
+  
+  .applicant-status-card h3 {
+    font-size: 18px;
+    color: #333;
+    margin-bottom: 10px;
+  }
+  
+  .applicant-status-card p {
+    font-size: 16px;
+    font-weight: bold;
+    color: #007bff; 
+  }
+  
+  .applicant-status-card .status-title {
+    font-size: 16px;
+    color: #555;
+    margin-bottom: 5px;
+  }
+  
+  .applicant-status-card .status-count {
+    font-size: 24px;
+    color: #333;
+    font-weight: bold;
+  }
+  
+  
+
+
+   /* Container for chart and circle graph side by side */
