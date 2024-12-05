@@ -1,0 +1,51 @@
+/* Progress.css */
+.hiring-process-page {
+    margin: 20px;
+    font-family: Arial, sans-serif;
+    margin-left: 100px;
+  }
+  
+  .applicant-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .applicant-card {
+    border: 1px solid #ddd;
+    padding: 20px;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+  }
+  
+  button {
+    padding: 10px 20px;
+    margin-top: 10px;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #007bff;
+    color: white;
+  }
+  
+  .interview-schedule-form,
+  .joining-letter-form {
+    margin-top: 20px;
+  }
+  
+  .interview-schedule-form input,
+  .joining-letter-form input,
+  .interview-schedule-form select {
+    width: 100%;
+    padding: 8px;
+    margin: 10px 0;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+  }
+  
+  label {
+    font-size: 14px;
+    color: #333;
+  }
+  

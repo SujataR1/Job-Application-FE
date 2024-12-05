@@ -121,7 +121,7 @@ const EMessage = () => {
             {connections.map((connection) => (
               <li
                 key={connection.id}
-                className="connection-item"
+                className="connection-itemm"
                 onClick={() => handleConnectionClick(connection)}
               >
                 <img
@@ -129,7 +129,7 @@ const EMessage = () => {
                   alt={`${connection.name}'s profile`}
                   className="profile-picture"
                 />
-                {connection.name}
+                <span className="connection-name">{connection.name}</span> 
               </li>
             ))}
           </ul>
@@ -142,3 +142,5 @@ const EMessage = () => {
 };
 
 export default EMessage;
+
+
