@@ -1,112 +1,155 @@
-/* General Container */
+/* General layout */
 .job-details {
-    max-width: 900px;
-    margin: 0 auto;
-    padding: 20px;
-    background-color: #fff;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
-    font-family: Arial, sans-serif;
+  max-width: 1100px;
+  margin: 40px auto;
+  padding: 20px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.job-header {
+  border-bottom: 2px solid #f1f1f1;
+  padding-bottom: 20px;
+  margin-bottom: 30px;
+}
+
+.job-title {
+  font-size: 32px;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.job-info p {
+  font-size: 16px;
+  color: #666;
+  margin: 5px 0;
+}
+
+.job-info strong {
+  color: #333;
+}
+
+/* Job actions buttons */
+.job-actions {
+  display: flex;
+  justify-content: flex-start;
+  gap: 15px;
+  margin-bottom: 30px;
+}
+
+.save-button,
+.share-button {
+  background-color: #0073b1;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 30px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.save-button:hover,
+.share-button:hover {
+  background-color: #005f8a;
+}
+
+/* Content sections */
+h2 {
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 15px;
+  color: #333;
+}
+
+.job-description,
+.skills-required,
+.certifications,
+.eligibility,
+.other-requirements,
+.perks,
+.additional-info,
+.company-info,
+.activity-box {
+  margin-bottom: 30px;
+}
+
+/* Lists */
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+ul li {
+  font-size: 16px;
+  color: #555;
+  margin-bottom: 8px;
+  padding-left: 20px;
+  position: relative;
+}
+
+ul li::before {
+  content: '•';
+  position: absolute;
+  left: 0;
+  color: #0073b1;
+  font-size: 20px;
+}
+
+/* Company info box */
+.company-info {
+  background-color: #f9f9f9;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.company-info p {
+  color: #444;
+  line-height: 1.6;
+}
+
+/* Activity Box */
+.activity-box {
+  background-color: #f9f9f9;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.activity-box p {
+  color: #444;
+  font-size: 16px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .job-details {
+    padding: 15px;
   }
 
-  /* Job Header */
-  .job-header {
-    border-bottom: 2px solid #f0f0f0;
-    margin-bottom: 20px;
-  }
-  
   .job-title {
     font-size: 28px;
-    color: #0073e6;
-    font-weight: bold;
   }
-  
-  
+
   .job-info p {
-    font-size: 16px;
-    color: #555;
-    margin: 5px 0;
+    font-size: 14px;
   }
-  
-  /* Job Actions */
-  .job-actions {
-    margin-top: 20px;
-    display: flex;
-    gap: 10px;
+
+  h2 {
+    font-size: 20px;
   }
-  
+
+  ul li {
+    font-size: 14px;
+  }
+
   .save-button,
   .share-button {
-    padding: 12px 12px;
-    font-size: 16px;
-    color: white;
-    background-color: #0073e6;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s;
+    font-size: 12px;
+    padding: 8px 16px;
   }
-  
-  .save-button:hover,
-  .share-button:hover {
-    background-color: #005bb5;
-  }
-  
-  .save-button:focus,
-  .share-button:focus {
-    outline: none;
-  }
-  
-  /* Job Description Section */
-  .job-description,
-  .skills-required,
-  .certifications,
-  .eligibility,
-  .other-requirements,
-  .perks,
-  .additional-info,
-  .company-info,
-  .activity-box {
-    margin-top: 20px;
-  }
-  
-  h2 {
-    font-size: 22px;
-    color: #333;
-    margin-bottom: 10px;
-  }
-  
-  ul {
-    list-style-type: disc;
-    margin-left: 20px;
-    color: #555;
-  }
-  
-  li {
-    margin-bottom: 8px;
-  }
-  
-  p {
-    font-size: 16px;
-    color: #555;
-    line-height: 1.6;
-  }
-  
-  /* Activity Box */
-  .activity-box {
-    border: 1px solid #f0f0f0;
-    padding: 15px;
-    background-color: #fafafa;
-    border-radius: 8px;
-    margin-top: 20px;
-    display: flex;
-    flex-direction: column; /* Makes sure items are stacked vertically */
-  }
-  
-  
-  .activity-box p {
-    font-size: 16px;
-    color: #555;
-    margin: 5px 0; /* Adds space between lines */
-  }
-  
+}

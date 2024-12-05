@@ -65,6 +65,12 @@
   align-items: center;
   font-weight: 500;
   color: #333;
+  background-color: transparent; /* Ensure no background hides the text */
+  opacity: 1; /* Keep the text visible */
+  z-index: 2; /* Ensure it's above other items */
+  text-overflow: ellipsis; /* Show '...' when the name is too long */
+  overflow: hidden;
+  white-space: nowrap; /* Prevent the name from wrapping to a new line */
 }
 
 .message-button {
