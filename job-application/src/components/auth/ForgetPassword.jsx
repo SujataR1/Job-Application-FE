@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-
 const ForgotPassword = () => {
   const [email, setEmail] = useState('');
   const [otp, setOtp] = useState('');
@@ -42,11 +41,22 @@ const ForgotPassword = () => {
   };
 
   return (
-    <div style={styles.container}>
+    <div className="flex justify-center items-center min-h-screen bg-gray-100" style={{ backgroundImage: 'url(/images/background.png)' }}>
+    
       <div style={styles.card}>
         {/* Forgot Password Heading */}
-        <h2 style={styles.heading}>Forgot Password</h2>
-
+     
+        <h2 style={{
+            ...styles.heading, 
+            background: 'linear-gradient(to right, #3498db, #2ecc71)',  // Gradient color
+            color: 'white',  // Text color
+            padding: '10px 20px',  // Padding to add space around the text
+            borderRadius: '5px',  // Optional: Adds rounded corners
+            textAlign: 'center'
+              // Optional: Align text in the center
+        }}>
+          Forgot Password
+          </h2>
         {/* Step 1: Enter email */}
         {step === 1 && (
           <form onSubmit={handleEmailSubmit}>
@@ -111,6 +121,7 @@ const ForgotPassword = () => {
         </p>
       </div>
     </div>
+  
   );
 };
 
