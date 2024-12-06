@@ -178,7 +178,6 @@
 // export default Signup;
 
 
-
 import React, { useState } from 'react';
 
 const Signup = () => {
@@ -187,10 +186,10 @@ const Signup = () => {
         email: '',
         phoneNumber: '',
         password: '',
-        userType: '', // 'applicant' or 'recruiter'
+        userType: '', // 'Applicant' or 'Recruiter'
         profileImage: null, // To store file input
-        lookingForApply: '0', // String representation for the applicant type
-        lookingForRecruit: false, // Boolean for recruiter type
+        lookingToApply: 'false', // Use 'false' as string for non-applicant
+        lookingToRecruit: false, // Boolean for recruiter type
     });
 
     // Handle input changes
@@ -214,46 +213,46 @@ const Signup = () => {
     // Handle form submission
     const handleSubmit = async (e) => {
         e.preventDefault();
-    
+
         // Create FormData object to send form data along with file
         const data = new FormData();
         data.append('fullName', formData.fullName);
         data.append('email', formData.email);
         data.append('phoneNumber', formData.phoneNumber);
         data.append('password', formData.password);
-        data.append('userType', formData.userType); // Send userType as 'applicant' or 'recruiter'
-    
+        data.append('userType', formData.userType); // Send userType as 'Applicant' or 'Recruiter'
+
         // Append the profile image correctly if selected
         if (formData.profileImage) {
             data.append('profileImage', formData.profileImage);
         }
-    
-        // Handle lookingForApply and lookingForRecruit based on userType
-        if (formData.userType === 'applicant') {
-            data.append('lookingForApply', '1'); // Looking for Apply (string)
-            data.append('lookingForRecruit', 'false'); // Looking to Recruit (boolean -> string 'false')
-        } else if (formData.userType === 'recruiter') {
-            data.append('lookingForRecruit', true); // Looking to Recruit (boolean)
-            data.append('lookingForApply', '0'); // Not looking for Apply (string)
+
+        // Handle lookingToApply and lookingToRecruit based on userType
+        if (formData.userType === 'Applicant') {
+            data.append('lookingToApply', 'false'); // Applicant will not be looking to apply
+            data.append('lookingToRecruit', false); // Applicant is not a recruiter
+        } else if (formData.userType === 'Recruiter') {
+            data.append('lookingToRecruit', true); // Recruiter is looking to recruit
+            data.append('lookingToApply', 'false'); // Recruiter will not be looking to apply
         }
-    
+
         // Ensure that 'userType' is selected
         if (!formData.userType) {
-            alert('Please select a user type (applicant or recruiter)');
+            alert('Please select a user type (Applicant or Recruiter)');
             return;
         }
-    
+
         try {
             // Send POST request with FormData
             const response = await fetch('http://localhost:7000/auth/sign-up', {
                 method: 'POST',
                 body: data,
             });
-    
+
             if (!response.ok) {
                 throw new Error('Signup failed');
             }
-    
+
             const responseData = await response.json();
             console.log('Signup successful:', responseData);
             alert('Signup successful!');
@@ -262,11 +261,9 @@ const Signup = () => {
             alert('Signup failed. Please try again.');
         }
     };
-    
-
 
     return (
-        <div className="flex justify-center items-center min-h-screen bg-gray-100" style={{ backgroundImage: 'url(/images/background.png)'}}>
+        <div className="flex justify-center items-center min-h-screen bg-gray-100" style={{ backgroundImage: 'url(/images/background.png)' }}>
             <div className="bg-white p-8 rounded-lg shadow-lg max-w-lg w-full">
                 <h2 className="text-2xl font-bold mb-6">Sign Up</h2>
                 <form onSubmit={handleSubmit}>
@@ -321,8 +318,8 @@ const Signup = () => {
                                 <input
                                     type="radio"
                                     name="userType"
-                                    value="applicant"
-                                    checked={formData.userType === 'applicant'}
+                                    value="Applicant"
+                                    checked={formData.userType === 'Applicant'}
                                     onChange={handleChange}
                                     className="mr-2"
                                 />
@@ -332,8 +329,8 @@ const Signup = () => {
                                 <input
                                     type="radio"
                                     name="userType"
-                                    value="recruiter"
-                                    checked={formData.userType === 'recruiter'}
+                                    value="Recruiter"
+                                    checked={formData.userType === 'Recruiter'}
                                     onChange={handleChange}
                                     className="mr-2"
                                 />
@@ -365,4 +362,3 @@ const Signup = () => {
 };
 
 export default Signup;
-
