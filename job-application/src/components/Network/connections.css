@@ -93,14 +93,15 @@
   padding: 25px;
   border-radius: 10px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  width: 350px;
-  max-height: 60vh;
+  width: 400px; /* Increased width */
+  max-height: 70vh; /* Increased max-height for better visibility */
   overflow-y: auto;
   z-index: 1000;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .chat-window h3 {
-  font-size: 20px;
+  font-size: 22px; /* Increased size */
   font-weight: 600;
   color: #333;
   margin-bottom: 15px;
@@ -149,8 +150,9 @@
     font-size: 12px;
   }
 
+  /* Adjust chat window size for smaller screens */
   .chat-window {
-    width: 280px;
+    width: 300px; /* Smaller width for mobile */
   }
 
   .chat-window h3 {
