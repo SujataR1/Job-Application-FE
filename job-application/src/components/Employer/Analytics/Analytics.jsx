@@ -1,99 +1,244 @@
-import React from 'react';
-import './Analytics.css'; 
+import React, { useState } from 'react';
+import { useParams } from 'react-router-dom';
+import './Analytics.css';
 import EmployerNavbar from '../Navbar/Navbar';
-import EmployerSidebar from '../Sidebar/Sidebar'; // Importing the CSS file for styling
+import EmployerSidebar from '../Sidebar/Sidebar';
 
-const Analytics = () => {
-  // Dummy job applications data
-  const jobApplications = [
-    { jobId: 1, status: 'Interview Scheduled' },
-    { jobId: 1, status: 'Shortlisted' },
-    { jobId: 2, status: 'Not Selected' },
-    { jobId: 2, status: 'Shortlisted' },
-    { jobId: 3, status: 'Interview Scheduled' },
-  ];
+// Dummy Data for job and applicants
+const initialJobs = [
+  {
+    id: 1,
+    title: 'Software Engineer',
+    company: 'Tech Innovators',
+    applicants: [
+      { id: 1, name: 'John Doe', resume: 'resume_link1', status: 'Applied', appliedOn: '2024-12-01' },
+      { id: 2, name: 'Jane Smith', resume: 'resume_link2', status: 'Applied', appliedOn: '2024-12-02' },
+      { id: 3, name: 'Emma Watson', resume: 'resume_link3', status: 'Applied', appliedOn: '2024-12-03' },
+    ],
+  },
+  {
+    id: 2,
+    title: 'Product Manager',
+    company: 'Innovative Solutions',
+    applicants: [
+      { id: 4, name: 'Mark Lee', resume: 'resume_link4', status: 'Applied', appliedOn: '2024-12-01' },
+      { id: 5, name: 'Sally Green', resume: 'resume_link5', status: 'Applied', appliedOn: '2024-12-02' },
+    ],
+  },
+];
 
-  // Dummy jobs data
-  const jobs = [
-    { id: 1, title: 'Software Engineer' },
-    { id: 2, title: 'Product Manager' },
-    { id: 3, title: 'Data Analyst' },
-  ];
+const JobAnalyticsPage = () => {
+  const { jobId } = useParams();
+  const job = initialJobs.find((job) => job.id === parseInt(jobId));
 
-  // Calculate total applications and other metrics
-  const totalApplications = jobApplications.length;
-  const totalInterviews = jobApplications.filter(app => app.status === 'Interview Scheduled').length;
-  const totalShortlisted = jobApplications.filter(app => app.status === 'Shortlisted').length;
+  const [applicants, setApplicants] = useState(job ? job.applicants : []);
+  const [showAssessmentPopup, setShowAssessmentPopup] = useState(false);
+  const [showInterviewPopup, setShowInterviewPopup] = useState(false);
+  const [selectedApplicant, setSelectedApplicant] = useState(null);
+  
+  // Interview related state variables
+  const [interviewType, setInterviewType] = useState('');
+  const [meetingLink, setMeetingLink] = useState('');
+  const [address, setAddress] = useState('');
+  const [interviewDateTime, setInterviewDateTime] = useState('');
 
-  const hiringProgress = {
-    total: totalApplications,
-    interviews: totalInterviews,
-    shortlisted: totalShortlisted,
-    notSelected: totalApplications - (totalInterviews + totalShortlisted),
+  const handleShortlist = (applicantId) => {
+    const updatedApplicants = applicants.map((applicant) =>
+      applicant.id === applicantId ? { ...applicant, status: 'Shortlisted' } : applicant
+    );
+    setApplicants(updatedApplicants);
   };
+
+  const handleReject = (applicantId) => {
+    const updatedApplicants = applicants.map((applicant) =>
+      applicant.id === applicantId ? { ...applicant, status: 'Rejected' } : applicant
+    );
+    setApplicants(updatedApplicants);
+  };
+
+  const handleAssessment = (applicantId) => {
+    setSelectedApplicant(applicants.find((applicant) => applicant.id === applicantId));
+    setShowAssessmentPopup(true);
+  };
+
+  const handleInterview = (applicantId) => {
+    setSelectedApplicant(applicants.find((applicant) => applicant.id === applicantId));
+    setShowInterviewPopup(true);
+  };
+
+  const handleAssessmentSend = () => {
+    const updatedApplicants = applicants.map((applicant) =>
+      applicant.id === selectedApplicant.id ? { ...applicant, status: 'In Progress' } : applicant
+    );
+    setApplicants(updatedApplicants);
+    setShowAssessmentPopup(false);
+  };
+
+  const handleInterviewSend = () => {
+    const updatedApplicants = applicants.map((applicant) =>
+      applicant.id === selectedApplicant.id
+        ? {
+            ...applicant,
+            status: 'In Progress',
+            interviewDetails: {
+              date: interviewDateTime,
+              type: interviewType,
+              meetingLink: interviewType === 'Online' ? meetingLink : null,
+              address: interviewType === 'Physical' ? address : null,
+            },
+          }
+        : applicant
+    );
+    setApplicants(updatedApplicants);
+    setShowInterviewPopup(false);
+  };
+
+  // Cancel button logic to close the popups
+  const handleCancel = () => {
+    // Reset form fields for interview
+    setInterviewType('');
+    setMeetingLink('');
+    setAddress('');
+    setInterviewDateTime('');
+
+    // Close both popups
+    setShowAssessmentPopup(false);
+    setShowInterviewPopup(false);
+  };
+
+  // Calculating statistics
+  const shortlistedCount = applicants.filter((applicant) => applicant.status === 'Shortlisted').length;
+  const rejectedCount = applicants.filter((applicant) => applicant.status === 'Rejected').length;
+  const inProgressCount = applicants.filter((applicant) => applicant.status === 'In Progress').length;
 
   return (
     <div className="home-page">
-    {/* Navbar/Header */}
-   <EmployerNavbar/>
+      <EmployerNavbar />
+      <div className="home-content flex flex-row">
+        <EmployerSidebar />
+        <div className="job-analytics-page">
+          <h1>Applicants Analytics for {job?.title}</h1>
 
-    <div className="home-content flex flex-row">
-      {/* Sidebar */}
-      <EmployerSidebar />
+          {/* Displaying the statistics */}
+          <div className="statistics">
+            <div className="stat-item">
+              <h4>Shortlisted: {shortlistedCount}</h4>
+            </div>
+            <div className="stat-item">
+              <h4>Rejected: {rejectedCount}</h4>
+            </div>
+            <div className="stat-item">
+              <h4>In Progress: {inProgressCount}</h4>
+            </div>
+          </div>
 
-    <div className="analytics-container">
-      <h2 className="analytics-header">Company Analytics Dashboard</h2>
-      
-      <div className="analytics-summary">
-        <div className="analytics-card">
-          <h3>Total Applications</h3>
-          <p>{totalApplications}</p>
-        </div>
-        
-        <div className="analytics-card">
-          <h3>Interviews Scheduled</h3>
-          <p>{totalInterviews}</p>
-        </div>
+          {/* Applicant List */}
+          <ul className="applicant-list">
+            {applicants.map((applicant) => (
+              <li key={applicant.id} className="applicant-item">
+                <h4>{applicant.name}</h4>
+                <p>Status: {applicant.status}</p>
+                <p>Applied On: {applicant.appliedOn}</p>
+                <a href={applicant.resume} download>Download Resume</a>
+                <div>
+                  <button className="shortlist" style={{ marginRight: '10px' }} onClick={() => handleShortlist(applicant.id)}>Shortlist</button>
+                  <button className="reject" onClick={() => handleReject(applicant.id)}>Reject</button>
+                </div>
+                {applicant.status === 'Shortlisted' && (
+                  <div>
+                    <button className="assessment" onClick={() => handleAssessment(applicant.id)}>Custom Assessment</button>
+                    <button className="interview" onClick={() => handleInterview(applicant.id)}>Schedule Interview</button>
+                  </div>
+                )}
 
-        <div className="analytics-card">
-          <h3>Shortlisted Candidates</h3>
-          <p>{totalShortlisted}</p>
-        </div>
+                {/* Display Interview Details */}
+                {applicant.interviewDetails && (
+                  <div>
+                    <p><strong>Interview Scheduled:</strong></p>
+                    <p>Date & Time: {applicant.interviewDetails.date}</p>
+                    <p>Type: {applicant.interviewDetails.type}</p>
+                    {applicant.interviewDetails.type === 'Online' && <p>Meeting Link: {applicant.interviewDetails.meetingLink}</p>}
+                    {applicant.interviewDetails.type === 'Physical' && <p>Address: {applicant.interviewDetails.address}</p>}
+                  </div>
+                )}
+              </li>
+            ))}
+          </ul>
 
-        <div className="analytics-card">
-          <h3>Not Selected</h3>
-          <p>{hiringProgress.notSelected}</p>
+          {/* Custom Assessment Popup */}
+          {showAssessmentPopup && (
+            <div className="popup assessment-popup">
+              <div className="popup-content">
+                <h3>Custom Assessment for {selectedApplicant.name}</h3>
+                <label>Assessment Type</label>
+                <input type="text" placeholder="Enter assessment type" />
+                <label>Deadline</label>
+                <input type="date" />
+                <div className="popup-buttons">
+                  <button className="send" onClick={handleAssessmentSend}>Send</button>
+                  <button className="cancel" onClick={handleCancel}>Cancel</button>
+                </div>
+              </div>
+            </div>
+          )}
+
+          {/* Interview Scheduling Popup */}
+          {showInterviewPopup && (
+            <div className="popup">
+              <div className="popup-content">
+                <h3>Schedule Interview for {selectedApplicant.name}</h3>
+                <label>Interview Type</label>
+                <select
+                  value={interviewType}
+                  onChange={(e) => setInterviewType(e.target.value)}
+                >
+                  <option value="">Select Interview Type</option>
+                  <option value="Online">Online</option>
+                  <option value="Physical">Physical</option>
+                </select>
+                <label>Date & Time</label>
+                <input
+                  type="datetime-local"
+                  value={interviewDateTime}
+                  onChange={(e) => setInterviewDateTime(e.target.value)}
+                />
+                <label>Note</label>
+                <input type="text" placeholder="Enter any notes" />
+                {interviewType === 'Online' && (
+                  <>
+                    <label>Meeting Link</label>
+                    <input
+                      type="text"
+                      placeholder="Enter meeting link"
+                      value={meetingLink}
+                      onChange={(e) => setMeetingLink(e.target.value)}
+                    />
+                  </>
+                )}
+                {interviewType === 'Physical' && (
+                  <>
+                    <label>Address</label>
+                    <input
+                      type="text"
+                      placeholder="Enter address"
+                      value={address}
+                      onChange={(e) => setAddress(e.target.value)}
+                    />
+                  </>
+                )}
+                <div className="popup-buttons">
+                  <button className="send" onClick={handleInterviewSend}>Schedule Interview</button>
+                  <button className="cancel" onClick={handleCancel}>Cancel</button>
+                </div>
+              </div>
+            </div>
+          )}
         </div>
       </div>
-
-      <div className="hiring-progress">
-        <h3>Hiring Progress</h3>
-        <div className="progress-bar">
-          <div className="progress progress-shortlisted" style={{ width: `${(hiringProgress.shortlisted / totalApplications) * 100}%` }}>
-            Shortlisted: {hiringProgress.shortlisted}
-          </div>
-          <div className="progress progress-interviews" style={{ width: `${(hiringProgress.interviews / totalApplications) * 100}%` }}>
-            Interviews: {hiringProgress.interviews}
-          </div>
-          <div className="progress progress-not-selected" style={{ width: `${(hiringProgress.notSelected / totalApplications) * 100}%` }}>
-            Not Selected: {hiringProgress.notSelected}
-          </div>
-        </div>
-      </div>
-
-      <h3>Job Performance Metrics</h3>
-      <div className="job-performance">
-        {jobs.map((job) => (
-          <div key={job.id} className="job-performance-card">
-            <h4>{job.title}</h4>
-            <p>Applications: {jobApplications.filter(app => app.jobId === job.id).length}</p>
-          </div>
-        ))}
-      </div>
-    </div>
-    </div>
     </div>
   );
 };
 
-export default Analytics;
+export default JobAnalyticsPage;
+
+

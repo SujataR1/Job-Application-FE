@@ -1,4 +1,4 @@
-/* General Styles */
+
 body {
   font-family: 'Arial', sans-serif;
   background-color: #f4f4f4;
@@ -6,7 +6,7 @@ body {
   padding: 0;
 }
 
-/* Container for News Feed */
+
 .newsfeed-container {
   width: 80%;
   margin: 20px auto;

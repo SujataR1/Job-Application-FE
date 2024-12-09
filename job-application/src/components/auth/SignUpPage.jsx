@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom'; // Import useNavigate for redirection
 
 const Signup = () => {
     const [formData, setFormData] = useState({
@@ -11,6 +12,8 @@ const Signup = () => {
         lookingToApply: 'false', // Use 'false' as string for non-applicant
         lookingToRecruit: false, // Boolean for recruiter type
     });
+
+    const navigate = useNavigate(); // Initialize useNavigate for redirection
 
     // Handle input changes
     const handleChange = (e) => {
@@ -76,6 +79,10 @@ const Signup = () => {
             const responseData = await response.json();
             console.log('Signup successful:', responseData);
             alert('Signup successful!');
+            
+            // After successful signup, redirect to login page
+            navigate('/login'); // Use navigate to redirect
+
         } catch (error) {
             console.error('Error during signup:', error);
             alert('Signup failed. Please try again.');

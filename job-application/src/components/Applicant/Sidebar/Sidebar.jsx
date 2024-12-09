@@ -30,7 +30,7 @@ const Sidebar = () => {
               </Link>
             </li>
             <li>
-              <Link to="/network" className="sidebar-item">
+              <Link to="/networks" className="sidebar-item">
                 <FaUsers className="sidebar-icon" /> My Network
               </Link>
             </li>

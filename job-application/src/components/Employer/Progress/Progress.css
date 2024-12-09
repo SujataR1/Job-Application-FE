@@ -1,0 +1,68 @@
+ .hiring-process-page {
+    font-family: Arial, sans-serif;
+    padding: 20px;
+    margin-left: 600px;
+  }
+  
+  .applicant-list {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+  }
+  
+  .applicant-card {
+    border: 1px solid #ccc;
+    padding: 15px;
+    margin: 10px 0;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+  }
+  
+  .applicant-card h3 {
+    margin-bottom: 5px;
+  }
+  
+  .applicant-card p {
+    margin: 5px 0;
+  }
+  
+  button {
+    padding: 10px 15px;
+    margin-top: 10px;
+    cursor: pointer;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 5px;
+  }
+  
+  button:hover {
+    background-color: #218838;
+  }
+  
+  .selected-candidates-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+  
+  .selected-candidates-table th, .selected-candidates-table td {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: left;
+  }
+  
+  .selected-candidates-table th {
+    background-color: #f8f9fa;
+  }
+  
+  .selected-candidates-table tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+  
+  .selected-candidates-table tr:hover {
+    background-color: #ddd;
+  }
+   
+
+    

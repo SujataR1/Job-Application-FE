@@ -117,7 +117,7 @@ const Navbar = () => {
                     <Link to="/home" className="text-white font-bold text-lg hover:text-teal-300">
                         <FaHome className="inline-block mr-2" /> Home
                     </Link>
-                    <Link to="/network" className="text-white font-bold text-lg hover:text-teal-300">
+                    <Link to="/networks" className="text-white font-bold text-lg hover:text-teal-300">
                         <FaUsers className="inline-block mr-2" /> My Network
                     </Link>
 
