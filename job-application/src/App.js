@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Routes,useLocation} from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes,useLocation,useMatch} from 'react-router-dom';
 import Dasboard from './components/Dashboard/Homepage';
 import Sales from './components/Categories/SalesJobs/Sales';
 import IT from './components/Categories/ITjobs/ITjobs';
@@ -91,30 +91,46 @@ import Navbar from './components/Applicant/Navbar/Navbar';
 import Message from './components/Applicant/Message/Message';
 import Profile from './components/Applicant/Profile/Profile';
 import EmployerDashboard from './components/Employer/EmployerDashboard/EmployDashboard';
-import InterviewScheduling from './components/Employer/InterviewScheduling/Interview';
+import HiringProgress from './components/Employer/Progress/Progress';
 import JobpostingManagement from './components/Employer/JobPostingManagement/Jobposting';
 import Notifications from './components/Employer/Notifications/Notification';
-import JobApplication from './components/Employer/CandidateManagement/Candidate';
+import JobApplication from './components/Employer/JobApplication/JobApplication';
 import Analytics from './components/Employer/Analytics/Analytics';
 import EmployerNavbar from './components/Employer/Navbar/Navbar';
 import EmployerSidebar from './components/Employer/Sidebar/Sidebar';
 import Efeed from './components/Employer/Efeed/Efeed';
 import EMessage from './components/Employer/EmployerMessage/EMessage';
 import ESetting from './components/Employer/Settings/Setting';
+import CompanyProfile from './components/Employer/CompanyProfile/Profile';
+import Network from './components/Employer/Network/Network';
+import ApplicantNetwork from './components/Network/Network';
 import JobDetailsPage from './components/JobDetailsPage';
-import Network from './components/Network/Network';
-import Connections from './components/Network/Connections';
+import CompanyAnalyticsPage from './components/Employer/CompanyAnalytics/CompanyAnalytics';
+import ForgetPassword from './components/auth/ForgetPassword';
+import AdminNavbar from './components/Admin/Navbar/Navbar';
+import AdminSidenavbar from './components/Admin/Sidenavbar/Sidenavbar';
+import AdminDashboard from './components/Admin/Dashboard/Dashboard';
+import ManageUsers from './components/Admin/ManageUSers/User';
+import ManageJobs from './components/Admin/ManageJobs/Jobs';
 
 //This component is used to conditionally render Navbar based on the current path
 const ConditionalNavbar = () => {
    const location = useLocation();  // Get current location to conditionally render Navbar
   
-   
     //Render Navbar only if the path is not '/dashboard'
-   
-    return !['/login', '/signup','/','/Enavbar','/Esidebar','/employerdashboard','/application','/jobposting','/analytics','/interview','/notifications','/analytics','/message','/jobposting','/Esetting'].includes(location.pathname) && <Navbar />;
-   
+    const jobAnalyticsMatch = useMatch("/job-analytics/:jobId");  // Match dynamic route for job-analytics
+
+    // Render Navbar only if the path is not in the excluded list and not a job analytics page
+    return !['/login', '/signup', '/', '/Enavbar', '/Esidebar', '/employerdashboard', '/application', 
+             '/jobposting', '/job-analytics/:jobId', '/interview', '/notifications', '/analytics', 
+             '/message', '/jobposting', '/Esetting','/companyprofile','/network','/companyanalytics','/forgot-password','/adnavbar','/adsidenavbar','/admindashboard','/manage-users','/manage-jobs'].includes(location.pathname) && !jobAnalyticsMatch && <Navbar />;
   };
+   
+    // return !['/login', '/signup','/','/Enavbar','/Esidebar','/employerdashboard','/application','/jobposting','/job-analytics/:jobId','/interview','/notifications','/analytics','/message','/jobposting','/Esetting'].includes(location.pathname) && <Navbar />;
+   
+ 
+
+
 
 const App = () => {
   
@@ -173,7 +189,6 @@ const App = () => {
                 <Route path="/resume-quality-score" element={<ResumeQualityScore />} />
                 <Route path="/resume-samples" element={<ResumeSamples />} />
                 <Route path="/job-letter-samples" element={<JobLetterSamples />} />
-
                 {/* Add more routes here as needed */}
                 <Route path="/about-us" element={<Aboutus />} />
                 <Route path="/overview" element={<Overview />} />
@@ -183,7 +198,6 @@ const App = () => {
                 <Route path="/report-issue" element={<ReportIssue />} />
                 <Route path="/careers" element={<Careers />} />
                 <Route path="/employer-home" element={<EmployerHome />} />
-                
                 {/* Add more routes here as needed */}
                 <Route path="/sitemap" element={<SiteMap />} />
                 <Route path="/credits" element={<Credits />} />
@@ -218,9 +232,10 @@ const App = () => {
                 <Route path="/sidebar" element={<Sidebar/>} />
                 <Route path="/feed" element={<Feed/>} />
                 <Route path="/messages" element={<Message/>} />
-                <Route path="/analytics" element={<Analytics/>} />
+                {/* <Route path="/analytics" element={<Analytics/>} /> */}
+                <Route path="/job-analytics/:jobId" element={<Analytics />} />
                 <Route path="/employerdashboard" element={<EmployerDashboard/>} />
-                <Route path="/interview" element={<InterviewScheduling/>} />
+                <Route path="/interview" element={<HiringProgress/>} />
                 <Route path="/application" element={<JobApplication/>} />
                 <Route path="/jobposting" element={<JobpostingManagement/>} />
                 <Route path="/profile" element={<Profile/>} />
@@ -230,14 +245,23 @@ const App = () => {
                 <Route path="/Efeed" element={<Efeed/>}/>
                 <Route path="/message" element={<EMessage/>}/>
                 <Route path="/Esetting" element={<ESetting/>}/>
+                <Route path="/companyprofile" element={<CompanyProfile/>}/>
+                <Route path="/network" element={<Network/>}/>
+                <Route path="/networks" element={<ApplicantNetwork/>}/>
                 <Route path="/job/:jobId" element={<JobDetailsPage />} />
-                <Route path="/network" element={<Network />} />
-                <Route path="/connections" element={<Connections />} />
-
-              </Routes>
+                <Route path="/companyanalytics" element={<CompanyAnalyticsPage />} />
+                <Route path="/forgot-password" element={<ForgetPassword />} />
+                <Route path="/adnavbar" element={<AdminNavbar />} />
+                <Route path="/adsidenavbar" element={<AdminSidenavbar />} />
+                <Route path="/admindashboard" element={<AdminDashboard />} />
+                <Route path="/manage-users" element={<ManageUsers />} />
+                <Route path="/manage-jobs" element={<ManageJobs />} />
+               </Routes>
             <Footer />
         </Router>
     );
 };
 
 export default App;
+
+

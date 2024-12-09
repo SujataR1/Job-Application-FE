@@ -1,0 +1,92 @@
+/* Admin Sidebar Styling */
+.admin-sidebar {
+    width: 250px;
+    height: 100vh;
+    background-color: #2f3b52; /* Dark background */
+    position: fixed;
+    left: 0;
+    top: 0;
+    transition: transform 0.3s ease; /* Smooth transition for showing/hiding */
+    padding: 20px;
+    z-index: 100;
+    transform: translateX(-100%); /* Sidebar hidden by default */
+}
+
+.admin-sidebar.visible {
+    transform: translateX(0); /* Sidebar visible */
+}
+
+.admin-sidebar.hidden {
+    transform: translateX(-100%); /* Sidebar hidden */
+}
+
+.sidebar-header {
+    color: white;
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 20px;
+}
+.sidebar-header h3{
+    margin-right: 50px;
+    color: white;
+}
+.sidebar-links {
+    list-style-type: none;
+    padding: 0;
+}
+
+.sidebar-links li {
+    margin: 10px 0;
+}
+
+.sidebar-links a {
+    color: white;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    font-size: 18px;
+    padding: 8px 16px;
+    transition: background-color 0.3s;
+}
+
+.sidebar-links a:hover {
+    background-color: #16a085;
+}
+
+.sidebar-links a svg {
+    margin-right: 10px;
+}
+
+/* Sidebar Toggle Button */
+.sidebar-toggle-btn {
+    position: absolute;
+    top: 45px;
+    left: 10px;
+    background-color: #2f3b52;
+    color: white;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    padding: 10px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+}
+
+.sidebar-toggle-btn:hover {
+    background-color: #16a085;
+}
+
+/* Sidebar Close Button */
+.sidebar-close-btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background-color: transparent;
+    color: white;
+    border: none;
+    font-size: 30px;
+    cursor: pointer;
+}

@@ -1,0 +1,134 @@
+.company-analytics-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+
+.analytics-main-content {
+  margin-left: 250px; 
+  padding: 20px;
+  background-color: #f5f5f5;
+}
+
+
+.company-analytics-header h1 {
+  font-size: 36px;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+
+.overview-container {
+  display: flex;
+  justify-content: space-between;
+  gap: 30px;
+  margin-bottom: 30px;
+}
+
+.overview-card {
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  width: 22%;
+}
+
+.overview-card h2 {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.overview-card p {
+  font-size: 24px;
+  font-weight: bold;
+  color: #333;
+}
+
+
+.charts-section {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 30px;
+}
+
+.charts-container {
+  display: flex;
+  gap: 30px;
+  width: 100%;
+}
+
+.chart-item {
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  width: 40%;
+  height: 98%;
+}
+
+.chart-item h3 {
+  font-size: 18px;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+
+.company-analytics-section {
+  margin-bottom: 30px;
+}
+
+.analytics-cards-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.analytics-card {
+  background-color: #fff;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.analytics-card h3 {
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+.analytics-card p {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+
+.applicant-lists {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.list-section h3 {
+  font-size: 22px;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.applicant-card {
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 15px;
+  margin-bottom: 10px;
+}
+
+.applicant-card h4 {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.applicant-card p {
+  font-size: 16px;
+  color: #555;
+}

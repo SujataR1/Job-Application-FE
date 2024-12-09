@@ -1,21 +1,21 @@
 
-/* Sidebar Styles */
+
 .sidebar {
-    position: fixed;         /* Fix the sidebar to the left */
+    position: fixed;        
     top: 0;
     left: 0;
-    width: 0;                 /* Initial collapsed width */
+    width: 0;                 
     height: 100vh;
     background-color: #333;
     color: white;
     padding: 20px;
     z-index: 100;
-    transition: width 0.3s ease; /* Smooth transition for expand/collapse */
+    transition: width 0.3s ease; 
     overflow: hidden;
   }
   
   .sidebar.expanded {
-    width: 200px;             /* Full width when expanded */
+    width: 200px;          
   }
   
   .sidebar-header {
@@ -32,7 +32,7 @@
     font-size: 30px;
   }
   
-  /* Links in expanded sidebar */
+  
   .sidebar-links {
     list-style: none;
     padding: 0;
@@ -52,12 +52,12 @@
   .sidebar.collapsed {
     width: 60px;
   }
-  /* When sidebar is collapsed, show just the account icon */
+  
   .sidebar.collapsed .sidebar-link {
-    display: none;  /* Hide links when collapsed */
+    display: none;  
   }
   
-  /* To handle smaller screen sizes */
+ 
   @media screen and (max-width: 768px) {
     .sidebar {
       width: 200px;

@@ -319,10 +319,10 @@ const Header = () => {
                 </div>
 
                 <nav className="navbar-nav flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-10 mx-auto">
-                    <Link to="/home" className="text-white font-bold text-lg hover:text-teal-300">
-                        <FaHome className="inline-block mr-2" /> Home
+                    <Link to="/about-us" className="text-white font-bold text-lg hover:text-teal-300">
+                        <FaHome className="inline-block mr-2" /> About US
                     </Link>
-                    <Link to="/network" className="text-white font-bold text-lg hover:text-teal-300">
+                    <Link to="/people" className="text-white font-bold text-lg hover:text-teal-300">
                         <FaUsers className="inline-block mr-2" /> People
                     </Link>
                     <Link to="/jobs" className="text-white font-bold text-lg hover:text-teal-300">

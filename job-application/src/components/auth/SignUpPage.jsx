@@ -64,6 +64,7 @@ const Signup = () => {
             alert('Please select a user type (Applicant or Recruiter)');
             return;
         }
+
         try {
             // Send POST request with FormData
             const response = await fetch('http://localhost:7000/auth/sign-up', {
