@@ -107,6 +107,11 @@ import ApplicantNetwork from './components/Network/Network';
 import JobDetailsPage from './components/JobDetailsPage';
 import CompanyAnalyticsPage from './components/Employer/CompanyAnalytics/CompanyAnalytics';
 import ForgetPassword from './components/auth/ForgetPassword';
+import AdminNavbar from './components/Admin/Navbar/Navbar';
+import AdminSidenavbar from './components/Admin/Sidenavbar/Sidenavbar';
+import AdminDashboard from './components/Admin/Dashboard/Dashboard';
+import ManageUsers from './components/Admin/ManageUSers/User';
+import ManageJobs from './components/Admin/ManageJobs/Jobs';
 
 //This component is used to conditionally render Navbar based on the current path
 const ConditionalNavbar = () => {
@@ -118,7 +123,7 @@ const ConditionalNavbar = () => {
     // Render Navbar only if the path is not in the excluded list and not a job analytics page
     return !['/login', '/signup', '/', '/Enavbar', '/Esidebar', '/employerdashboard', '/application', 
              '/jobposting', '/job-analytics/:jobId', '/interview', '/notifications', '/analytics', 
-             '/message', '/jobposting', '/Esetting','/companyprofile','/network','/companyanalytics','/forgot-password'].includes(location.pathname) && !jobAnalyticsMatch && <Navbar />;
+             '/message', '/jobposting', '/Esetting','/companyprofile','/network','/companyanalytics','/forgot-password','/adnavbar','/adsidenavbar','/admindashboard','/manage-users','/manage-jobs'].includes(location.pathname) && !jobAnalyticsMatch && <Navbar />;
   };
    
     // return !['/login', '/signup','/','/Enavbar','/Esidebar','/employerdashboard','/application','/jobposting','/job-analytics/:jobId','/interview','/notifications','/analytics','/message','/jobposting','/Esetting'].includes(location.pathname) && <Navbar />;
@@ -246,11 +251,12 @@ const App = () => {
                 <Route path="/job/:jobId" element={<JobDetailsPage />} />
                 <Route path="/companyanalytics" element={<CompanyAnalyticsPage />} />
                 <Route path="/forgot-password" element={<ForgetPassword />} />
-
-
-
-
-              </Routes>
+                <Route path="/adnavbar" element={<AdminNavbar />} />
+                <Route path="/adsidenavbar" element={<AdminSidenavbar />} />
+                <Route path="/admindashboard" element={<AdminDashboard />} />
+                <Route path="/manage-users" element={<ManageUsers />} />
+                <Route path="/manage-jobs" element={<ManageJobs />} />
+               </Routes>
             <Footer />
         </Router>
     );
