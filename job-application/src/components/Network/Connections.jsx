@@ -11,6 +11,7 @@ const Connections = () => {
         { id: 5, name: 'Michael Williams' , imgUrl: 'https://randomuser.me/api/portraits/men/2.jpg' },
     ];
 
+    
     const [activeConnection, setActiveConnection] = useState(null);
 
     // Function to handle clicking the "Message" button
