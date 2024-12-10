@@ -1,18 +1,18 @@
 import React, { useState } from 'react';
 import { Bar, Pie } from 'react-chartjs-2';
-import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, ArcElement, Title, Tooltip, Legend } from 'chart.js'; 
+import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, ArcElement, Title, Tooltip, Legend } from 'chart.js';
 import EmployerNavbar from '../Navbar/Navbar';
 import EmployerSidebar from '../Sidebar/Sidebar';
 
 import './CompanyAnalytics.css';
 
 ChartJS.register(
-  CategoryScale, 
-  LinearScale, 
-  BarElement, 
+  CategoryScale,
+  LinearScale,
+  BarElement,
   ArcElement, // Register ArcElement for Pie chart
-  Title, 
-  Tooltip, 
+  Title,
+  Tooltip,
   Legend
 );
 
@@ -48,7 +48,7 @@ const CompanyAnalyticsPage = () => {
         applicants.filter(applicant => applicant.status === 'Rejected').length
       ],
       backgroundColor: ['#FFB6C1', '#FF6347', '#3CB371'],
-    }], 
+    }],
   };
 
   const interviewModeData = {
