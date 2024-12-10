@@ -114,6 +114,8 @@ import ManageUsers from './components/Admin/ManageUSers/User';
 import ManageJobs from './components/Admin/ManageJobs/Jobs';
 import Connections from './components/Network/Connections';
 import Contacts from './components/Network/Contacts';
+import Notification from './components/Applicant/Notification/Notification';
+
 
 
 
@@ -258,6 +260,9 @@ const App = () => {
                 <Route path="/manage-jobs" element={<ManageJobs />} />
                 <Route path="/connections" element={<Connections />} />
                 <Route path="/contacts" element={<Contacts />} />
+                <Route path="/notification" element={<Notification />} />
+
+
                </Routes>
             <Footer />
         </Router>

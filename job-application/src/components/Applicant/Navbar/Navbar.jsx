@@ -195,7 +195,7 @@ const Navbar = () => {
                     <Link to="/messages" className="text-white font-bold text-lg hover:text-teal-300">
                         <FaEnvelope className="inline-block mr-2" /> Messages
                     </Link>
-                    <Link to="/bell" className="text-white font-bold text-lg hover:text-teal-300">
+                    <Link to="/notification" className="text-white font-bold text-lg hover:text-teal-300">
                         <FaBell className="inline-block mr-2" /> Notification
                     </Link>
                 </nav>
