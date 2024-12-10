@@ -1,14 +1,13 @@
 import React from 'react';
-import { Route, Routes, NavLink } from 'react-router-dom';  // Import components you need for routing
-// Import your components
-//import Connections from './Connections';
+import { Route, Routes, NavLink } from 'react-router-dom'; 
 
+// Import your components
 import Groups from './Groups';
 import Header from './Header';
-import Contacts from './Contacts';  // Ensure this file exists
-import PeopleIFollow from './PeopleIFollow';  // Ensure this file exists
-import NewsLetter from './NewsLetter';  // Ensure this file exists
-import Hashtags from './Hashtags';  // Ensure this file exists
+import Contacts from './Contacts';
+import PeopleIFollow from './PeopleIFollow';
+import NewsLetter from './NewsLetter';
+import Hashtags from './Hashtags';
 
 // Dummy data for "People I Know"
 const peopleIKnow = [
@@ -16,8 +15,11 @@ const peopleIKnow = [
   { id: 2, name: 'Jane Smith', position: 'Product Manager', imgUrl: 'https://randomuser.me/api/portraits/women/1.jpg' },
   { id: 3, name: 'Alice Johnson', position: 'Data Scientist', imgUrl: 'https://randomuser.me/api/portraits/women/2.jpg' },
   { id: 4, name: 'Bob Brown', position: 'UI/UX Designer', imgUrl: 'https://randomuser.me/api/portraits/men/2.jpg' },
+  { id: 1, name: 'John Pal', position: 'Software Engineer', imgUrl: 'https://randomuser.me/api/portraits/men/1.jpg' },
+  { id: 2, name: 'Smith Das', position: 'Product Manager', imgUrl: 'https://randomuser.me/api/portraits/women/1.jpg' },
+  { id: 3, name: 'Alice Black', position: 'Data Scientist', imgUrl: 'https://randomuser.me/api/portraits/women/2.jpg' },
+  { id: 4, name: 'Bob Ghosh', position: 'UI/UX Designer', imgUrl: 'https://randomuser.me/api/portraits/men/2.jpg' },
 ];
-
 
 const Network = () => {
   return (
@@ -39,69 +41,36 @@ const Network = () => {
                 Others
               </NavLink>
             </li>
-            {/* <li>
-              <NavLink to="/people-i-follow" activeClassName="active">
-                People I Follow
-              </NavLink>
-            </li>
-
-            <li>
-              <NavLink to="/groups" activeClassName="active">
-                Groups
-              </NavLink>
-            </li>
-
-
-            <li>
-              <NavLink to="/newsletter" activeClassName="active">
-                Newsletter
-              </NavLink>
-            </li>
-
-            <li>
-              <NavLink to="/hashtags" activeClassName="active">
-                Hashtags
-              </NavLink>
-            </li>
-            */}
           </ul>
         </div>
 
-        {/* Content Area */}
-        <div className="network-content">
-          <div className="left-column">
-            <Routes>
-              {/* <Route path="/connections" element={<Connections />} /> */}
-              <Route path="/contacts" element={<Contacts />} />
-              <Route path="/people-i-follow" element={<PeopleIFollow />} />
-              <Route path="/groups" element={<Groups />} />
-              <Route path="/newsletter" element={<NewsLetter />} />
-              <Route path="/hashtags" element={<Hashtags />} />
+        {/* Main Content Area */}
+        <div className="network-main-content">
+          <Routes>
+            <Route path="/contacts" element={<Contacts />} />
+            <Route path="/people-i-follow" element={<PeopleIFollow />} />
+            <Route path="/groups" element={<Groups />} />
+            <Route path="/newsletter" element={<NewsLetter />} />
+            <Route path="/hashtags" element={<Hashtags />} />
+          </Routes>
 
-              {/* Default route */}
-              {/* <Route path="/" element={<Connections />} /> */}
-            </Routes>
-          </div>
-
-          {/* Right Column - People I Know */}
-          <div className="right-column">
-            <div className="section">
-              <h3> Suggestions </h3>
-              <ul>
-                {peopleIKnow.map((person) => (
-                  <li key={person.id} className="suggestion-item">
-                    <div className="suggestion-img">
-                      <img src={person.imgUrl} alt={person.name} />
-                    </div>
-                    <div className="suggestion-info">
-                      <span className="suggestion-name">{person.name}</span>
-                      <span className="suggestion-position">{person.position}</span>
-                    </div>
-                    <button className="connect-button">Connect</button>
-                  </li>
-                ))}
-              </ul>
-            </div>
+          {/* Suggestions Section (Moved to Center) */}
+          <div className="section suggestions-section">
+            <h3>Suggestions</h3>
+            <ul>
+              {peopleIKnow.map((person) => (
+                <li key={person.id} className="suggestion-item">
+                  <div className="suggestion-img">
+                    <img src={person.imgUrl} alt={person.name} />
+                  </div>
+                  <div className="suggestion-info">
+                    <span className="suggestion-name">{person.name}</span>
+                    <span className="suggestion-position">{person.position}</span>
+                  </div>
+                  <button className="connect-button">Connect</button>
+                </li>
+              ))}
+            </ul>
           </div>
         </div>
       </div>

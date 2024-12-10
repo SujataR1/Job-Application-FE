@@ -1,0 +1,151 @@
+/* Global Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f7fb;
+    color: #333;
+  }
+  
+  h2, h3 {
+    color: #333;
+    font-size: 24px;
+  }
+  
+  button {
+    cursor: pointer;
+  }
+  
+  /* Contacts Container */
+  .contacts-container {
+    width: 100%;
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .contacts-sections {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 30px;
+    margin-top: 20px;
+  }
+  
+  .section {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Suggestions Section */
+  .suggestions-section ul,
+  .people-you-may-know ul,
+  .groups-section ul,
+  .tech-stack-section ul {
+    list-style: none;
+    padding: 10;
+  }
+  
+  .suggestion-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #fafafa;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
+    min-height: 60px; /* Reduced the height */
+  }
+  
+  .suggestion-item:hover {
+    background-color: #ebf2fb;
+  }
+  
+  /* Image Styles for all sections */
+  .suggestion-img img,
+  .group-info img,
+  .tech-stack-info img {
+    width: 40px; /* Smaller image size */
+    height: 40px; /* Smaller image size */
+    border-radius: 10%;
+    margin-right: 5px;
+  }
+  
+  .suggestion-info,
+  .group-info,
+  .tech-stack-info {
+    flex-grow: 1;
+  }
+  
+  /* Common Text Style for Names and Positions */
+  .suggestion-name,
+  .group-name,
+  .tech-stack-name {
+    font-weight: bold;
+    font-size: 14px; /* Smaller font size */
+  }
+  
+  .suggestion-position,
+  .group-description,
+  .tech-stack-description {
+    color: #777;
+    font-size: 12px; /* Smaller font size */
+  }
+  
+  /* Buttons Styles */
+  .connect-button,
+  .join-button,
+  .learn-more-button {
+    padding: 4px 8px; /* Smaller padding */
+    border-radius: 20px;
+    font-size: 12px; /* Smaller font size */
+    transition: background-color 0.3s ease;
+  }
+  
+  .connect-button {
+    background-color: #3498db;
+    color: white;
+  }
+  
+  .connect-button:hover {
+    background-color: #2980b9;
+  }
+  
+  .join-button {
+    background-color: #2ecc71;
+    color: white;
+  }
+  
+  .join-button:hover {
+    background-color: #27ae60;
+  }
+  
+  .learn-more-button {
+    background-color: #f39c12;
+    color: white;
+  }
+  
+  .learn-more-button:hover {
+    background-color: #e67e22;
+  }
+  
+  /* Responsive Layout for Small Screens */
+  @media (max-width: 768px) {
+    .contacts-sections {
+      grid-template-columns: 1fr; /* Stack sections vertically */
+    }
+  
+    .contacts-sections .section {
+      margin-bottom: 20px;
+    }
+  }
+  

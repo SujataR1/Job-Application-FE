@@ -112,6 +112,10 @@ import AdminSidenavbar from './components/Admin/Sidenavbar/Sidenavbar';
 import AdminDashboard from './components/Admin/Dashboard/Dashboard';
 import ManageUsers from './components/Admin/ManageUSers/User';
 import ManageJobs from './components/Admin/ManageJobs/Jobs';
+import Connections from './components/Network/Connections';
+import Contacts from './components/Network/Contacts';
+
+
 
 //This component is used to conditionally render Navbar based on the current path
 const ConditionalNavbar = () => {
@@ -127,11 +131,7 @@ const ConditionalNavbar = () => {
   };
    
     // return !['/login', '/signup','/','/Enavbar','/Esidebar','/employerdashboard','/application','/jobposting','/job-analytics/:jobId','/interview','/notifications','/analytics','/message','/jobposting','/Esetting'].includes(location.pathname) && <Navbar />;
-   
- 
-
-
-
+    
 const App = () => {
   
     return (
@@ -256,6 +256,8 @@ const App = () => {
                 <Route path="/admindashboard" element={<AdminDashboard />} />
                 <Route path="/manage-users" element={<ManageUsers />} />
                 <Route path="/manage-jobs" element={<ManageJobs />} />
+                <Route path="/connections" element={<Connections />} />
+                <Route path="/contacts" element={<Contacts />} />
                </Routes>
             <Footer />
         </Router>
