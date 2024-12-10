@@ -30,7 +30,7 @@ const Connections = () => {
             {/* List of Connections */}
             <div className="connections-list">
                 {connectionsList.map((connection) => (
-                    <div key={connection.id} className="connection-item">
+                    <div key={connection.id} className="connection-items">
                         <img 
                             src={connection.imgUrl} 
                             alt={connection.name} 

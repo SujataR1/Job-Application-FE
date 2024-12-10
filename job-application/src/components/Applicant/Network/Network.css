@@ -1,4 +1,4 @@
-/* Global Styles */
+ 
 * {
   margin: 0;
   padding: 0;
@@ -20,19 +20,20 @@ button {
   cursor: pointer;
 }
 
-/* Network Container */
+
 .network-container {
   display: flex;
   flex-direction: column;
   height: 100vh;
 }
 
-/* Sidebar Styles */
+
 .network-sidebar {
   background-color: #ffffff;
   width: 240px;
   padding: 20px;
   box-shadow: 2px 0 8px rgba(0, 0, 0, 0.1);
+  margin-left: 200px;
 }
 
 .network-sidebar ul {
@@ -60,8 +61,8 @@ button {
   color: #3498db;
 }
 
-/* Main Content Area */
-.network-main-content {
+
+.network-main-contentt {
   flex: 1;
   display: flex;
   flex-direction: column;
@@ -72,25 +73,25 @@ button {
   width: 100%;
 }
 
-/* Suggestions Section */
-.suggestions-section {
+
+.suggestions-sectionn {
   width: 100%;
-  max-width: 800px; /* Limit max width for better readability */
+  max-width: 800px; 
   background-color: #ffffff;
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  margin-top: 1px; /* Reduced gap at the top */
+  margin-top: 1px; 
 }
 
-.suggestions-section h3 {
+.suggestions-sectionn h3 {
   font-size: 24px;
   margin-bottom: 10px;
   color: #333;
 }
 
 
-.suggestion-item {
+.suggestion-itemm {
   display: flex;
   align-items: center;
   margin-bottom: 15px;
@@ -140,7 +141,12 @@ button {
   background-color: #2980b9;
 }
 
-/* Hover Effect for Sidebar Links */
+
 .network-sidebar li a:hover {
   color: #3498db;
+} 
+
+.section suggestions-sectionn{
+  margin-bottom:500px;
 }
+  

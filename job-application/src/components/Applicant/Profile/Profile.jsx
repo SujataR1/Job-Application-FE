@@ -154,21 +154,62 @@ const ProfileManagement = () => {
             )}
             <div className="profile-section">
               <h3>Skills</h3>
-              <ul>
-                {companyProfile.skills.map((skill, index) => (
-                  <li key={index}>{skill}</li>
-                ))}
-              </ul>
+              <ul
+  style={{
+    backgroundColor: 'black',
+    padding: '15px',
+    borderRadius: '8px',
+    width: 'fit-content',
+  }}
+>
+  {companyProfile.skills.map((skill, index) => (
+    <li
+      key={index}
+      style={{
+        color: 'black',
+        padding: '8px',
+        listStyleType: 'none',
+        marginBottom: '5px',
+        cursor: 'pointer', // Optional: Adds a pointer cursor on hover
+      }}
+     
+      onMouseOut={(e) => (e.target.style.backgroundColor = '')} // Reset background when not hovering
+    >
+      {skill}
+    </li>
+  ))}
+</ul>
             </div>
 
             {/* Interests Section */}
             <div className="profile-section">
               <h3>Interests</h3>
-              <ul>
-                {companyProfile.interests.map((interest, index) => (
-                  <li key={index}>{interest}</li>
-                ))}
-              </ul>
+              <ul
+  style={{
+    backgroundColor: 'black',
+    padding: '15px',
+    borderRadius: '8px',
+    width: 'fit-content',
+  }}
+>
+  {companyProfile.interests.map((interest, index) => (
+    <li
+      key={index}
+      style={{
+        color: 'black',
+        padding: '8px',
+        listStyleType: 'none',
+        marginBottom: '5px',
+        cursor: 'pointer', // Optional: Adds a pointer cursor on hover
+      }}
+     // Darker background on hover
+      onMouseOut={(e) => (e.target.style.backgroundColor = '')} // Reset background when not hovering
+    >
+      {interest}
+    </li>
+  ))}
+</ul>
+
             </div>
           </div>
         </div>

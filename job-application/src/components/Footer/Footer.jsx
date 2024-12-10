@@ -42,7 +42,8 @@ const Footer = () => {
                     <div className="flex flex-col md:flex-row md:justify-between">
                         {/* Company Info */}
                         <div className="company-info mb-6 md:mb-0">
-                            <h4 className="text-lg font-semibold mb-2">Company</h4>
+                        <h4 className="text-lg font-semibold mb-2" style={{ color: 'white' }}>Company</h4>
+
                             <ul>
                                 <li><a href="/about-us" className="footer-link">About Us</a></li>
                                 <li><a href="/careers" className="footer-link">Careers</a></li>
@@ -54,7 +55,7 @@ const Footer = () => {
 
                         {/* Help Center */}
                         <div className="help-center mb-6 md:mb-0">
-                            <h4 className="text-lg font-semibold mb-2">Help Center</h4>
+                            <h4 className="text-lg font-semibold mb-2" style={{ color: 'white' }}>Help Center</h4>
                             <ul>
                                 <li><a href="/help-center" className="footer-link">Help Center</a></li>
                                 <li><a href="/summons-notices" className="footer-link">Summons/Notices</a></li>
@@ -65,7 +66,7 @@ const Footer = () => {
 
                         {/* Legal Information */}
                         <div className="legal-info mb-6 md:mb-0">
-                            <h4 className="text-lg font-semibold mb-2">Legal Information</h4>
+                            <h4 className="text-lg font-semibold mb-2" style={{ color: 'white' }}>Legal Information</h4>
                             <ul>
                                 <li><a href="/privacy-policy" className="footer-link">Privacy Policy</a></li>
                                 <li><a href="/terms-conditions" className="footer-link">Terms & Conditions</a></li>
@@ -76,7 +77,7 @@ const Footer = () => {
 
                         {/* Businesses */}
                         <div className="businesses">
-                            <h4 className="text-lg font-semibold mb-2">Our Businesses</h4>
+                            <h4 className="text-lg font-semibold mb-2" style={{ color: 'white' }}>Our Businesses</h4>
                             <ul>
                                 <li><a href="/nnacres" className="footer-link">nnacres</a></li>
                                 <li><a href="/jeevansathi" className="footer-link">jeevansathi</a></li>

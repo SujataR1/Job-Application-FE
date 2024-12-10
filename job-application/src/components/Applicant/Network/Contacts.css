@@ -1,4 +1,4 @@
-/* Global Styles */
+
 * {
     margin: 0;
     padding: 0;
@@ -20,7 +20,7 @@
     cursor: pointer;
   }
   
-  /* Contacts Container */
+ 
   .contacts-container {
     width: 100%;
     padding: 20px;
@@ -45,7 +45,7 @@
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   }
   
-  /* Suggestions Section */
+  
   .suggestions-section ul,
   .people-you-may-know ul,
   .groups-section ul,
@@ -62,20 +62,20 @@
     padding: 10px;
     margin-bottom: 10px;
     border-radius: 8px;
-    transition: background-color 0.3s ease;
-    min-height: 60px; /* Reduced the height */
+ 
+    min-height: 60px; 
   }
   
   .suggestion-item:hover {
     background-color: #ebf2fb;
   }
   
-  /* Image Styles for all sections */
+ 
   .suggestion-img img,
   .group-info img,
   .tech-stack-info img {
-    width: 40px; /* Smaller image size */
-    height: 40px; /* Smaller image size */
+    width: 40px; 
+    height: 40px; 
     border-radius: 10%;
     margin-right: 5px;
   }
@@ -86,28 +86,28 @@
     flex-grow: 1;
   }
   
-  /* Common Text Style for Names and Positions */
+
   .suggestion-name,
   .group-name,
   .tech-stack-name {
     font-weight: bold;
-    font-size: 14px; /* Smaller font size */
+    font-size: 14px; 
   }
   
   .suggestion-position,
   .group-description,
   .tech-stack-description {
     color: #777;
-    font-size: 12px; /* Smaller font size */
+    font-size: 12px; 
   }
   
-  /* Buttons Styles */
+ 
   .connect-button,
   .join-button,
   .learn-more-button {
-    padding: 4px 8px; /* Smaller padding */
+    padding: 4px 8px; 
     border-radius: 20px;
-    font-size: 12px; /* Smaller font size */
+    font-size: 12px; 
     transition: background-color 0.3s ease;
   }
   
@@ -138,10 +138,10 @@
     background-color: #e67e22;
   }
   
-  /* Responsive Layout for Small Screens */
+ 
   @media (max-width: 768px) {
     .contacts-sections {
-      grid-template-columns: 1fr; /* Stack sections vertically */
+      grid-template-columns: 1fr; 
     }
   
     .contacts-sections .section {
