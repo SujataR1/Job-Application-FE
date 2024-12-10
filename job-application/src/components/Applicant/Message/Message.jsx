@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import './Message.css';
 
+
 // Dummy connection data (users you're connected with)
 const connections = [
   { id: 1, name: 'John Doe', profilePicture: 'https://randomuser.me/api/portraits/men/1.jpg' },
@@ -56,6 +57,7 @@ const Message = () => {
   };
 
   return (
+   
     <div className="app">
       {selectedConnection ? (
         <div className="chat-page">
@@ -105,13 +107,14 @@ const Message = () => {
           </form>
         </div>
       ) : (
-        <div className="connections-list">
+        <div className="connections-list" style={{ width: '700px' }}>
+
           <h2>Your Connections</h2>
           <ul>
             {connections.map((connection) => (
               <li
                 key={connection.id}
-                className="connection-item"
+                className="connection-itemm"
                 onClick={() => handleConnectionClick(connection)}
               >
                 <img
@@ -119,14 +122,17 @@ const Message = () => {
                   alt={`${connection.name}'s profile`}
                   className="profile-picture"
                 />
-                {connection.name}
+                <span className="connection-name">{connection.name}</span> 
               </li>
             ))}
           </ul>
         </div>
       )}
     </div>
+   
   );
 };
 
 export default Message;
+
+

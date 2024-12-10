@@ -1,176 +1,205 @@
-/* App container */
+
+
 .app {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f4f4f9;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 20px;
   display: flex;
+  flex-direction: column;
   justify-content: center;
-  align-items: center;
-  height: 100vh;
-  background-color: #f3f4f6;
-  font-family: 'Arial', sans-serif;
 }
 
-/* Connections list styling */
+
 .connections-list {
-  width: 300px;
   background-color: #fff;
   padding: 20px;
+  border-radius: 10px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  border-radius: 8px;
-  text-align: center;
+  width: 100%;
 }
 
 .connections-list h2 {
-  margin-bottom: 20px;
   color: #333;
+  font-size: 24px;
+  margin-bottom: 20px;
 }
 
 .connections-list ul {
   list-style-type: none;
   padding: 0;
+ 
 }
 
-.connection-item {
+.connection-itemm {
   display: flex;
   align-items: center;
+  padding: 12px;
+  background-color: #0073b1;
+  color: white;
+  margin-bottom: 12px;
   cursor: pointer;
-  padding: 10px;
   border-radius: 8px;
-  transition: background-color 0.3s;
+  font-size: 18px;
+  transition: background-color 0.3s ease;
+  margin-right: 100px;
 }
 
 .connection-item:hover {
-  background-color: #f1f1f1;
+  background-color: #005f85;
 }
+
 
 .profile-picture {
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  margin-right: 10px;
+  margin-right: 12px;
+  object-fit: cover;
 }
 
-.connection-item span {
-  font-size: 16px;
-  color: #333;
-}
 
-/* Chat page styles */
 .chat-page {
-  width: 500px;
-  max-width: 100%;
-  height: 600px;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   display: flex;
   flex-direction: column;
-  background-color: #fff;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  border-radius: 8px;
 }
 
 .chat-header {
-  display: flex;
-  align-items: center;
-  background-color: #4a90e2;
-  padding: 15px;
-  border-radius: 8px 8px 0 0;
+  background-color: #0073b1;
   color: white;
+  padding: 10px;
+  border-radius: 8px;
+  text-align: center;
+  margin-bottom: 20px;
 }
 
 .chat-header-info {
   display: flex;
   align-items: center;
+  justify-content: center;
+}
+.chat-header-info h3 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
 }
 
 .chat-header-info img {
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  margin-right: 15px;
+  margin-right: 12px;
 }
 
 .chat-history {
-  flex: 1;
-  padding: 20px;
+  max-height: 400px;
   overflow-y: auto;
-  background-color: #f9f9f9;
-  border-bottom: 1px solid #ddd;
+  margin-bottom: 20px;
+  padding-right: 10px;
 }
+
 
 .message {
+  padding: 12px;
+  margin-bottom: 15px;
+  border-radius: 10px;
+  max-width: 70%; 
   display: flex;
-  margin-bottom: 10px;
+  align-items: flex-start;
 }
 
-.message-info {
+
+.sent {
+  background-color: #4caf50; 
+  color: white;
+  align-self: flex-end;
+  border-radius: 20px 20px 0 20px; 
+  margin-left: auto;
+}
+
+.sent .message-info {
   display: flex;
   align-items: center;
 }
 
-.message-profile-picture {
+.sent .message-profile-picture {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  margin-left: 10px;
+  order: 1; 
+}
+
+.sent p {
+  margin-left: 10px;
+}
+
+
+.received {
+  background-color: #f1f1f1; 
+  color: black;
+  border-radius: 20px 20px 20px 0;
+}
+
+.received .message-info {
+  display: flex;
+  align-items: center;
+}
+
+.received .message-profile-picture {
   width: 30px;
   height: 30px;
   border-radius: 50%;
   margin-right: 10px;
-}
-
-.sent .message-profile-picture {
-  order: 2;
-  margin-left: 10px;
-}
-
-.received .message-profile-picture {
-  order: 1;
-  margin-right: 10px;
-}
-
-.sent p, .received p {
-  max-width: 60%;
-  padding: 8px 15px;
-  border-radius: 15px;
-  font-size: 14px;
-}
-
-.sent p {
-  background-color: #e1f5fe;
-  color: #00796b;
+  order: 0; 
 }
 
 .received p {
-  background-color: #f1f1f1;
-  color: #333;
+  margin-right: 10px;
 }
 
+
 .message-input {
-  padding: 15px;
   display: flex;
   flex-direction: column;
-  border-top: 1px solid #ddd;
-  background-color: #fff;
 }
 
 .message-input textarea {
-  resize: none;
-  width: 100%;
   padding: 10px;
-  font-size: 14px;
-  border-radius: 5px;
+  border-radius: 8px;
   border: 1px solid #ccc;
-  margin-bottom: 10px;
-  outline: none;
-}
-
-.message-input textarea:focus {
-  border-color: #4a90e2;
+  resize: none;
+  font-size: 16px;
 }
 
 .message-input button {
   padding: 10px;
-  background-color: #4a90e2;
+  background-color: #0073b1;
   color: white;
   border: none;
-  border-radius: 5px;
+  border-radius: 8px;
+  margin-top: 10px;
   cursor: pointer;
-  transition: background-color 0.3s;
+  font-size: 16px;
 }
 
 .message-input button:hover {
-  background-color: #357ab7;
+  background-color: #005f85;
 }
+.connection-item span.connection-name {
+color: black; 
+font-weight: normal; 
+}
+
+
+
+
+
+
+

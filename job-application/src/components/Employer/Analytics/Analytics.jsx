@@ -136,7 +136,7 @@ const JobAnalyticsPage = () => {
           <ul className="applicant-list">
             {applicants.map((applicant) => (
               <li key={applicant.id} className="applicant-item">
-                <h4>{applicant.name}</h4>
+                <h4 >{applicant.name}</h4>
                 <p>Status: {applicant.status}</p>
                 <p>Applied On: {applicant.appliedOn}</p>
                 <a href={applicant.resume} download>Download Resume</a>

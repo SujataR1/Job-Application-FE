@@ -200,3 +200,6 @@ h1 {
 .shortlist{
   gap: 5px;
 }
+.applicant-item h4{
+  color: black;
+}

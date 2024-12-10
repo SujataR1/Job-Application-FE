@@ -40,7 +40,7 @@ const Sidebar = () => {
               </Link>
             </li>
             <li>
-              <Link to="/application" className="sidebar-item">
+              <Link to="/myapplication" className="sidebar-item">
                 <FaClipboardList  className="sidebar-icon" /> My Application
               </Link>
             </li>
