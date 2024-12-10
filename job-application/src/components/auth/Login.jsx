@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const Login = () => {
   const [formData, setFormData] = useState({
@@ -107,6 +108,10 @@ const Login = () => {
           <p className="text-gray-500 text-sm mt-4 text-center">
             Don't have an account? <a href="/signup" className="text-teal-600">Sign Up</a>
           </p>
+          {/* Add the Forgot Password link */}
+          <p className="text-gray-500 text-sm mt-4 text-center">
+            <Link to="/forgot-password" className="text-teal-600">Forgot Password?</Link>
+          </p>
         </form>
       </div>
     </div>
@@ -114,3 +119,5 @@ const Login = () => {
 };
 
 export default Login;
+
+

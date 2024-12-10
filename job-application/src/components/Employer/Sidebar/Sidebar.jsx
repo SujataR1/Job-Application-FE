@@ -34,11 +34,7 @@ const ESidebar = () => {
                 <FaBriefcase className="sidebar-icon" /> Job Posting Management
               </Link>
             </li>
-            <li>
-              <Link to="/application" className="sidebar-item">
-                <FaBuilding className="sidebar-icon" /> Job Application
-              </Link>
-            </li>
+            
             <li>
               <Link to="/interview" className="sidebar-item">
                 <FaBuilding className="sidebar-icon" /> Interview Scheduling
