@@ -1,180 +1,146 @@
-/* Container */
-.network-container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 20px;
-  font-family: 'Roboto', sans-serif;
-  background-color: #f5f7fa;
+/* Global Styles */
+* {
+  margin: 0;
+  padding: 0;
   box-sizing: border-box;
 }
 
-/* Main Content Area */
-.network-body {
-  display: flex; /* Flexbox layout for left and right columns */
-  justify-content: flex-start; /* Align columns to the left */
-  gap: 15px; /* Reduced gap for a tighter layout */
-  margin-top: 30px;
-}
-
-/* Left Column */
-.left-column {
-  flex: 0 0 250px; /* Set fixed width for the left column */
-  display: flex;
-  flex-direction: column;
-  gap: 15px; /* Reduced gap for better space distribution */
-}
-
-/* Right Column */
-.right-column {
-  flex: 1; /* Allow right column to take the remaining space */
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-  padding: 20px;
-  background-color: #f9f9f9;  /* Optional background color */
-  margin-left: 0;  /* Remove margin-left to reduce the gap */
-  box-sizing: border-box;  /* Ensure padding doesn't cause overflow */
-}
-
-/* Section Style */
-.section {
-  background-color: #fff;
-  border-radius: 12px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  padding: 20px;
-  margin-bottom: 30px;
-  transition: all 0.3s ease;
-}
-
-/* Section Header */
-.section h3 {
-  font-size: 20px;  /* Reduced font size for header */
-  font-weight: 600;
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #f4f7fb;
   color: #333;
-  margin-bottom: 15px;
-  padding-bottom: 10px;
-  border-bottom: 2px solid #eee;
 }
 
-/* Connections, Suggestions, Groups, Invitations */
-ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
+a {
+  text-decoration: none;
+  color: inherit;
 }
 
-.connection-item,
-.suggestion-item,
-.group-item,
-.invitation-item {
+button {
+  cursor: pointer;
+}
+
+/* Network Container */
+.network-container {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 10px 12px; /* Reduced padding */
-  background-color: #fff;
-  border-radius: 10px; /* Slightly reduced border radius */
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
-  margin-bottom: 12px; /* Reduced margin */
-  transition: all 0.3s ease;
-  font-size: 12px; /* Reduced font size */
-  font-weight: 500; /* Slightly lighter font weight */
-  text-rendering: optimizeLegibility;  /* Helps improve text rendering */
-  color: #333; /* Set a clear text color */
+  flex-direction: column;
+  height: 100vh;
 }
 
-/* Hover Effect for List Items */
-.connection-item:hover,
-.suggestion-item:hover,
-.group-item:hover,
-.invitation-item:hover {
-  transform: translateY(-3px); /* Reduced hover effect */
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-}
-
-/* Sidebar - Navigation */
+/* Sidebar Styles */
 .network-sidebar {
-  width: 250px;
-  background-color: #f4f4f4;
-  padding: 10px;
+  background-color: #ffffff;
+  width: 240px;
+  padding: 20px;
+  box-shadow: 2px 0 8px rgba(0, 0, 0, 0.1);
 }
 
 .network-sidebar ul {
   list-style: none;
-  padding: 0;
-  margin: 0;
 }
 
 .network-sidebar li {
-  padding: 10px 12px;  /* Reduced padding for tighter layout */
-  cursor: pointer;
+  margin-bottom: 20px;
 }
 
-/* Links inside the sidebar */
+.network-sidebar .active {
+  color: #3498db;
+  font-weight: bold;
+}
+
 .network-sidebar li a {
-  text-decoration: none;
-  color: #333;
-  font-size: 12px;  /* Adjust font size for a smaller, balanced appearance */
-  font-weight: 500;  /* Set the font weight for better readability */
-  display: block;  /* Ensure the link takes up the full width of the li */
-  transition: all 0.3s ease;  /* Smooth transition for hover effect */
-  padding: 8px;  /* Padding for the clickable area */
-  border-radius: 5px;  /* Rounded corners for each option */
+  color: #555;
+  font-size: 18px;
+  display: block;
+  padding: 10px 0;
+  transition: color 0.3s ease;
 }
 
 .network-sidebar li a:hover {
-  background-color: #e0e0e0;  /* Background color change on hover */
-  color: #0073b1;  /* Text color on hover */
-  font-weight: 600;  /* Make the font bolder on hover */
+  color: #3498db;
 }
 
-/* Active State */
-.network-sidebar li a.active {
-  background-color: #0073b1;  /* Background color for the active state */
-  color: white;  /* Text color for active state */
-  font-weight: 600;  /* Bold the active link */
+/* Main Content Area */
+.network-main-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  width: 100%;
 }
 
-/* Buttons */
-button {
-  padding: 8px 16px;
-  font-size: 12px; /* Reduced font size for smaller buttons */
-  font-weight: 600;
-  background-color: #0073b1;
-  color: #fff;
+/* Suggestions Section */
+.suggestions-section {
+  width: 100%;
+  max-width: 800px; /* Limit max width for better readability */
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-top: 1px; /* Reduced gap at the top */
+}
+
+.suggestions-section h3 {
+  font-size: 24px;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+
+.suggestion-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+  padding: 15px;
+  border-radius: 8px;
+  background-color: #fafafa;
+  transition: background-color 0.3s ease;
+}
+
+.suggestion-item:hover {
+  background-color: #ebf2fb;
+}
+
+.suggestion-img img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-right: 15px;
+}
+
+.suggestion-info {
+  flex-grow: 1;
+}
+
+.suggestion-name {
+  font-size: 16px;
+  font-weight: bold;
+  color: #333;
+}
+
+.suggestion-position {
+  font-size: 14px;
+  color: #777;
+}
+
+.connect-button {
+  padding: 6px 12px;
+  background-color: #3498db;
+  color: white;
   border: none;
-  border-radius: 25px;
-  cursor: pointer;
-  transition: all 0.3s ease;
+  border-radius: 20px;
+  font-size: 14px;
+  transition: background-color 0.3s ease;
 }
 
-button:hover {
-  background-color: #005f8a;
+.connect-button:hover {
+  background-color: #2980b9;
 }
 
-/* Responsive Design */
-@media (max-width: 768px) {
-  .network-body {
-    flex-direction: column; /* Stack the columns vertically on smaller screens */
-    gap: 10px; /* Reduced gap between stacked columns */
-  }
-
-  .left-column,
-  .right-column {
-    width: 100%; /* Take full width in smaller screens */
-  }
-}
-
-@media (max-width: 480px) {
-  .network-header h1 {
-    font-size: 24px;
-  }
-
-  h3 {
-    font-size: 20px;  /* Reduced size for smaller screens */
-  }
-
-  button {
-    padding: 8px 16px;
-    font-size: 12px;
-  }
+/* Hover Effect for Sidebar Links */
+.network-sidebar li a:hover {
+  color: #3498db;
 }
