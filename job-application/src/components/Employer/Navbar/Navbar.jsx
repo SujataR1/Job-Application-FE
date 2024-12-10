@@ -89,3 +89,4 @@ function EmployerNavbar({ toggleSidebar, profileImageUrl }) {
 }
 
 export default EmployerNavbar;
+

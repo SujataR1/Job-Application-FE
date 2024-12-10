@@ -1,187 +1,205 @@
 
-/* General layout for the app */
+
 .app {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #f4f4f9;
-    max-width: 1000px;
-    margin: 0 auto;
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-  }
-  
-  /* Styling for connections list */
-  .connections-list {
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  }
-  
-  .connections-list h2 {
-    color: #333;
-    font-size: 24px;
-    margin-bottom: 20px;
-  }
-  
-  .connections-list ul {
-    list-style-type: none;
-    padding: 0;
-  }
-  
-  .connection-item {
-    display: flex;
-    align-items: center;
-    padding: 12px;
-    background-color: #0073b1;
-    color: white;
-    margin-bottom: 12px;
-    cursor: pointer;
-    border-radius: 8px;
-    font-size: 18px;
-    transition: background-color 0.3s ease;
-  }
-  
-  .connection-item:hover {
-    background-color: #005f85;
-  }
-  
-  /* Profile picture styling */
-  .profile-picture {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    margin-right: 12px;
-    object-fit: cover;
-  }
-  
-  /* Chat Page Styling */
-  .chat-page {
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .chat-header {
-    background-color: #0073b1;
-    color: white;
-    padding: 10px;
-    border-radius: 8px;
-    text-align: center;
-    margin-bottom: 20px;
-  }
-  
-  .chat-header-info {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  .chat-header-info img {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    margin-right: 12px;
-  }
-  
-  .chat-history {
-    max-height: 400px;
-    overflow-y: auto;
-    margin-bottom: 20px;
-    padding-right: 10px;
-  }
-  
-  /* Message Layout */
-  .message {
-    padding: 12px;
-    margin-bottom: 15px;
-    border-radius: 10px;
-    max-width: 70%; /* Chat bubble width */
-    display: flex;
-    align-items: flex-start;
-  }
-  
-  /* Sent Message Styling (Right aligned) */
-  .sent {
-    background-color: #4caf50; /* Green background for sent messages */
-    color: white;
-    align-self: flex-end;
-    border-radius: 20px 20px 0 20px; /* Rounded corners for sent messages */
-    margin-left: auto;
-  }
-  
-  .sent .message-info {
-    display: flex;
-    align-items: center;
-  }
-  
-  .sent .message-profile-picture {
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
-    margin-left: 10px;
-    order: 1; /* Profile picture should appear on the right */
-  }
-  
-  .sent p {
-    margin-left: 10px;
-  }
-  
-  /* Received Message Styling (Left aligned) */
-  .received {
-    background-color: #f1f1f1; /* Light gray for received messages */
-    color: black;
-    border-radius: 20px 20px 20px 0; /* Rounded corners for received messages */
-  }
-  
-  .received .message-info {
-    display: flex;
-    align-items: center;
-  }
-  
-  .received .message-profile-picture {
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
-    margin-right: 10px;
-    order: 0; /* Profile picture appears on the left for received messages */
-  }
-  
-  .received p {
-    margin-right: 10px;
-  }
-  
-  /* Message Input */
-  .message-input {
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .message-input textarea {
-    padding: 10px;
-    border-radius: 8px;
-    border: 1px solid #ccc;
-    resize: none;
-    font-size: 16px;
-  }
-  
-  .message-input button {
-    padding: 10px;
-    background-color: #0073b1;
-    color: white;
-    border: none;
-    border-radius: 8px;
-    margin-top: 10px;
-    cursor: pointer;
-    font-size: 16px;
-  }
-  
-  .message-input button:hover {
-    background-color: #005f85;
-  }
-  
-  
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f4f4f9;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+
+.connections-list {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  width: 100%;
+}
+
+.connections-list h2 {
+  color: #333;
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.connections-list ul {
+  list-style-type: none;
+  padding: 0;
+ 
+}
+
+.connection-itemm {
+  display: flex;
+  align-items: center;
+  padding: 12px;
+  background-color: #0073b1;
+  color: white;
+  margin-bottom: 12px;
+  cursor: pointer;
+  border-radius: 8px;
+  font-size: 18px;
+  transition: background-color 0.3s ease;
+  margin-right: 100px;
+}
+
+.connection-item:hover {
+  background-color: #005f85;
+}
+
+
+.profile-picture {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-right: 12px;
+  object-fit: cover;
+}
+
+
+.chat-page {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+}
+
+.chat-header {
+  background-color: #0073b1;
+  color: white;
+  padding: 10px;
+  border-radius: 8px;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.chat-header-info {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.chat-header-info h3 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+}
+
+.chat-header-info img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-right: 12px;
+}
+
+.chat-history {
+  max-height: 400px;
+  overflow-y: auto;
+  margin-bottom: 20px;
+  padding-right: 10px;
+}
+
+
+.message {
+  padding: 12px;
+  margin-bottom: 15px;
+  border-radius: 10px;
+  max-width: 70%; 
+  display: flex;
+  align-items: flex-start;
+}
+
+
+.sent {
+  background-color: #4caf50; 
+  color: white;
+  align-self: flex-end;
+  border-radius: 20px 20px 0 20px; 
+  margin-left: auto;
+}
+
+.sent .message-info {
+  display: flex;
+  align-items: center;
+}
+
+.sent .message-profile-picture {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  margin-left: 10px;
+  order: 1; 
+}
+
+.sent p {
+  margin-left: 10px;
+}
+
+
+.received {
+  background-color: #f1f1f1; 
+  color: black;
+  border-radius: 20px 20px 20px 0;
+}
+
+.received .message-info {
+  display: flex;
+  align-items: center;
+}
+
+.received .message-profile-picture {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  margin-right: 10px;
+  order: 0; 
+}
+
+.received p {
+  margin-right: 10px;
+}
+
+
+.message-input {
+  display: flex;
+  flex-direction: column;
+}
+
+.message-input textarea {
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  resize: none;
+  font-size: 16px;
+}
+
+.message-input button {
+  padding: 10px;
+  background-color: #0073b1;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  margin-top: 10px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.message-input button:hover {
+  background-color: #005f85;
+}
+.connection-item span.connection-name {
+color: black; 
+font-weight: normal; 
+}
+
+
+
+
+
+
+

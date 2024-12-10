@@ -133,7 +133,7 @@ const JobDetailsPage = () => {
                 <p>{job.additionalInfo}</p>
             </div>
 
-            <div className="company-info">
+            <div className="company-infor">
                 <h2>About Attribution Private Limited</h2>
                 <p>{job.companyDescription}</p>
             </div>

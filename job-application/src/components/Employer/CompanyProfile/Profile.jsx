@@ -124,17 +124,36 @@ const CompanyProfile = () => {
           {/* Job Listings */}
           <section className="job-listings">
             <h2>Job Listings</h2>
-            <ul>
-              {companyData.jobs.map((job, index) => (
-                <li key={index} className="job-listing">
-                  <h3>{job.title}</h3>
-                  <p>{job.location}</p>
-                  <p>{job.description}</p>
-                  <p><em>Posted on {job.postedDate}</em></p>
-                  <button className="apply-button">Apply Now</button>
-                </li>
-              ))}
-            </ul>
+            <ul
+  style={{
+    padding: '0',
+    margin: '0',
+    listStyleType: 'none',
+  }}
+>
+  {companyData.jobs.map((job, index) => (
+    <li
+      key={index}
+      className="job-listings"
+      style={{
+        padding: '15px',
+        backgroundColor: 'white', // Default background
+        borderRadius: '8px',
+        marginBottom: '10px',
+        transition: 'background-color 0.3s', // Smooth transition for hover effect
+      }}
+      onMouseOver={(e) => (e.target.style.backgroundColor = '#f0f0f0')} // Gray background on hover
+      onMouseOut={(e) => (e.target.style.backgroundColor = 'white')} // Reset background when not hovering
+    >
+      <h3>{job.title}</h3>
+      <p>{job.location}</p>
+      <p>{job.description}</p>
+      <p><em>Posted on {job.postedDate}</em></p>
+      <button className="apply-button" style={{ padding: '10px 20px', cursor: 'pointer' }}>Apply Now</button>
+    </li>
+  ))}
+</ul>
+
           </section>
 
           {/* Employees Section */}

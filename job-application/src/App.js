@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route, Routes,useLocation,useMatch} from 'reac
 import Dasboard from './components/Dashboard/Homepage';
 import Sales from './components/Categories/SalesJobs/Sales';
 import IT from './components/Categories/ITjobs/ITjobs';
-import Jobs from './components/JobPage';
+import Jobs from './components/Applicant/Jobs/JobPage';
 import SignUpPage from './components/auth/SignUpPage'; // The new SignUp component
 import Login from './components/auth/Login';
 import Footer from './components/Footer/Footer'; // Import Footer
@@ -103,8 +103,8 @@ import EMessage from './components/Employer/EmployerMessage/EMessage';
 import ESetting from './components/Employer/Settings/Setting';
 import CompanyProfile from './components/Employer/CompanyProfile/Profile';
 import Network from './components/Employer/Network/Network';
-import ApplicantNetwork from './components/Network/Network';
-import JobDetailsPage from './components/JobDetailsPage';
+import ApplicantNetwork from './components/Applicant/Network/Network';
+import JobDetailsPage from './components/Applicant/Jobs/JobDetailsPage';
 import CompanyAnalyticsPage from './components/Employer/CompanyAnalytics/CompanyAnalytics';
 import ForgetPassword from './components/auth/ForgetPassword';
 import AdminNavbar from './components/Admin/Navbar/Navbar';
@@ -112,6 +112,14 @@ import AdminSidenavbar from './components/Admin/Sidenavbar/Sidenavbar';
 import AdminDashboard from './components/Admin/Dashboard/Dashboard';
 import ManageUsers from './components/Admin/ManageUSers/User';
 import ManageJobs from './components/Admin/ManageJobs/Jobs';
+import Connections from './components/Applicant/Network/Connections';
+import Contacts from './components/Applicant/Network/Contacts';
+import Notification from './components/Applicant/Notification/Notification';
+
+
+
+
+
 
 //This component is used to conditionally render Navbar based on the current path
 const ConditionalNavbar = () => {
@@ -127,11 +135,7 @@ const ConditionalNavbar = () => {
   };
    
     // return !['/login', '/signup','/','/Enavbar','/Esidebar','/employerdashboard','/application','/jobposting','/job-analytics/:jobId','/interview','/notifications','/analytics','/message','/jobposting','/Esetting'].includes(location.pathname) && <Navbar />;
-   
- 
-
-
-
+    
 const App = () => {
   
     return (
@@ -256,6 +260,11 @@ const App = () => {
                 <Route path="/admindashboard" element={<AdminDashboard />} />
                 <Route path="/manage-users" element={<ManageUsers />} />
                 <Route path="/manage-jobs" element={<ManageJobs />} />
+                <Route path="/connections" element={<Connections />} />
+                <Route path="/contacts" element={<Contacts />} />
+                <Route path="/notification" element={<Notification />} />
+                
+
                </Routes>
             <Footer />
         </Router>

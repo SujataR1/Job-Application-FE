@@ -1,17 +1,19 @@
-import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';  // Import useNavigate for redirection
-import { FaHome, FaUsers, FaBriefcase, FaEnvelope, FaSignOutAlt, FaUserCircle, FaBell } from 'react-icons/fa';  // Import icons from react-icons
+
+
+import React, { useState, useEffect } from 'react';
+import { Link, useNavigate } from 'react-router-dom'; // Import useNavigate for redirection
+import { FaHome, FaUsers, FaSignOutAlt, FaUserCircle,FaBell, FaEnvelope,FaBriefcase} from 'react-icons/fa'; // Import icons from react-icons
 import Sidebar from '../Sidebar/Sidebar'; // Import Sidebar component
-import './Navbar.css';  // Import the CSS file for styles
+import './Navbar.css'; // Import the CSS file for styles
 
 const Navbar = () => {
     const [sidebarVisible, setSidebarVisible] = useState(false); // State to control Sidebar visibility
-    const navigate = useNavigate();  // Hook for navigation after logout
+    const navigate = useNavigate(); // Hook for navigation after logout
 
     // Function to handle logout
     const handleLogout = async () => {
         const token = localStorage.getItem('token'); // Retrieve token from localStorage
-        
+
         if (token) {
             try {
                 // Send logout request to backend API (if necessary)
@@ -52,7 +54,7 @@ const Navbar = () => {
     };
 
     // Adding event listener for clicks outside
-    React.useEffect(() => {
+    useEffect(() => {
         document.addEventListener('click', handleClickOutside);
         return () => {
             document.removeEventListener('click', handleClickOutside);
@@ -80,8 +82,8 @@ const Navbar = () => {
                     <Link to="/messages" className="text-white font-bold text-lg hover:text-teal-300">
                         <FaEnvelope className="inline-block mr-2" /> Messages
                     </Link>
-                    <Link to="/bell" className="text-white font-bold text-lg hover:text-teal-300">
-                        <FaBell className="inline-block mr-2" /> Notification
+                    <Link to="/notification" className="text-white font-bold text-lg hover:text-teal-300">
+                        <FaBell className="inline-block mr-2" />Notification
                     </Link>
                 </nav>
 

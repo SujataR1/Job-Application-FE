@@ -13,7 +13,7 @@ const Suggestions = () => {
       <h3>People You May Know</h3>
       <ul>
         {suggestions.map((suggestion, index) => (
-          <li key={index} className="suggestion-item">
+          <li key={index} className="suggestion-itemm">
             <div className="suggestion-info">
               <span className="suggestion-name">{suggestion.name}</span>
               <span className="suggestion-position">{suggestion.position}</span>
