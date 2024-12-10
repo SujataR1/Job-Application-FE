@@ -1,27 +1,26 @@
-/* General layout for the app */
+/* App container */
 .app {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background-color: #f4f4f9;
-  max-width: 1000px;
-  margin: 0 auto;
-  padding: 20px;
   display: flex;
-  flex-direction: column;
   justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f3f4f6;
+  font-family: 'Arial', sans-serif;
 }
 
-/* Styling for connections list */
+/* Connections list styling */
 .connections-list {
+  width: 300px;
   background-color: #fff;
   padding: 20px;
-  border-radius: 10px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  text-align: center;
 }
 
 .connections-list h2 {
-  color: #333;
-  font-size: 24px;
   margin-bottom: 20px;
+  color: #333;
 }
 
 .connections-list ul {
@@ -32,166 +31,146 @@
 .connection-item {
   display: flex;
   align-items: center;
-  padding: 12px;
-  background-color: #0073b1;
-  color: white;
-  margin-bottom: 12px;
   cursor: pointer;
+  padding: 10px;
   border-radius: 8px;
-  font-size: 18px;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.3s;
 }
 
 .connection-item:hover {
-  background-color: #005f85;
+  background-color: #f1f1f1;
 }
 
-/* Profile picture styling */
 .profile-picture {
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  margin-right: 12px;
-  object-fit: cover;
+  margin-right: 10px;
 }
 
-/* Chat Page Styling */
+.connection-item span {
+  font-size: 16px;
+  color: #333;
+}
+
+/* Chat page styles */
 .chat-page {
-  background-color: #fff;
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  width: 500px;
+  max-width: 100%;
+  height: 600px;
   display: flex;
   flex-direction: column;
+  background-color: #fff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
 }
 
 .chat-header {
-  background-color: #0073b1;
+  display: flex;
+  align-items: center;
+  background-color: #4a90e2;
+  padding: 15px;
+  border-radius: 8px 8px 0 0;
   color: white;
-  padding: 10px;
-  border-radius: 8px;
-  text-align: center;
-  margin-bottom: 20px;
 }
 
 .chat-header-info {
   display: flex;
   align-items: center;
-  justify-content: center;
 }
 
 .chat-header-info img {
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  margin-right: 12px;
+  margin-right: 15px;
 }
 
 .chat-history {
-  max-height: 400px;
+  flex: 1;
+  padding: 20px;
   overflow-y: auto;
-  margin-bottom: 20px;
-  padding-right: 10px;
+  background-color: #f9f9f9;
+  border-bottom: 1px solid #ddd;
 }
 
-/* Message Layout */
 .message {
-  padding: 12px;
-  margin-bottom: 15px;
-  border-radius: 10px;
-  max-width: 70%; /* Chat bubble width */
   display: flex;
-  align-items: flex-start;
+  margin-bottom: 10px;
 }
 
-/* Sent Message Styling (Right aligned) */
-.sent {
-  background-color: #4caf50; /* Green background for sent messages */
-  color: white;
-  align-self: flex-end;
-  border-radius: 20px 20px 0 20px; /* Rounded corners for sent messages */
-  margin-left: auto;
-}
-
-.sent .message-info {
+.message-info {
   display: flex;
   align-items: center;
+}
+
+.message-profile-picture {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  margin-right: 10px;
 }
 
 .sent .message-profile-picture {
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
+  order: 2;
   margin-left: 10px;
-  order: 1; /* Profile picture should appear on the right */
-}
-
-.sent p {
-  margin-left: 10px;
-}
-
-/* Received Message Styling (Left aligned) */
-.received {
-  background-color: #f1f1f1; /* Light gray for received messages */
-  color: black;
-  border-radius: 20px 20px 20px 0; /* Rounded corners for received messages */
-}
-
-.received .message-info {
-  display: flex;
-  align-items: center;
 }
 
 .received .message-profile-picture {
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
+  order: 1;
   margin-right: 10px;
-  order: 0; /* Profile picture appears on the left for received messages */
+}
+
+.sent p, .received p {
+  max-width: 60%;
+  padding: 8px 15px;
+  border-radius: 15px;
+  font-size: 14px;
+}
+
+.sent p {
+  background-color: #e1f5fe;
+  color: #00796b;
 }
 
 .received p {
-  margin-right: 10px;
+  background-color: #f1f1f1;
+  color: #333;
 }
 
-/* Message Input */
 .message-input {
+  padding: 15px;
   display: flex;
   flex-direction: column;
+  border-top: 1px solid #ddd;
+  background-color: #fff;
 }
 
 .message-input textarea {
-  padding: 10px;
-  border-radius: 8px;
-  border: 1px solid #ccc;
   resize: none;
-  font-size: 16px;
+  width: 100%;
+  padding: 10px;
+  font-size: 14px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  margin-bottom: 10px;
+  outline: none;
+}
+
+.message-input textarea:focus {
+  border-color: #4a90e2;
 }
 
 .message-input button {
   padding: 10px;
-  background-color: #0073b1;
+  background-color: #4a90e2;
   color: white;
   border: none;
-  border-radius: 8px;
-  margin-top: 10px;
+  border-radius: 5px;
   cursor: pointer;
-  font-size: 16px;
+  transition: background-color 0.3s;
 }
 
 .message-input button:hover {
-  background-color: #005f85;
-}
-
-/* Ensure name is visible */
-.connection-item span {
-  color: white;
-  opacity: 1; /* Ensure the name is always visible */
-  text-overflow: ellipsis; /* Truncate long names with ellipsis */
-  white-space: nowrap; /* Prevent name from wrapping */
-  overflow: hidden; /* Ensure no overflow */
-}
-
-.connection-item:hover span {
-  opacity: 1; /* Make sure the name is always visible, even on hover */
+  background-color: #357ab7;
 }
