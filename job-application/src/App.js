@@ -117,6 +117,7 @@ import Contacts from './components/Applicant/Network/Contacts';
 import Notification from './components/Applicant/Notification/Notification';
 import MyApplication from './components/Applicant/myapplication/MyApplication';
 import EmployerProfile from './components/Employer/MyProfile/Myprofile';
+import JobProfile from './components/Applicant/jobprofile/jobprofile';
 
 
 
@@ -267,6 +268,7 @@ const App = () => {
                 <Route path="/notification" element={<Notification />} />
                 <Route path="/myapplication" element={<MyApplication />} />
                 <Route path="/myprofile" element={<EmployerProfile />} />
+                <Route path="/jobprofile" element={<JobProfile />} />
 
                 
 
