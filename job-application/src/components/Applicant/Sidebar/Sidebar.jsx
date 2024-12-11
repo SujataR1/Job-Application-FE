@@ -30,6 +30,12 @@ const Sidebar = () => {
               </Link>
             </li>
             <li>
+              <Link to="/jobprofile" className="sidebar-item">
+                <FaUserCircle className="sidebar-icon" /> My Job Profile
+              </Link>
+            </li>
+
+            <li>
               <Link to="/networks" className="sidebar-item">
                 <FaUsers className="sidebar-icon" /> My Network
               </Link>
