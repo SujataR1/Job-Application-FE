@@ -27,7 +27,7 @@ const Contacts = () => {
 
       {/* Flexbox Container for 2-column layout */}
       <div className="contacts-sections">
-        
+
         {/* Suggestions Section */}
         <div className="section suggestions-section">
           <h3>Suggestions</h3>
@@ -97,7 +97,7 @@ const Contacts = () => {
             ))}
           </ul>
         </div>
-        
+
       </div>
     </div>
   );

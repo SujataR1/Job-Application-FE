@@ -30,7 +30,6 @@ const initialJobs = [
 const JobAnalyticsPage = () => {
   const { jobId } = useParams();
   const job = initialJobs.find((job) => job.id === parseInt(jobId));
-
   const [applicants, setApplicants] = useState(job ? job.applicants : []);
   const [showAssessmentPopup, setShowAssessmentPopup] = useState(false);
   const [showInterviewPopup, setShowInterviewPopup] = useState(false);
