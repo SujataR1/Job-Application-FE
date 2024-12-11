@@ -30,6 +30,11 @@ const ESidebar = () => {
               </Link>
             </li>
             <li>
+              <Link to="/myprofile" className="sidebar-item">
+                <FaChartBar className="sidebar-icon" /> My Profile
+              </Link>
+            </li>
+            <li>
               <Link to="/jobposting" className="sidebar-item">
                 <FaBriefcase className="sidebar-icon" /> Job Posting Management
               </Link>

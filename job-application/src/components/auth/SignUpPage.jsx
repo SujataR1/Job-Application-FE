@@ -8,6 +8,7 @@ const Signup = () => {
         phoneNumber: '',
         password: '',
         userType: '', // 'Applicant' or 'Recruiter'
+        about:'',
         profileImage: null, // To store file input
         lookingToApply: 'false', // Use 'false' as string for non-applicant
         lookingToRecruit: false, // Boolean for recruiter type
@@ -43,7 +44,8 @@ const Signup = () => {
         data.append('email', formData.email);
         data.append('phoneNumber', formData.phoneNumber);
         data.append('password', formData.password);
-        data.append('userType', formData.userType); // Send userType as 'Applicant' or 'Recruiter'
+        data.append('userType', formData.userType); 
+        data.append  ('about',formData.about);                           // Send userType as 'Applicant' or 'Recruiter'
 
         // Append the profile image correctly if selected
         if (formData.profileImage) {
@@ -135,6 +137,17 @@ const Signup = () => {
                             value={formData.password}
                             onChange={handleChange}
                             placeholder="Password"
+                            className="w-full p-3 border border-gray-300 rounded"
+                        />
+                    </div>
+                    <div className="mb-4">
+                        <label className="block text-gray-700">About</label>
+                        <input
+                            type="about"
+                            name="about"
+                            value={formData.about}
+                            onChange={handleChange}
+                            placeholder="About"
                             className="w-full p-3 border border-gray-300 rounded"
                         />
                     </div>

@@ -116,6 +116,7 @@ import Connections from './components/Applicant/Network/Connections';
 import Contacts from './components/Applicant/Network/Contacts';
 import Notification from './components/Applicant/Notification/Notification';
 import MyApplication from './components/Applicant/myapplication/MyApplication';
+import EmployerProfile from './components/Employer/MyProfile/Myprofile';
 
 
 
@@ -132,7 +133,7 @@ const ConditionalNavbar = () => {
     // Render Navbar only if the path is not in the excluded list and not a job analytics page
     return !['/login', '/signup', '/', '/Enavbar', '/Esidebar', '/employerdashboard', '/application', 
              '/jobposting', '/job-analytics/:jobId', '/interview', '/notifications', '/analytics', 
-             '/message', '/jobposting', '/Esetting','/companyprofile','/network','/companyanalytics','/forgot-password','/adnavbar','/adsidenavbar','/admindashboard','/manage-users','/manage-jobs'].includes(location.pathname) && !jobAnalyticsMatch && <Navbar />;
+             '/message', '/jobposting', '/Esetting','/companyprofile','/network','/companyanalytics','/forgot-password','/adnavbar','/adsidenavbar','/admindashboard','/manage-users','/manage-jobs','/myprofile'].includes(location.pathname) && !jobAnalyticsMatch && <Navbar />;
   };
    
     // return !['/login', '/signup','/','/Enavbar','/Esidebar','/employerdashboard','/application','/jobposting','/job-analytics/:jobId','/interview','/notifications','/analytics','/message','/jobposting','/Esetting'].includes(location.pathname) && <Navbar />;
@@ -265,6 +266,7 @@ const App = () => {
                 <Route path="/contacts" element={<Contacts />} />
                 <Route path="/notification" element={<Notification />} />
                 <Route path="/myapplication" element={<MyApplication />} />
+                <Route path="/myprofile" element={<EmployerProfile />} />
 
                 
 

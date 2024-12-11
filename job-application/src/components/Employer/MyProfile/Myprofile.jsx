@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import './Profile.css'; // Assuming you will have a separate CSS file for applicant profile
+import './Myprofile.css';
+import EmployerNavbar from '../Navbar/Navbar';
+import EmployerSidebar from '../Sidebar/Sidebar';
 
 const Profile = () => {
   const [user, setUser] = useState(null);
@@ -59,7 +61,7 @@ const Profile = () => {
     if (!token) return;
 
     try {
-      const response = await fetch('http://localhost:7000/auth/update', {
+      const response = await fetch('http://localhost:7000/auth/upload-profile-image', {
         method: 'POST',
         headers: {
           'Authorization': ` ${token}`,
@@ -73,7 +75,7 @@ const Profile = () => {
       const data = await response.json();
 
       if (response.ok) {
-        setUser(prevUser => ({ ...prevUser, image: data.image })); // Assuming 'data.image' contains the image URL
+        setUser(prevUser => ({ ...prevUser, image: data.image }));
         setIsEditing(false); // Close the image editing mode
       } else {
         setError(data.message || 'Failed to update image');
@@ -85,6 +87,13 @@ const Profile = () => {
   };
 
   return (
+    <div className="home-page">
+    {/* Navbar/Header */}
+    <EmployerNavbar />
+
+    <div className="home-content flex flex-row">
+      {/* Sidebar */}
+      <EmployerSidebar />
     <div className="profile-container">
       <div className="profile-header">
         <h2>Your Profile</h2>
@@ -96,7 +105,7 @@ const Profile = () => {
           <div
             className="profile-image"
             style={{
-              backgroundImage: `url(${newImage || user?.profilePicture || 'default-profile-image-url'})`,
+              backgroundImage: `url(${newImage || user?.image})`,
               backgroundSize: 'cover',
               backgroundPosition: 'center',
             }}
@@ -120,6 +129,7 @@ const Profile = () => {
               <p><strong>Email:</strong> {user.email}</p>
               <p><strong>Phone Number:</strong> {user.phoneNumber}</p>
               <p><strong>About:</strong> {user.about}</p>
+              <p><strong>Company:</strong> {user.company}</p>
             </>
           ) : (
             <p>Loading...</p>
@@ -128,6 +138,8 @@ const Profile = () => {
 
         {error && <div className="error-message">{error}</div>}
       </div>
+    </div>
+    </div>
     </div>
   );
 };
