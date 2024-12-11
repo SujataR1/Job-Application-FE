@@ -64,10 +64,10 @@ const MyApplicationPage = () => {
           {/* View Job Details Button */}
           <div className="job-actions">
 
-           <button onClick={() => handleViewJobDetails(job)}>
-            View Job Details
-          </button>
-        </div> 
+            <button onClick={() => handleViewJobDetails(job)}>
+              View Job Details
+            </button>
+          </div>
         </div>
       ))}
 
@@ -76,11 +76,11 @@ const MyApplicationPage = () => {
         <div className="modal-overlay">
           <div className="modal-content">
             <h2>Job Details</h2>
-            <p><strong>Status:</strong> 
+            <p><strong>Status:</strong>
               <span className={`status ${selectedJob.status.toLowerCase()}`}>{selectedJob.status}</span>
             </p>
             <p><strong>Applied On:</strong> {selectedJob.appliedOn}</p>
-            <p><strong>Resume Downloaded:</strong> {selectedJob.resumeDownloaded ? 'Yes' : 'No'}</p>
+            {/* <p><strong>Resume Downloaded:</strong> {selectedJob.resumeDownloaded ? 'Yes' : 'No'}</p> */}
 
             {/* Conditionally render details based on the status */}
             {selectedJob.status === 'Shortlisted' && (
@@ -93,7 +93,7 @@ const MyApplicationPage = () => {
               </>
             )}
 
-            {selectedJob.status === 'Rejected' }
+            {selectedJob.status === 'Rejected'}
 
             <button onClick={handleCloseModal}>Close</button>
           </div>

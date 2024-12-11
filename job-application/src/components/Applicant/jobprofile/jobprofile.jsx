@@ -2,132 +2,218 @@ import React, { useState } from 'react';
 import './jobprofile.css';
 
 const JobProfile = () => {
-  const [jobPreferences, setJobPreferences] = useState({
-    jobTitle: '',
-    industry: '',
-    location: '',
-    employmentType: '',
-  });
+  const companyProfile = {
+    name: 'TechCorp',
+    description: 'Leading tech company in software development.',
+    logo: 'https://randomuser.me/api/portraits/men/1.jpg',
+    company: 'TechCorp Ltd',
+    connections: 500,
+    posts: [
+      { content: 'We are hiring software engineers! Apply now!', date: '2024-11-29' },
+      { content: 'Join us for our tech conference next month.', date: '2024-11-20' }
+    ],
+    experiences: [
+      { title: 'Software Engineer', company: 'TechCorp', duration: '2 years' },
+      { title: 'Frontend Developer', company: 'DevCo', duration: '1 year' }
+    ],
+    education: [
+      { degree: 'B.Tech in Computer Science', school: 'XYZ University' }
+    ],
+    skills: ['JavaScript', 'React', 'Node.js'],
+    interests: ['Tech Innovations', 'Software Engineering', 'AI'],
+  };
 
-  const [desiredSalary, setDesiredSalary] = useState('');
-  const [jobInterests, setJobInterests] = useState('');
-  const [careerGoals, setCareerGoals] = useState('');
-  const [jobAlerts, setJobAlerts] = useState(true); // Default to receiving job alerts
+  const [profilePhoto, setProfilePhoto] = useState(companyProfile.logo);
+  const [isEditMode, setIsEditMode] = useState(false);
+  const [newPost, setNewPost] = useState('');
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // You can add logic to handle form submission, like sending data to a server
-    alert('Job Profile updated successfully!');
+  // Handle profile photo change
+  const handleProfilePhotoChange = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setProfilePhoto(reader.result);
+      };
+      reader.readAsDataURL(file);
+    }
+  };
+
+  // Handle post creation
+  const handlePostChange = (e) => {
+    setNewPost(e.target.value);
+  };
+
+  const handlePostSubmit = () => {
+    if (newPost) {
+      companyProfile.posts.push({ content: newPost, date: new Date().toISOString() });
+      setNewPost('');
+    }
+  };
+
+  // Toggle edit mode for profile enhancement
+  const handleProfileEnhance = () => {
+    setIsEditMode(!isEditMode);
   };
 
   return (
-    <div className="job-profile-container">
-      <h2>My Job Profile</h2>
+    
+
+        <div className="profile-main-content">
+          <div className="profile-header">
+            <div className="profile-photo">
+              <label htmlFor="profile-photo-upload">
+                <img src={profilePhoto} alt="Company Logo" className="profile-photo-img" />
+              </label>
+              <input
+                id="profile-photo-upload"
+                type="file"
+                style={{ display: 'none' }}
+                onChange={handleProfilePhotoChange}
+              />
+            </div>
+            <div className="profile-info">
+              <h2>{companyProfile.name}</h2>
+              <p>{companyProfile.company}</p>
+              <p>{companyProfile.description}</p>
+              <p>{companyProfile.connections} Connections</p>
+              <button className="enhance-profile-button" onClick={handleProfileEnhance}>
+                {isEditMode ? 'Save Profile' : 'Enhance Profile'}
+              </button>
+            </div>
+          </div>
+
+          <div className="profile-sections">
+            <div className="profile-section">
+              <h3>Open to Opportunities</h3>
+              <label className="switch">
+                <input type="checkbox" />
+                <span className="slider round"></span>
+              </label>
+            </div>
+
+            <div className="profile-section">
+              <h3>Analytics</h3>
+              <p>Connections: {companyProfile.connections}</p>
+              <p>Posts: {companyProfile.posts.length}</p>
+            </div>
+
+            {/* Experience Section */}
+            {isEditMode && (
+              <div className="profile-section">
+                <h3>Add Experience</h3>
+                <form>
+                  <input type="text" placeholder="Job Title" />
+                  <input type="text" placeholder="Company Name" />
+                  <input type="text" placeholder="Duration" />
+                  <button type="submit">Add Experience</button>
+                </form>
+              </div>
+            )}
+            <div className="profile-section">
+              <h3>Experience</h3>
+              {companyProfile.experiences.map((exp, index) => (
+                <div key={index} className="experience-item">
+                  <h4>{exp.title}</h4>
+                  <p>{exp.company}</p>
+                  <p>{exp.duration}</p>
+                </div>
+              ))}
+            </div>
+
+            {/* Education Section */}
+            {isEditMode && (
+              <div className="profile-section">
+                <h3>Add Education</h3>
+                <form>
+                  <input type="text" placeholder="Degree" />
+                  <input type="text" placeholder="School/University" />
+                  <button type="submit">Add Education</button>
+                </form>
+              </div>
+            )}
+            <div className="profile-section">
+              <h3>Education</h3>
+              {companyProfile.education.map((edu, index) => (
+                <div key={index} className="education-item">
+                  <h4>{edu.degree}</h4>
+                  <p>{edu.school}</p>
+                </div>
+              ))}
+            </div>
+
+            {/* Skills Section */}
+            {isEditMode && (
+              <div className="profile-section">
+                <h3>Add Skills</h3>
+                <form>
+                  <input type="text" placeholder="Skill" />
+                  <button type="submit">Add Skill</button>
+                </form>
+              </div>
+            )}
+            <div className="profile-section">
+              <h3>Skills</h3>
+              <ul
+  style={{
+    backgroundColor: 'black',
+    padding: '15px',
+    borderRadius: '8px',
+    width: 'fit-content',
+  }}
+>
+  {companyProfile.skills.map((skill, index) => (
+    <li
+      key={index}
+      style={{
+        color: 'black',
+        padding: '8px',
+        listStyleType: 'none',
+        marginBottom: '5px',
+        cursor: 'pointer', // Optional: Adds a pointer cursor on hover
+      }}
+     
+      onMouseOut={(e) => (e.target.style.backgroundColor = '')} // Reset background when not hovering
+    >
+      {skill}
+    </li>
+  ))}
+</ul>
+            </div>
+
+            {/* Interests Section */}
+            <div className="profile-section">
+              <h3>Interests</h3>
+              <ul
+  style={{
+    backgroundColor: 'black',
+    padding: '15px',
+    borderRadius: '8px',
+    width: 'fit-content',
+  }}
+>
+  {companyProfile.interests.map((interest, index) => (
+    <li
+      key={index}
+      style={{
+        color: 'black',
+        padding: '8px',
+        listStyleType: 'none',
+        marginBottom: '5px',
+        cursor: 'pointer', // Optional: Adds a pointer cursor on hover
+      }}
+     // Darker background on hover
+      onMouseOut={(e) => (e.target.style.backgroundColor = '')} // Reset background when not hovering
+    >
+      {interest}
+    </li>
+  ))}
+</ul>
+
+            </div>
+          </div>
+        </div>
       
-      <form onSubmit={handleSubmit} className="job-profile-form">
-        
-        {/* Job Preferences */}
-        <div className="section">
-          <h3>Job Preferences</h3>
-          <label>
-            Preferred Job Title:
-            <input
-              type="text"
-              value={jobPreferences.jobTitle}
-              onChange={(e) => setJobPreferences({ ...jobPreferences, jobTitle: e.target.value })}
-            />
-          </label>
-          
-          <label>
-            Industry:
-            <input
-              type="text"
-              value={jobPreferences.industry}
-              onChange={(e) => setJobPreferences({ ...jobPreferences, industry: e.target.value })}
-            />
-          </label>
-
-          <label>
-            Preferred Location:
-            <input
-              type="text"
-              value={jobPreferences.location}
-              onChange={(e) => setJobPreferences({ ...jobPreferences, location: e.target.value })}
-            />
-          </label>
-
-          <label>
-            Employment Type:
-            <select
-              value={jobPreferences.employmentType}
-              onChange={(e) => setJobPreferences({ ...jobPreferences, employmentType: e.target.value })}
-            >
-              <option value="">Select</option>
-              <option value="full-time">Full-time</option>
-              <option value="part-time">Part-time</option>
-              <option value="remote">Remote</option>
-            </select>
-          </label>
-        </div>
-
-        {/* Desired Salary */}
-        <div className="section">
-          <h3>Desired Salary</h3>
-          <label>
-            Expected Salary (per annum):
-            <input
-              type="number"
-              value={desiredSalary}
-              onChange={(e) => setDesiredSalary(e.target.value)}
-            />
-          </label>
-        </div>
-
-        {/* Job Interests */}
-        <div className="section">
-          <h3>Job Interests</h3>
-          <label>
-            Specific Roles of Interest:
-            <textarea
-              value={jobInterests}
-              onChange={(e) => setJobInterests(e.target.value)}
-              placeholder="e.g., Software Engineer, Data Scientist, Marketing Manager"
-            />
-          </label>
-        </div>
-
-        {/* Career Goals */}
-        <div className="section">
-          <h3>Career Goals</h3>
-          <label>
-            Describe your Career Goals:
-            <textarea
-              value={careerGoals}
-              onChange={(e) => setCareerGoals(e.target.value)}
-              placeholder="e.g., I want to work in a challenging environment, develop my leadership skills, etc."
-            />
-          </label>
-        </div>
-
-        {/* Job Alerts */}
-        <div className="section">
-          <h3>Job Alerts</h3>
-          <label>
-            Receive Job Alerts:
-            <input
-              type="checkbox"
-              checked={jobAlerts}
-              onChange={() => setJobAlerts(!jobAlerts)}
-            />
-          </label>
-        </div>
-
-        {/* Submit Button */}
-        <div className="form-actions">
-          <button type="submit">Save Profile</button>
-        </div>
-      </form>
-    </div>
   );
 };
 
