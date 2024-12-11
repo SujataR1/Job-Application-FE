@@ -1,220 +1,135 @@
-import React, { useState } from 'react';
-import './Profile.css';
+import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import './Profile.css'; // Assuming you will have a separate CSS file for applicant profile
 
-const ProfileManagement = () => {
-  const companyProfile = {
-    name: 'TechCorp',
-    description: 'Leading tech company in software development.',
-    logo: 'https://randomuser.me/api/portraits/men/1.jpg',
-    company: 'TechCorp Ltd',
-    connections: 500,
-    posts: [
-      { content: 'We are hiring software engineers! Apply now!', date: '2024-11-29' },
-      { content: 'Join us for our tech conference next month.', date: '2024-11-20' }
-    ],
-    experiences: [
-      { title: 'Software Engineer', company: 'TechCorp', duration: '2 years' },
-      { title: 'Frontend Developer', company: 'DevCo', duration: '1 year' }
-    ],
-    education: [
-      { degree: 'B.Tech in Computer Science', school: 'XYZ University' }
-    ],
-    skills: ['JavaScript', 'React', 'Node.js'],
-    interests: ['Tech Innovations', 'Software Engineering', 'AI'],
-  };
+const Profile = () => {
+  const [user, setUser] = useState(null);
+  const [newImage, setNewImage] = useState(null); // To handle new image
+  const [isEditing, setIsEditing] = useState(false); // To toggle image editing mode
+  const [error, setError] = useState('');
+  const navigate = useNavigate();
 
-  const [profilePhoto, setProfilePhoto] = useState(companyProfile.logo);
-  const [isEditMode, setIsEditMode] = useState(false);
-  const [newPost, setNewPost] = useState('');
+  // Fetch user details on component mount
+  useEffect(() => {
+    const fetchUserData = async () => {
+      const token = localStorage.getItem('token'); // Assuming the token is stored in localStorage
 
-  // Handle profile photo change
-  const handleProfilePhotoChange = (e) => {
+      if (!token) {
+        navigate('/login'); // Redirect if no token is found
+        return;
+      }
+
+      try {
+        const response = await fetch('http://localhost:7000/auth/user-details', {
+          method: 'GET',
+          headers: {
+            Authorization: ` ${token}`,
+          },
+        });
+
+        const data = await response.json();
+
+        if (response.ok) {
+          setUser(data); // Set user data if response is OK
+        } else {
+          setError(data.message || 'Failed to fetch user details');
+        }
+      } catch (error) {
+        console.error('Error fetching user details:', error);
+        setError('An error occurred while fetching user details.');
+      }
+    };
+
+    fetchUserData();
+  }, [navigate]);
+
+  const handleImageChange = (e) => {
     const file = e.target.files[0];
     if (file) {
       const reader = new FileReader();
       reader.onloadend = () => {
-        setProfilePhoto(reader.result);
+        setNewImage(reader.result); // Set new image base64
       };
       reader.readAsDataURL(file);
     }
   };
 
-  // Handle post creation
-  const handlePostChange = (e) => {
-    setNewPost(e.target.value);
-  };
+  const handleImageSave = async () => {
+    const token = localStorage.getItem('token');
+    if (!token) return;
 
-  const handlePostSubmit = () => {
-    if (newPost) {
-      companyProfile.posts.push({ content: newPost, date: new Date().toISOString() });
-      setNewPost('');
+    try {
+      const response = await fetch('http://localhost:7000/auth/update', {
+        method: 'POST',
+        headers: {
+          'Authorization': ` ${token}`,
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          image: newImage, // Send base64 image
+        }),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        setUser(prevUser => ({ ...prevUser, image: data.image })); // Assuming 'data.image' contains the image URL
+        setIsEditing(false); // Close the image editing mode
+      } else {
+        setError(data.message || 'Failed to update image');
+      }
+    } catch (error) {
+      console.error('Error uploading image:', error);
+      setError('An error occurred while updating the profile image.');
     }
   };
 
-  // Toggle edit mode for profile enhancement
-  const handleProfileEnhance = () => {
-    setIsEditMode(!isEditMode);
-  };
-
   return (
-    
+    <div className="profile-container">
+      <div className="profile-header">
+        <h2>Your Profile</h2>
+      </div>
 
-        <div className="profile-main-content">
-          <div className="profile-header">
-            <div className="profile-photo">
-              <label htmlFor="profile-photo-upload">
-                <img src={profilePhoto} alt="Company Logo" className="profile-photo-img" />
-              </label>
-              <input
-                id="profile-photo-upload"
-                type="file"
-                style={{ display: 'none' }}
-                onChange={handleProfilePhotoChange}
-              />
-            </div>
-            <div className="profile-info">
-              <h2>{companyProfile.name}</h2>
-              <p>{companyProfile.company}</p>
-              <p>{companyProfile.description}</p>
-              <p>{companyProfile.connections} Connections</p>
-              <button className="enhance-profile-button" onClick={handleProfileEnhance}>
-                {isEditMode ? 'Save Profile' : 'Enhance Profile'}
-              </button>
-            </div>
-          </div>
+      <div className="profile-card">
+        <div className="profile-image-container">
+          {/* Display image */}
+          <div
+            className="profile-image"
+            style={{
+              backgroundImage: `url(${newImage || user?.profilePicture || 'default-profile-image-url'})`,
+              backgroundSize: 'cover',
+              backgroundPosition: 'center',
+            }}
+            onClick={() => setIsEditing(true)} // Trigger edit mode when clicked
+          ></div>
 
-          <div className="profile-sections">
-            <div className="profile-section">
-              <h3>Open to Opportunities</h3>
-              <label className="switch">
-                <input type="checkbox" />
-                <span className="slider round"></span>
-              </label>
+          {/* Edit image modal */}
+          {isEditing && (
+            <div className="edit-image-modal">
+              <input type="file" onChange={handleImageChange} />
+              <button onClick={handleImageSave}>Save</button>
+              <button onClick={() => setIsEditing(false)}>Cancel</button>
             </div>
-
-            <div className="profile-section">
-              <h3>Analytics</h3>
-              <p>Connections: {companyProfile.connections}</p>
-              <p>Posts: {companyProfile.posts.length}</p>
-            </div>
-
-            {/* Experience Section */}
-            {isEditMode && (
-              <div className="profile-section">
-                <h3>Add Experience</h3>
-                <form>
-                  <input type="text" placeholder="Job Title" />
-                  <input type="text" placeholder="Company Name" />
-                  <input type="text" placeholder="Duration" />
-                  <button type="submit">Add Experience</button>
-                </form>
-              </div>
-            )}
-            <div className="profile-section">
-              <h3>Experience</h3>
-              {companyProfile.experiences.map((exp, index) => (
-                <div key={index} className="experience-item">
-                  <h4>{exp.title}</h4>
-                  <p>{exp.company}</p>
-                  <p>{exp.duration}</p>
-                </div>
-              ))}
-            </div>
-
-            {/* Education Section */}
-            {isEditMode && (
-              <div className="profile-section">
-                <h3>Add Education</h3>
-                <form>
-                  <input type="text" placeholder="Degree" />
-                  <input type="text" placeholder="School/University" />
-                  <button type="submit">Add Education</button>
-                </form>
-              </div>
-            )}
-            <div className="profile-section">
-              <h3>Education</h3>
-              {companyProfile.education.map((edu, index) => (
-                <div key={index} className="education-item">
-                  <h4>{edu.degree}</h4>
-                  <p>{edu.school}</p>
-                </div>
-              ))}
-            </div>
-
-            {/* Skills Section */}
-            {isEditMode && (
-              <div className="profile-section">
-                <h3>Add Skills</h3>
-                <form>
-                  <input type="text" placeholder="Skill" />
-                  <button type="submit">Add Skill</button>
-                </form>
-              </div>
-            )}
-            <div className="profile-section">
-              <h3>Skills</h3>
-              <ul
-  style={{
-    backgroundColor: 'black',
-    padding: '15px',
-    borderRadius: '8px',
-    width: 'fit-content',
-  }}
->
-  {companyProfile.skills.map((skill, index) => (
-    <li
-      key={index}
-      style={{
-        color: 'black',
-        padding: '8px',
-        listStyleType: 'none',
-        marginBottom: '5px',
-        cursor: 'pointer', // Optional: Adds a pointer cursor on hover
-      }}
-     
-      onMouseOut={(e) => (e.target.style.backgroundColor = '')} // Reset background when not hovering
-    >
-      {skill}
-    </li>
-  ))}
-</ul>
-            </div>
-
-            {/* Interests Section */}
-            <div className="profile-section">
-              <h3>Interests</h3>
-              <ul
-  style={{
-    backgroundColor: 'black',
-    padding: '15px',
-    borderRadius: '8px',
-    width: 'fit-content',
-  }}
->
-  {companyProfile.interests.map((interest, index) => (
-    <li
-      key={index}
-      style={{
-        color: 'black',
-        padding: '8px',
-        listStyleType: 'none',
-        marginBottom: '5px',
-        cursor: 'pointer', // Optional: Adds a pointer cursor on hover
-      }}
-     // Darker background on hover
-      onMouseOut={(e) => (e.target.style.backgroundColor = '')} // Reset background when not hovering
-    >
-      {interest}
-    </li>
-  ))}
-</ul>
-
-            </div>
-          </div>
+          )}
         </div>
-      
+
+        <div className="profile-details">
+          {user ? (
+            <>
+              <p><strong>Name:</strong> {user.fullName}</p>
+              <p><strong>Email:</strong> {user.email}</p>
+              <p><strong>Phone Number:</strong> {user.phoneNumber}</p>
+              <p><strong>About:</strong> {user.about}</p>
+            </>
+          ) : (
+            <p>Loading...</p>
+          )}
+        </div>
+
+        {error && <div className="error-message">{error}</div>}
+      </div>
+    </div>
   );
 };
 
-export default ProfileManagement;
+export default Profile;
