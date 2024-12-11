@@ -1,0 +1,161 @@
+/* .profile-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f4f7f6;
+  }
+  
+  .profile-card {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+  }
+  
+  .profile-header h2 {
+    margin-bottom: 20px;
+    font-size: 1.8rem;
+  }
+  
+  .profile-image-container {
+    position: relative;
+  }
+  
+  .profile-image {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background-color: #ccc;
+    margin: 0 auto;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .profile-image:hover {
+    background-color: #bbb;
+  }
+  
+  .profile-details {
+    margin-top: 20px;
+  }
+  
+  .edit-image-modal {
+    position: absolute;
+    top: 130%;
+    left: 0;
+    right: 0;
+    padding: 15px;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .edit-image-modal input {
+    border: none;
+    padding: 5px;
+    margin-right: 10px;
+  }
+  
+  .edit-image-modal button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+  }
+  
+  .edit-image-modal button:hover {
+    background-color: #45a049;
+  }
+  
+  .error-message {
+    color: red;
+    margin-top: 10px;
+  }
+   */
+
+   .profile-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f4f7f6;
+  }
+  
+  .profile-card {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+  }
+  
+  .profile-header h2 {
+    margin-bottom: 20px;
+    font-size: 1.8rem;
+  }
+  
+  .profile-image-container {
+    position: relative;
+  }
+  
+  .profile-image {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background-color: #ccc;
+    margin: 0 auto;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .profile-image:hover {
+    background-color: #bbb;
+  }
+  
+  .profile-details {
+    margin-top: 20px;
+  }
+  
+  .edit-image-modal {
+    position: absolute;
+    top: 130%;
+    left: 0;
+    right: 0;
+    padding: 15px;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .edit-image-modal input {
+    border: none;
+    padding: 5px;
+    margin-right: 10px;
+  }
+  
+  .edit-image-modal button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+  }
+  
+  .edit-image-modal button:hover {
+    background-color: #45a049;
+  }
+  
+  .error-message {
+    color: red;
+    margin-top: 10px;
+  }
+  

@@ -1,62 +1,86 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+
 const ForgotPassword = () => {
   const [email, setEmail] = useState('');
   const [otp, setOtp] = useState('');
   const [newPassword, setNewPassword] = useState('');
-  const [step, setStep] = useState(1); // Step 1: Email input, Step 2: OTP input, Step 3: Reset Password
+  const [step, setStep] = useState(1); // Step 1: Email input, Step 2: OTP and New Password input
   const [error, setError] = useState('');
   const [message, setMessage] = useState('');
+  const navigate = useNavigate(); // React Router v6, useNavigate instead of useHistory
 
   const handleEmailSubmit = async (e) => {
     e.preventDefault();
     setError('');
     setMessage('');
 
-    setStep(2);  // Move to OTP input step
-    setMessage('An OTP has been sent to your email.');
-  };
+    // API request to send OTP for password reset
+    try {
+      const response = await fetch('http://localhost:7000/auth/request-otp', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          email: email,
+          otpType: 'PasswordReset', // Type for password reset
+        }),
+      });
 
-  const handleOtpSubmit = (e) => {
-    e.preventDefault();
-    setError('');
-    setMessage('');
+      const data = await response.json();
 
-    if (otp === '123456') {  // Example OTP, replace with real OTP validation
-      setStep(3);  // Move to reset password step
-    } else {
-      setError('Invalid OTP. Please try again.');
+      if (response.ok) {
+        setStep(2);  // Move to OTP and New Password input step
+        setMessage('An OTP has been sent to your email.');
+      } else {
+        setError(data.message || 'Failed to send OTP. Please try again.');
+      }
+    } catch (error) {
+      setError('An error occurred while requesting OTP. Please try again.');
     }
   };
 
-  const handlePasswordReset = async (e) => {
+  const handleOtpSubmit = async (e) => {
     e.preventDefault();
     setError('');
     setMessage('');
 
-    setMessage('Password has been reset successfully.');
-    setEmail('');
-    setOtp('');
-    setNewPassword('');
-    setStep(1);  // Reset form to initial step
+    // API request to verify OTP and reset password
+    try {
+      const response = await fetch('http://localhost:7000/auth/reset-password', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          email: email,
+          otp: otp,
+          newPassword: newPassword,
+        }),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        setMessage('Password has been reset successfully.');
+        setTimeout(() => {
+          navigate('/login'); // Redirect to login page after successful password reset
+        }, 2000); // Wait for 2 seconds before redirecting
+      } else {
+        setError(data.message || 'Failed to reset password. Please try again.');
+      }
+    } catch (error) {
+      setError('An error occurred while resetting the password. Please try again.');
+    }
   };
 
   return (
     <div className="flex justify-center items-center min-h-screen bg-gray-100" style={{ backgroundImage: 'url(/images/background.png)' }}>
-    
       <div style={styles.card}>
         {/* Forgot Password Heading */}
-     
-        <h2 style={{
-            ...styles.heading, 
-            background: 'linear-gradient(to right, #3498db, #2ecc71)',  // Gradient color
-            color: 'white',  // Text color
-            padding: '10px 20px',  // Padding to add space around the text
-            borderRadius: '5px',  // Optional: Adds rounded corners
-            textAlign: 'center'
-              // Optional: Align text in the center
-        }}>
-          Forgot Password
-          </h2>
+        <h2 style={styles.heading}>Forgot Password</h2>
+
         {/* Step 1: Enter email */}
         {step === 1 && (
           <form onSubmit={handleEmailSubmit}>
@@ -75,7 +99,7 @@ const ForgotPassword = () => {
           </form>
         )}
 
-        {/* Step 2: Enter OTP */}
+        {/* Step 2: Enter OTP and New Password */}
         {step === 2 && (
           <form onSubmit={handleOtpSubmit}>
             <div style={styles.inputField}>
@@ -89,13 +113,7 @@ const ForgotPassword = () => {
                 style={styles.input}
               />
             </div>
-            <button type="submit" style={styles.button}>Verify OTP</button>
-          </form>
-        )}
 
-        {/* Step 3: Reset Password */}
-        {step === 3 && (
-          <form onSubmit={handlePasswordReset}>
             <div style={styles.inputField}>
               <label style={styles.label}>New Password</label>
               <input
@@ -121,19 +139,10 @@ const ForgotPassword = () => {
         </p>
       </div>
     </div>
-  
   );
 };
 
 const styles = {
-  container: {
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    minHeight: '100vh',
-    backgroundColor: '#f0f4f8',
-    padding: '20px',
-  },
   card: {
     backgroundColor: 'white',
     padding: '2rem',
@@ -207,3 +216,5 @@ const styles = {
 };
 
 export default ForgotPassword;
+
+
