@@ -1,5 +1,3 @@
-
-
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom'; // Import useNavigate for redirection
 import { FaHome, FaUsers, FaSignOutAlt, FaUserCircle,FaBell, FaEnvelope,FaBriefcase} from 'react-icons/fa'; // Import icons from react-icons

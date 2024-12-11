@@ -1,0 +1,114 @@
+/* For the modal overlay */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000; /* Ensure modal appears on top of other content */
+}
+
+/* Modal content styling */
+.modal-content {
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  width: 50%;
+  max-width: 600px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Status styling */
+.status {
+  font-weight: bold;
+}
+
+.status.applied {
+  color: orange;
+}
+
+.status.shortlisted {
+  color: green;
+}
+
+.status.rejected {
+  color: red;
+}
+
+.status-label {
+  font-weight: normal;
+}
+
+/* Job card styles */
+.job-card {
+  border: 1px solid #ddd;
+  padding: 20px;
+  margin-bottom: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+  text-align: center;  /* Centering all text inside the job card */
+}
+
+.job-card h3 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+
+.job-card p {
+  font-size: 1rem;
+  margin-bottom: 5px;  /* Adjust spacing between job details */
+}
+
+/* Centered button below job details */
+.job-actions {
+  display: flex;
+  justify-content: center; /* This will center the button horizontally */
+  margin-top: 15px; /* Add space between job details and button */
+}
+
+button {
+  padding: 10px 20px;
+  background-color: #2196f3;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #1976d2;
+}
+
+/* Icon status (green and red) for email, assessment, interview */
+.icon-status {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.icon-status.green {
+  color: green;
+}
+
+.icon-status.red {
+  color: red;
+}
+
+.icon-status .icon {
+  margin-right: 8px;
+}
+
+.icon-status .tick-icon {
+  color: green;
+}
+
+.icon-status .cross-icon {
+  color: red;
+}
