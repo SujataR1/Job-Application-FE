@@ -118,7 +118,9 @@ import Notification from './components/Applicant/Notification/Notification';
 import MyApplication from './components/Applicant/myapplication/MyApplication';
 import EmployerProfile from './components/Employer/MyProfile/Myprofile';
 import JobProfile from './components/Applicant/jobprofile/jobprofile';
-
+import Setting from './components/Applicant/UserSettings/Setting';
+import Enable2FA from './components/auth/Enable2FA';
+import VerifyOtp from './components/auth/VerifyOtp';
 
 
 
@@ -269,6 +271,9 @@ const App = () => {
                 <Route path="/myapplication" element={<MyApplication />} />
                 <Route path="/myprofile" element={<EmployerProfile />} />
                 <Route path="/jobprofile" element={<JobProfile />} />
+                <Route path="/setting" element={<Setting />} />
+                <Route path="/enable-2fa" element={<Enable2FA />} />
+                <Route path="/verify-otp" element={<VerifyOtp />} />
 
                 
 

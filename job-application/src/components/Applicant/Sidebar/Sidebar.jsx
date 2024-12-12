@@ -55,6 +55,11 @@ const Sidebar = () => {
                 <FaEnvelope className="sidebar-icon" /> Messages
               </Link>
             </li>
+            <li>
+              <Link to="/setting" className="sidebar-item">
+                <FaEnvelope className="setting-icon" /> Setting
+              </Link>
+            </li>
            
            
           </ul>
