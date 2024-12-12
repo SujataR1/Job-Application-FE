@@ -15,7 +15,13 @@ const Profile = () => {
     about: '',
     email: '',
     phoneNumber: '',
+    isEmailVerified: false // To track email verification status
   }); // For editing user details
+  const [isUpdated, setIsUpdated] = useState(false); // To track if the data has been modified
+  const [isImageEditing, setIsImageEditing] = useState(false); // For controlling image editing modal visibility
+  const [showOtpPopup, setShowOtpPopup] = useState(false); // To show the OTP input popup
+  const [otp, setOtp] = useState(''); // Store OTP input by user
+  const [otpError, setOtpError] = useState(''); // For OTP validation errors
   const navigate = useNavigate();
 
   // Fetch user data on component mount
@@ -33,7 +39,7 @@ const Profile = () => {
         const response = await fetch('http://localhost:7000/auth/user-details', {
           method: 'GET',
           headers: {
-            Authorization: ` ${token}`, // Add token to Authorization header
+            Authorization: `${token}`, // Add token to Authorization header
           },
         });
 
@@ -42,6 +48,8 @@ const Profile = () => {
         if (response.ok) {
           setUser(data); // Set user data if successful
           setFormData(data); // Set initial form values
+          setSuccessMessage(''); // Reset success message
+          setError(''); // Reset error message
         } else {
           setError(data.message || 'Failed to fetch user details');
         }
@@ -61,6 +69,7 @@ const Profile = () => {
       const reader = new FileReader();
       reader.onloadend = () => {
         setNewImage(reader.result); // Set the selected image as base64
+        setIsUpdated(true); // Mark as updated
       };
       reader.readAsDataURL(file); // Convert image to base64
     }
@@ -74,6 +83,7 @@ const Profile = () => {
     formDataObj.append('about', formData.about);
     formDataObj.append('email', formData.email);
     formDataObj.append('phoneNumber', formData.phoneNumber);
+  
 
     // If a new image is selected, append it to FormData
     if (newImage) {
@@ -94,6 +104,7 @@ const Profile = () => {
       if (response.ok) {
         setUser(data); // Update user data with new details
         setIsEditing(false); // Close the editing mode
+        setIsUpdated(false); // Reset the update flag
         setSuccessMessage('User details updated successfully!'); // Display success message
         setError(''); // Clear any previous errors
       } else {
@@ -121,12 +132,81 @@ const Profile = () => {
     return new Blob([uintArray], { type: 'image/jpeg' });
   }
 
+  // Handle form input changes
   const handleChange = (e) => {
-    const { name, value, type, checked } = e.target;
+    const { name, value } = e.target;
     setFormData((prevData) => ({
       ...prevData,
-      [name]: type === 'checkbox' ? checked : value,
+      [name]: value,
     }));
+    setIsUpdated(true); // Mark as updated whenever form changes
+  };
+
+  // Send OTP for email verification
+  const handleVerifyEmail = async () => {
+    const token = localStorage.getItem('token');
+    const requestData = {
+      email: formData.email,
+      otpType: 'EmailVerification',
+    };
+
+    try {
+      const response = await fetch('http://localhost:7000/auth/request-otp', {
+        method: 'POST',
+        headers: {
+          'Authorization': ` ${token}`,
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(requestData),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        setShowOtpPopup(true); // Show OTP input modal
+        setOtpError(''); // Reset OTP error
+      } else {
+        setOtpError(data.message || 'Failed to send OTP');
+      }
+    } catch (error) {
+      console.error('Error sending OTP:', error);
+      setOtpError('An error occurred while sending OTP.');
+    }
+  };
+
+  // Verify the OTP and confirm email
+  const handleVerifyOtp = async () => {
+    const token = localStorage.getItem('token');
+
+    try {
+      const response = await fetch('http://localhost:7000/auth/verify-email-otp', {
+        method: 'POST',
+        headers: {
+          'Authorization': ` ${token}`, // Authorization header with Bearer token
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          otp: otp, // OTP input by the user
+        }),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        setFormData((prevData) => ({
+          ...prevData,
+          isEmailVerified: true,
+        }));
+        setShowOtpPopup(false); // Close OTP modal
+        setSuccessMessage('Email verified successfully!');
+        setError('');
+      } else {
+        setOtpError(data.message || 'Invalid OTP');
+      }
+    } catch (error) {
+      console.error('Error verifying OTP:', error);
+      setOtpError('An error occurred while verifying OTP.');
+    }
   };
 
   return (
@@ -139,7 +219,7 @@ const Profile = () => {
           <EmployerSidebar />
           <div className="profile-container">
             <div className="profile-header">
-              <h2>Your Profile</h2>
+              <h2>My Profile</h2>
             </div>
 
             <div className="profile-card">
@@ -152,14 +232,14 @@ const Profile = () => {
                     backgroundSize: 'cover',
                     backgroundPosition: 'center',
                   }}
-                  onClick={() => setIsEditing(true)} // Open the file input when clicking on the profile image
+                  onClick={() => setIsImageEditing(true)} // Click on the image to start editing
                 ></div>
 
                 {/* Edit image modal */}
-                {isEditing && (
+                {isImageEditing && (
                   <div className="edit-image-modal">
                     <input type="file" onChange={handleImageChange} />
-                    <button onClick={() => setIsEditing(false)}>Cancel</button>
+                    <button onClick={() => setIsImageEditing(false)}>Cancel</button>
                   </div>
                 )}
               </div>
@@ -174,6 +254,7 @@ const Profile = () => {
                         name="fullName"
                         value={formData.fullName}
                         onChange={handleChange}
+                        disabled={!isEditing} // Disable input when not editing
                       />
                     </div>
                     <div className="profile-detail-row">
@@ -183,6 +264,7 @@ const Profile = () => {
                         name="about"
                         value={formData.about}
                         onChange={handleChange}
+                        disabled={!isEditing} // Disable input when not editing
                       />
                     </div>
                     <div className="profile-detail-row">
@@ -192,7 +274,15 @@ const Profile = () => {
                         name="email"
                         value={formData.email}
                         onChange={handleChange}
+                        disabled={!isEditing} // Disable input when not editing
                       />
+                      {!formData.isEmailVerified ? (
+                        <button className="verify-email-button" onClick={handleVerifyEmail}>
+                          Verify Email
+                        </button>
+                      ) : (
+                        <span className="verified">Verified</span>
+                      )}
                     </div>
                     <div className="profile-detail-row">
                       <label>Phone Number:</label>
@@ -201,12 +291,27 @@ const Profile = () => {
                         name="phoneNumber"
                         value={formData.phoneNumber}
                         onChange={handleChange}
+                        disabled={!isEditing} // Disable input when not editing
                       />
                     </div>
 
-                    <button className="update-button" onClick={handleUpdateDetails}>
-                      Update Details
-                    </button>
+                   
+                     <button
+   className="update-button"
+   onClick={isEditing ? handleUpdateDetails : () => setIsEditing(true)}
+  style={{
+    padding: '6px 12px',           // Smaller padding
+    fontSize: '14px',              // Smaller font size
+     backgroundColor: isEditing ? '#28a745' : '#007bff', // Green for 'Update', Blue for 'Edit'
+     color: 'white',                // White text color
+    border: 'none',                // No border
+     borderRadius: '5px',           // Rounded corners
+     cursor: 'pointer',             // Pointer cursor on hover
+     transition: 'background-color 0.3s ease',     width:'100px' // Smooth background transition
+   }}
+ >
+   {isEditing ? 'Update Details' : 'Edit'}
+</button>
                   </>
                 ) : (
                   <p>Loading...</p>
@@ -219,6 +324,24 @@ const Profile = () => {
           </div>
         </div>
       </div>
+
+      {/* OTP Popup */}
+      {showOtpPopup && (
+        <div className="otp-popup">
+          <div className="otp-popup-content">
+            <h3>Enter OTP sent to your email</h3>
+            <input
+              type="text"
+              placeholder="OTP"
+              value={otp}
+              onChange={(e) => setOtp(e.target.value)}
+            />
+            {otpError && <div className="error-message">{otpError}</div>}
+            <button onClick={handleVerifyOtp}>Verify OTP</button>
+            <button onClick={() => setShowOtpPopup(false)}>Cancel</button>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

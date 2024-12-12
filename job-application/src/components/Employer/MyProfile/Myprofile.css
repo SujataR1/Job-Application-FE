@@ -1,14 +1,14 @@
 
-* {
+ * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
   }
   
   body {
-    font-family: 'Roboto', sans-serif; 
-    background-color: #f4f7fc; 
-    color: #333; 
+    font-family: 'Roboto', sans-serif;
+    background-color: #f4f7fc;
+    color: #333;
   }
   
   .home-page {
@@ -17,14 +17,9 @@
     min-height: 100vh;
   }
   
-
   .home-content {
     display: flex;
     flex: 1;
-  }
-  
-  .profile-detail-row label {
-    color: black; /* Set the label text color to gray */
   }
   
   .profile-container {
@@ -32,43 +27,34 @@
     padding: 30px;
     max-width: 1200px;
     margin: auto;
+    margin-left: 700px;
   }
   
   .profile-header {
-    margin-bottom: 20px;
-    text-align: center;
-  }
-  
- 
-/* Profile Header Styling */
-.profile-header {
     display: flex;
-    justify-content: center; /* Center the content horizontally */
-    align-items: center; /* Align the content vertically */
+    justify-content: center;
+    align-items: center;
     margin-bottom: 20px;
+    width: 700px;
   }
   
-   .profile-header h2 {
+  .profile-header h2 {
     font-size: 32px;
-    color: #fff; 
+    color: #fff;
     font-weight: 500;
     text-transform: uppercase;
     letter-spacing: 1px;
-    background: linear-gradient(135deg, #3576c0, #86618a); 
-    padding: 0px 0px; 
-    border-radius: 8px; 
+    background: linear-gradient(135deg, #3576c0, #86618a);
+    padding: 0px 0px;
+    border-radius: 8px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    margin: 0 auto; 
-   width: 540px;
+    width: 700px;
     text-align: center;
-    margin-right: 1px; 
-  } 
-   
-   
+    margin: 0 auto;
+  }
   
-  
-   .profile-card {
-    background: linear-gradient(135deg, #58d3d3, #86618a); /* Soft pink to light beige gradient */
+  .profile-card {
+    background: linear-gradient(135deg, #58d3d3, #86618a);
     border-radius: 8px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     padding: 20px;
@@ -76,9 +62,8 @@
     flex-direction: column;
     align-items: center;
     margin-bottom: 50px;
-    margin-left: 600px;
+    width:700px;
   }
-  
   
   .profile-image-container {
     position: relative;
@@ -95,12 +80,12 @@
     background-size: cover;
     background-position: center;
     cursor: pointer;
-    border: 4px solid #ccc; 
+    border: 4px solid #ccc;
     transition: transform 0.3s ease, border-color 0.3s ease;
   }
   
   .profile-image:hover {
-    transform: scale(1.1); 
+    transform: scale(1.1);
     border-color: #007bff;
   }
   
@@ -124,7 +109,7 @@
     background-color: #007bff;
     color: white;
     border: none;
-    padding: 10px;
+    padding: 8px 16px;
     border-radius: 5px;
     cursor: pointer;
     width: 100%;
@@ -133,7 +118,7 @@
   }
   
   .edit-image-modal button:hover {
-    background-color: #0056b3; 
+    background-color: #0056b3;
   }
   
   .edit-image-modal button + button {
@@ -144,25 +129,75 @@
   .edit-image-modal button + button:hover {
     background-color: #999;
   }
-  
-
+ 
   .profile-details {
     margin-top: 20px;
     width: 100%;
   }
   
-  .profile-details p {
-    font-size: 16px;
-    margin-bottom: 8px;
-    color: #555;
+  .profile-details .profile-detail-row {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px; 
   }
   
-  .profile-details strong {
-    color: #333;
+  .profile-details .profile-detail-row label {
+    color: black;
     font-weight: 600;
+    width: 120px;
+    text-align: left;
   }
   
-
+  .profile-details .profile-detail-row input {
+    padding: 8px 14px;
+    width: 100%;
+    max-width: 400px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+  }
+  
+  .profile-details .profile-detail-row input:disabled {
+    background-color: #f9f9f9;
+  }
+  
+  .profile-details button {
+    background-color: #007bff;
+    color: white;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 5px;
+    font-size: 14px;
+    cursor: pointer;
+    margin-top: 15px;
+    width: 100%;
+  }
+  
+  .profile-details button:hover {
+    background-color: #0056b3;
+  }
+  
+  .profile-details .verify-email-button {
+    background-color: #fbc02d;
+    padding: 6px 12px; 
+    border-radius: 5px;
+    font-weight: bold;
+    margin-top: 10px;
+    width: 130px; 
+    font-size: 14px; 
+    margin-left: 10px; 
+  }
+  
+  .profile-details .verify-email-button:hover {
+    background-color: #f57c00;
+  }
+  
+  .verified {
+    color: #4caf50;
+    font-weight: bold;
+    margin-left: 10px;
+  }
+  
   .error-message {
     color: #f44336;
     background-color: #ffebee;
@@ -172,20 +207,82 @@
     border-radius: 5px;
     font-size: 14px;
   }
+  
   .success-message {
-    color: #4caf50; /* Green for success */
-    background-color: #e8f5e9; /* Light green background */
+    color: #4caf50;
+    background-color: #e8f5e9;
     padding: 10px;
     margin-top: 15px;
     border-radius: 5px;
     font-size: 14px;
   }
   
-
+  .otp-popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+  }
+  
+  .otp-popup-content {
+    background-color: white;
+    padding: 30px;
+    border-radius: 8px;
+    width: 400px;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+  
+  .otp-popup h3 {
+    margin-bottom: 15px;
+    font-size: 20px;
+    color: #333;
+  }
+  
+  .otp-popup input {
+    padding: 10px;
+    width: 80%;
+    max-width: 300px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    font-size: 16px;
+  }
+  
+  .otp-popup button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+    font-weight: bold;
+    margin-top: 10px;
+  }
+  
+  .otp-popup button:hover {
+    background-color: #0056b3;
+  }
+  
+  .otp-popup button + button {
+    background-color: #ccc;
+    margin-top: 10px;
+  }
+  
+  .otp-popup button + button:hover {
+    background-color: #999;
+  }
+  
   @media (max-width: 768px) {
     .profile-card {
       padding: 15px;
-
     }
   
     .profile-image {
@@ -199,6 +296,19 @@
   
     .profile-header h2 {
       font-size: 28px;
+    }
+  
+    .profile-details input {
+      font-size: 14px;
+    }
+  
+    .otp-popup-content {
+      width: 90%;
+      padding: 20px;
+    }
+  
+    .profile-details button {
+      font-size: 14px;
     }
   }
   
@@ -215,7 +325,16 @@
     .profile-details p {
       font-size: 12px;
     }
+  
+    .otp-popup-content {
+      width: 90%;
+      padding: 15px;
+    }
+  
+    .profile-details input {
+      font-size: 12px;
+    }
   }
-   
+  
 
   
