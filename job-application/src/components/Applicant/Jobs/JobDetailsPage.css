@@ -1,4 +1,4 @@
-/* Main container for the job details page */
+
 .job-details {
   max-width: 1200px;
   margin: 0 auto;
@@ -7,7 +7,7 @@
   font-family: Arial, sans-serif;
 }
 
-/* Job header section */
+
 .job-header {
   background-color: #fff;
   padding: 20px;
@@ -33,7 +33,7 @@
   color: #34495e;
 }
 
-/* Buttons to save or share */
+
 .job-actions {
   display: flex;
   gap: 20px;
@@ -55,7 +55,7 @@
   background-color: #2980b9;
 }
 
-/* Job description section */
+
 .job-description, .skills-required, .certifications, .eligibility,
 .other-requirements, .perks, .additional-info, .company-infor, .activity-box {
   background-color: #fff;
@@ -80,7 +80,7 @@
   margin-bottom: 15px;
 }
 
-/* Job description list items */
+
 .job-description ul,
 .certifications ul,
 .eligibility ul,
@@ -102,7 +102,7 @@
   border-radius: 4px;
 }
 
-/* Adding colors to each section of list items */
+
 .job-description li {
   background-color: #ecf0f1;
   color: #2c3e50;
@@ -138,19 +138,18 @@
   color: #7f8c8d;
 }
 
-/* Activity Box */
 .activity-box p {
   font-size: 16px;
   color: #7f8c8d;
 }
 
-/* Company Information */
+
 .company-infor p {
   font-size: 16px;
   color: #7f8c8d;
 }
 
-/* Responsive design */
+
 @media (max-width: 768px) {
   .job-details {
       padding: 10px;

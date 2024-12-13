@@ -19,15 +19,15 @@
 
 .dropdown-item {
     padding: 10px;
-    color: #ffffff; /* Text color for options */
+    color: #ffffff; 
     text-decoration: none;
     display: block;
     cursor: pointer;
 }
 
 .dropdown-item:hover {
-    background-color: #34495e; /* Background color on hover */
-    color: #ffffff; /* Ensuring text stays white when hovering */
+    background-color: #34495e; 
+    color: #ffffff; 
 }
 
 .dropdown-submenu {
@@ -64,7 +64,7 @@
     font-size: 1rem;
 }
 
-/* Hover effect and submenu */
+
 .dropdown-menu .dropdown-item {
     position: relative;
 }
@@ -79,14 +79,9 @@ ul {
     padding: 0;
 }
 
-ul li {
-    padding: 8px 0;
-    font-size: 1rem;
-    color: #ffffff; /* Ensuring submenu text is white */
-}
+
 
 ul li:hover {
-    color: #ffffff; /* Text color stays white even on hover */
-    background-color: #34495e; /* Background color for submenu items */
+   
     cursor: pointer;
 }

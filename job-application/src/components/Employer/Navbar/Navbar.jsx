@@ -61,29 +61,53 @@ function EmployerNavbar({ toggleSidebar, profileImageUrl }) {
 
         {/* Center: Navbar Links */}
         <ul className="nav-links">
-          <li>
-            <Link to="/employerdashboard" className="nav-item">
-              <FaHome className="nav-icon" /> Home
+          {/* <li>
+            <Link to="/employerdashboard" className="  text-white font-bold text-lg hover:text-teal-300">
+          
+              <FaHome className="inline-block mr-2" /> Home
             </Link>
           </li>
           <li>
-            <Link to="/network" className="nav-item">
-              <FaNetworkWired className="nav-icon" /> My Network
+            <Link to="/network" className=" text-white font-bold text-lg hover:text-teal-300">
+              <FaNetworkWired className="inline-block mr-2" /> My Network
+            </Link>
+          </li> */}
+         <li>
+  <Link to="/employerdashboard" className="text-white font-bold text-lg hover:text-teal-300 mr-6">
+    <FaHome className="inline-block mr-2" /> Home
+  </Link>
+</li>
+<li>
+  <Link to="/network" className="text-white font-bold text-lg hover:text-teal-300 mr-6">
+    <FaNetworkWired className="inline-block mr-2" /> My Network
+  </Link>
+</li>
+
+
+          {/* <li>
+            <Link to="/application" className=" text-white font-bold text-lg hover:text-teal-300">
+              <FaClipboardList className="inline-block mr-2" /> My Posts
             </Link>
           </li>
           <li>
-            <Link to="/application" className="nav-item">
-              <FaClipboardList className="nav-icon" /> My Posts
+            <Link to="/message" className=" text-white font-bold text-lg hover:text-teal-300">
+              <FaEnvelope className="inline-block mr-2" /> Messages
             </Link>
-          </li>
+          </li> */}
           <li>
-            <Link to="/message" className="nav-item">
-              <FaEnvelope className="nav-icon" /> Messages
-            </Link>
-          </li>
+  <Link to="/application" className="text-white font-bold text-lg hover:text-teal-300 mr-6">
+    <FaClipboardList className="inline-block mr-2" /> My Posts
+  </Link>
+</li>
+<li>
+  <Link to="/message" className="text-white font-bold text-lg hover:text-teal-300 mr-6">
+    <FaEnvelope className="inline-block mr-2" /> My Messages
+  </Link>
+</li>
+
           <li>
-            <Link to="/notifications" className="nav-item">
-              <FaBell className="nav-icon" /> Notifications
+            <Link to="/notifications" className=" text-white font-bold text-lg hover:text-teal-300">
+              <FaBell className="inline-block mr-2" /> Notifications
             </Link>
           </li>
         </ul>
