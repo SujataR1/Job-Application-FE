@@ -121,6 +121,8 @@
 // export default Login;
 
 
+
+
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
@@ -218,7 +220,7 @@ const Login = () => {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'Authorization': `Bearer ${authToken}`, // Send token in header for 2FA verification
+          'Authorization': ` ${authToken}`, // Send token in header for 2FA verification
         },
         body: JSON.stringify({
           otp: otpData.otp,
@@ -250,7 +252,11 @@ const Login = () => {
   return (
     <div className="flex justify-center items-center min-h-screen bg-gray-100" style={{ backgroundImage: 'url(/images/background.png)' }}>
       <div className="bg-white p-8 rounded-lg shadow-lg max-w-lg w-full">
-        <h2 className="text-2xl font-bold mb-6">Login</h2>
+        {/* Header with background color */}
+        <div className="bg-teal-600 text-white py-4 mb-6 rounded-t-lg">
+          <h2 className="text-3xl font-bold text-center">Login</h2>
+        </div>
+
         <form onSubmit={handleSubmit}>
           <div className="mb-4">
             <label className="block text-gray-700">Email</label>
@@ -277,7 +283,8 @@ const Login = () => {
           {error && <div className="text-red-500 mb-4">{error}</div>} {/* Display error message if any */}
           <button
             type="submit"
-            className="bg-teal-600 text-white py-3 px-5 rounded-md hover:bg-teal-700 w-full"
+            className="bg-teal-600 text-white py-3 px-5 rounded-md hover:bg-teal-700 "
+            style={{ width: '100px', marginLeft: '160px' }}
           >
             Login
           </button>
@@ -310,7 +317,8 @@ const Login = () => {
               </div>
               <button
                 type="submit"
-                className="bg-teal-600 text-white py-3 px-5 rounded-md hover:bg-teal-700 w-full"
+                className="bg-teal-600 text-white py-3 px-5 rounded-md hover:bg-teal-700 "
+                style={{ width: '200px', marginLeft: '300px' }}
               >
                 Verify OTP
               </button>
@@ -323,3 +331,4 @@ const Login = () => {
 };
 
 export default Login;
+
