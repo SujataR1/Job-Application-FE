@@ -1,3 +1,4 @@
+
 .settings-page {
   display: flex;
   flex-direction: column;
@@ -58,10 +59,18 @@
 
 /* Title */
 .settings-form-container h2 {
-  font-size: 28px;
-  color: #333;
-  margin-bottom: 30px;
+  font-size: 32px;
+  color: #fff;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  background: linear-gradient(135deg, #3576c0, #86618a);
+  padding: 0px 0px;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  width: 700px;
   text-align: center;
+  margin: 0 auto;
 }
 
 /* Form container */
@@ -146,9 +155,37 @@
 .submit-button:active {
   background-color: #388e3c;
 }
+
 .change-password-button{
   background-color: #45a049;
 }
+
+/* Delete Account Button */
+.delete-account-button {
+  background-color: #f44336;
+  
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+  width: 155px;
+  margin-right: 200px;
+  @media (max-width: 768px) {
+    padding: 10px 18px;
+  }
+}
+
+.delete-account-button:hover {
+  background-color: #e53935;
+}
+
+.delete-account-button:active {
+  background-color: #d32f2f;
+}
+
 /* Success and error messages */
 .success-message,
 .error-message {
@@ -234,20 +271,67 @@
 .change-password-modal .cancel-button:hover {
   background-color: #d32f2f;
 }
-.settings-form-container h2{
-  font-size: 32px;
-    color: #fff;
-    font-weight: 500;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    background: linear-gradient(135deg, #3576c0, #86618a);
-    padding: 0px 0px;
-    border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    width: 700px;
-    text-align: center;
-    margin: 0 auto;
+
+/* Delete Account Confirmation Modal Styles */
+.delete-account-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10000;
 }
+
+.delete-account-modal-content {
+  background-color: white;
+  padding: 30px;
+  border-radius: 10px;
+  width: 100%;
+  max-width: 500px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.delete-account-modal-content h3 {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 22px;
+}
+
+.delete-account-modal-content .form-actions {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.delete-account-modal-content .confirm-button {
+  background-color: #f44336;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.delete-account-modal-content .confirm-button:hover {
+  background-color: #d32f2f;
+}
+
+.delete-account-modal-content .cancel-button {
+  background-color: #4caf50;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+
+}
+
+.delete-account-modal-content .cancel-button:hover {
+  background-color: #45a049;
+}
+
 /* Media query for responsiveness */
 @media (max-width: 768px) {
   .settings-page {
@@ -257,7 +341,6 @@
   .settings-form-container {
     padding: 20px;
     margin-left: 0;
-  
   }
 
   .settings-form {
@@ -268,12 +351,20 @@
     padding: 10px 18px;
   }
 
+  .delete-account-button {
+    padding: 10px 18px;
+  }
+
   .success-message,
   .error-message {
     font-size: 14px;
   }
 
   .change-password-modal-content {
+    padding: 20px;
+  }
+
+  .delete-account-modal-content {
     padding: 20px;
   }
 }
