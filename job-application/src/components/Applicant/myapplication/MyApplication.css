@@ -1,4 +1,4 @@
-/* For the modal overlay */
+
 .modal-overlay {
   position: fixed;
   top: 0;
@@ -9,10 +9,10 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 1000; /* Ensure modal appears on top of other content */
+  z-index: 1000; 
 }
 
-/* Modal content styling */
+
 .modal-content {
   background-color: white;
   padding: 20px;
@@ -22,7 +22,7 @@
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-/* Status styling */
+
 .status {
   font-weight: bold;
 }
@@ -43,7 +43,7 @@
   font-weight: normal;
 }
 
-/* Job card styles */
+
 .job-card {
   border: 1px solid #ddd;
   padding: 20px;
@@ -51,7 +51,7 @@
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   background-color: #fff;
-  text-align: center;  /* Centering all text inside the job card */
+  text-align: center; 
 }
 
 .job-card h3 {
@@ -61,14 +61,14 @@
 
 .job-card p {
   font-size: 1rem;
-  margin-bottom: 5px;  /* Adjust spacing between job details */
+  margin-bottom: 5px; 
 }
 
-/* Centered button below job details */
+
 .job-actions {
   display: flex;
-  justify-content: center; /* This will center the button horizontally */
-  margin-top: 15px; /* Add space between job details and button */
+  justify-content: center; 
+  margin-top: 15px;
 }
 
 button {
@@ -86,7 +86,7 @@ button:hover {
   background-color: #1976d2;
 }
 
-/* Icon status (green and red) for email, assessment, interview */
+
 .icon-status {
   display: flex;
   align-items: center;
