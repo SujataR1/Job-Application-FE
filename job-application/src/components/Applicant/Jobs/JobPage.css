@@ -1,4 +1,4 @@
-/* src/JobPage.css */
+
 .job-page {
   display: flex;
   flex-direction: column;
@@ -139,7 +139,6 @@ h2 {
   background-color: #0066cc;
 }
 
-/* Job Listings Styles */
 .job-listings {
   flex: 2;
   width: 100%;
