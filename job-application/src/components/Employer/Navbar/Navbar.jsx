@@ -45,7 +45,18 @@ function EmployerNavbar({ toggleSidebar, profileImageUrl }) {
       <div className="navbar-container">
         {/* Left side: Profile Image */}
         <div className="account-icon" onClick={toggleSidebar}>
-          <FaUserCircle size={30} color="#fff" />
+          {/* Display profile image if available, otherwise fallback to default icon */}
+          {profileImageUrl ? (
+            <div className="profile-img">
+              <img
+                src={profileImageUrl}
+                alt="Profile"
+                className="profile-img-thumbnail"
+              />
+            </div>
+          ) : (
+            <FaUserCircle size={30} color="#fff" />
+          )}
         </div>
 
         {/* Center: Navbar Links */}
@@ -89,4 +100,3 @@ function EmployerNavbar({ toggleSidebar, profileImageUrl }) {
 }
 
 export default EmployerNavbar;
-
