@@ -8,10 +8,9 @@ const Signup = () => {
         phoneNumber: '',
         password: '',
         userType: '', // 'Applicant' or 'Recruiter'
-        about:'',
+        about: '',
         profileImage: null, // To store file input
-        lookingToApply: 'false', // Use 'false' as string for non-applicant
-        lookingToRecruit: false, // Boolean for recruiter type
+        countryCode: '+91', // Fixed country code (India)
     });
 
     const navigate = useNavigate(); // Initialize useNavigate for redirection
@@ -38,14 +37,17 @@ const Signup = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
+        // Combine country code (+91) with the phone number
+        const fullPhoneNumber = formData.countryCode + formData.phoneNumber;
+
         // Create FormData object to send form data along with file
         const data = new FormData();
         data.append('fullName', formData.fullName);
         data.append('email', formData.email);
-        data.append('phoneNumber', formData.phoneNumber);
+        data.append('phoneNumber', fullPhoneNumber); // Send full phone number with country code
         data.append('password', formData.password);
-        data.append('userType', formData.userType); 
-        data.append  ('about',formData.about);                           // Send userType as 'Applicant' or 'Recruiter'
+        data.append('userType', formData.userType);
+        data.append('about', formData.about);
 
         // Append the profile image correctly if selected
         if (formData.profileImage) {
@@ -81,7 +83,7 @@ const Signup = () => {
             const responseData = await response.json();
             console.log('Signup successful:', responseData);
             alert('Signup successful!');
-            
+
             // After successful signup, redirect to login page
             navigate('/login'); // Use navigate to redirect
 
@@ -93,92 +95,96 @@ const Signup = () => {
 
     return (
         <div className="flex justify-center items-center min-h-screen bg-gray-100" style={{ backgroundImage: 'url(/images/background.png)' }}>
-            <div className="bg-white p-8 rounded-lg shadow-lg max-w-lg w-full">
-                <h2 className="text-2xl font-bold mb-6">Sign Up</h2>
+            {/* Main Content */}
+            <div className="bg-white p-8 rounded-lg shadow-lg max-w-4xl w-full" style={{ marginLeft: '200px' }}>
+
+                {/* Header Section */}
+                <header className="bg-teal-600 text-white py-6 text-center shadow-lg mb-8">
+                    <h1 className="text-3xl font-semibold">Sign Up to Join Us</h1>
+                    <p className="mt-2 text-lg">Create an account and get started</p>
+                </header>
+
+                {/* Form */}
                 <form onSubmit={handleSubmit}>
-                    <div className="mb-4">
-                        <label className="block text-gray-700">Full Name</label>
-                        <input
-                            type="text"
-                            name="fullName"
-                            value={formData.fullName}
-                            onChange={handleChange}
-                            placeholder="Full Name"
-                            className="w-full p-3 border border-gray-300 rounded"
-                        />
+                    {/* Full Name and Email fields side by side */}
+                    <div className="grid grid-cols-2 gap-6 mb-4">
+                        <div>
+                            <label className="block text-gray-700">Full Name</label>
+                            <input
+                                type="text"
+                                name="fullName"
+                                value={formData.fullName}
+                                onChange={handleChange}
+                                placeholder="Full Name"
+                                className="w-full p-3 border border-gray-300 rounded"
+                            />
+                        </div>
+                        <div>
+                            <label className="block text-gray-700">Email</label>
+                            <input
+                                type="email"
+                                name="email"
+                                value={formData.email}
+                                onChange={handleChange}
+                                placeholder="Email"
+                                className="w-full p-3 border border-gray-300 rounded"
+                            />
+                        </div>
                     </div>
-                    <div className="mb-4">
-                        <label className="block text-gray-700">Email</label>
-                        <input
-                            type="email"
-                            name="email"
-                            value={formData.email}
-                            onChange={handleChange}
-                            placeholder="Email"
-                            className="w-full p-3 border border-gray-300 rounded"
-                        />
+
+                    {/* Password and Phone Number fields side by side */}
+                    <div className="grid grid-cols-2 gap-6 mb-4">
+                        <div>
+                            <label className="block text-gray-700">Password</label>
+                            <input
+                                type="password"
+                                name="password"
+                                value={formData.password}
+                                onChange={handleChange}
+                                placeholder="Password"
+                                className="w-full p-3 border border-gray-300 rounded"
+                            />
+                        </div>
+                        <div>
+                            <label className="block text-gray-700">Phone Number</label>
+                            <div className="flex gap-2">
+                                {/* Country Code is fixed as +91 */}
+                             
+                                <select className="p-3 border border-gray-300 rounded-l w-1/3 bg-gray-200 text-gray-500"> <option value="+91">+91 (India)</option>
+        <option value="+1">+1 (USA)</option>
+        <option value="+44">+44 (UK)</option>
+        <option value="+61">+61 (Australia)</option>
+        <option value="+81">+81 (Japan)</option></select>
+
+                                {/* Phone Number Input */}
+                                <input
+                                    type="tel"
+                                    name="phoneNumber"
+                                    value={formData.phoneNumber}
+                                    onChange={handleChange}
+                                    placeholder="Enter 10-digit phone number"
+                                    maxLength="10"
+                                    className="w-2/3 p-3 border border-gray-300 rounded-r"
+                                />
+                            </div>
+                        </div>
                     </div>
-                    <div className="mb-4">
-                        <label className="block text-gray-700">Phone Number</label>
-                        <input
-                            type="tel"
-                            name="phoneNumber"
-                            value={formData.phoneNumber}
-                            onChange={handleChange}
-                            placeholder="Phone Number"
-                            className="w-full p-3 border border-gray-300 rounded"
-                        />
-                    </div>
-                    <div className="mb-4">
-                        <label className="block text-gray-700">Password</label>
-                        <input
-                            type="password"
-                            name="password"
-                            value={formData.password}
-                            onChange={handleChange}
-                            placeholder="Password"
-                            className="w-full p-3 border border-gray-300 rounded"
-                        />
-                    </div>
+
+                    {/* About field */}
                     <div className="mb-4">
                         <label className="block text-gray-700">About</label>
-                        <input
-                            type="about"
+                        <textarea
                             name="about"
                             value={formData.about}
                             onChange={handleChange}
-                            placeholder="About"
+                            placeholder="Tell us about yourself"
                             className="w-full p-3 border border-gray-300 rounded"
+                            rows="3"
                         />
                     </div>
+
+                    {/* Profile Image Upload */}
                     <div className="mb-4">
-                        <label className="block text-gray-700">User Type</label>
-                        <div className="flex space-x-4">
-                            <label className="flex items-center">
-                                <input
-                                    type="radio"
-                                    name="userType"
-                                    value="Applicant"
-                                    checked={formData.userType === 'Applicant'}
-                                    onChange={handleChange}
-                                    className="mr-2"
-                                />
-                                Looking for Apply (Applicant)
-                            </label>
-                            <label className="flex items-center">
-                                <input
-                                    type="radio"
-                                    name="userType"
-                                    value="Recruiter"
-                                    checked={formData.userType === 'Recruiter'}
-                                    onChange={handleChange}
-                                    className="mr-2"
-                                />
-                                Looking to Recruit (Recruiter)
-                            </label>
-                        </div>
-                    </div>
-                    <div className="mb-6">
                         <label className="block text-gray-700">Profile Image</label>
                         <input
                             type="file"
@@ -186,12 +192,32 @@ const Signup = () => {
                             className="w-full p-3 border border-gray-300 rounded"
                         />
                     </div>
+
+                    {/* User Type Select Dropdown */}
+                    <div className="mb-4">
+                        <label className="block text-gray-700">User Type</label>
+                        <select
+                            name="userType"
+                            value={formData.userType}
+                            onChange={handleChange}
+                            className="w-full p-3 border border-gray-300 rounded"
+                        >
+                            <option value="">Select User Type</option>
+                            <option value="Applicant">Looking to Apply (Applicant)</option>
+                            <option value="Recruiter">Looking to Recruit (Recruiter)</option>
+                        </select>
+                    </div>
+
+                    {/* Submit Button */}
                     <button
                         type="submit"
-                        className="bg-teal-600 text-white py-3 px-5 rounded-md hover:bg-teal-700 w-full"
+                        className="bg-teal-600 text-white py-3 px-5 rounded-md hover:bg-teal-700 "
+                        style={{ width: '200px', marginLeft: '300px' }}
                     >
                         Sign Up
                     </button>
+
+                    {/* Link to Login page */}
                     <p className="text-gray-500 text-sm mt-4 text-center">
                         Already have an account? <a href="/login" className="text-teal-600">Login</a>
                     </p>

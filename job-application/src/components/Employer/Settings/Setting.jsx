@@ -17,12 +17,12 @@ const EmployerSettings = () => {
 
   const [error, setError] = useState('');
   const [successMessage, setSuccessMessage] = useState('');
-  const [showChangePasswordModal, setShowChangePasswordModal] = useState(false);  // Show password modal
-  const [showDeleteConfirmModal, setShowDeleteConfirmModal] = useState(false); // Show delete confirmation modal
+  const [showChangePasswordModal, setShowChangePasswordModal] = useState(false);
   const [oldPassword, setOldPassword] = useState('');
   const [newPassword, setNewPassword] = useState('');
   const [confirmNewPassword, setConfirmNewPassword] = useState('');
-  const [deletePassword, setDeletePassword] = useState('');
+  const [showDeleteAccountModal, setShowDeleteAccountModal] = useState(false); 
+  const [passwordForDeletion, setPasswordForDeletion] = useState(''); 
   const navigate = useNavigate();
 
   // Fetch settings from API on component mount
@@ -62,18 +62,17 @@ const EmployerSettings = () => {
   const handleToggleChange = (event) => {
     const { name, checked } = event.target;
 
-    // Disable "Looking to Recruit" if "Looking to Apply" is checked, and vice versa
     if (name === 'lookingToApply' && checked) {
       setSettings((prevSettings) => ({
         ...prevSettings,
         lookingToApply: true,
-        lookingToRecruit: false, // Disable "Looking to Recruit"
+        lookingToRecruit: false, 
       }));
     } else if (name === 'lookingToRecruit' && checked) {
       setSettings((prevSettings) => ({
         ...prevSettings,
         lookingToRecruit: true,
-        lookingToApply: false, // Disable "Looking to Apply"
+        lookingToApply: false, 
       }));
     } else {
       setSettings((prevSettings) => ({
@@ -165,50 +164,84 @@ const EmployerSettings = () => {
     }
   };
 
-  // Handle account deletion form submission
-  const handleDeleteAccount = async (event) => {
-    event.preventDefault();
-
+  // Toggle Two-Factor Authentication (2FA)
+  const handleToggle2FA = async () => {
     const token = localStorage.getItem('token');
     if (!token) {
-      setError('Please login to delete your account.');
-      return;
-    }
-
-    if (!deletePassword) {
-      setError('Please enter your password to confirm account deletion.');
+      setError('Please login to toggle 2FA.');
       return;
     }
 
     try {
-      const response = await fetch('http://localhost:7000/auth/delete', {
-        method: 'DELETE',
+      const response = await fetch('http://localhost:7000/auth/toggle-2fa', {
+        method: 'POST',
         headers: {
           'Content-Type': 'application/json',
           Authorization: ` ${token}`,
         },
-        body: JSON.stringify({
-          password: deletePassword,
-        }),
       });
 
       const data = await response.json();
 
       if (response.ok) {
-        setSuccessMessage('Account deleted successfully!');
+        setSettings((prevSettings) => ({
+          ...prevSettings,
+          twoFaEnabled: !prevSettings.twoFaEnabled,
+        }));
+        setSuccessMessage(data.message || '2FA status updated successfully.');
         setError('');
-        localStorage.removeItem('token');
-        navigate('/login');
       } else {
-        setError(data.message || 'Failed to delete account');
+        setError(data.message || 'Failed to update 2FA status.');
         setSuccessMessage('');
       }
     } catch (error) {
-      console.error('Error deleting account:', error);
-      setError('An error occurred while deleting your account.');
+      console.error('Error toggling 2FA:', error);
+      setError('An error occurred while toggling 2FA.');
       setSuccessMessage('');
     }
   };
+
+  // Delete Account API Call
+  const handleDeleteAccount = async () => {
+    const token = localStorage.getItem('token');
+    if (!token) {
+      setError('Please login to delete your account.');
+      return;
+    }
+  
+    // Ensure password for deletion is entered
+    if (!passwordForDeletion) {
+      setError('Please enter your password to confirm deletion.');
+      return;
+    }
+  
+    if (window.confirm('Are you sure you want to delete your account? This action is permanent.')) {
+      try {
+        const response = await fetch('http://localhost:7000/auth/delete', {
+          method: 'DELETE',
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: ` ${token}`, // Include the Authorization token
+          },
+          body: JSON.stringify({ password: passwordForDeletion }), // Pass password in the body
+        });
+  
+        const data = await response.json();
+  
+        if (response.ok) {
+          setSuccessMessage('Account deleted successfully.');
+          localStorage.removeItem('token'); // Log the user out
+          navigate('/login'); // Redirect to login page
+        } else {
+          setError(data.message || 'Failed to delete account');
+        }
+      } catch (error) {
+        console.error('Error deleting account:', error);
+        setError('An error occurred while deleting your account.');
+      }
+    }
+  };
+  
 
   return (
     <div className="settings-page">
@@ -219,7 +252,6 @@ const EmployerSettings = () => {
           <div className="settings-form-container">
             <h2>Account Settings</h2>
             <form onSubmit={handleSubmit} className="settings-form">
-              {/* Toggle Switches for settings */}
               <div className="settings-item">
                 <label>Private Profile</label>
                 <input
@@ -256,7 +288,7 @@ const EmployerSettings = () => {
                   type="checkbox"
                   name="twoFaEnabled"
                   checked={settings.twoFaEnabled}
-                  onChange={handleToggleChange}
+                  onChange={handleToggle2FA}
                 />
               </div>
 
@@ -296,19 +328,51 @@ const EmployerSettings = () => {
               </button>
             </form>
 
-            {/* Display success or error message */}
             {error && <div className="error-message">{error}</div>}
             {successMessage && <div className="success-message">{successMessage}</div>}
 
-            {/* Delete Account Form */}
             <button
               className="delete-account-button"
-              onClick={() => setShowDeleteConfirmModal(true)}
+              onClick={() => setShowDeleteAccountModal(true)}
             >
               Delete Account
             </button>
 
-            {/* Change Password Button */}
+            {showDeleteAccountModal && (
+              <div className="delete-account-modal">
+                <div className="delete-account-modal-content">
+                  <h3>Are you sure you want to delete your account?</h3>
+                  <p>This action is permanent and cannot be undone.</p>
+                  <div className="form-group">
+                    <label>Password</label>
+                    <input
+                      type="password"
+                      value={passwordForDeletion}
+                      onChange={(e) => setPasswordForDeletion(e.target.value)}
+                      required
+                    />
+                  </div>
+
+                  <div className="form-actions">
+                    <button
+                      type="button"
+                      className="cancel-button"
+                      onClick={() => setShowDeleteAccountModal(false)}
+                    >
+                      Cancel
+                    </button>
+                    <button
+                      type="button"
+                      className="delete-button"
+                      onClick={handleDeleteAccount}
+                    >
+                      Delete Account
+                    </button>
+                  </div>
+                </div>
+              </div>
+            )}
+
             <button
               className="change-password-button"
               onClick={() => setShowChangePasswordModal(true)}
@@ -316,37 +380,6 @@ const EmployerSettings = () => {
               Change Password
             </button>
 
-            {/* Delete Confirmation Modal */}
-            {showDeleteConfirmModal && (
-              <div className="delete-confirm-modal">
-                <div className="delete-confirm-modal-content">
-                  <h3>Are you sure you want to delete your account?</h3>
-                  <form onSubmit={handleDeleteAccount}>
-                    <div className="form-group">
-                      <label>Enter Password to Confirm</label>
-                      <input
-                        type="password"
-                        value={deletePassword}
-                        onChange={(e) => setDeletePassword(e.target.value)}
-                        required
-                      />
-                    </div>
-                    <button type="submit" className="confirm-delete-button">
-                      Confirm Deletion
-                    </button>
-                    <button
-                      type="button"
-                      className="cancel-button"
-                      onClick={() => setShowDeleteConfirmModal(false)}
-                    >
-                      Cancel
-                    </button>
-                  </form>
-                </div>
-              </div>
-            )}
-
-            {/* Change Password Modal */}
             {showChangePasswordModal && (
               <div className="change-password-modal">
                 <div className="change-password-modal-content">

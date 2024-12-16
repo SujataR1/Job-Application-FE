@@ -1,187 +1,219 @@
 
-
-/* General page setup */
 .home-page {
   display: flex;
   flex-direction: column;
-  width: 100%;
-  background-color: #f4f7fb;
-  min-height: 100vh;
 }
 
-/* Navbar and sidebar styles */
 .home-content {
   display: flex;
-  justify-content: space-between;
   flex: 1;
-  padding: 20px;
 }
 
-.button-container {
-  display: flex;
-  justify-content: flex-end;
-  margin-bottom: 20px;
-}
-
-.nav-button {
-
-    margin-bottom: 1200px;
-    margin-left: 60px;
-}
-
-.nav-button:hover {
-  background-color: #0056b3;
-}
-
-/* Job post container */
 .job-post-container {
-  width: 70%; /* Set the width to 70% for a large form */
-  max-width: 1200px; /* Add a maximum width to ensure it doesn't get too large */
-  margin-left: 20px;
-  background-color: white;
+  /* flex: 1; */
+  padding: 20px;
+  background-color: #f9f9f9;
   border-radius: 8px;
-  padding: 30px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  height: 50%;
+  margin-left: 200px;
+  margin-right: 20px;
+  width: 1100px;
 }
 
-/* Header style */
 .header {
-  font-size: 2em;
+  font-size: 2rem;
   margin-bottom: 20px;
+  text-align: center;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  font-size: 1rem;
   color: #333;
 }
 
-/* Form styles */
-.job-post-form {
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  padding: 10px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.form-group input[type="date"] {
+  cursor: pointer;
+}
+
+textarea {
+  resize: vertical;
+}
+
+button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 20px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+button:hover {
+  background-color: #45a049;
+}
+
+button[type="button"] {
+  background-color: #ccc;
+  color: #333;
+}
+
+button[type="button"]:hover {
+  background-color: #bbb;
+}
+
+button[type="submit"] {
+  background-color: #28a745;
+  color: white;
+}
+
+button[type="submit"]:hover {
+  background-color: #218838;
+}
+
+
+.step-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.step-buttons button {
+  width: 48%;
+}
+
+h3 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+
+input[type="text"],
+input[type="email"],
+input[type="number"],
+select,
+textarea {
+  background-color: #fff;
+  border: 1px solid #dcdcdc;
+}
+
+input[type="number"],
+select,
+textarea {
+  font-size: 1rem;
+}
+
+textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+label {
+  font-size: 1rem;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+header {
+  margin-bottom: 20px;
+}
+
+label input[type="checkbox"] {
+  margin-top: 10px;
+}
+
+button[type="button"] {
+  background-color: #f1f1f1;
+  padding: 10px 20px;
+}
+
+button[type="button"]:hover {
+  background-color: #ddd;
+}
+
+
+.step-content {
   display: flex;
   flex-direction: column;
 }
 
-.form-group {
+.step-group {
   margin-bottom: 20px;
 }
 
-label {
-  font-size: 1.2em;
-  color: #555;
-  margin-bottom: 8px;
-}
-
-input,
-textarea,
-select {
+.step-group input[type="text"],
+.step-group input[type="number"],
+.step-group input[type="date"],
+.step-group textarea,
+.step-group select {
   width: 100%;
-  padding: 12px;
-  margin-top: 6px;
-  border: 1px solid #ccc;
+  padding: 10px;
+  font-size: 1rem;
+  border: 1px solid #ddd;
   border-radius: 5px;
-  font-size: 1em;
-  box-sizing: border-box;
+  margin-top: 5px;
 }
 
-input[type="text"] {
-  height: 40px;
+
+.email-list {
+  margin-top: 10px;
 }
 
-textarea {
-  height: 150px;
-  resize: vertical;
+.email-list input {
+  width: calc(100% - 90px);
+  margin-bottom: 10px;
+  display: inline-block;
 }
 
-select {
-  height: 40px;
-}
-
-button.submit-button {
-  background-color: #007bff;
+.add-email-button {
+  background-color: #4CAF50;
+  padding: 8px 16px;
   color: white;
-  padding: 12px 20px;
-  border: none;
-  border-radius: 5px;
   cursor: pointer;
-  font-size: 1.1em;
-  transition: background-color 0.3s ease;
 }
 
-button.submit-button:hover {
-  background-color: #0056b3;
+.add-email-button:hover {
+  background-color: #45a049;
 }
-
-/* Question section styling */
-.form-group label {
-  font-size: 1.2em;
-  margin-bottom: 8px;
-}
-
-.question-container {
-  display: flex;
-  align-items: center;
-  margin-bottom: 15px;
-}
-
-.question-container input {
-  margin-right: 15px;
-}
-
-.add-question-button {
-  background-color: #28a745;
-  color: white;
-  padding: 8px 15px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.add-question-button:hover {
-  background-color: #218838;
-}
-
-.remove-question-button {
-  background-color: #dc3545;
-  color: white;
-  padding: 5px 10px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.remove-question-button:hover {
-  background-color: #c82333;
-}
-/* Active button styling */
-.nav-button.active {
-  background-color: #0056b3; /* Darker blue for active button */
-  border-color: #004085; /* Darker border for active button */
-}
-
-
-/* Media Queries for responsiveness */
-@media (max-width: 1200px) {
-  .job-post-container {
-    width: 80%;
-  }
+.nav-button{
+  height: 60px;
+  margin-left: 70px;
+  gap: 10px;
 }
 
 @media (max-width: 768px) {
   .home-content {
     flex-direction: column;
-    padding: 10px;
   }
 
   .job-post-container {
-    width: 100%;
     margin-left: 0;
+    margin-right: 0;
   }
 
-  .button-container {
-    flex-direction: column;
-    align-items: flex-start;
+  .form-group {
+    margin-bottom: 10px;
   }
 
-  .nav-button {
+  .step-buttons button {
+    width: 100%;
     margin-bottom: 10px;
   }
 }
