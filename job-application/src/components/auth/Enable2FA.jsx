@@ -54,3 +54,4 @@ const Enable2FA = () => {
 };
 
 export default Enable2FA;
+

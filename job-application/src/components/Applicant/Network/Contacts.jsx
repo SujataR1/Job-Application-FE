@@ -20,6 +20,7 @@ const popularTechStacks = [
   { id: 3, name: 'Python', description: 'A powerful programming language often used in data science and web development' },
 ];
 
+
 const Contacts = () => {
   return (
     <div className="contacts-container">

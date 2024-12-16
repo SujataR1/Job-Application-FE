@@ -258,7 +258,7 @@ const Login = () => {
   const [showOtpForm, setShowOtpForm] = useState(false); // Toggle OTP form visibility
   const [userEmail, setUserEmail] = useState(''); // Store user email temporarily
   const [authToken, setAuthToken] = useState(''); // Store auth token
-  const [isLoading, setIsLoading] = useState(false); // Define isLoading state to track login process
+  const [isLoading, setIsLoading] = useState(false); // Track login process
   const navigate = useNavigate(); // To navigate to different routes after login
 
   // Handle input changes for both login and OTP form
@@ -278,6 +278,7 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsLoading(true);
+    setError(null); // Reset error on each attempt
 
     try {
       // Send login request to the backend API
@@ -294,7 +295,7 @@ const Login = () => {
         const userType = response.headers.get('User_Type');
         const twoFaEnabled = response.headers.get('Two_Factor_Enabled'); // Get 2FA status
 
-        //If token or userType is missing, display an error message
+        // If token or userType is missing, display an error message
         if (!token || !userType) {
           setError('Token or User Type missing. Please try again.');
           return;
@@ -318,6 +319,14 @@ const Login = () => {
             setError('Invalid user type');
           }
         }
+      } else if (response.status === 307) {
+        // If the backend sends 307 (redirect), that means 2FA is enabled
+        setError('Two-Factor Authentication is enabled. Please check your email for the OTP to complete login.');
+        const redirectUrl = response.headers.get('Location');  // Get the redirect URL
+        // Optionally, you can navigate to the OTP verification page here if needed
+       // navigate('/verify-otp'); // Assuming this is the OTP verification page route
+       navigate('/verify-otp', { state: { email: formData.email } });
+
       } else {
         const data = await response.json();
         setError(data.message || 'Login failed');
@@ -333,13 +342,15 @@ const Login = () => {
   // Handle OTP submission and verification
   const handleOtpSubmit = async (e) => {
     e.preventDefault();
+    setIsLoading(true);
+    setError(null); // Reset error message
 
     try {
       const response = await fetch('http://localhost:7000/auth/verify-2fa-otp', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'Authorization': `Bearer ${authToken}`, // Send token in header for 2FA verification
+          'Authorization': ` ${authToken}`, // Send token in header for 2FA verification
         },
         body: JSON.stringify({
           otp: otpData.otp,
@@ -348,7 +359,6 @@ const Login = () => {
       });
 
       if (response.ok) {
-        // OTP verification successful
         const data = await response.json();
         alert(data.message || 'OTP verified successfully');
 
@@ -365,6 +375,8 @@ const Login = () => {
     } catch (error) {
       console.error('Error during OTP verification:', error);
       setError(error.message || 'An error occurred while verifying OTP');
+    } finally {
+      setIsLoading(false); // Set loading to false when the request is complete
     }
   };
 
