@@ -1,0 +1,239 @@
+/* 
+.manage-companies-page {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    background-color: #f4f7fc;
+  }
+  
+  .home-content {
+    display: flex;
+    flex: 1;
+  }
+  
+  .admin-job-application-page {
+    margin-left: 250px; 
+    padding: 20px;
+    width: 100%;
+  }
+  
+  .job-postings {
+    background-color: white;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .job-postings ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .job-postings li {
+    padding: 10px;
+    cursor: pointer;
+    font-size: 18px;
+  }
+  
+  .job-postings li:hover {
+    background-color: #edf2f7;
+    border-radius: 4px;
+  }
+  
+  .job-stats {
+    background-color: white;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .job-stats h3 {
+    margin-bottom: 15px;
+    font-size: 24px;
+  }
+  
+  .applicants {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .applicants input[type='text'],
+  .applicants select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border-radius: 4px;
+    font-size: 16px;
+  }
+  
+  .applicants table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .applicants th, .applicants td {
+    padding: 15px;
+    text-align: left;
+    border-bottom: 1px solid #e2e8f0;
+  }
+  
+  .applicants th {
+    background-color: #f7fafc;
+  }
+  
+  .applicants tr:hover {
+    background-color: #f4f7fc;
+  }
+  
+  .applicants button {
+    padding: 10px 20px;
+    margin: 5px;
+    background-color: #3182ce;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .applicants button:hover {
+    background-color: #2b6cb0;
+  }
+   */
+
+   /* Ensure the page takes full height and has a sticky footer */
+.manage-companies-page {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    background-color: #f4f7fc;
+  }
+  
+  .home-content {
+    display: flex;
+    flex: 1;
+    overflow: auto; /* Allows scrolling in the main content area */
+  }
+  
+  .admin-job-application-page {
+    margin-left: 250px; 
+    padding: 20px;
+    width: 100%;
+    overflow: auto; /* Allows scrolling within the admin page if the content is long */
+  }
+  
+  .job-postings {
+    background-color: white;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .job-postings ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .job-postings li {
+    padding: 10px;
+    cursor: pointer;
+    font-size: 18px;
+  }
+  
+  .job-postings li:hover {
+    background-color: #edf2f7;
+    border-radius: 4px;
+  }
+  
+  .job-stats {
+    background-color: white;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .job-stats h3 {
+    margin-bottom: 15px;
+    font-size: 24px;
+  }
+  
+  .applicants {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .applicants input[type='text'],
+  .applicants select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border-radius: 4px;
+    font-size: 16px;
+  }
+  
+  .applicants table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .applicants th,
+  .applicants td {
+    padding: 15px;
+    text-align: left;
+    border-bottom: 1px solid #e2e8f0;
+  }
+  
+  .applicants th {
+    background-color: #f7fafc;
+  }
+  
+  .applicants tr:hover {
+    background-color: #f4f7fc;
+  }
+  
+  .applicants button {
+    padding: 10px 20px;
+    margin: 5px;
+    background-color: #3182ce;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .applicants button:hover {
+    background-color: #2b6cb0;
+  }
+  
+  /* Footer Styles */
+  footer {
+    background-color: #2b6cb0;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    position: relative;
+    width: 100%;
+    margin-top: auto; /* Ensures footer stays at the bottom */
+  }
+  
+  footer p {
+    margin: 0;
+    font-size: 14px;
+  }
+  
+  footer a {
+    color: #fff;
+    text-decoration: none;
+  }
+  
+  footer a:hover {
+    text-decoration: underline;
+  }
+  
