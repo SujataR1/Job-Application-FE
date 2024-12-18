@@ -1,0 +1,172 @@
+General profile management styling
+.profile-management-page {
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: #f4f4f4;
+  }
+  
+  .profile-management-content {
+    display: flex;
+    flex: 1;
+  }
+  
+  .profile-main-content {
+    flex: 1;
+    padding: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+    background-color: #ffffff;
+    border-radius: 8px;
+  }
+  
+  .profile-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 30px;
+  }
+  
+  .profile-photo {
+    margin-right: 20px;
+    position: relative;
+  }
+  
+  .profile-photo-img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    cursor: pointer;
+  }
+  
+  .profile-photo input {
+    display: none;
+  }
+  
+  .profile-info {
+    flex: 1;
+  }
+  
+  .profile-info h2 {
+    margin-bottom: 10px;
+    font-size: 24px;
+    color: #333;
+  }
+  
+  .profile-info p {
+    margin-bottom: 5px;
+    color: #777;
+  }
+  
+  .enhance-profile-button {
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .enhance-profile-button:hover {
+    background-color: #45a049;
+  }
+  
+  .profile-sections {
+    margin-top: 40px;
+  }
+  
+  .profile-section {
+    margin-bottom: 25px;
+  }
+  
+  .profile-section h3 {
+    font-size: 1.4em;
+    color: #333;
+    margin-bottom: 10px;
+  }
+  
+  .profile-section input,
+  .profile-section button {
+    padding: 8px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    width: 100%;
+  }
+  
+  .profile-section input[type="text"] {
+    margin-bottom: 10px;
+  }
+  
+  .profile-section button {
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .profile-section button:hover {
+    background-color: #0056b3;
+  }
+  
+  .profile-section ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .profile-section ul li {
+    background-color: #f9f9f9;
+    margin-bottom: 8px;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+  }
+  
+  .switch {
+    position: relative;
+    display: inline-block;
+    width: 34px;
+    height: 20px;
+  }
+  
+  .switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+  
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: 0.4s;
+    border-radius: 50px;
+  }
+  
+  .slider:before {
+    position: absolute;
+    content: "";
+    height: 12px;
+    width: 12px;
+    border-radius: 50px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: 0.4s;
+  }
+  
+  input:checked + .slider {
+    background-color: #4CAF50;
+  }
+  
+  input:checked + .slider:before {
+    transform: translateX(14px);
+  }
+  

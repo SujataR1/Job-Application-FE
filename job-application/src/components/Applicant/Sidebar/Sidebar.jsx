@@ -1,6 +1,7 @@
 
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { FaCog } from 'react-icons/fa';  // Import FaCog icon
 import { FaUserCircle, FaUsers, FaBriefcase, FaEnvelope, FaClipboardList } from 'react-icons/fa'; // Import necessary React Icons
 import './Sidebar.css';
 
@@ -30,6 +31,12 @@ const Sidebar = () => {
               </Link>
             </li>
             <li>
+              <Link to="/jobprofile" className="sidebar-item">
+                <FaUserCircle className="sidebar-icon" /> My Job Profile
+              </Link>
+            </li>
+
+            <li>
               <Link to="/networks" className="sidebar-item">
                 <FaUsers className="sidebar-icon" /> My Network
               </Link>
@@ -47,6 +54,11 @@ const Sidebar = () => {
             <li>
               <Link to="/messages" className="sidebar-item">
                 <FaEnvelope className="sidebar-icon" /> Messages
+              </Link>
+            </li>
+            <li>
+              <Link to="/setting" className="sidebar-item">
+                <FaCog className="sidebar-icon" /> Setting
               </Link>
             </li>
            

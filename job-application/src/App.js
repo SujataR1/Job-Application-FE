@@ -121,6 +121,9 @@ import ManageCompanies from './components/Admin/ManageCompanies/Companies';
 import AdminReports from './components/Admin/Reports/Reports';
 import AdminSettings from './components/Admin/Settings/Settings';
 
+import JobProfile from './components/Applicant/jobprofile/jobprofile';
+import Setting from './components/Applicant/UserSettings/Setting';
+
 
 
 
@@ -275,6 +278,9 @@ const App = () => {
                 <Route path="/admin-settings" element={<AdminSettings />} />
 
 
+                <Route path="/jobprofile" element={<JobProfile />} />
+                <Route path="/setting" element={<Setting />} />
+                
 
                 
 
