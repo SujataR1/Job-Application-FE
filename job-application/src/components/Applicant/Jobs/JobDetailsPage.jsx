@@ -1,10 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import { useParams } from "react-router-dom";
 import "./JobDetailsPage.css"; // Import the custom CSS file
 
 const JobDetailsPage = () => {
     const { jobId } = useParams(); // Get job ID from URL
-    
+
     // Sample job listings data
     const jobListings = [
         {
@@ -57,12 +57,20 @@ const JobDetailsPage = () => {
         },
     ];
 
+    // Ensure useState is called unconditionally, at the top of the component
+    const [isApplied, setIsApplied] = useState(false);
+
     // Find the job by ID
     const job = jobListings.find((job) => job.id === parseInt(jobId));
 
     if (!job) {
         return <p>Job not found</p>;
     }
+
+    // Handle Apply Now button click
+    const handleApplyClick = () => {
+        setIsApplied(true);
+    };
 
     return (
         <div className="job-details">
@@ -139,13 +147,22 @@ const JobDetailsPage = () => {
             </div>
 
             <div className="activity-box">
-                <h2>Activity on Internshala</h2>
+                <h2>Activity on Jobs</h2>
                 <p>Hiring since {job.activity.hiringSince}</p>
                 <p>{job.activity.opportunitiesPosted} opportunities posted</p>
                 <p>{job.activity.candidatesHired} candidate hired</p>
+            </div>
+
+            <div className="job-actions">
+                {isApplied ? (
+                    <p>You Have applied for this Job. Will Get Back to you shortly</p>
+                ) : (
+                    <button className="apply-button" onClick={handleApplyClick}>Apply Now</button>
+                )}
             </div>
         </div>
     );
 };
 
 export default JobDetailsPage;
+
