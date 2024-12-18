@@ -83,7 +83,6 @@ const Profile = () => {
     formDataObj.append('about', formData.about);
     formDataObj.append('email', formData.email);
     formDataObj.append('phoneNumber', formData.phoneNumber);
-  
 
     // If a new image is selected, append it to FormData
     if (newImage) {
@@ -211,117 +210,115 @@ const Profile = () => {
 
   return (
     <div className="home-page">
-      {/* Navbar/Header */}
       <EmployerNavbar />
       <div className="flex justify-center items-center min-h-screen bg-gray-100" style={{ backgroundImage: 'url(/images/background.png)' }}>
-        <div className="home-content flex flex-row">
-          {/* Sidebar */}
-          <EmployerSidebar />
-          <div className="profile-container">
-            <div className="profile-header">
-              <h2>My Profile</h2>
-            </div>
+      <div className="home-content flex flex-row">
+     
+        <EmployerSidebar />
+  
+      <div className="profile-container">
+        <div className="profile-header">
+          <h2>My Profile</h2>
+        </div>
 
-            <div className="profile-card">
-              <div className="profile-image-container">
-                {/* Display the profile image */}
-                <div
-                  className="profile-image"
-                  style={{
-                    backgroundImage: `url(${newImage || user?.profilePicture})`, // Display new or fetched image
-                    backgroundSize: 'cover',
-                    backgroundPosition: 'center',
-                  }}
-                  onClick={() => setIsImageEditing(true)} // Click on the image to start editing
-                ></div>
+        <div className="profile-card">
+          <div className="profile-image-container">
+            {/* Display the profile image */}
+            <div
+              className="profile-image"
+              style={{
+                backgroundImage: `url(${newImage || user?.profilePicture})`, // Display new or fetched image
+                backgroundSize: 'cover',
+                backgroundPosition: 'center',
+              }}
+              onClick={() => setIsImageEditing(true)} // Click on the image to start editing
+            ></div>
 
-                {/* Edit image modal */}
-                {isImageEditing && (
-                  <div className="edit-image-modal">
-                    <input type="file" onChange={handleImageChange} />
-                    <button onClick={() => setIsImageEditing(false)}>Cancel</button>
-                  </div>
-                )}
+            {/* Edit image modal */}
+            {isImageEditing && (
+              <div className="edit-image-modal">
+                <input type="file" onChange={handleImageChange} />
+                <button onClick={() => setIsImageEditing(false)}>Cancel</button>
               </div>
-
-              <div className="profile-details">
-                {user ? (
-                  <>
-                    <div className="profile-detail-row">
-                      <label>Name:</label>
-                      <input
-                        type="text"
-                        name="fullName"
-                        value={formData.fullName}
-                        onChange={handleChange}
-                        disabled={!isEditing} // Disable input when not editing
-                      />
-                    </div>
-                    <div className="profile-detail-row">
-                      <label>About:</label>
-                      <input
-                        type="text"
-                        name="about"
-                        value={formData.about}
-                        onChange={handleChange}
-                        disabled={!isEditing} // Disable input when not editing
-                      />
-                    </div>
-                    <div className="profile-detail-row">
-                      <label>Email:</label>
-                      <input
-                        type="email"
-                        name="email"
-                        value={formData.email}
-                        onChange={handleChange}
-                        disabled={!isEditing} // Disable input when not editing
-                      />
-                      {!formData.isEmailVerified ? (
-                        <button className="verify-email-button" onClick={handleVerifyEmail}>
-                          Verify Email
-                        </button>
-                      ) : (
-                        <span className="verified">Verified</span>
-                      )}
-                    </div>
-                    <div className="profile-detail-row">
-                      <label>Phone Number:</label>
-                      <input
-                        type="text"
-                        name="phoneNumber"
-                        value={formData.phoneNumber}
-                        onChange={handleChange}
-                        disabled={!isEditing} // Disable input when not editing
-                      />
-                    </div>
-
-                   
-                     <button
-   className="update-button"
-   onClick={isEditing ? handleUpdateDetails : () => setIsEditing(true)}
-  style={{
-    padding: '6px 12px',           // Smaller padding
-    fontSize: '14px',              // Smaller font size
-     backgroundColor: isEditing ? '#28a745' : '#007bff', // Green for 'Update', Blue for 'Edit'
-     color: 'white',                // White text color
-    border: 'none',                // No border
-     borderRadius: '5px',           // Rounded corners
-     cursor: 'pointer',             // Pointer cursor on hover
-     transition: 'background-color 0.3s ease',     width:'100px' // Smooth background transition
-   }}
- >
-   {isEditing ? 'Update Details' : 'Edit'}
-</button>
-                  </>
-                ) : (
-                  <p>Loading...</p>
-                )}
-              </div>
-
-              {error && <div className="error-message">{error}</div>}
-              {successMessage && <div className="success-message">{successMessage}</div>} {/* Display success message */}
-            </div>
+            )}
           </div>
+
+          <div className="profile-details">
+            {user ? (
+              <>
+                <div className="profile-detail-row">
+                  <label>Name:</label>
+                  <input
+                    type="text"
+                    name="fullName"
+                    value={formData.fullName}
+                    onChange={handleChange}
+                    disabled={!isEditing} // Disable input when not editing
+                  />
+                </div>
+                <div className="profile-detail-row">
+                  <label>About:</label>
+                  <input
+                    type="text"
+                    name="about"
+                    value={formData.about}
+                    onChange={handleChange}
+                    disabled={!isEditing} // Disable input when not editing
+                  />
+                </div>
+                <div className="profile-detail-row">
+                  <label>Email:</label>
+                  <input
+                    type="email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    disabled={!isEditing} // Disable input when not editing
+                  />
+                  {!formData.isEmailVerified ? (
+                    <button className="verify-email-button" onClick={handleVerifyEmail}>
+                      Verify Email
+                    </button>
+                  ) : (
+                    <span className="verified">Verified</span>
+                  )}
+                </div>
+                <div className="profile-detail-row">
+                  <label>Phone Number:</label>
+                  <input
+                    type="text"
+                    name="phoneNumber"
+                    value={formData.phoneNumber}
+                    onChange={handleChange}
+                    disabled={!isEditing} // Disable input when not editing
+                  />
+                </div>
+
+                <button
+                  className="update-button"
+                  onClick={isEditing ? handleUpdateDetails : () => setIsEditing(true)}
+                  style={{
+                    padding: '6px 12px', // Smaller padding
+                    fontSize: '14px', // Smaller font size
+                    backgroundColor: isEditing ? '#28a745' : '#007bff', // Green for 'Update', Blue for 'Edit'
+                    color: 'white', // White text color
+                    border: 'none', // No border
+                    borderRadius: '5px', // Rounded corners
+                    cursor: 'pointer', // Pointer cursor on hover
+                    transition: 'background-color 0.3s ease',
+                    width: '100px', // Button width
+                  }}
+                >
+                  {isEditing ? 'Update Details' : 'Edit'}
+                </button>
+              </>
+            ) : (
+              <p>Loading...</p>
+            )}
+          </div>
+
+          {error && <div className="error-message">{error}</div>}
+          {successMessage && <div className="success-message">{successMessage}</div>}
         </div>
       </div>
 
@@ -342,6 +339,8 @@ const Profile = () => {
           </div>
         </div>
       )}
+    </div>
+    </div>
     </div>
   );
 };
