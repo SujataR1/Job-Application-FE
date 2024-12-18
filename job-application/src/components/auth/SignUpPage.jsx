@@ -354,12 +354,12 @@ const Signup = () => {
                             <label className="block text-gray-700">Phone Number</label>
                             <div className="flex gap-2">
                                 {/* Country Code is fixed as +91 */}
-
+                             
                                 <select className="p-3 border border-gray-300 rounded-l w-1/3 bg-gray-200 text-gray-500"> <option value="+91">+91 (India)</option>
-                                    <option value="+1">+1 (USA)</option>
-                                    <option value="+44">+44 (UK)</option>
-                                    <option value="+61">+61 (Australia)</option>
-                                    <option value="+81">+81 (Japan)</option></select>
+        <option value="+1">+1 (USA)</option>
+        <option value="+44">+44 (UK)</option>
+        <option value="+61">+61 (Australia)</option>
+        <option value="+81">+81 (Japan)</option></select>
 
                                 {/* Phone Number Input */}
                                 <input

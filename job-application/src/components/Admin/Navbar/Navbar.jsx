@@ -30,12 +30,12 @@ function AdminNavbar() {
           </Link>
         </li>
         <li onClick={() => { setMenu("reports") }}>
-          <Link style={{ textDecoration: 'none', color: 'white' }} to='/reports'>
+          <Link style={{ textDecoration: 'none', color: 'white' }} to='/admin-reports'>
             Reports {menu === "reports" ? <hr /> : <></>}
           </Link>
         </li>
         <li onClick={() => { setMenu("settings") }}>
-          <Link style={{ textDecoration: 'none', color: 'white' }} to='/settings'>
+          <Link style={{ textDecoration: 'none', color: 'white' }} to='/admin-settings'>
             Settings {menu === "settings" ? <hr /> : <></>}
           </Link>
         </li>
