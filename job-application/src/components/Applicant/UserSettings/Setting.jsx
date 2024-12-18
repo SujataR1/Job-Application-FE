@@ -19,7 +19,7 @@
 //     const fetchSettings = async () => {
 //       const token = localStorage.getItem('token');
 //       const refreshToken = localStorage.getItem('refreshToken');
-      
+
 //       if (!token) {
 //         setError('You need to be logged in.');
 //         setIsLoading(false);
@@ -90,7 +90,7 @@
 
 //   const handleSave = async () => {
 //     const token = localStorage.getItem('token');
-    
+
 //     if (!token) {
 //       setError('You need to be logged in.');
 //       return;

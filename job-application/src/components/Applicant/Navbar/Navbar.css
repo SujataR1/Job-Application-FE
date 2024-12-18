@@ -82,6 +82,7 @@ ul {
 
 
 ul li:hover {
-   
+    /* color: #ffffff; 
+    background-color: #34495e;  */
     cursor: pointer;
 }
