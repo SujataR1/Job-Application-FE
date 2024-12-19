@@ -81,22 +81,20 @@ body {
   margin-right: 5px;
 }
 
-/* Individual Notification Item */
 .notification-item {
-  display: flex;
-  align-items: flex-start;
-  background-color: #ffffff;
-  padding: 20px;
-  margin-bottom: 15px;
-  border-radius: 10px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  padding: 10px;
+  margin: 5px 0;
+  background-color: #f9f9f9;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  cursor: pointer; /* Changes cursor to pointer */
+  transition: background-color 0.3s ease;
 }
 
 .notification-item:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+  background-color: #f1f1f1; /* Add a hover effect */
 }
+
 
 .notification-item .icon {
   background-color: #3498db;
