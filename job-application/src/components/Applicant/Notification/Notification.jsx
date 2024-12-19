@@ -85,11 +85,12 @@ const dummyData = {
   ],
 };
 
-const Notifications = () => {
+const Notification = () => {
   const [notifications, setNotifications] = useState([]); // Stores all notifications
   const [newNotification, setNewNotification] = useState(null); // Stores the latest notification
   const [isConnected, setIsConnected] = useState(false); // WebSocket connection status
   const socketRef = useRef(null); // Persistent socket reference
+  
 
   const fetchNotifications = () => {
     const token = localStorage.getItem("token");
@@ -193,4 +194,4 @@ const Notifications = () => {
   );
 };
 
-export default Notifications;
+export default Notification;
