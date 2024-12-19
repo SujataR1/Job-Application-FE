@@ -38,9 +38,9 @@ const Sidenavbar = () => {
                     <li><Link to="/manage-users"><FaUsers /> Manage Users</Link></li>
                     <li><Link to="/manage-jobs"><FaBriefcase /> Manage Jobs</Link></li>
                     <li><Link to="/manage-companies"><FaBuilding /> Manage Companies</Link></li>
-                    <li><Link to="/applications"><FaRegPaperPlane /> Job Applications</Link></li>
-                    <li><Link to="/reports"><FaChartBar /> Reports</Link></li>
-                    <li><Link to="/settings"><FaCog /> Settings</Link></li>
+                    <li><Link to="/admin-job-applications"><FaRegPaperPlane /> Job Applications</Link></li>
+                    <li><Link to="/admin-reports"><FaChartBar /> Reports</Link></li>
+                    <li><Link to="/admin-settings"><FaCog /> Settings</Link></li>
                 </ul>
             </div>
         </>

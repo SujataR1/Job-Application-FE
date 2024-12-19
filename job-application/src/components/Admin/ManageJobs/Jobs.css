@@ -1,4 +1,4 @@
-body {
+/* body {
     font-family: Arial, sans-serif;
     background-color: #f4f4f4;
     margin: 0;
@@ -125,4 +125,161 @@ body {
   }
   .admin-container {
     margin-left: 700px;
+  } */
+
+  /* Job Listing Page Styles */
+/* General Container */
+.job-listing-container {
+  margin: 30px;
+  font-family: Arial, sans-serif;
+  margin-left: 600px;
+}
+
+/* Header Styling */
+h1 {
+  text-align: center;
+  color: #333;
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+/* Job Listing Table */
+.job-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.job-table th,
+.job-table td {
+  border: 1px solid #ddd;
+  padding: 12px;
+  text-align: left;
+  font-size: 1rem;
+}
+
+.job-table th {
+  background-color: #007BFF;
+  color: white;
+  font-weight: bold;
+}
+
+.job-table tr:hover {
+  background-color: #f1f1f1;
+}
+
+.job-table td button {
+  padding: 6px 12px;
+  margin: 5px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.edit-btn {
+  background-color: #28a745;
+  color: white;
+  border-radius: 5px;
+}
+
+.delete-btn {
+  background-color: #dc3545;
+  color: white;
+  border-radius: 5px;
+}
+
+.edit-btn:hover {
+  background-color: #218838;
+}
+
+.delete-btn:hover {
+  background-color: #c82333;
+}
+
+/* Edit Form Styles */
+.edit-form-container {
+  margin: 30px auto;
+  padding: 20px;
+  width: 80%;
+  max-width: 600px;
+  background-color: #f8f9fa;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+.edit-form-container h2 {
+  text-align: center;
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.edit-form-container form div {
+  margin-bottom: 15px;
+}
+
+.edit-form-container form label {
+  font-weight: bold;
+  color: #555;
+}
+
+.edit-form-container form input,
+.edit-form-container form select {
+  width: 100%;
+  padding: 10px;
+  font-size: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  margin-top: 5px;
+}
+
+.edit-form-container form button {
+  width: 100%;
+  padding: 12px;
+  font-size: 1rem;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.update-btn {
+  background-color: #28a745;
+}
+
+.cancel-btn {
+  background-color: #f8f9fa;
+  color: #333;
+  border: 1px solid #ddd;
+}
+
+.update-btn:hover {
+  background-color: #218838;
+}
+
+.cancel-btn:hover {
+  background-color: #e2e6ea;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .job-listing-container {
+    margin: 15px;
   }
+
+  .edit-form-container {
+    width: 100%;
+    padding: 15px;
+  }
+
+  .job-table th,
+  .job-table td {
+    font-size: 0.9rem;
+  }
+
+  .edit-btn,
+  .delete-btn {
+    padding: 4px 8px;
+  }
+}

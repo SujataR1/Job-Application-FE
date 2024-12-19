@@ -117,10 +117,13 @@ import Contacts from './components/Applicant/Network/Contacts';
 import Notification from './components/Applicant/Notification/Notification';
 import MyApplication from './components/Applicant/myapplication/MyApplication';
 import EmployerProfile from './components/Employer/MyProfile/Myprofile';
+import ManageCompanies from './components/Admin/ManageCompanies/Companies';
+import AdminReports from './components/Admin/Reports/Reports';
+import AdminSettings from './components/Admin/Settings/Settings';
+
 import JobProfile from './components/Applicant/jobprofile/jobprofile';
 import Setting from './components/Applicant/UserSettings/Setting';
-import Enable2FA from './components/auth/Enable2FA';
-import VerifyOtp from './components/auth/VerifyOtp';
+
 
 
 
@@ -136,7 +139,7 @@ const ConditionalNavbar = () => {
     // Render Navbar only if the path is not in the excluded list and not a job analytics page
     return !['/login', '/signup', '/', '/Enavbar', '/Esidebar', '/employerdashboard', '/application', 
              '/jobposting', '/job-analytics/:jobId', '/interview', '/notifications', '/analytics', 
-             '/message', '/jobposting', '/Esetting','/companyprofile','/network','/companyanalytics','/forgot-password','/adnavbar','/adsidenavbar','/admindashboard','/manage-users','/manage-jobs','/myprofile'].includes(location.pathname) && !jobAnalyticsMatch && <Navbar />;
+             '/message', '/jobposting', '/Esetting','/companyprofile','/network','/companyanalytics','/forgot-password','/adnavbar','/adsidenavbar','/admindashboard','/manage-users','/manage-jobs','/myprofile','/manage-companies','/admin-reports','/admin-settings'].includes(location.pathname) && !jobAnalyticsMatch && <Navbar />;
   };
    
     // return !['/login', '/signup','/','/Enavbar','/Esidebar','/employerdashboard','/application','/jobposting','/job-analytics/:jobId','/interview','/notifications','/analytics','/message','/jobposting','/Esetting'].includes(location.pathname) && <Navbar />;
@@ -270,10 +273,14 @@ const App = () => {
                 <Route path="/notification" element={<Notification />} />
                 <Route path="/myapplication" element={<MyApplication />} />
                 <Route path="/myprofile" element={<EmployerProfile />} />
+                <Route path="/manage-companies" element={<ManageCompanies />} />
+                <Route path="/admin-reports" element={<AdminReports />} />
+                <Route path="/admin-settings" element={<AdminSettings />} />
+
+
                 <Route path="/jobprofile" element={<JobProfile />} />
                 <Route path="/setting" element={<Setting />} />
-                <Route path="/enable-2fa" element={<Enable2FA />} />
-                <Route path="/verify-otp" element={<VerifyOtp />} />
+                
 
                 
 
