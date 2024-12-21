@@ -1,31 +1,107 @@
-/* HomePage CSS */
+/* Home.css */
 
+/* General Layout */
 .home-page {
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .navbar-header {
-    background-color: #333;
-    padding: 1rem;
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-  }
-  
-  .account-icon {
-    cursor: pointer;
-  }
-  
-  .home-content {
-    display: flex;
-    margin-top: 20px;
-  }
-  
-  .main-content {
-    flex: 1;
-    padding: 20px;
-  }
-  
-  /* Optional: You can add more styles to improve the look */
-  
+  display: flex;
+  flex-direction: row;
+  height: 100vh; /* Ensure it takes full height */
+  padding: 20px;
+}
+
+.home-content {
+  display: flex;
+  flex-direction: row;
+  width: 100%; /* Full width for main content */
+}
+
+.sidebar {
+  width: 300px;
+  position: fixed; /* Sidebar stays fixed */
+  left: 0;
+  top: 0;
+  bottom: 0;
+  background-color: #f4f4f4;
+  padding: 20px;
+  z-index: 100;
+}
+
+.feed-container {
+  margin-left: 320px; /* Space for sidebar */
+  width: calc(100% - 320px); /* Remaining width */
+  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+  resize: vertical;
+}
+
+button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  margin-top: 10px;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+.posts-list {
+  margin-top: 20px;
+}
+
+.post-card {
+  background-color: #f9f9f9;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-bottom: 15px;
+}
+
+.post-card h3 {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.post-card p {
+  font-size: 16px;
+  color: #555;
+}
+
+.post-card small {
+  display: block;
+  margin-top: 10px;
+  font-size: 12px;
+  color: #888;
+}
+
+.post-card div {
+  margin-top: 10px;
+}
+
+.post-card button {
+  margin-right: 10px;
+  background-color: #28a745; /* Green button */
+}
+
+.post-card button:hover {
+  background-color: #218838;
+}
