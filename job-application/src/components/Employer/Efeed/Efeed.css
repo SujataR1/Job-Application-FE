@@ -1,218 +1,196 @@
-/* General Feed Layout */
-.newsfeed-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 20px;
-    background-color: #f4f6f9;
-  }
-  
-  .search-bar-container {
-    width: 100%;
-    max-width: 800px;
-    margin-bottom: 20px;
-  }
-  
-  .search-input {
-    width: 100%;
-    padding: 10px;
-    font-size: 16px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
-  }
-  
-  .posts {
-    width: 100%;
-    max-width: 800px;
-  }
-  
-  .post-card {
-    background-color: #fff;
-    margin-bottom: 20px;
-    padding: 15px;
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s;
-  }
-  
-  .post-card:hover {
-    transform: translateY(-5px);
-  }
-  
-  .post-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 10px;
-  }
-  
-  .post-user {
-    font-weight: bold;
-    font-size: 18px;
-  }
-  
-  .post-time {
-    font-size: 14px;
-    color: #777;
-  }
-  
-  .repost-indicator {
-    font-size: 14px;
-    color: #007bff;
-  }
-  
-  .post-content {
-    font-size: 16px;
-    margin-bottom: 10px;
-  }
-  
-  .post-media {
-    margin: 10px 0;
-  }
-  
-  .post-video,
-  .post-image {
-    width: 100%;
-    max-height: 400px;
-    object-fit: cover;
-    border-radius: 8px;
-  }
-  
-  .post-actions {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 10px;
-  }
-  
-  .like-button,
-  .comment-button,
-  .share-button,
-  .repost-button,
-  .submit-comment-button {
-    border: none;
-    background-color: #f0f0f0;
-    padding: 8px 16px;
-    font-size: 14px;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-  }
-  
-  .like-button.liked {
-    background-color: #007bff;
-    color: #fff;
-  }
-  
-  .like-button:hover,
-  .comment-button:hover,
-  .share-button:hover,
-  .repost-button:hover {
-    background-color: #e0e0e0;
-  }
-  
-  .submit-comment-button {
-    background-color: #007bff;
-    color: white;
-  }
-  
-  .repost-button {
-    background-color: #f1f1f1;
-  }
-  
-  .comment-button {
-    background-color: #e7e7e7;
-  }
-  
-  .comments {
-    margin-top: 10px;
-  }
-  
-  .comment {
-    font-size: 14px;
-    margin-bottom: 5px;
-  }
-  
-  .comment-form {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-  }
-  
-  .comment-input {
-    width: 100%;
-    padding: 8px;
-    font-size: 14px;
-    border-radius: 4px;
-    border: 1px solid #ccc;
-    margin-bottom: 8px;
-    resize: none;
-  }
-  
-  .job-info {
-    margin-top: 15px;
-    font-size: 14px;
-    border-top: 1px solid #ddd;
-    padding-top: 10px;
-  }
-  
-  .job-status {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-weight: bold;
-  }
-  
-  .job-status button {
-    background-color: #007bff;
-    color: white;
-    padding: 5px 10px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-  }
-  
-  .job-status button:hover {
-    background-color: #0056b3;
-  }
-  
-  .applicant-count {
-    font-size: 14px;
-    margin-top: 5px;
-    color: #007bff;
-  }
-  
-  /* Add responsiveness */
-  @media (max-width: 768px) {
-    .newsfeed-container {
-      padding: 15px;
-    }
-  
-    .search-input {
-      font-size: 14px;
-      padding: 8px;
-    }
-  
-    .post-card {
-      padding: 10px;
-    }
-  
-    .post-user {
-      font-size: 16px;
-    }
-  
-    .post-content {
-      font-size: 14px;
-    }
-  
-    .like-button,
-    .comment-button,
-    .share-button,
-    .repost-button,
-    .submit-comment-button {
-      font-size: 12px;
-      padding: 6px 12px;
-    }
-  }
-  
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f9;
+  margin: 0;
+  padding: 0;
+}
+
+.News-Feed {
+  width: 70%;
+  margin: 20px auto;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+  text-align: center;
+  color: #333;
+}
+
+.create-post-form {
+  background-color: #f9f9f9;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+}
+
+.create-post-form h2 {
+  text-align: center;
+  color: #333;
+}
+
+.create-post-form form {
+  display: flex;
+  flex-direction: column;
+}
+
+.create-post-form label {
+  font-size: 1.2rem;
+  margin-bottom: 5px;
+  color: #333;
+}
+
+.create-post-form input,
+.create-post-form textarea,
+.create-post-form select {
+  padding: 10px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-bottom: 10px;
+}
+
+.create-post-form button {
+  padding: 10px;
+  background-color: #007bff;
+  color: #fff;
+  font-size: 1rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.create-post-form button:hover {
+  background-color: #0056b3;
+}
+
+.create-post-form input[type="file"] {
+  padding: 5px;
+}
+
+.create-post-form .error {
+  color: red;
+  font-size: 0.9rem;
+  margin-top: 10px;
+}
+
+.post {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+}
+
+.post-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.post-header h3 {
+  margin: 0;
+  color: #333;
+  font-size: 1.5rem;
+}
+
+.post-actions button {
+  background-color: #28a745; 
+  color: #fff;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  margin-left: 10px;
+  transition: background-color 0.3s;
+}
+
+.post-actions button:hover {
+  background-color: #218838; 
+}
+
+.post-actions button.delete {
+  background-color: #dc3545; 
+}
+
+.post-actions button.delete:hover {
+  background-color: #c82333; 
+}
+
+.post-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.post-footer button.like {
+  background-color: #007bff; 
+  color: #fff;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s;
+}
+
+.post-footer button.like:hover {
+  background-color: #0056b3; 
+}
+
+.post-footer button.comment {
+  background-color: #ffc107; 
+  color: #fff;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s;
+}
+
+.post-footer button.comment:hover {
+  background-color: #e0a800; 
+}
+
+.post-footer button.repost {
+  background-color: #17a2b8; 
+  color: #fff;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s;
+}
+
+.post-footer button.repost:hover {
+  background-color: #138496; 
+}
+
+button:active {
+  background-color: #d4b900;
+}
+
+button svg {
+  margin-right: 5px;
+}
+
+p {
+  font-size: 1.2rem;
+  color: #555;
+  text-align: center;
+}
+
+.error {
+  color: red;
+  font-size: 1rem;
+  text-align: center;
+}
+
