@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { FaUserCircle, FaChartBar, FaBriefcase, FaBuilding, FaCog } from 'react-icons/fa';  // Import React Icons
+import { FaUserCircle, FaChartBar, FaBriefcase, FaBuilding, FaCog,FaComment } from 'react-icons/fa';  // Import React Icons
 import './Sidebar.css';
 
 const ESidebar = () => {
@@ -97,6 +97,11 @@ const ESidebar = () => {
             <li>
               <Link to="/companyanalytics" className="sidebar-item">
                 <FaChartBar className="sidebar-icon" /> Analytics
+              </Link>
+            </li>
+            <li>
+              <Link to="/reviews" className="sidebar-item">
+                <FaComment className="sidebar-icon" /> Reviews
               </Link>
             </li>
             <li>

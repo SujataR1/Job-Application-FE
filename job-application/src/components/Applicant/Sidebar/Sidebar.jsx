@@ -57,6 +57,11 @@ const Sidebar = () => {
               </Link>
             </li>
             <li>
+              <Link to="/help" className="sidebar-item">
+                <FaEnvelope className="sidebar-icon" /> Help and Support
+              </Link>
+            </li>
+            <li>
               <Link to="/setting" className="sidebar-item">
                 <FaCog className="sidebar-icon" /> Setting
               </Link>

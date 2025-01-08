@@ -123,6 +123,10 @@ import AdminSettings from './components/Admin/Settings/Settings';
 import AdmiJobApplication from './components/Admin/JobApplication/JobApplication';
 import JobProfile from './components/Applicant/jobprofile/jobprofile';
 import Setting from './components/Applicant/UserSettings/Setting';
+import JobStatus from './components/Applicant/JobStatusPage/JobStatus';
+import HelpAndSupport from './components/Applicant/HelpandSupport/Help';
+import Reviews from './components/Employer/Reviews/Reviews';
+
 
 //This component is used to conditionally render Navbar based on the current path
 const ConditionalNavbar = () => {
@@ -134,7 +138,7 @@ const ConditionalNavbar = () => {
     // Render Navbar only if the path is not in the excluded list and not a job analytics page
     return !['/login', '/signup', '/', '/Enavbar', '/Esidebar', '/employerdashboard', '/application', 
              '/jobposting', '/job-analytics/:jobId', '/interview', '/notifications', '/analytics', 
-             '/message', '/jobposting', '/Esetting','/companyprofile','/network','/companyanalytics','/forgot-password','/adnavbar','/adsidenavbar','/admindashboard','/manage-users','/manage-jobs','/myprofile','/manage-companies','/admin-reports','/admin-settings','/admin-job-applications'].includes(location.pathname) && !jobAnalyticsMatch && <Navbar />;
+             '/message', '/jobposting', '/Esetting','/companyprofile','/network','/companyanalytics','/forgot-password','/adnavbar','/adsidenavbar','/admindashboard','/manage-users','/manage-jobs','/myprofile','/manage-companies','/admin-reports','/admin-settings','/admin-job-applications','/reviews'].includes(location.pathname) && !jobAnalyticsMatch && <Navbar />;
   };
    
     // return !['/login', '/signup','/','/Enavbar','/Esidebar','/employerdashboard','/application','/jobposting','/job-analytics/:jobId','/interview','/notifications','/analytics','/message','/jobposting','/Esetting'].includes(location.pathname) && <Navbar />;
@@ -274,6 +278,10 @@ const App = () => {
                 <Route path="/admin-job-applications" element={<AdmiJobApplication />} />
                 <Route path="/jobprofile" element={<JobProfile />} />
                 <Route path="/setting" element={<Setting />} />
+                <Route path="/job-status/:jobId" element={<JobStatus />} />
+                <Route path="/help" element={<HelpAndSupport />} />
+                <Route path="/reviews" element={<Reviews />} />
+                
                 
                 </Routes>
             <Footer />
