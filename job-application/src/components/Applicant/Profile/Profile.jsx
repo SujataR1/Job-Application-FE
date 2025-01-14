@@ -216,7 +216,7 @@
 //     formDataObj.append('about', formData.about);
 //     formDataObj.append('email', formData.email);
 //     formDataObj.append('phoneNumber', formData.phoneNumber);
-  
+
 //     // If a new image is selected, append it to FormData
 //     if (newImage) {
 //       const imageBlob = dataURItoBlob(newImage); // Convert base64 to Blob
