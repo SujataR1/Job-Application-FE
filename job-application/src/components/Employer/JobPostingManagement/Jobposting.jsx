@@ -5,9 +5,7 @@ import EmployerSidebar from '../Sidebar/Sidebar';
 import { useNavigate } from 'react-router-dom';
 
 const JobPost = ({ job, onSave }) => {
-  const [step, setStep] = useState(1); // Track current step of the form
-
-  // State variables for each step
+  const [step, setStep] = useState(1);
   const [jobTitle, setJobTitle] = useState(job ? job.jobTitle : '');
   const [address, setAddress] = useState(job ? job.address : { street: '', city: '', pinCode: '', area: '', country: '' });
   const [jobType, setJobType] = useState(job ? job.jobType : '');
@@ -29,7 +27,6 @@ const JobPost = ({ job, onSave }) => {
 
   const navigate = useNavigate();
 
-  // Step navigation functions
   const handleNextStep = () => setStep(step + 1);
   const handlePreviousStep = () => setStep(step - 1);
 
@@ -60,7 +57,7 @@ const JobPost = ({ job, onSave }) => {
     switch (step) {
       case 1:
         return (
-          <div>
+          <div className="form-step">
             <h3>Job Title</h3>
             <div className="form-group">
               <label>Job Title</label>
@@ -68,16 +65,18 @@ const JobPost = ({ job, onSave }) => {
                 type="text"
                 value={jobTitle}
                 onChange={(e) => setJobTitle(e.target.value)}
-                placeholder="Job Title"
+                placeholder="Enter Job Title"
                 required
               />
             </div>
-            <button type="button" onClick={handleNextStep}>Save and Continue</button>
+            <div className="form-actions">
+              <button type="button" className="btn-primary" onClick={handleNextStep}>Save and Continue</button>
+            </div>
           </div>
         );
       case 2:
         return (
-          <div>
+          <div className="form-step">
             <h3>Job Address</h3>
             <div className="form-group">
               <label>Street Address</label>
@@ -119,13 +118,15 @@ const JobPost = ({ job, onSave }) => {
                 required
               />
             </div>
-            <button type="button" onClick={handlePreviousStep}>Back</button>
-            <button type="button" onClick={handleNextStep}>Save and Continue</button>
+            <div className="form-actions">
+              <button type="button" className="btn-secondary" onClick={handlePreviousStep}>Back</button>
+              <button type="button" className="btn-primary" onClick={handleNextStep}>Save and Continue</button>
+            </div>
           </div>
         );
       case 3:
         return (
-          <div>
+          <div className="form-step">
             <h3>Job Type & Shift</h3>
             <div className="form-group">
               <label>Job Type</label>
@@ -170,13 +171,15 @@ const JobPost = ({ job, onSave }) => {
                 required
               />
             </div>
-            <button type="button" onClick={handlePreviousStep}>Back</button>
-            <button type="button" onClick={handleNextStep}>Save and Continue</button>
+            <div className="form-actions">
+              <button type="button" className="btn-secondary" onClick={handlePreviousStep}>Back</button>
+              <button type="button" className="btn-primary" onClick={handleNextStep}>Save and Continue</button>
+            </div>
           </div>
         );
       case 4:
         return (
-          <div>
+          <div className="form-step">
             <h3>Benefits</h3>
             <div className="form-group">
               <label>Benefits</label>
@@ -187,13 +190,15 @@ const JobPost = ({ job, onSave }) => {
                 required
               />
             </div>
-            <button type="button" onClick={handlePreviousStep}>Back</button>
-            <button type="button" onClick={handleNextStep}>Save and Continue</button>
+            <div className="form-actions">
+              <button type="button" className="btn-secondary" onClick={handlePreviousStep}>Back</button>
+              <button type="button" className="btn-primary" onClick={handleNextStep}>Save and Continue</button>
+            </div>
           </div>
         );
       case 5:
         return (
-          <div>
+          <div className="form-step">
             <h3>Skills</h3>
             <div className="form-group">
               <label>Skills Required</label>
@@ -204,13 +209,15 @@ const JobPost = ({ job, onSave }) => {
                 required
               />
             </div>
-            <button type="button" onClick={handlePreviousStep}>Back</button>
-            <button type="button" onClick={handleNextStep}>Save and Continue</button>
+            <div className="form-actions">
+              <button type="button" className="btn-secondary" onClick={handlePreviousStep}>Back</button>
+              <button type="button" className="btn-primary" onClick={handleNextStep}>Save and Continue</button>
+            </div>
           </div>
         );
       case 6:
         return (
-          <div>
+          <div className="form-step">
             <h3>Pay Range & Supplemental Pay</h3>
             <div className="form-group">
               <label>Pay Range</label>
@@ -248,13 +255,15 @@ const JobPost = ({ job, onSave }) => {
                 placeholder="e.g., performance bonus, joining bonus"
               />
             </div>
-            <button type="button" onClick={handlePreviousStep}>Back</button>
-            <button type="button" onClick={handleNextStep}>Save and Continue</button>
+            <div className="form-actions">
+              <button type="button" className="btn-secondary" onClick={handlePreviousStep}>Back</button>
+              <button type="button" className="btn-primary" onClick={handleNextStep}>Save and Continue</button>
+            </div>
           </div>
         );
       case 7:
         return (
-          <div>
+          <div className="form-step">
             <h3>Job Description</h3>
             <div className="form-group">
               <label>Description</label>
@@ -265,13 +274,15 @@ const JobPost = ({ job, onSave }) => {
                 required
               />
             </div>
-            <button type="button" onClick={handlePreviousStep}>Back</button>
-            <button type="button" onClick={handleNextStep}>Save and Continue</button>
+            <div className="form-actions">
+              <button type="button" className="btn-secondary" onClick={handlePreviousStep}>Back</button>
+              <button type="button" className="btn-primary" onClick={handleNextStep}>Save and Continue</button>
+            </div>
           </div>
         );
       case 8:
         return (
-          <div>
+          <div className="form-step">
             <h3>Communication Preferences</h3>
             <div className="form-group">
               <label>Email for Updates</label>
@@ -292,6 +303,7 @@ const JobPost = ({ job, onSave }) => {
                 <button
                   type="button"
                   onClick={() => setCommunicationEmails([...communicationEmails, ''])}
+                  className="btn-secondary"
                 >
                   + Add Email
                 </button>
@@ -301,13 +313,15 @@ const JobPost = ({ job, onSave }) => {
               <label>Send Individual Emails for Each Application</label>
               <input type="checkbox" />
             </div>
-            <button type="button" onClick={handlePreviousStep}>Back</button>
-            <button type="button" onClick={handleNextStep}>Save and Continue</button>
+            <div className="form-actions">
+              <button type="button" className="btn-secondary" onClick={handlePreviousStep}>Back</button>
+              <button type="button" className="btn-primary" onClick={handleNextStep}>Save and Continue</button>
+            </div>
           </div>
         );
       case 9:
         return (
-          <div>
+          <div className="form-step">
             <h3>Application Preferences</h3>
             <div className="form-group">
               <label>Ask for CV</label>
@@ -329,14 +343,15 @@ const JobPost = ({ job, onSave }) => {
                 <option value="no">No</option>
               </select>
             </div>
-            
-            <button type="button" onClick={handlePreviousStep}>Back</button>
-            <button type="button" onClick={handleNextStep}>Save and Continue</button>
+            <div className="form-actions">
+              <button type="button" className="btn-secondary" onClick={handlePreviousStep}>Back</button>
+              <button type="button" className="btn-primary" onClick={handleNextStep}>Save and Continue</button>
+            </div>
           </div>
         );
       case 10:
         return (
-          <div>
+          <div className="form-step">
             <h3>Education and Experience</h3>
             <div className="form-group">
               <label>Highest Level of Education</label>
@@ -360,8 +375,10 @@ const JobPost = ({ job, onSave }) => {
                 placeholder="Years of Experience"
               />
             </div>
-            <button type="button" onClick={handlePreviousStep}>Back</button>
-            <button type="submit">Post Job</button>
+            <div className="form-actions">
+              <button type="button" className="btn-secondary" onClick={handlePreviousStep}>Back</button>
+              <button type="submit" className="btn-primary">Post Job</button>
+            </div>
           </div>
         );
       default:
@@ -370,30 +387,29 @@ const JobPost = ({ job, onSave }) => {
   };
 
   return (
-    <div className="home-page">
+    <div className="job-post-page">
       <EmployerNavbar />
-      <div className="home-content flex flex-row">
+      <div className="job-post-content">
         <EmployerSidebar />
-        <div className="home-content flex flex-row">
-          <EmployerSidebar />
+        <div className="main-content">
           <div className="button-container">
             <button
-              className="nav-button"
+              className="btn-secondary"
               onClick={() => navigate('/jobposting')}
             >
               Post Job
             </button>
             <button
-              className="nav-button"
+              className="btn-secondary"
               onClick={() => navigate('/application')}
             >
               View Previous Posts
             </button>
           </div>
 
-          <div className="job-post-container">
-            <h2 className="header">{job ? 'Edit Job' : 'Post a New Job'}</h2>
-            <form className="job-post-form" onSubmit={handleSubmit}>
+          <div className="job-post-form-container">
+            <h2 className="job-post-header">{job ? 'Edit Job' : 'Post a New Job'}</h2>
+            <form onSubmit={handleSubmit}>
               {renderStep()}
             </form>
           </div>
