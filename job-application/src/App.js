@@ -120,10 +120,10 @@ import EmployerProfile from './components/Employer/MyProfile/Myprofile';
 import ManageCompanies from './components/Admin/ManageCompanies/Companies';
 import AdminReports from './components/Admin/Reports/Reports';
 import AdminSettings from './components/Admin/Settings/Settings';
+import AdminJobApplications from './components/Admin/AdminJob/adminjobapplications';
 
 import JobProfile from './components/Applicant/jobprofile/jobprofile';
 import Setting from './components/Applicant/UserSettings/Setting';
-
 
 
 
@@ -276,6 +276,7 @@ const App = () => {
                 <Route path="/manage-companies" element={<ManageCompanies />} />
                 <Route path="/admin-reports" element={<AdminReports />} />
                 <Route path="/admin-settings" element={<AdminSettings />} />
+                <Route path="/admin-job-applications" element={<AdminJobApplications />}/>
 
 
                 <Route path="/jobprofile" element={<JobProfile />} />

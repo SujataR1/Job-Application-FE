@@ -17,6 +17,7 @@ const AdminSettings = () => {
   const [successMessage, setSuccessMessage] = useState('');
   const [showDeleteAccountModal, setShowDeleteAccountModal] = useState(false);
   const [passwordForDeletion, setPasswordForDeletion] = useState('');
+  const [searchTerm, setSearchTerm] = useState('');
   const navigate = useNavigate();
 
   // Fetch settings from API on component mount
@@ -139,6 +140,11 @@ const AdminSettings = () => {
     }
   };
 
+  // Filter settings based on search term
+  const filteredSettings = Object.keys(settings).filter((key) =>
+    key.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
   return (
     <div className="admin-settings-page">
       <AdminNavbar />
@@ -147,60 +153,93 @@ const AdminSettings = () => {
           <AdminSidenavbar />
           <div className="admin-settings-form-container">
             <h2>Admin Settings</h2>
+
+            {/* Search Bar */}
+            <div className="settings-search-bar">
+              <input
+                type="text"
+                placeholder="Search Settings"
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+                className="search-input"
+              />
+            </div>
+
             <form onSubmit={handleSubmit} className="admin-settings-form">
-              <div className="settings-item">
-                <label>Allow User Registration</label>
-                <input
-                  type="checkbox"
-                  name="allowUserRegistration"
-                  checked={settings.allowUserRegistration}
-                  onChange={handleToggleChange}
-                />
+              {/* Account Settings */}
+              <div className="settings-category">
+                <h3>Account Settings</h3>
+                <div className="settings-item">
+                  <label>Allow User Registration</label>
+                  <input
+                    type="checkbox"
+                    name="allowUserRegistration"
+                    checked={settings.allowUserRegistration}
+                    onChange={handleToggleChange}
+                    aria-label="Allow User Registration"
+                  />
+                  <p>Allow new users to register on the platform.</p>
+                </div>
+
+                <div className="settings-item">
+                  <label>Restrict Inactive Accounts</label>
+                  <input
+                    type="checkbox"
+                    name="restrictInactiveAccounts"
+                    checked={settings.restrictInactiveAccounts}
+                    onChange={handleToggleChange}
+                    aria-label="Restrict Inactive Accounts"
+                  />
+                  <p>Automatically disable accounts that have been inactive for a long period.</p>
+                </div>
               </div>
 
-              <div className="settings-item">
-                <label>Enable Job Post Approval</label>
-                <input
-                  type="checkbox"
-                  name="enableJobPostApproval"
-                  checked={settings.enableJobPostApproval}
-                  onChange={handleToggleChange}
-                />
+              {/* Job Post Settings */}
+              <div className="settings-category">
+                <h3>Job Post Settings</h3>
+                <div className="settings-item">
+                  <label>Enable Job Post Approval</label>
+                  <input
+                    type="checkbox"
+                    name="enableJobPostApproval"
+                    checked={settings.enableJobPostApproval}
+                    onChange={handleToggleChange}
+                    aria-label="Enable Job Post Approval"
+                  />
+                  <p>Require admin approval for job posts before they go live.</p>
+                </div>
+
+                <div className="settings-item">
+                  <label>Allow Job Posting Without Verification</label>
+                  <input
+                    type="checkbox"
+                    name="allowJobPostingWithoutVerification"
+                    checked={settings.allowJobPostingWithoutVerification}
+                    onChange={handleToggleChange}
+                    aria-label="Allow Job Posting Without Verification"
+                  />
+                  <p>Allow recruiters to post jobs without verifying their account.</p>
+                </div>
               </div>
 
-              <div className="settings-item">
-                <label>Restrict Inactive Accounts</label>
-                <input
-                  type="checkbox"
-                  name="restrictInactiveAccounts"
-                  checked={settings.restrictInactiveAccounts}
-                  onChange={handleToggleChange}
-                />
+              {/* Admin Settings */}
+              <div className="settings-category">
+                <h3>Admin Settings</h3>
+                <div className="settings-item">
+                  <label>Admin Panel Access</label>
+                  <input
+                    type="checkbox"
+                    name="adminPanelAccess"
+                    checked={settings.adminPanelAccess}
+                    onChange={handleToggleChange}
+                    aria-label="Admin Panel Access"
+                  />
+                  <p>Give admin access to manage platform settings and user accounts.</p>
+                </div>
               </div>
 
-              <div className="settings-item">
-                <label>Allow Job Posting Without Verification</label>
-                <input
-                  type="checkbox"
-                  name="allowJobPostingWithoutVerification"
-                  checked={settings.allowJobPostingWithoutVerification}
-                  onChange={handleToggleChange}
-                />
-              </div>
-
-              <div className="settings-item">
-                <label>Admin Panel Access</label>
-                <input
-                  type="checkbox"
-                  name="adminPanelAccess"
-                  checked={settings.adminPanelAccess}
-                  onChange={handleToggleChange}
-                />
-              </div>
-
-              <button type="submit" className="submit-button">
-                Save Changes
-              </button>
+              {/* Submit Button */}
+              <button type="submit" className="submit-button">Save Changes</button>
             </form>
 
             {error && <div className="error-message">{error}</div>}

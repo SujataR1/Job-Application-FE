@@ -1,9 +1,14 @@
 import React, { useState } from 'react';
-import './Reports.css'; // Import the CSS styles
-import AdminNavbar from '../Navbar/Navbar';  // Admin Navbar
-import AdminSidenavbar from '../Sidenavbar/Sidenavbar';  // Admin Sidebar
+import './Reports.css';
+import AdminNavbar from '../Navbar/Navbar';
+import AdminSidenavbar from '../Sidenavbar/Sidenavbar';
+import { Bar, Pie } from 'react-chartjs-2'; // For charts
+import { Chart as ChartJS, Title, Tooltip, Legend, BarElement, CategoryScale, LinearScale, ArcElement } from 'chart.js'; // Chart.js components
+import { saveAs } from 'file-saver';
 
-// Dummy data for Applicants
+ChartJS.register(Title, Tooltip, Legend, BarElement, CategoryScale, LinearScale, ArcElement);
+
+// Dummy Data
 const applicantsData = [
   { id: 1, name: 'John Doe', email: 'john@example.com', jobApplied: 'Software Developer', status: 'Interview Scheduled' },
   { id: 2, name: 'Jane Smith', email: 'jane@example.com', jobApplied: 'UI/UX Designer', status: 'Application Received' },
@@ -11,7 +16,6 @@ const applicantsData = [
   { id: 4, name: 'Emily White', email: 'emily@example.com', jobApplied: 'Backend Developer', status: 'Interview Scheduled' },
 ];
 
-// Dummy data for Recruiters
 const recruitersData = [
   { id: 1, name: 'TechCorp', jobPosted: 'Software Developer', applicants: 50, payment: 200 },
   { id: 2, name: 'InnovateX', jobPosted: 'UI/UX Designer', applicants: 20, payment: 150 },
@@ -20,22 +24,54 @@ const recruitersData = [
 ];
 
 const AdminReports = () => {
-  const [activeReport, setActiveReport] = useState('applicants');  // Track which report to show
+  const [activeReport, setActiveReport] = useState('applicants');
+  const [timeRange, setTimeRange] = useState('Last 30 Days'); // Added for filter options
 
-  // Calculate total payment the admin will receive based on job posts
-  const totalPayment = recruitersData.reduce((acc, recruiter) => acc + recruiter.payment, 0);
+  // Calculate data for charts
+  const applicantsByStatus = applicantsData.reduce((acc, applicant) => {
+    acc[applicant.status] = (acc[applicant.status] || 0) + 1;
+    return acc;
+  }, {});
 
-  // Calculate total applicants and recruiters
-  const totalApplicants = applicantsData.length;
-  const totalRecruiters = recruitersData.length;
-  const totalJobPostings = recruitersData.reduce((acc, recruiter) => acc + 1, 0);
+  const jobStatuses = Object.keys(applicantsByStatus);
+  const statusCounts = Object.values(applicantsByStatus);
 
-  // Growth Metrics (Dummy Example)
-  const previousMonthApplicants = 120; // Placeholder value for the previous month
-  const applicantsGrowth = ((totalApplicants - previousMonthApplicants) / previousMonthApplicants) * 100;
+  // Chart Data for Bar and Pie Charts
+  const applicantsGrowthData = {
+    labels: ['Previous Month', 'Current Month'],
+    datasets: [
+      {
+        label: 'Applicants Growth',
+        data: [120, applicantsData.length], // Example static data
+        backgroundColor: 'rgba(75, 192, 192, 0.6)',
+      },
+    ],
+  };
 
-  const previousMonthRecruiters = 10; // Placeholder value for the previous month
-  const recruitersGrowth = ((totalRecruiters - previousMonthRecruiters) / previousMonthRecruiters) * 100;
+  const recruiterPaymentData = {
+    labels: recruitersData.map((recruiter) => recruiter.name),
+    datasets: [
+      {
+        label: 'Payment Received',
+        data: recruitersData.map((recruiter) => recruiter.payment),
+        backgroundColor: 'rgba(153, 102, 255, 0.6)',
+      },
+    ],
+  };
+
+  // Export data to CSV
+  const exportToCSV = () => {
+    const headers = ['Name', 'Email', 'Job Applied', 'Status'];
+    const rows = applicantsData.map((applicant) => [
+      applicant.name,
+      applicant.email,
+      applicant.jobApplied,
+      applicant.status,
+    ]);
+    const csvContent = [headers, ...rows].map((row) => row.join(',')).join('\n');
+    const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+    saveAs(blob, 'applicants_report.csv');
+  };
 
   return (
     <div className="admin-reports">
@@ -44,8 +80,8 @@ const AdminReports = () => {
         <AdminSidenavbar />
         <div className="reports-content">
           <h1>Admin Reports</h1>
-          
-          {/* Navigation Buttons to switch between Reports */}
+
+          {/* Report Type Navigation */}
           <div className="report-nav">
             <button
               className={activeReport === 'applicants' ? 'active' : ''}
@@ -61,23 +97,53 @@ const AdminReports = () => {
             </button>
           </div>
 
-          {/* Show different reports based on selection */}
-          {activeReport === 'applicants' ? <ApplicantsReport /> : <RecruitersReport />}
-          
-          {/* Display Admin Earnings for Recruiters Job Post */}
-          <div className="admin-earnings">
-            <h2>Total Earnings for Admin</h2>
-            <p>The total payment the admin has received from recruiters for job posts: <strong>${totalPayment}</strong></p>
+          {/* Filter by Time Range */}
+          <div className="time-range-filter">
+            <label>Time Range:</label>
+            <select value={timeRange} onChange={(e) => setTimeRange(e.target.value)}>
+              <option>Last 7 Days</option>
+              <option>Last 30 Days</option>
+              <option>Last 6 Months</option>
+              <option>Last Year</option>
+            </select>
           </div>
 
-          {/* Admin Growth Metrics */}
-          <div className="growth-metrics">
-            <h2>Website Growth</h2>
-            <p><strong>Total Applicants:</strong> {totalApplicants}</p>
-            <p><strong>Total Recruiters:</strong> {totalRecruiters}</p>
-            <p><strong>Total Job Postings:</strong> {totalJobPostings}</p>
-            <p><strong>Applicants Growth (Monthly):</strong> {applicantsGrowth.toFixed(2)}%</p>
-            <p><strong>Recruiters Growth (Monthly):</strong> {recruitersGrowth.toFixed(2)}%</p>
+          {/* Show report based on the selected report type */}
+          {activeReport === 'applicants' ? <ApplicantsReport /> : <RecruitersReport />}
+
+          {/* Charts */}
+          <div className="charts-container">
+            <div className="chart">
+              <h2>Applicants Growth</h2>
+              <Bar data={applicantsGrowthData} />
+            </div>
+            <div className="chart">
+              <h2>Job Application Status</h2>
+              <Pie
+                data={{
+                  labels: jobStatuses,
+                  datasets: [
+                    {
+                      data: statusCounts,
+                      backgroundColor: ['green', 'orange', 'red', 'blue'],
+                    },
+                  ],
+                }}
+              />
+            </div>
+          </div>
+
+          {/* Export Button */}
+          <div className="export-btn">
+            <button onClick={exportToCSV}>Export to CSV</button>
+          </div>
+
+          {/* Admin Earnings */}
+          <div className="admin-earnings">
+            <h2>Total Earnings for Admin</h2>
+            <p>
+              The total payment the admin has received from recruiters for job posts: <strong>${recruitersData.reduce((acc, recruiter) => acc + recruiter.payment, 0)}</strong>
+            </p>
           </div>
         </div>
       </div>
@@ -86,65 +152,61 @@ const AdminReports = () => {
 };
 
 // Applicants Report Component
-const ApplicantsReport = () => {
-  return (
-    <div className="report-table">
-      <h2>Applicants Report</h2>
-      <table>
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th>Email</th>
-            <th>Job Applied</th>
-            <th>Status</th>
+const ApplicantsReport = () => (
+  <div className="report-table">
+    <h2>Applicants Report</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Job Applied</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        {applicantsData.map((applicant) => (
+          <tr key={applicant.id}>
+            <td>{applicant.name}</td>
+            <td>{applicant.email}</td>
+            <td>{applicant.jobApplied}</td>
+            <td>{applicant.status}</td>
           </tr>
-        </thead>
-        <tbody>
-          {applicantsData.map((applicant) => (
-            <tr key={applicant.id}>
-              <td>{applicant.name}</td>
-              <td>{applicant.email}</td>
-              <td>{applicant.jobApplied}</td>
-              <td>{applicant.status}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-    </div>
-  );
-};
+        ))}
+      </tbody>
+    </table>
+  </div>
+);
 
 // Recruiters Report Component
-const RecruitersReport = () => {
-  return (
-    <div className="report-table">
-      <h2>Recruiters Report</h2>
-      <table>
-        <thead>
-          <tr>
-            <th>Recruiter Name</th>
-            <th>Job Posted</th>
-            <th>Applicants</th>
-            <th>Payment</th>
+const RecruitersReport = () => (
+  <div className="report-table">
+    <h2>Recruiters Report</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Recruiter Name</th>
+          <th>Job Posted</th>
+          <th>Applicants</th>
+          <th>Payment</th>
+        </tr>
+      </thead>
+      <tbody>
+        {recruitersData.map((recruiter) => (
+          <tr key={recruiter.id}>
+            <td>{recruiter.name}</td>
+            <td>{recruiter.jobPosted}</td>
+            <td>{recruiter.applicants}</td>
+            <td>${recruiter.payment}</td>
           </tr>
-        </thead>
-        <tbody>
-          {recruitersData.map((recruiter) => (
-            <tr key={recruiter.id}>
-              <td>{recruiter.name}</td>
-              <td>{recruiter.jobPosted}</td>
-              <td>{recruiter.applicants}</td>
-              <td>${recruiter.payment}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-      <div className="revenue-summary">
-        <h3>Total Revenue from Recruiters' Job Posts</h3>
-        <p>${recruitersData.reduce((acc, recruiter) => acc + recruiter.payment, 0)}</p>
-      </div>
+        ))}
+      </tbody>
+    </table>
+    <div className="revenue-summary">
+      <h3>Total Revenue from Recruiters' Job Posts</h3>
+      <p>${recruitersData.reduce((acc, recruiter) => acc + recruiter.payment, 0)}</p>
     </div>
-  );
-};
+  </div>
+);
 
 export default AdminReports;
