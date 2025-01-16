@@ -3,10 +3,11 @@ import './Dashboard.css';
 import AdminNavbar from '../Navbar/Navbar';
 import AdminSidenavbar from '../Sidenavbar/Sidenavbar';
 import { Bar } from 'react-chartjs-2';
-import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend } from 'chart.js';
+import { Pie } from 'react-chartjs-2';
+import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend, ArcElement } from 'chart.js';
 
 // Register chart.js components
-ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
+ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend, ArcElement);
 
 const Dashboard = () => {
   // Data for the bar chart
@@ -18,6 +19,19 @@ const Dashboard = () => {
         data: [123, 5, 10, 56],
         backgroundColor: 'rgba(75, 192, 192, 0.6)',
         borderColor: 'rgba(75, 192, 192, 1)',
+        borderWidth: 1,
+      },
+    ],
+  };
+
+  // Pie chart data for applications status
+  const pieChartData = {
+    labels: ['Approved', 'Rejected', 'Pending'],
+    datasets: [
+      {
+        data: [50, 48, 25],
+        backgroundColor: ['rgba(75, 192, 192, 0.6)', 'rgba(255, 99, 132, 0.6)', 'rgba(255, 159, 64, 0.6)'],
+        borderColor: ['rgba(75, 192, 192, 1)', 'rgba(255, 99, 132, 1)', 'rgba(255, 159, 64, 1)'],
         borderWidth: 1,
       },
     ],
@@ -48,6 +62,26 @@ const Dashboard = () => {
     },
   };
 
+  const pieChartOptions = {
+    responsive: true,
+    plugins: {
+      title: {
+        display: true,
+        text: 'Job Applications Status',
+        font: {
+          size: 20,
+        },
+      },
+      tooltip: {
+        callbacks: {
+          label: (tooltipItem) => {
+            return `${tooltipItem.label}: ${tooltipItem.raw}`;
+          },
+        },
+      },
+    },
+  };
+
   return (
     <div className="home-page">
       <AdminNavbar />
@@ -60,19 +94,19 @@ const Dashboard = () => {
 
           {/* Job Application Overview Section */}
           <div className="overview-section">
-            <div className="overview-card">
+            <div className="overview-card" title="Total job applications submitted">
               <h3>Total Applications</h3>
               <p>123</p>
             </div>
-            <div className="overview-card">
+            <div className="overview-card" title="Applications under review">
               <h3>Applications in Review</h3>
               <p>25</p>
             </div>
-            <div className="overview-card">
+            <div className="overview-card" title="Applications approved by the admin">
               <h3>Applications Approved</h3>
               <p>50</p>
             </div>
-            <div className="overview-card">
+            <div className="overview-card" title="Applications rejected by the admin">
               <h3>Applications Rejected</h3>
               <p>48</p>
             </div>
@@ -80,15 +114,15 @@ const Dashboard = () => {
 
           {/* Job Listings Overview Section */}
           <div className="job-listings-section">
-            <div className="overview-card">
+            <div className="overview-card" title="Total job listings available on the platform">
               <h3>Total Job Listings</h3>
               <p>15</p>
             </div>
-            <div className="overview-card">
+            <div className="overview-card" title="Number of active job listings">
               <h3>Active Listings</h3>
               <p>10</p>
             </div>
-            <div className="overview-card">
+            <div className="overview-card" title="Number of closed job listings">
               <h3>Closed Listings</h3>
               <p>5</p>
             </div>
@@ -99,6 +133,14 @@ const Dashboard = () => {
             <h3>Platform Statistics</h3>
             <div className="chart-container">
               <Bar data={chartData} options={chartOptions} />
+            </div>
+          </div>
+
+          {/* Pie Chart for Application Status */}
+          <div className="pie-chart-section">
+            <h3>Job Applications Status</h3>
+            <div className="pie-chart-container">
+              <Pie data={pieChartData} options={pieChartOptions} />
             </div>
           </div>
 

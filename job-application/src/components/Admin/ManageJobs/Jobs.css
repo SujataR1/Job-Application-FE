@@ -1,285 +1,89 @@
-/* body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
-    margin: 0;
-    padding: 0;
-  }
-  
-  .admin-container {
-    width: 80%;
-    margin: 20px auto;
-    
-  }
-  
-  h1 {
-    text-align: center;
-    color: #333;
-  }
-  
-  button {
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    margin: 10px 0;
-    cursor: pointer;
-    border-radius: 5px;
-  }
-  
-  button:hover {
-    background-color: #45a049;
-  }
-  
-  table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 20px;
-  }
-  
-  th, td {
-    padding: 12px;
-    text-align: left;
-    border-bottom: 1px solid #ddd;
-  }
-  
-  th {
-    background-color: #4CAF50;
-    color: white;
-  }
-  
-  button.edit-btn, button.delete-btn {
-    background-color: #007bff;
-    color: white;
-    padding: 5px 10px;
-    margin-right: 5px;
-    cursor: pointer;
-  }
-  
-  button.edit-btn:hover {
-    background-color: #0056b3;
-  }
-  
-  button.delete-btn {
-    background-color: #dc3545;
-  }
-  
-  button.delete-btn:hover {
-    background-color: #c82333;
-  }
-  
-  .modal {
-    display: block;
-    position: fixed;
-    z-index: 1;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    background-color: rgba(0, 0, 0, 0.4);
-  }
-  
-  .modal-content {
-    background-color: #fff;
-    padding: 20px;
-    margin: 5% auto;
-    border-radius: 5px;
-    width: 50%;
-  }
-  
-  .close-btn {
-    color: #aaa;
-    font-size: 28px;
-    font-weight: bold;
-    position: absolute;
-    top: 10px;
-    right: 25px;
-  }
-  
-  .close-btn:hover,
-  .close-btn:focus {
-    color: black;
-    text-decoration: none;
-    cursor: pointer;
-  }
-  
-  form input, form textarea, form select {
-    width: 100%;
-    padding: 8px;
-    margin: 10px 0;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-  }
-  
-  form button.submit-btn {
-    background-color: #28a745;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
-  form button.submit-btn:hover {
-    background-color: #218838;
-  }
-  .admin-container {
-    margin-left: 700px;
-  } */
-
-  /* Job Listing Page Styles */
-/* General Container */
 .job-listing-container {
-  margin: 30px;
-  font-family: Arial, sans-serif;
-  margin-left: 600px;
+  padding: 20px;
+  background-color: #f4f7fb;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-/* Header Styling */
-h1 {
-  text-align: center;
-  color: #333;
-  font-size: 2rem;
-  margin-bottom: 20px;
-}
-
-/* Job Listing Table */
 .job-table {
   width: 100%;
   border-collapse: collapse;
   margin-top: 20px;
 }
 
-.job-table th,
-.job-table td {
-  border: 1px solid #ddd;
-  padding: 12px;
+.job-table th, .job-table td {
+  padding: 12px 15px;
   text-align: left;
-  font-size: 1rem;
 }
 
 .job-table th {
-  background-color: #007BFF;
-  color: white;
-  font-weight: bold;
+  background-color: #007bff;
+  color: #fff;
+}
+
+.job-table tr:nth-child(even) {
+  background-color: #f9f9f9;
 }
 
 .job-table tr:hover {
-  background-color: #f1f1f1;
+  background-color: #e9ecef;
 }
 
-.job-table td button {
-  padding: 6px 12px;
-  margin: 5px;
+button.edit-btn, button.delete-btn {
+  padding: 8px 15px;
+  margin-right: 10px;
   border: none;
+  border-radius: 4px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  font-size: 14px;
 }
 
-.edit-btn {
+button.edit-btn {
   background-color: #28a745;
   color: white;
-  border-radius: 5px;
 }
 
-.delete-btn {
-  background-color: #dc3545;
-  color: white;
-  border-radius: 5px;
-}
-
-.edit-btn:hover {
+button.edit-btn:hover {
   background-color: #218838;
 }
 
-.delete-btn:hover {
+button.delete-btn {
+  background-color: #dc3545;
+  color: white;
+}
+
+button.delete-btn:hover {
   background-color: #c82333;
 }
 
-/* Edit Form Styles */
-.edit-form-container {
-  margin: 30px auto;
-  padding: 20px;
-  width: 80%;
-  max-width: 600px;
-  background-color: #f8f9fa;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-}
-
-.edit-form-container h2 {
-  text-align: center;
-  font-size: 1.5rem;
-  margin-bottom: 20px;
-  color: #333;
-}
-
-.edit-form-container form div {
-  margin-bottom: 15px;
-}
-
-.edit-form-container form label {
-  font-weight: bold;
-  color: #555;
-}
-
-.edit-form-container form input,
-.edit-form-container form select {
-  width: 100%;
-  padding: 10px;
-  font-size: 1rem;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  margin-top: 5px;
-}
-
-.edit-form-container form button {
-  width: 100%;
-  padding: 12px;
-  font-size: 1rem;
+button.update-btn {
+  background-color: #007bff;
   color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
 }
 
-.update-btn {
-  background-color: #28a745;
+button.cancel-btn {
+  background-color: #6c757d;
+  color: white;
 }
 
-.cancel-btn {
-  background-color: #f8f9fa;
-  color: #333;
-  border: 1px solid #ddd;
+button.update-btn:hover, button.cancel-btn:hover {
+  opacity: 0.9;
 }
 
-.update-btn:hover {
-  background-color: #218838;
+.search-container {
+  margin-bottom: 20px;
 }
 
-.cancel-btn:hover {
-  background-color: #e2e6ea;
+.search-input {
+  width: 300px;
+  padding: 10px;
+  font-size: 14px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  margin-right: 10px;
 }
 
-/* Responsive Design */
-@media (max-width: 768px) {
-  .job-listing-container {
-    margin: 15px;
-  }
-
-  .edit-form-container {
-    width: 100%;
-    padding: 15px;
-  }
-
-  .job-table th,
-  .job-table td {
-    font-size: 0.9rem;
-  }
-
-  .edit-btn,
-  .delete-btn {
-    padding: 4px 8px;
-  }
+.search-input:focus {
+  outline: none;
+  border-color: #007bff;
 }
