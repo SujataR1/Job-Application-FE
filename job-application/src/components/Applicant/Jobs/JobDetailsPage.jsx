@@ -59,6 +59,7 @@ const JobDetailsPage = () => {
 
     // Ensure useState is called unconditionally, at the top of the component
     const [isApplied, setIsApplied] = useState(false);
+    const [isModalOpen, setIsModalOpen] = useState(false); // To control modal visibility
 
     // Find the job by ID
     const job = jobListings.find((job) => job.id === parseInt(jobId));
@@ -70,6 +71,12 @@ const JobDetailsPage = () => {
     // Handle Apply Now button click
     const handleApplyClick = () => {
         setIsApplied(true);
+        setIsModalOpen(true); // Open the modal
+    };
+
+    // Close the modal
+    const closeModal = () => {
+        setIsModalOpen(false);
     };
 
     return (
@@ -85,6 +92,7 @@ const JobDetailsPage = () => {
             </div>
 
             <div className="job-actions">
+                <button className="contact-hr-button">Contact HR</button>
                 <button className="save-button">Save</button>
                 <button className="share-button">Share</button>
             </div>
@@ -104,6 +112,7 @@ const JobDetailsPage = () => {
                 <h2>Skills Required</h2>
                 <p>{job.skills.join(", ")}</p>
             </div>
+
             <div className="certifications">
                 <h2>Earn certifications in these skills</h2>
                 <ul>
@@ -141,7 +150,7 @@ const JobDetailsPage = () => {
                 <p>{job.additionalInfo}</p>
             </div>
 
-            <div className="company-infor">
+            <div className="company-info">
                 <h2>About Attribution Private Limited</h2>
                 <p>{job.companyDescription}</p>
             </div>
@@ -160,9 +169,20 @@ const JobDetailsPage = () => {
                     <button className="apply-button" onClick={handleApplyClick}>Apply Now</button>
                 )}
             </div>
+
+            {/* Modal Pop-up */}
+            {isModalOpen && (
+                <div className="modal">
+                    <div className="modal-content">
+                        <div className="checkmark">✔</div> {/* Green checkmark */}
+                        <h2>Applied Done</h2>
+                        <p>You have successfully applied for the job!</p>
+                        <button className="close-modal-button" onClick={closeModal}>Close</button>
+                    </div>
+                </div>
+            )}
         </div>
     );
 };
 
 export default JobDetailsPage;
-

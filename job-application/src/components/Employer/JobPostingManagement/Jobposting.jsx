@@ -4,6 +4,7 @@ import EmployerNavbar from '../Navbar/Navbar';
 import EmployerSidebar from '../Sidebar/Sidebar';
 import { useNavigate } from 'react-router-dom';
 
+
 const JobPost = ({ job, onSave }) => {
   const [step, setStep] = useState(1);
   const [jobTitle, setJobTitle] = useState(job ? job.jobTitle : '');
@@ -24,6 +25,7 @@ const JobPost = ({ job, onSave }) => {
   });
   const [educationLevel, setEducationLevel] = useState('');
   const [yearsExperience, setYearsExperience] = useState('');
+
 
   const navigate = useNavigate();
 
