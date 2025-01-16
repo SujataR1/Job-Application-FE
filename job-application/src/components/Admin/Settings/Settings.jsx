@@ -13,6 +13,7 @@ const AdminSettings = () => {
     adminPanelAccess: true,
   });
 
+  const [darkMode, setDarkMode] = useState(false);  // State to manage dark mode
   const [error, setError] = useState('');
   const [successMessage, setSuccessMessage] = useState('');
   const [showDeleteAccountModal, setShowDeleteAccountModal] = useState(false);
@@ -24,7 +25,6 @@ const AdminSettings = () => {
   useEffect(() => {
     const fetchSettings = async () => {
       const token = localStorage.getItem('token');
-
       if (!token) {
         navigate('/login');
         return;
@@ -51,23 +51,47 @@ const AdminSettings = () => {
     };
 
     fetchSettings();
+
+    // Check for dark mode preference in localStorage
+    const savedDarkMode = localStorage.getItem('darkMode') === 'true';
+    setDarkMode(savedDarkMode);
+
+    // Apply dark mode class to body based on stored preference
+    if (savedDarkMode) {
+      document.body.classList.add('dark-mode');
+    } else {
+      document.body.classList.remove('dark-mode');
+    }
   }, [navigate]);
 
   // Handle toggle switch changes for Admin settings
   const handleToggleChange = (event) => {
     const { name, checked } = event.target;
-
     setSettings((prevSettings) => ({
       ...prevSettings,
       [name]: checked,
     }));
   };
 
+  // Dark mode toggle handler
+  const handleDarkModeToggle = () => {
+    setDarkMode((prevMode) => {
+      const newMode = !prevMode;
+      // Store the user's dark mode preference in localStorage
+      localStorage.setItem('darkMode', newMode);
+      if (newMode) {
+        document.body.classList.add('dark-mode');
+      } else {
+        document.body.classList.remove('dark-mode');
+      }
+      return newMode;
+    });
+  };
+
   // Handle form submit (update settings)
   const handleSubmit = async (event) => {
     event.preventDefault();
     const token = localStorage.getItem('token');
-
     if (!token) {
       setError('Please login to update settings.');
       return;
@@ -107,7 +131,6 @@ const AdminSettings = () => {
       return;
     }
 
-    // Ensure password for deletion is entered
     if (!passwordForDeletion) {
       setError('Please enter your password to confirm deletion.');
       return;
@@ -119,17 +142,17 @@ const AdminSettings = () => {
           method: 'DELETE',
           headers: {
             'Content-Type': 'application/json',
-            Authorization: ` ${token}`, // Include the Authorization token
+            Authorization: ` ${token}`,
           },
-          body: JSON.stringify({ password: passwordForDeletion }), // Pass password in the body
+          body: JSON.stringify({ password: passwordForDeletion }),
         });
 
         const data = await response.json();
 
         if (response.ok) {
           setSuccessMessage('Account deleted successfully.');
-          localStorage.removeItem('token'); // Log the user out
-          navigate('/login'); // Redirect to login page
+          localStorage.removeItem('token');
+          navigate('/login');
         } else {
           setError(data.message || 'Failed to delete account');
         }
@@ -154,7 +177,6 @@ const AdminSettings = () => {
           <div className="admin-settings-form-container">
             <h2>Admin Settings</h2>
 
-            {/* Search Bar */}
             <div className="settings-search-bar">
               <input
                 type="text"
@@ -166,7 +188,6 @@ const AdminSettings = () => {
             </div>
 
             <form onSubmit={handleSubmit} className="admin-settings-form">
-              {/* Account Settings */}
               <div className="settings-category">
                 <h3>Account Settings</h3>
                 <div className="settings-item">
@@ -176,7 +197,6 @@ const AdminSettings = () => {
                     name="allowUserRegistration"
                     checked={settings.allowUserRegistration}
                     onChange={handleToggleChange}
-                    aria-label="Allow User Registration"
                   />
                   <p>Allow new users to register on the platform.</p>
                 </div>
@@ -188,13 +208,11 @@ const AdminSettings = () => {
                     name="restrictInactiveAccounts"
                     checked={settings.restrictInactiveAccounts}
                     onChange={handleToggleChange}
-                    aria-label="Restrict Inactive Accounts"
                   />
                   <p>Automatically disable accounts that have been inactive for a long period.</p>
                 </div>
               </div>
 
-              {/* Job Post Settings */}
               <div className="settings-category">
                 <h3>Job Post Settings</h3>
                 <div className="settings-item">
@@ -204,7 +222,6 @@ const AdminSettings = () => {
                     name="enableJobPostApproval"
                     checked={settings.enableJobPostApproval}
                     onChange={handleToggleChange}
-                    aria-label="Enable Job Post Approval"
                   />
                   <p>Require admin approval for job posts before they go live.</p>
                 </div>
@@ -216,13 +233,11 @@ const AdminSettings = () => {
                     name="allowJobPostingWithoutVerification"
                     checked={settings.allowJobPostingWithoutVerification}
                     onChange={handleToggleChange}
-                    aria-label="Allow Job Posting Without Verification"
                   />
                   <p>Allow recruiters to post jobs without verifying their account.</p>
                 </div>
               </div>
 
-              {/* Admin Settings */}
               <div className="settings-category">
                 <h3>Admin Settings</h3>
                 <div className="settings-item">
@@ -232,14 +247,27 @@ const AdminSettings = () => {
                     name="adminPanelAccess"
                     checked={settings.adminPanelAccess}
                     onChange={handleToggleChange}
-                    aria-label="Admin Panel Access"
                   />
                   <p>Give admin access to manage platform settings and user accounts.</p>
                 </div>
               </div>
 
-              {/* Submit Button */}
-              <button type="submit" className="submit-button">Save Changes</button>
+              <div className="settings-category">
+                <h3>Theme Settings</h3>
+                <div className="settings-item">
+                  <label>Enable Dark Mode</label>
+                  <input
+                    type="checkbox"
+                    checked={darkMode}
+                    onChange={handleDarkModeToggle}
+                  />
+                  <p>Switch between light and dark mode for the admin panel interface.</p>
+                </div>
+              </div>
+
+              <button type="submit" className="submit-button">
+                Save Changes
+              </button>
             </form>
 
             {error && <div className="error-message">{error}</div>}
