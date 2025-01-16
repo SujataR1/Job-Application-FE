@@ -1,4 +1,4 @@
-import React, { useState } from 'react'; // Add this line at the top
+import React, { useState } from 'react'; // Add this line at the top 
 import './Companies.css'; // Ensure you have appropriate styling for this page
 import AdminNavbar from '../Navbar/Navbar'; // Admin Navbar Component
 import AdminSidenavbar from '../Sidenavbar/Sidenavbar'; // Admin Sidebar Component
@@ -19,6 +19,7 @@ const CompanyForm = ({ onSave, onClose }) => {
       location,
       industry,
       jobOpenings, // Save job openings count
+      status: 'Active', // Default status set to Active
     };
 
     // Save the new company and reset the form
@@ -90,12 +91,13 @@ const CompanyForm = ({ onSave, onClose }) => {
 const ManageCompanies = () => {
   // Dummy data for companies with job openings count
   const [companies, setCompanies] = useState([
-    { id: 1, name: 'ABC Corp', location: 'New York', industry: 'Software', jobOpenings: 3 },
-    { id: 2, name: 'XYZ Inc', location: 'San Francisco', industry: 'Finance', jobOpenings: 5 },
-    { id: 3, name: 'Tech Solutions', location: 'Austin', industry: 'IT Services', jobOpenings: 2 },
-    { id: 4, name: 'Creative Studios', location: 'Los Angeles', industry: 'Design', jobOpenings: 0 },
+    { id: 1, name: 'ABC Corp', location: 'New York', industry: 'Software', jobOpenings: 3, status: 'Active' },
+    { id: 2, name: 'XYZ Inc', location: 'San Francisco', industry: 'Finance', jobOpenings: 5, status: 'Inactive' },
+    { id: 3, name: 'Tech Solutions', location: 'Austin', industry: 'IT Services', jobOpenings: 2, status: 'Active' },
+    { id: 4, name: 'Creative Studios', location: 'Los Angeles', industry: 'Design', jobOpenings: 0, status: 'Active' },
   ]);
   const [isFormVisible, setIsFormVisible] = useState(false); // State to toggle form visibility
+  const [searchQuery, setSearchQuery] = useState(''); // State to handle search functionality
 
   // Handle adding a new company
   const handleAddCompany = (newCompany) => {
@@ -113,6 +115,29 @@ const ManageCompanies = () => {
     setCompanies((prevCompanies) => prevCompanies.filter(company => company.id !== companyId));
   };
 
+  // Handle toggling company status (Activate/Deactivate)
+  const handleToggleStatus = (companyId) => {
+    setCompanies((prevCompanies) =>
+      prevCompanies.map(company =>
+        company.id === companyId
+          ? { ...company, status: company.status === 'Active' ? 'Inactive' : 'Active' }
+          : company
+      )
+    );
+  };
+
+  // Handle search query change
+  const handleSearchChange = (e) => {
+    setSearchQuery(e.target.value);
+  };
+
+  // Filter companies based on the search query
+  const filteredCompanies = companies.filter((company) =>
+    company.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+    company.location.toLowerCase().includes(searchQuery.toLowerCase()) ||
+    company.industry.toLowerCase().includes(searchQuery.toLowerCase())
+  );
+
   return (
     <div className="manage-companies-page">
       <AdminNavbar />
@@ -121,6 +146,17 @@ const ManageCompanies = () => {
         <div className="content-area">
           <h1>Manage Companies</h1>
           
+          {/* Search bar */}
+          <div className="search-container">
+            <input
+              type="text"
+              placeholder="Search by name, location, or industry"
+              value={searchQuery}
+              onChange={handleSearchChange}
+              className="search-input"
+            />
+          </div>
+
           {/* Button to trigger the form to add a new company */}
           <button onClick={() => setIsFormVisible(true)} className="add-company-btn">
             Add New Company
@@ -141,17 +177,28 @@ const ManageCompanies = () => {
                   <th>Location</th>
                   <th>Industry</th>
                   <th>Job Openings</th>
+                  <th>Status</th>
                   <th>Actions</th>
                 </tr>
               </thead>
               <tbody>
-                {companies.map((company) => (
+                {filteredCompanies.map((company) => (
                   <tr key={company.id}>
                     <td>{company.name}</td>
                     <td>{company.location}</td>
                     <td>{company.industry}</td>
                     <td>{company.jobOpenings}</td>
+                    <td style={{ color: company.status === 'Active' ? 'green' : 'red' }}>
+                      {company.status}
+                    </td>
                     <td>
+                      {/* Toggle status button */}
+                      <button
+                        onClick={() => handleToggleStatus(company.id)}
+                        className="status-btn"
+                      >
+                        {company.status === 'Active' ? 'Deactivate' : 'Activate'}
+                      </button>
                       {/* Delete button to remove the company */}
                       <button
                         onClick={() => handleDeleteCompany(company.id)}
