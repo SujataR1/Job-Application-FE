@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { FaHeart, FaShareAlt, FaEdit, FaTrash, FaComment } from "react-icons/fa";
 import './Efeed.css';
-import { FaHeart, FaShareAlt } from 'react-icons/fa';
 
 const CreateAndFeed = () => {
   const [posts, setPosts] = useState([]);
@@ -10,33 +9,46 @@ const CreateAndFeed = () => {
   const [error, setError] = useState(null);
   const [isCreatingPost, setIsCreatingPost] = useState(false);
   const [editPostId, setEditPostId] = useState(null);
+  const [newComment, setNewComment] = useState("");
 
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const [visibility, setVisibility] = useState("Everyone");
   const [allowSharing, setAllowSharing] = useState(false);
   const [allowReposts, setAllowReposts] = useState(false);
-  const [image, setImage] = useState(null);  // For image upload
+  const [image, setImage] = useState(null);
 
   const [formLoading, setFormLoading] = useState(false);
   const [formError, setFormError] = useState(null);
 
-  const navigate = useNavigate();
+  const [selectedRepostVisibility, setSelectedRepostVisibility] = useState(null);
+
+  useEffect(() => {
+    fetchPosts();
+  }, []);
 
   const fetchPosts = async () => {
+    setLoading(true);
     const token = localStorage.getItem("token");
     if (!token) {
       setError("No token found. Please login.");
+      setLoading(false);
       return;
     }
 
     try {
-      const response = await axios.get("http://localhost:7000/posts/user", {
-        headers: {
-          Authorization: ` ${token}`,
-        },
+      const userResponse = await axios.get("http://localhost:7000/posts/user", {
+        headers: { Authorization: ` ${token}` },
       });
-      setPosts(response.data);
+
+      const postIds = userResponse.data;
+
+      const fetchedPosts = await Promise.all(postIds.map(async (postId) => {
+        const postDetails = await fetchPostDetails(postId);
+        return { id: postId, ...postDetails };
+      }));
+
+      setPosts(fetchedPosts);
     } catch (err) {
       setError("Failed to fetch posts. Please try again.");
       console.error(err);
@@ -45,10 +57,122 @@ const CreateAndFeed = () => {
     }
   };
 
-  useEffect(() => {
-    fetchPosts();
-  }, []);
+  const fetchPostDetails = async (postId) => {
+    const token = localStorage.getItem("token");
+    if (!token) return {};
 
+    try {
+      const response = await axios.post(
+        'http://localhost:7000/posts/fetch',
+        { postId: postId },
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: ` ${token}`,
+          },
+        }
+      );
+      return response.data;
+    } catch (err) {
+      console.error("Error fetching post details", err);
+      return {};
+    }
+  };
+
+  const handleLike = async (postId, isLiked) => {
+    const token = localStorage.getItem("token");
+    const userId = posts.find(post => post.id === postId)?.user.id;
+
+    if (!token || !userId) return;
+
+    const apiUrl = isLiked
+      ? "http://localhost:7000/posts/removelike"
+      : "http://localhost:7000/posts/postlike";
+
+    const payload = {
+      userId: userId,
+      postId: postId,
+      isLiked: !isLiked,
+    };
+
+    try {
+      const response = await axios.post(apiUrl, payload, {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: ` ${token}`,
+        },
+      });
+
+      if (response.status === 200) {
+        setPosts(posts.map(post =>
+          post.id === postId
+            ? { ...post, isLiked: !isLiked, likeCount: post.isLiked ? post.likeCount - 1 : post.likeCount + 1 }
+            : post
+        ));
+      }
+    } catch (err) {
+      console.error("Error liking/removing like", err);
+    }
+  };
+  const fetchConnectionsPosts = async () => {
+    const token = localStorage.getItem("token");
+    if (!token) {
+      setError("No token found. Please login.");
+      return;
+    }
+  
+    try {
+      const response = await axios.get("http://localhost:7000/posts/connections", {
+        headers: {
+          Authorization: ` ${token}`,
+        },
+      });
+  
+      // Assuming the response contains an array of posts from the user's connections
+      const fetchedPosts = response.data;
+  
+      // Merge these posts with the user's posts (if needed)
+      setPosts(fetchedPosts);
+    } catch (err) {
+      setError("Failed to fetch posts from connections. Please try again.");
+      console.error(err);
+    }
+  };
+  
+  useEffect(() => {
+    fetchPosts();  // This is for user's posts
+    fetchConnectionsPosts();  // Fetch posts from connections
+  }, []);
+  
+  const handleCreateComment = async (postId, content) => {
+    const token = localStorage.getItem("token");
+    const userId = posts.find(post => post.id === postId)?.user.id;
+  
+    if (!token || !userId || !content) return;
+  
+    const payload = {
+      postId: postId,  // Remove userId from here
+      content: content,
+    };
+  
+    try {
+      const response = await axios.post("http://localhost:7000/posts/createcomment", payload, {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: ` ${token}`,
+        },
+      });
+  
+      if (response.status === 200) {
+        alert("Comment added successfully!");
+        fetchPosts();
+        setNewComment(""); // Reset the comment input
+      }
+    } catch (err) {
+      console.error("Error creating comment", err);
+    }
+  };
+  
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -65,7 +189,6 @@ const CreateAndFeed = () => {
 
     let response;
 
-    // For creating a new post with an image (multipart form data)
     if (!editPostId) {
       const formData = new FormData();
       formData.append("title", title);
@@ -74,30 +197,32 @@ const CreateAndFeed = () => {
       formData.append("allowSharing", allowSharing);
       formData.append("allowReposts", allowReposts);
 
-      if (image) {
-        formData.append("attachments", image);  // Append image as 'attachments' field
+      if (image && image.length > 0) {
+        Array.from(image).forEach((file) => {
+          formData.append("attachments", file);
+        });
       }
 
       const config = {
         headers: {
           Authorization: ` ${token}`,
-          "Content-Type": "multipart/form-data",  // Set to multipart/form-data for creating post
+          "Content-Type": "multipart/form-data",
         },
       };
 
       try {
         setFormLoading(true);
         setFormError(null);
-        
+
         response = await axios.post(
           "http://localhost:7000/posts/create",
           formData,
           config
         );
-        
+
         if (response.status === 200) {
           alert("Post created successfully!");
-          fetchPosts(); // Reload posts after submitting
+          fetchPosts();
           resetForm();
         }
       } catch (err) {
@@ -107,55 +232,19 @@ const CreateAndFeed = () => {
         setFormLoading(false);
       }
     } else {
-      // For editing an existing post (send JSON request body)
-      const postData = {
-        title,
-        content,
-        visibility,
-        allowSharing,
-        allowReposts,
-      };
-
-      const config = {
-        headers: {
-          Authorization: ` ${token}`,
-          "Content-Type": "application/json",  // Set to application/json for updating post
-        },
-      };
-
-      try {
-        setFormLoading(true);
-        setFormError(null);
-
-        response = await axios.patch(
-          `http://localhost:7000/posts/${editPostId}`,
-          postData,  // Send JSON request body for editing
-          config
-        );
-
-        if (response.status === 200) {
-          alert("Post updated successfully!");
-          fetchPosts(); // Reload posts after submitting
-          resetForm();
-        }
-      } catch (err) {
-        setFormError("Failed to update post. Please try again.");
-        console.error(err);
-      } finally {
-        setFormLoading(false);
-      }
+      handleEditPost();
     }
   };
 
   const resetForm = () => {
     setIsCreatingPost(false);
-    setEditPostId(null); // Reset edit state after submission
+    setEditPostId(null);
     setTitle("");
     setContent("");
     setVisibility("Everyone");
     setAllowSharing(false);
     setAllowReposts(false);
-    setImage(null); // Reset image after submission
+    setImage(null);
   };
 
   const handleCreatePostClick = () => {
@@ -164,18 +253,61 @@ const CreateAndFeed = () => {
 
   const handleEditPostClick = (postId) => {
     setEditPostId(postId);
-    const post = posts.find((p) => p.id === postId);
-    setTitle(post.title);
-    setContent(post.content);
-    setVisibility(post.visibility);
-    setAllowSharing(post.allowSharing);
-    setAllowReposts(post.allowReposts);
     setIsCreatingPost(true);
+  };
+
+  const handleEditPost = async () => {
+    const token = localStorage.getItem("token");
+    if (!token) {
+      setFormError("No token found. Please login.");
+      return;
+    }
+
+    try {
+      const formData = new FormData();
+      formData.append("title", title);
+      formData.append("content", content);
+      formData.append("visibility", visibility);
+      formData.append("allowSharing", allowSharing);
+      formData.append("allowReposts", allowReposts);
+
+      if (image && image.length > 0) {
+        Array.from(image).forEach((file) => {
+          formData.append("attachments", file);
+        });
+      }
+
+      const config = {
+        headers: {
+          Authorization: ` ${token}`,
+          "Content-Type": "application/json",
+        },
+      };
+
+      const response = await axios.patch(
+        `http://localhost:7000/posts/${editPostId}`,
+        formData,
+        config
+      );
+
+      if (response.status === 200) {
+        alert("Post edited successfully!");
+        fetchPosts();
+        resetForm();
+      }
+    } catch (err) {
+      setFormError("Failed to edit post. Please try again.");
+      console.error(err);
+    }
   };
 
   const handleDeletePost = async (postId) => {
     const token = localStorage.getItem("token");
-    if (!token) return;
+
+    if (!token) {
+      setError("No token found. Please login.");
+      return;
+    }
 
     try {
       const response = await axios.delete(`http://localhost:7000/posts/${postId}`, {
@@ -190,50 +322,145 @@ const CreateAndFeed = () => {
       }
     } catch (err) {
       console.error("Error deleting post", err);
-      alert("Failed to delete post.");
+      setError("Failed to delete post.");
     }
   };
 
-  const handleRepost = async (originalPostId) => {
+  const handleRepost = async (postId, postVisibility) => {
     const token = localStorage.getItem("token");
-    if (!token) return;
-
-    const postVisibility = prompt("Select repost visibility: Everyone, Connections, OnlyMe");
-
-    if (!["Everyone", "Connections", "OnlyMe"].includes(postVisibility)) {
-      alert("Invalid visibility selected.");
+  
+    // Ensure that postVisibility is a string and not undefined or null
+    if (!postVisibility || typeof postVisibility !== 'string') {
+      setError("Invalid visibility selected for repost.");
       return;
     }
-
+  
+    const payload = {
+      originalPostId: postId,
+      postVisibility: postVisibility,  // Ensure visibility is passed as a string
+    };
+  
     try {
-      const response = await axios.post(
-        `http://localhost:7000/posts/${originalPostId}/repost`,
-        { originalPostId, postVisibility },
-        {
-          headers: {
-            Authorization: ` ${token}`,
-          },
-        }
-      );
-
+      const response = await axios.post(`http://localhost:7000/posts/${postId}/repost`, payload, {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: ` ${token}`,
+        },
+      });
+  
       if (response.status === 200) {
         alert("Post reposted successfully!");
-        fetchPosts();
+        fetchPosts();  // Fetch updated posts after reposting
       }
     } catch (err) {
-      console.error("Error reposting post", err);
-      alert("Failed to repost.");
+      console.error("Error reposting the post", err);
+      setError("Failed to repost. Please try again.");
     }
   };
 
-  const handleLike = (postId) => {
-    setPosts(posts.map(post => 
-      post.id === postId ? { ...post, likes: (post.likes || 0) + 1 } : post
-    ));
+  
+  const PostActions = ({ post }) => {
+        const [visibility, setVisibility] = useState("Everyone");  // Set default visibility to "Everyone"
+      
+        const handleRepostClick = () => {
+          if (!visibility) {
+            alert("Please select a visibility for the repost.");
+            return;
+          }
+          handleRepost(post.id, visibility);
+        };
+    return (
+      <div className="post-actions">
+        <button
+          onClick={() => handleLike(post.id, post.isLiked)}
+          className={`like-button ${post.isLiked ? "liked" : ""}`}
+        >
+          <FaHeart />
+          <span>{post.likeCount}</span>
+        </button>
+        <button onClick={() => handleCreateComment(post.id, newComment)}>
+          <FaComment /> Comment
+        </button>
+        <button onClick={() => handleRepost(post.id, visibility)}>
+          <FaShareAlt /> Repost
+        </button>
+        <button onClick={() => handleEditPostClick(post.id)}>
+          <FaEdit /> Edit
+        </button>
+        <button onClick={() => handleDeletePost(post.id)}>
+          <FaTrash /> Delete
+        </button>
+  
+        <div>
+          <label htmlFor="visibility">Repost Visibility:</label>
+          <select
+            id="visibility"
+            value={visibility}
+            onChange={(e) => setVisibility(e.target.value)}
+          >
+            <option value="Everyone">Everyone</option>
+            <option value="Connections">Connections</option>
+            <option value="OnlyMe">Only Me</option>
+          </select>
+        </div>
+      </div>
+    );
   };
+  
 
-  const handleComment = (postId) => {
-    console.log("Comment on post with ID:", postId);
+  const PostWithAttachments = ({ postId }) => {
+    const [attachments, setAttachments] = useState({});
+    const [error, setError] = useState(null);
+
+    const fetchAttachments = async (postId) => {
+      const token = localStorage.getItem("token");
+
+      if (!token) {
+        setError("No token found. Please login.");
+        return;
+      }
+
+      try {
+        const response = await axios.get(`http://localhost:7000/posts/${postId}/attachments`, {
+          headers: {
+            Authorization: `${token}`,
+          },
+        });
+
+        if (response.data.attachments) {
+          setAttachments(response.data.attachments);  // Attachments as {filename: base64Data}
+        } else {
+          setError("No attachments found for this post.");
+        }
+      } catch (err) {
+        console.error("Error fetching attachments", err);
+        setError("Failed to fetch attachments.");
+      }
+    };
+
+    useEffect(() => {
+      if (postId) {
+        fetchAttachments(postId);
+      }
+    }, [postId]);
+
+    return (
+      <div className="post-attachments">
+        {error && <p style={{ color: "red" }}>{error}</p>}
+
+        <div className="attachments-container">
+          {Object.entries(attachments).map(([filePath, base64Data]) => (
+            <div key={filePath} className="attachment">
+              <img
+                src={base64Data}
+                alt="Attachment"
+                style={{ maxWidth: "100%", maxHeight: "400px", marginBottom: "10px" }}
+              />
+            </div>
+          ))}
+        </div>
+      </div>
+    );
   };
 
   return (
@@ -258,7 +485,6 @@ const CreateAndFeed = () => {
                 required
               />
             </div>
-
             <div>
               <label htmlFor="content">Content</label>
               <textarea
@@ -268,7 +494,6 @@ const CreateAndFeed = () => {
                 required
               />
             </div>
-
             <div>
               <label htmlFor="visibility">Visibility</label>
               <select
@@ -282,7 +507,6 @@ const CreateAndFeed = () => {
                 <option value="OnlyMe">Only Me</option>
               </select>
             </div>
-
             <div>
               <label htmlFor="allowSharing">Allow Sharing</label>
               <input
@@ -292,7 +516,6 @@ const CreateAndFeed = () => {
                 onChange={(e) => setAllowSharing(e.target.checked)}
               />
             </div>
-
             <div>
               <label htmlFor="allowReposts">Allow Reposts</label>
               <input
@@ -302,55 +525,70 @@ const CreateAndFeed = () => {
                 onChange={(e) => setAllowReposts(e.target.checked)}
               />
             </div>
-
             <div>
-              <label htmlFor="image">Upload Image</label>
+              <label htmlFor="image">Select Image</label>
               <input
                 type="file"
                 id="image"
-                onChange={(e) => setImage(e.target.files[0])}
+                accept="image/*"
+                multiple
+                onChange={(e) => setImage(e.target.files)}
               />
             </div>
-
-            <div>
-              <button type="submit" disabled={formLoading}>
-                {formLoading ? "Creating Post..." : "Create Post"}
-              </button>
-            </div>
-
-            {formError && <div style={{ color: "red" }}>{formError}</div>}
+            {formError && <p style={{ color: "red" }}>{formError}</p>}
+            <button type="submit" disabled={formLoading}>
+              {formLoading ? "Submitting..." : "Submit"}
+            </button>
           </form>
         </div>
       )}
 
-      {loading && <p>Loading posts...</p>}
       {error && <p style={{ color: "red" }}>{error}</p>}
 
-      <div>
-        {posts.map((post) => (
-          <div key={post.id} className="post">
-            <div className="post-header">
-              <h3>{post.title}</h3>
+      {loading ? (
+        <p>Loading...</p>
+      ) : (
+        <div className="feed">
+          {posts.map((post) => (
+            <div key={post.id} className="post">
+              <h2>{post.title}</h2>
+              <p>{post.content}</p>
+              <p>{post.user.name}</p>
+              <p>{post.date}</p>
+
+              <PostWithAttachments postId={post.id} />
+
               <div className="post-actions">
-                <button onClick={() => handleEditPostClick(post.id)}>Edit</button>
-                <button onClick={() => handleDeletePost(post.id)}>Delete</button>
-              </div>
-            </div>
-            <p>{post.content}</p>
-            <div>
-              <button onClick={() => handleLike(post.id)}>
-                <FaHeart /> Like {post.likes || 0}
-              </button>
-              <button onClick={() => handleComment(post.id)}>Comment</button>
-              {post.allowSharing && (
+                <button
+                  onClick={() => handleLike(post.id, post.isLiked)}
+                  className={`like-button ${post.isLiked ? "liked" : ""}`}
+                >
+                  <FaHeart />
+                  <span>{post.likeCount}</span>
+                </button>
+                <input
+                  type="text"
+                  value={newComment}
+                  onChange={(e) => setNewComment(e.target.value)}
+                  placeholder="Write a comment..."
+                />
+                <button onClick={() => handleCreateComment(post.id, newComment)}>
+                  <FaComment /> Comment
+                </button>
                 <button onClick={() => handleRepost(post.id)}>
                   <FaShareAlt /> Repost
                 </button>
-              )}
+                <button onClick={() => handleEditPostClick(post.id)}>
+                  <FaEdit /> Edit
+                </button>
+                <button onClick={() => handleDeletePost(post.id)}>
+                  <FaTrash /> Delete
+                </button>
+              </div>
             </div>
-          </div>
-        ))}
-      </div>
+          ))}
+        </div>
+      )}
     </div>
   );
 };
