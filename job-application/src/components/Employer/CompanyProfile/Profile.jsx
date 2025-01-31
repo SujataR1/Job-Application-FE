@@ -1,255 +1,232 @@
-// import React, { useState } from "react";
-// import "./Profile.css";
-// import EmployerNavbar from "../Navbar/Navbar";
-// import EmployerSidebar from '../Sidebar/Sidebar';
-
-// // Sample company data (could be fetched dynamically from an API)
-// const companyData = {
-//   name: "Tech Innovators",
-//   industry: "Software Development",
-//   founded: "2010",
-//   location: "San Francisco, CA",
-//   companySize: "500+ employees",
-//   overview:
-//     "Tech Innovators is a leading software development company focused on creating cutting-edge solutions for businesses around the world.",
-//   culture: "Innovation, Collaboration, Growth",
-//   website: "https://www.techinnovators.com",
-//   logo: "https://randomuser.me/api/portraits/men/1.jpg", // Company logo (sample)
-//   socialMedia: {
-//     linkedin: "https://linkedin.com/company/tech-innovators",
-//     twitter: "https://twitter.com/tech_innovators",
-//     facebook: "https://facebook.com/techinnovators"
-//   },
-//   jobs: [
-//     {
-//       title: "Software Engineer",
-//       location: "San Francisco, CA",
-//       description:
-//         "Join our team and help build innovative software solutions for global clients.",
-//       postedDate: "December 1, 2024",
-//     },
-//     {
-//       title: "Product Manager",
-//       location: "Remote",
-//       description:
-//         "Lead product development teams and drive product strategies for our flagship products.",
-//       postedDate: "November 25, 2024",
-//     },
-//   ],
-//   employees: [
-//     {
-//       name: "John Doe",
-//       position: "Software Engineer",
-//       profilePicture: "https://randomuser.me/api/portraits/men/2.jpg", // Employee profile image
-//     },
-//     {
-//       name: "Jane Smith",
-//       position: "Product Manager",
-//       profilePicture: "https://randomuser.me/api/portraits/women/2.jpg", // Employee profile image
-//     },
-//   ],
-// };
-
-// const CompanyProfile = () => {
-//   // State for company logo
-//   const [companyLogo, setCompanyLogo] = useState(companyData.logo);
-
-//   // Function to handle image change (file upload)
-//   const handleLogoChange = (event) => {
-//     const file = event.target.files[0];
-//     if (file) {
-//       const reader = new FileReader();
-//       reader.onloadend = () => {
-//         setCompanyLogo(reader.result); // Update company logo with the selected file
-//       };
-//       reader.readAsDataURL(file); // Convert the selected file to data URL
-//     }
-//   };
-
-//   // Function to handle company logo click
-//   const handleLogoClick = () => {
-//     document.getElementById('logo-input').click(); // Trigger file input click when logo is clicked
-//   };
-
-//   return (
-//     <div className="home-page">
-//       <EmployerNavbar />
-//       <div className="home-content flex flex-row">
-//         <EmployerSidebar />
-//         <div className="company-profile">
-//           {/* Header Section */}
-//           <header className="company-header">
-//             <div className="header-content">
-//               <div className="company-logo" onClick={handleLogoClick}>
-//                 <img src={companyLogo} alt={`${companyData.name} Logo`} />
-//               </div>
-//               <h1>{companyData.name}</h1>
-//               <p>{companyData.industry} | Founded: {companyData.founded}</p>
-//               <p>{companyData.location} | {companyData.companySize}</p>
-//             </div>
-//           </header>
-
-//           {/* Hidden file input to select a new logo */}
-//           <input
-//             type="file"
-//             id="logo-input"
-//             style={{ display: 'none' }} // Hide the file input
-//             accept="image/*" // Only allow image files
-//             onChange={handleLogoChange} // Handle image file change
-//           />
-
-//           {/* Company Overview */}
-//           <section className="company-overview">
-//             <h2>Company Overview</h2>
-//             <p>{companyData.overview}</p>
-//           </section>
-
-//           {/* Company Culture */}
-//           <section className="company-culture">
-//             <h2>Company Culture</h2>
-//             <p>{companyData.culture}</p>
-//           </section>
-
-//           {/* Company Website & Social Links */}
-//           <section className="company-links">
-//             <h2>Company Links</h2>
-//             <p>Website: <a href={companyData.website} target="_blank" rel="noopener noreferrer">{companyData.website}</a></p>
-//             <div className="social-links">
-//               <a href={companyData.socialMedia.linkedin} target="_blank" rel="noopener noreferrer">LinkedIn</a>
-//               <a href={companyData.socialMedia.twitter} target="_blank" rel="noopener noreferrer">Twitter</a>
-//               <a href={companyData.socialMedia.facebook} target="_blank" rel="noopener noreferrer">Facebook</a>
-//             </div>
-//           </section>
-
-//           {/* Job Listings */}
-//           <section className="job-listings">
-//             <h2>Job Listings</h2>
-//             <ul
-//   style={{
-//     padding: '0',
-//     margin: '0',
-//     listStyleType: 'none',
-//   }}
-// >
-//   {companyData.jobs.map((job, index) => (
-//     <li
-//       key={index}
-//       className="job-listings"
-//       style={{
-//         padding: '15px',
-//         backgroundColor: 'white', // Default background
-//         borderRadius: '8px',
-//         marginBottom: '10px',
-//         transition: 'background-color 0.3s', // Smooth transition for hover effect
-//       }}
-//       onMouseOver={(e) => (e.target.style.backgroundColor = '#f0f0f0')} // Gray background on hover
-//       onMouseOut={(e) => (e.target.style.backgroundColor = 'white')} // Reset background when not hovering
-//     >
-//       <h3>{job.title}</h3>
-//       <p>{job.location}</p>
-//       <p>{job.description}</p>
-//       <p><em>Posted on {job.postedDate}</em></p>
-//       <button className="apply-button" style={{ padding: '10px 20px', cursor: 'pointer' }}>Apply Now</button>
-//     </li>
-//   ))}
-// </ul>
-
-//           </section>
-
-//           {/* Employees Section */}
-//           <section className="employees">
-//             <h2>Our Team</h2>
-//             <div className="employee-list">
-//               {companyData.employees.map((employee, index) => (
-//                 <div key={index} className="employee-card">
-//                   <div className="profile-image">
-//                     <img src={employee.profilePicture} alt={employee.name} />
-//                   </div>
-//                   <h3>{employee.name}</h3>
-//                   <p>{employee.position}</p>
-//                 </div>
-//               ))}
-//             </div>
-//           </section>
-//         </div>
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default CompanyProfile;
-
-
-
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react"; 
+import { useNavigate } from "react-router-dom";
 import "./Profile.css";
 import EmployerNavbar from "../Navbar/Navbar";
 import EmployerSidebar from '../Sidebar/Sidebar';
 
-// Sample company data
-const companyData = {
-  name: "Tech Innovators",
-  industry: "Software Development",
-  founded: "2010",
-  location: "San Francisco, CA",
-  companySize: "500+ employees",
-  overview:
-    "Tech Innovators is a leading software development company focused on creating cutting-edge solutions for businesses around the world.",
-  culture: "Innovation, Collaboration, Growth",
-  website: "https://www.techinnovators.com",
-  logo: "https://randomuser.me/api/portraits/men/1.jpg",
-  socialMedia: {
-    linkedin: "https://linkedin.com/company/tech-innovators",
-    twitter: "https://twitter.com/tech_innovators",
-    facebook: "https://facebook.com/techinnovators"
-  },
-  jobs: [
-    {
-      title: "Software Engineer",
-      location: "San Francisco, CA",
-      description:
-        "Join our team and help build innovative software solutions for global clients.",
-      postedDate: "December 1, 2024",
-    },
-    {
-      title: "Product Manager",
-      location: "Remote",
-      description:
-        "Lead product development teams and drive product strategies for our flagship products.",
-      postedDate: "November 25, 2024",
-    },
-  ],
-  employees: [
-    {
-      name: "John Doe",
-      position: "Software Engineer",
-      profilePicture: "https://randomuser.me/api/portraits/men/2.jpg",
-    },
-    {
-      name: "Jane Smith",
-      position: "Product Manager",
-      profilePicture: "https://randomuser.me/api/portraits/women/2.jpg",
-    },
-  ],
-};
-
 const CompanyProfile = () => {
-  const [companyLogo, setCompanyLogo] = useState(companyData.logo);
+  const [companies, setCompanies] = useState([]);
+  const [selectedCompany, setSelectedCompany] = useState(null);
+  const [isAdmin, setIsAdmin] = useState(false);
+  const [hasJobPermission, setHasJobPermission] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
+  const [logo, setLogo] = useState(null);
+  const [logoUploadError, setLogoUploadError] = useState("");
+  const [isLogoUploaded, setIsLogoUploaded] = useState(false);
+  const [isLogoUploading, setIsLogoUploading] = useState(false);
+  const [emailToInvite, setEmailToInvite] = useState(""); // State for email to invite
+  const [otp, setOtp] = useState(""); // State for OTP input
+  const navigate = useNavigate();
 
-  const handleLogoChange = (event) => {
-    const file = event.target.files[0];
-    if (file) {
-      const reader = new FileReader();
-      reader.onloadend = () => {
-        setCompanyLogo(reader.result);
-      };
-      reader.readAsDataURL(file);
+  // Fetch all companies
+  const fetchCompanies = async () => {
+    const token = localStorage.getItem('token');
+    try {
+      const response = await fetch('http://localhost:7000/companies/all', {
+        method: 'POST',
+        headers: {
+          'Authorization': ` ${token}`,
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ limit: "1-10" }) // Adjust the limit as per your needs
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        setCompanies(data);
+      } else {
+        console.error("Error fetching companies:", await response.json());
+      }
+    } catch (error) {
+      console.error("Error fetching companies:", error);
     }
   };
 
-  const handleLogoClick = () => {
-    document.getElementById('logo-input').click();
+  // Check if the user is an admin of the selected company
+  const checkAdminStatus = async (companyId) => {
+    const token = localStorage.getItem('token');
+    try {
+      const response = await fetch('http://localhost:7000/companies/admin', {
+        method: 'GET',
+        headers: {
+          'Authorization': `${token}`,
+        },
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        const isAdmin = data.companies.some((company) => company.id === companyId);
+        setIsAdmin(isAdmin);
+      } else {
+        console.error("Error checking admin status:", await response.json());
+      }
+    } catch (error) {
+      console.error("Error checking admin status:", error);
+    }
   };
+
+  // Check if the user has job posting permissions for the selected company
+  const checkJobPermissions = async (companyId) => {
+    const token = localStorage.getItem('token');
+    try {
+      const response = await fetch('http://localhost:7000/companies/job-permissions', {
+        method: 'GET',
+        headers: {
+          'Authorization': ` ${token}`,
+        },
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        const hasPermission = data.companies.some((company) => company.id === companyId);
+        setHasJobPermission(hasPermission);
+      } else {
+        console.error("Error checking job posting permissions:", await response.json());
+      }
+    } catch (error) {
+      console.error("Error checking job posting permissions:", error);
+    }
+  };
+
+  // Handle company selection
+  const handleCompanySelect = async (e) => {
+    const companyId = e.target.value;
+    const selected = companies.find(company => company.id === companyId);
+    setSelectedCompany(selected);
+    setErrorMessage(""); // Clear previous errors
+
+    // Show description immediately after selection
+    await checkAdminStatus(companyId);
+    await checkJobPermissions(companyId);
+
+    // Fetch the logo for the selected company
+    fetchLogo(companyId);
+  };
+
+  // Fetch logo of a specific company
+  const fetchLogo = async (companyId) => {
+    const token = localStorage.getItem('token');
+    try {
+      const response = await fetch(`http://localhost:7000/companies/${companyId}/logo`, {
+        method: 'GET',
+        headers: {
+          'Authorization': `${token}`,
+        },
+      });
+
+      if (response.ok) {
+        const data = await response.blob();
+        const logoUrl = URL.createObjectURL(data);
+        setLogo(logoUrl);
+      } else {
+        console.error("Error fetching logo:", await response.json());
+      }
+    } catch (error) {
+      console.error("Error fetching logo:", error);
+    }
+  };
+
+  // Handle logo upload
+  const handleLogoUpload = async (event) => {
+    if (!isAdmin) {
+      setLogoUploadError("You must be an admin to upload a logo.");
+      return;
+    }
+
+    const companyId = selectedCompany.id;
+    const token = localStorage.getItem('token');
+    const formData = new FormData();
+    formData.append('file', event.target.files[0]);
+
+    try {
+      setIsLogoUploading(true);
+      const response = await fetch(`http://localhost:7000/companies/${companyId}/logo`, {
+        method: 'POST',
+        headers: {
+          'Authorization': ` ${token}`,
+        },
+        body: formData,
+      });
+
+      if (response.ok) {
+        setIsLogoUploaded(true);
+        setIsLogoUploading(false);
+        // Re-fetch the logo after uploading
+        fetchLogo(companyId);
+      } else {
+        console.error("Error uploading logo:", await response.json());
+        setIsLogoUploading(false);
+      }
+    } catch (error) {
+      console.error("Error uploading logo:", error);
+      setIsLogoUploading(false);
+    }
+  };
+
+  // Navigate to the Add Company page
+  const handleAddCompanyClick = () => {
+    navigate('/add-company');
+  };
+
+  // Invite user via email
+  const inviteUser = async (email) => {
+    if (!selectedCompany) {
+      setErrorMessage('Please select a company first.');
+      return;
+    }
+
+    const token = localStorage.getItem('token');
+    const companyId = selectedCompany.id; // Get the selected company ID from the state
+    try {
+      const response = await fetch(`http://localhost:7000/companies/${companyId}/invite`, { // Use the correct endpoint
+        method: 'POST',
+        headers: {
+          'Authorization': ` ${token}`,
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email }), // Send only the email
+      });
+
+      if (response.ok) {
+        alert('Invitation sent successfully!');
+      } else {
+        const errorData = await response.json();
+        console.error('Error sending invitation:', errorData);
+        setErrorMessage(errorData.message || 'Error sending invitation');
+      }
+    } catch (error) {
+      console.error('Error sending invitation:', error);
+      setErrorMessage('Network error, please try again later.');
+    }
+  };
+
+  // Verify OTP after user accepts invitation
+  const verifyInvitationOTP = async (otp) => {
+    const token = localStorage.getItem('token');
+    try {
+      const response = await fetch('http://localhost:7000/companies/verify-invitation', {
+        method: 'POST',
+        headers: {
+          'Authorization': ` ${token}`,
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ otp }),
+      });
+
+      if (response.ok) {
+        alert('OTP verified successfully! You are now acting on behalf of the admin.');
+      } else {
+        console.error('Error verifying OTP:', await response.json());
+      }
+    } catch (error) {
+      console.error('Error verifying OTP:', error);
+    }
+  };
+
+  // Fetch companies on mount
+  useEffect(() => {
+    fetchCompanies();
+  }, []);
 
   return (
     <div className="company-profile-container">
@@ -259,74 +236,98 @@ const CompanyProfile = () => {
         <div className="company-profile">
           <header className="company-header">
             <div className="company-header-content">
-              <div className="company-logo" onClick={handleLogoClick}>
-                <img src={companyLogo} alt={`${companyData.name} Logo`} />
-              </div>
-              <div className="company-info">
-                <h1>{companyData.name}</h1>
-                <p>{companyData.industry} | Founded: {companyData.founded}</p>
-                <p>{companyData.location} | {companyData.companySize}</p>
-              </div>
+              <h1>Select a Company</h1>
+              {/* Dropdown for selecting company */}
+              <select onChange={handleCompanySelect}>
+                <option value="">-- Select a Company --</option>
+                {companies.map((company) => (
+                  <option key={company.id} value={company.id}>
+                    {company.name}
+                  </option>
+                ))}
+              </select>
             </div>
           </header>
 
-          <input
-            type="file"
-            id="logo-input"
-            style={{ display: 'none' }}
-            accept="image/*"
-            onChange={handleLogoChange}
-          />
+          {/* Add Company Button */}
+          <div className="add-company-button">
+            <button onClick={handleAddCompanyClick}>Add a Company</button>
+          </div>
 
-          <section className="company-overview">
-            <h2>Company Overview</h2>
-            <p>{companyData.overview}</p>
-          </section>
+          {/* Show error messages */}
+          {errorMessage && <div className="error-message">{errorMessage}</div>}
+          {logoUploadError && <div className="error-message">{logoUploadError}</div>}
 
-          <section className="company-culture">
-            <h2>Company Culture</h2>
-            <p>{companyData.culture}</p>
-          </section>
-
-          <section className="company-links">
-            <h2>Company Links</h2>
-            <p>Website: <a href={companyData.website} target="_blank" rel="noopener noreferrer">{companyData.website}</a></p>
-            <div className="social-links">
-              <a href={companyData.socialMedia.linkedin} target="_blank" rel="noopener noreferrer">LinkedIn</a>
-              <a href={companyData.socialMedia.twitter} target="_blank" rel="noopener noreferrer">Twitter</a>
-              <a href={companyData.socialMedia.facebook} target="_blank" rel="noopener noreferrer">Facebook</a>
+          {/* Admin invitation UI */}
+          {isAdmin && (
+            <div className="invite-user">
+              <h3>Invite User to Act on Behalf of Admin</h3>
+              <input
+                type="email"
+                placeholder="Enter user's email"
+                value={emailToInvite}
+                onChange={(e) => setEmailToInvite(e.target.value)}
+              />
+              <button onClick={() => inviteUser(emailToInvite)}>Send Invitation</button>
             </div>
-          </section>
+          )}
 
-          <section className="job-listings">
-            <h2>Job Listings</h2>
-            <ul>
-              {companyData.jobs.map((job, index) => (
-                <li key={index} className="job-item">
-                  <h3>{job.title}</h3>
-                  <p>{job.location}</p>
-                  <p>{job.description}</p>
-                  <p><em>Posted on {job.postedDate}</em></p>
-                  <button className="apply-button">Apply Now</button>
-                </li>
-              ))}
-            </ul>
-          </section>
+          {/* OTP verification UI for user */}
+          {!isAdmin && (
+            <div className="verify-invitation">
+              <h3>Enter OTP to Verify Invitation</h3>
+              <input
+                type="text"
+                placeholder="Enter OTP"
+                value={otp}
+                onChange={(e) => setOtp(e.target.value)}
+              />
+              <button onClick={() => verifyInvitationOTP(otp)}>Verify OTP</button>
+            </div>
+          )}
 
-          <section className="employees">
-            <h2>Our Team</h2>
-            <div className="employee-list">
-              {companyData.employees.map((employee, index) => (
-                <div key={index} className="employee-card">
-                  <div className="profile-image">
-                    <img src={employee.profilePicture} alt={employee.name} />
-                  </div>
-                  <h3>{employee.name}</h3>
-                  <p>{employee.position}</p>
+          {/* Show selected company details immediately */}
+          {selectedCompany && (
+            <div className="company-description">
+              {/* Display the logo if uploaded */}
+              {logo && (
+                <div className="company-logo">
+                  <h3>Company Logo</h3>
+                  <img src={logo} alt="Company Logo" />
                 </div>
-              ))}
+              )}
+
+              <h2>Company Details</h2>
+              <p><strong>Name:</strong> {selectedCompany.name}</p>
+              <p><strong>Description:</strong> {selectedCompany.description}</p>
+              <p><strong>Website:</strong> <a href={selectedCompany.websiteLink} target="_blank" rel="noopener noreferrer">{selectedCompany.websiteLink}</a></p>
+              <p><strong>About:</strong> {selectedCompany.about}</p>
             </div>
-          </section>
+          )}
+
+          {/* Show admin status and job posting permissions */}
+          {selectedCompany && (
+            <div className="admin-job-permission-status">
+              <p><strong>Admin:</strong> {isAdmin ? "Yes" : "No"}</p>
+              <p><strong>Job Posting Permission:</strong> {hasJobPermission ? "Yes" : "No"}</p>
+            </div>
+          )}
+
+          {/* Show logo upload if the user is an admin */}
+          {isAdmin && (
+            <div className="logo-upload">
+              <h3>Upload Logo</h3>
+              <input type="file" accept="image/*" onChange={handleLogoUpload} />
+            </div>
+          )}
+
+          {/* Show logo upload button */}
+          {isLogoUploading && <div>Uploading...</div>}
+
+          {/* Show Save button after logo upload */}
+          {isLogoUploaded && (
+            <button className="save-logo-button" onClick={() => alert('Logo saved successfully!')}>Save</button>
+          )}
         </div>
       </div>
     </div>

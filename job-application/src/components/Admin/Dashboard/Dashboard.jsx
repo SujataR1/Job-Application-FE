@@ -1,86 +1,59 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Dashboard.css';
 import AdminNavbar from '../Navbar/Navbar';
 import AdminSidenavbar from '../Sidenavbar/Sidenavbar';
-import { Bar } from 'react-chartjs-2';
-import { Pie } from 'react-chartjs-2';
-import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend, ArcElement } from 'chart.js';
-
-// Register chart.js components
-ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend, ArcElement);
+import axios from 'axios';
 
 const Dashboard = () => {
-  // Data for the bar chart
-  const chartData = {
-    labels: ['Job Applications', 'New Job Listings', 'Pending Approvals', 'Users'],
-    datasets: [
-      {
-        label: 'Statistics',
-        data: [123, 5, 10, 56],
-        backgroundColor: 'rgba(75, 192, 192, 0.6)',
-        borderColor: 'rgba(75, 192, 192, 1)',
-        borderWidth: 1,
-      },
-    ],
+  const [companyName, setCompanyName] = useState('');
+  const [companyDescription, setCompanyDescription] = useState('');
+  const [companyEmail, setCompanyEmail] = useState('');
+  const [email, setEmail] = useState('');
+  const [companies, setCompanies] = useState([]);
+  
+  // Fetch companies the admin is involved in
+  const fetchCompanies = async () => {
+    try {
+      const response = await axios.get('http://localhost:7000/companies/involved');
+      setCompanies(response.data.companies);
+    } catch (error) {
+      console.error('Error fetching companies:', error);
+    }
   };
 
-  // Pie chart data for applications status
-  const pieChartData = {
-    labels: ['Approved', 'Rejected', 'Pending'],
-    datasets: [
-      {
-        data: [50, 48, 25],
-        backgroundColor: ['rgba(75, 192, 192, 0.6)', 'rgba(255, 99, 132, 0.6)', 'rgba(255, 159, 64, 0.6)'],
-        borderColor: ['rgba(75, 192, 192, 1)', 'rgba(255, 99, 132, 1)', 'rgba(255, 159, 64, 1)'],
-        borderWidth: 1,
-      },
-    ],
+  // Handle adding a company
+  const handleAddCompany = async () => {
+    try {
+      const response = await axios.post('http://localhost:7000/companies', {
+        name: companyName,
+        description: companyDescription,
+        email: companyEmail,
+      });
+      alert(response.data.message);
+      setCompanyName('');
+      setCompanyDescription('');
+      setCompanyEmail('');
+      fetchCompanies(); // Refresh the companies list after adding
+    } catch (error) {
+      console.error('Error adding company:', error);
+    }
   };
 
-  const chartOptions = {
-    responsive: true,
-    plugins: {
-      title: {
-        display: true,
-        text: 'Platform Statistics',
-        font: {
-          size: 20,
-        },
-      },
-      tooltip: {
-        callbacks: {
-          label: (tooltipItem) => {
-            return ` ${tooltipItem.dataset.label}: ${tooltipItem.raw}`;
-          },
-        },
-      },
-    },
-    scales: {
-      y: {
-        beginAtZero: true,
-      },
-    },
+  // Handle sending an invitation
+  const handleSendInvitation = async () => {
+    try {
+      const response = await axios.post('http://localhost:7000/companies/invite', { email });
+      alert(response.data.message);
+      setEmail('');
+    } catch (error) {
+      console.error('Error sending invitation:', error);
+    }
   };
 
-  const pieChartOptions = {
-    responsive: true,
-    plugins: {
-      title: {
-        display: true,
-        text: 'Job Applications Status',
-        font: {
-          size: 20,
-        },
-      },
-      tooltip: {
-        callbacks: {
-          label: (tooltipItem) => {
-            return `${tooltipItem.label}: ${tooltipItem.raw}`;
-          },
-        },
-      },
-    },
-  };
+  // Fetch companies on initial render
+  React.useEffect(() => {
+    fetchCompanies();
+  }, []);
 
   return (
     <div className="home-page">
@@ -92,97 +65,84 @@ const Dashboard = () => {
             <h2>Admin Dashboard</h2>
           </div>
 
-          {/* Job Application Overview Section */}
-          <div className="overview-section">
-            <div className="overview-card" title="Total job applications submitted">
-              <h3>Total Applications</h3>
-              <p>123</p>
-            </div>
-            <div className="overview-card" title="Applications under review">
-              <h3>Applications in Review</h3>
-              <p>25</p>
-            </div>
-            <div className="overview-card" title="Applications approved by the admin">
-              <h3>Applications Approved</h3>
-              <p>50</p>
-            </div>
-            <div className="overview-card" title="Applications rejected by the admin">
-              <h3>Applications Rejected</h3>
-              <p>48</p>
-            </div>
+          {/* Add Company Section */}
+          <div className="add-company-section">
+            <h3>Add New Company</h3>
+            <form>
+              <div className="form-group">
+                <label>Company Name</label>
+                <input
+                  type="text"
+                  placeholder="Enter company name"
+                  value={companyName}
+                  onChange={(e) => setCompanyName(e.target.value)}
+                  required
+                />
+              </div>
+              <div className="form-group">
+                <label>Company Description</label>
+                <textarea
+                  placeholder="Enter company description"
+                  value={companyDescription}
+                  onChange={(e) => setCompanyDescription(e.target.value)}
+                  required
+                ></textarea>
+              </div>
+              <div className="form-group">
+                <label>Company Email</label>
+                <input
+                  type="email"
+                  placeholder="Enter company email"
+                  value={companyEmail}
+                  onChange={(e) => setCompanyEmail(e.target.value)}
+                  required
+                />
+              </div>
+              <button type="button" onClick={handleAddCompany}>
+                Add Company
+              </button>
+            </form>
           </div>
 
-          {/* Job Listings Overview Section */}
-          <div className="job-listings-section">
-            <div className="overview-card" title="Total job listings available on the platform">
-              <h3>Total Job Listings</h3>
-              <p>15</p>
-            </div>
-            <div className="overview-card" title="Number of active job listings">
-              <h3>Active Listings</h3>
-              <p>10</p>
-            </div>
-            <div className="overview-card" title="Number of closed job listings">
-              <h3>Closed Listings</h3>
-              <p>5</p>
-            </div>
+          {/* Send Invitation Section */}
+          <div className="send-invitation-section">
+            <h3>Send Invitation to User</h3>
+            <form>
+              <div className="form-group">
+                <label>Email Address</label>
+                <input
+                  type="email"
+                  placeholder="Enter user email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  required
+                />
+              </div>
+              <button type="button" onClick={handleSendInvitation}>
+                Send Invitation
+              </button>
+            </form>
           </div>
 
-          {/* Chart Section */}
-          <div className="chart-section">
-            <h3>Platform Statistics</h3>
-            <div className="chart-container">
-              <Bar data={chartData} options={chartOptions} />
-            </div>
-          </div>
-
-          {/* Pie Chart for Application Status */}
-          <div className="pie-chart-section">
-            <h3>Job Applications Status</h3>
-            <div className="pie-chart-container">
-              <Pie data={pieChartData} options={pieChartOptions} />
-            </div>
-          </div>
-
-          {/* Latest Applications Section */}
-          <div className="latest-applications">
-            <h3>Latest Applications</h3>
-            <table>
-              <thead>
-                <tr>
-                  <th>Applicant Name</th>
-                  <th>Job Title</th>
-                  <th>Status</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>John Doe</td>
-                  <td>Software Developer</td>
-                  <td>Pending</td>
-                </tr>
-                <tr>
-                  <td>Jane Smith</td>
-                  <td>Product Manager</td>
-                  <td>Approved</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-
-          {/* Latest Activities Section */}
-          <div className="latest-activities">
-            <h3>Latest Activities</h3>
-            <ul>
-              <li>John Doe applied for Software Developer - Pending</li>
-              <li>Jane Smith applied for Product Manager - Approved</li>
-              <li>New job listing created for UI/UX Designer</li>
-            </ul>
+          {/* Companies Management Section */}
+          <div className="companies-section">
+            <h3>Companies You Are Involved In</h3>
+            {companies.length === 0 ? (
+              <p>No companies found.</p>
+            ) : (
+              <ul>
+                {companies.map((company, index) => (
+                  <li key={index}>
+                    <strong>{company.name}</strong> - {company.description}
+                  </li>
+                ))}
+              </ul>
+            )}
           </div>
         </div>
       </div>
     </div>
   );
-}
+};
 
 export default Dashboard;

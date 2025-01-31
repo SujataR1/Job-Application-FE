@@ -1,227 +1,252 @@
-/* General Styling */
+/* Global Reset */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: Arial, sans-serif;
-  }
-  
-  body {
-    background-color: #f4f7fc;
-    font-size: 14px;
-    color: #333;
-  }
-  
-  /* Company Profile Container */
-  .company-profile {
-    width: 80%;
-    margin: 50px auto;
-    background-color: #fff;
-    border-radius: 8px;
-    padding: 30px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  }
-  
-  /* Company Header */
-  .company-header {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-bottom: 30px;
-  }
-  
-  .company-header .company-logo img {
-    border-radius: 50%;  /* Circular effect */
-    width: 150px;        /* Adjust the size of the logo */
-    height: 150px;       /* Maintain aspect ratio */
-    margin-bottom: 20px;
-  }
-  
-  .company-header h1 {
-    font-size: 32px;
-    color: #333;
-    margin-bottom: 10px;
-  }
-  
-  .company-header p {
-    font-size: 14px;
-    color: #555;
-  }
-  
-  /* Overview and Culture Section */
-  .company-overview,
-  .company-culture {
-    margin-bottom: 40px;
-  }
-  
-  .company-overview h2,
-  .company-culture h2 {
-    font-size: 24px;
-    color: #333;
-    margin-bottom: 10px;
-  }
-  
-  .company-overview p,
-  .company-culture p {
-    font-size: 16px;
-    color: #555;
-  }
-  
-  /* Company Links Section */
-  .company-links {
-    margin-bottom: 40px;
-  }
-  
-  .company-links h2 {
-    font-size: 24px;
-    color: #333;
-    margin-bottom: 10px;
-  }
-  
-  .company-links p {
-    font-size: 16px;
-    color: #555;
-  }
-  
-  .company-links .social-links {
-    display: flex;
-    gap: 15px;
-  }
-  
-  .company-links .social-links a {
-    text-decoration: none;
-    color: #0077b5; /* LinkedIn Blue */
-  }
-  
-  .company-links .social-links a:hover {
-    text-decoration: underline;
-  }
-  
-  /* Job Listings */
-  .job-listings {
-    margin-bottom: 40px;
-  }
-  
-  .job-listings h2 {
-    font-size: 24px;
-    color: #333;
-    margin-bottom: 20px;
-  }
-  
-  .job-listing {
-    background-color: #f9f9f9;
-    border: 1px solid #ddd;
-    padding: 20px;
-    border-radius: 8px;
-    margin-bottom: 20px;
-  }
-  
-  .job-listing h3 {
-    font-size: 18px;
-    color: #333;
-    margin-bottom: 10px;
-  }
-  
-  .job-listing p {
-    font-size: 14px;
-    margin-bottom: 10px;
-    color: #555;
-  }
-  
-  .apply-button {
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    font-size: 14px;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
-  .apply-button:hover {
-    background-color: #45a049;
-  }
-  
-  /* Employees Section */
-  .employees {
-    margin-bottom: 40px;
-  }
-  
-  .employees h2 {
-    font-size: 24px;
-    color: #333;
-    margin-bottom: 20px;
-  }
-  
-  .employee-list {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    justify-content: space-around;
-  }
-  
-  .employee-card {
-    background-color: #f9f9f9;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    width: 150px;
-    text-align: center;
-    padding: 15px;
-  }
-  
-  .employee-card .profile-image {
-    border-radius: 50%;
-    overflow: hidden;
-    width: 80px;
-    height: 80px;
-    margin: 0 auto 10px;
-  }
-  
-  .employee-card img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-  
-  .employee-card h3 {
-    font-size: 16px;
-    color: #333;
-    margin-bottom: 5px;
-  }
-  
-  .employee-card p {
-    font-size: 14px;
-    color: #555;
-  }
-  /* Profile Image Styling */
-.profile-image {
-    border-radius: 50%;  /* Circular effect */
-    overflow: hidden;
-    width: 80px;
-    height: 80px;
-    cursor: pointer;
-  }
-  
-  .profile-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-  
-  /* Selected Profile Image Styling */
-  .selected-image {
-    text-align: center;
-    margin-top: 40px;
-  }
-  
-  .selected-image .profile-image {
-    width: 150px;
-    height: 150px;
-  }
-  
-  .selected-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-  
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Root Styles */
+:root {
+  --primary-color: #3498db; /* Vibrant blue */
+  --secondary-color: #2ecc71; /* Fresh green */
+  --bg-color: #f8f9fa; /* Soft background */
+  --text-color: #333; /* Text color */
+  --heading-color: #2c3e50; /* Dark heading color */
+  --error-color: #e74c3c; /* Error color */
+  --highlight-color: rgba(52, 152, 219, 0.2); /* Light highlight for hover states */
+}
+
+/* Main container */
+.company-profile-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  font-family: 'Poppins', sans-serif;
+  background-color: var(--bg-color);
+  padding: 20px;
+  gap: 20px;
+}
+
+/* Header */
+.company-header {
+  background-color: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(10px); /* Glassmorphism effect */
+  padding: 40px 20px;
+  text-align: center;
+  border-radius: 10px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.company-header h1 {
+  font-size: 2.8rem;
+  color: var(--heading-color);
+  font-weight: 600;
+}
+
+select {
+  margin-top: 15px;
+  padding: 12px;
+  font-size: 1.1rem;
+  width: 100%;
+  border-radius: 8px;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  background-color: rgba(255, 255, 255, 0.9);
+  color: var(--text-color);
+}
+
+select:focus {
+  border-color: var(--primary-color);
+  background-color: #fff;
+  outline: none;
+}
+
+/* Main Content */
+.main-content {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Company Profile Box */
+.company-profile {
+  background-color: rgba(255, 255, 255, 0.9);
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 800px;
+  transition: all 0.3s ease;
+}
+
+.company-profile:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
+}
+
+h2, h3 {
+  color: var(--heading-color);
+  margin-bottom: 15px;
+}
+
+.company-description {
+  margin-top: 20px;
+}
+
+.company-description p {
+  color: #555;
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+.company-description a {
+  color: var(--primary-color);
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.company-description a:hover {
+  text-decoration: underline;
+}
+
+/* Buttons */
+button {
+  padding: 12px 25px;
+  background-color: var(--primary-color);
+  color: #fff;
+  border-radius: 10px;
+  border: none;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+button:hover {
+  background-color: #2980b9;
+  transform: scale(1.05);
+}
+
+button:active {
+  transform: scale(1);
+}
+
+/* File Upload Input */
+input[type="file"] {
+  display: block;
+  margin-top: 20px;
+  background-color: rgba(255, 255, 255, 0.9);
+  padding: 10px;
+  font-size: 1rem;
+  border-radius: 8px;
+  width: 100%;
+  cursor: pointer;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+input[type="file"]:hover {
+  border-color: var(--primary-color);
+}
+
+/* Error Message */
+.error-message {
+  padding: 20px;
+  background-color: rgba(231, 76, 60, 0.1);
+  border-left: 8px solid var(--error-color);
+  color: var(--error-color);
+  font-size: 1rem;
+  border-radius: 8px;
+  margin-top: 20px;
+  font-weight: 600;
+  text-align: center;
+}
+
+/* Logo Section */
+.company-logo {
+  text-align: center;
+  margin-top: 40px;
+}
+
+.company-logo img {
+  max-width: 200px;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.save-logo-button {
+  margin-top: 20px;
+  padding: 12px 30px;
+  background-color: var(--secondary-color);
+  color: #fff;
+  font-size: 1.1rem;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  border: none;
+}
+
+.save-logo-button:hover {
+  background-color: #27ae60;
+  transform: scale(1.05);
+}
+
+.save-logo-button:active {
+  transform: scale(1);
+}
+
+/* Invite User Section */
+.invite-user {
+  background-color: rgba(255, 255, 255, 0.9);
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 650px;
+  margin: 20px auto;
+}
+
+.invite-user input {
+  width: 75%;
+  margin-right: 15px;
+}
+
+.invite-user button {
+  padding: 12px 25px;
+  background-color: var(--primary-color);
+  color: white;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+.invite-user button:hover {
+  background-color: #2980b9;
+  transform: scale(1.05);
+}
+
+.invite-user button:active {
+  transform: scale(1);
+}
+
+/* Admin and Permissions Section */
+.admin-job-permission-status {
+  padding: 25px;
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  margin-top: 30px;
+}
+
+.admin-job-permission-status p {
+  font-size: 1.1rem;
+  color: #555;
+  margin-bottom: 15px;
+}
+
+.admin-job-permission-status strong {
+  font-weight: 600;
+  color: var(--primary-color);
+}

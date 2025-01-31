@@ -1,7 +1,8 @@
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';  // useNavigate for redirection
-import { FaNetworkWired, FaSignOutAlt, FaBell, FaClipboardList, FaUserCircle, FaHome, FaEnvelope } from 'react-icons/fa'; // Importing additional icons
+import { FaNetworkWired, FaSignOutAlt, FaBell, FaClipboardList, FaUserCircle, FaHome, FaEnvelope, FaBuilding } from 'react-icons/fa'; // Importing additional icons
 import './Navbar.css';
+
 
 function EmployerNavbar({ toggleSidebar, profileImageUrl }) {
   const navigate = useNavigate();  // To navigate to login page after logout
@@ -61,56 +62,33 @@ function EmployerNavbar({ toggleSidebar, profileImageUrl }) {
 
         {/* Center: Navbar Links */}
         <ul className="nav-links">
-          {/* <li>
-            <Link to="/employerdashboard" className="  text-white font-bold text-lg hover:text-teal-300">
-          
+          <li>
+            <Link to="/employerdashboard" className="text-white font-bold text-lg hover:text-teal-300 mr-6">
               <FaHome className="inline-block mr-2" /> Home
             </Link>
           </li>
           <li>
-            <Link to="/network" className=" text-white font-bold text-lg hover:text-teal-300">
+            <Link to="/network" className="text-white font-bold text-lg hover:text-teal-300 mr-6">
               <FaNetworkWired className="inline-block mr-2" /> My Network
             </Link>
-          </li> */}
-         <li>
-  <Link to="/employerdashboard" className="text-white font-bold text-lg hover:text-teal-300 mr-6">
-    <FaHome className="inline-block mr-2" /> Home
-  </Link>
-</li>
-<li>
-  <Link to="/network" className="text-white font-bold text-lg hover:text-teal-300 mr-6">
-    <FaNetworkWired className="inline-block mr-2" /> My Network
-  </Link>
-</li>
-
-
-          {/* <li>
-            <Link to="/application" className=" text-white font-bold text-lg hover:text-teal-300">
+          </li>
+          <li>
+            <Link to="/application" className="text-white font-bold text-lg hover:text-teal-300 mr-6">
               <FaClipboardList className="inline-block mr-2" /> My Posts
             </Link>
           </li>
           <li>
-            <Link to="/message" className=" text-white font-bold text-lg hover:text-teal-300">
-              <FaEnvelope className="inline-block mr-2" /> Messages
+            <Link to="/message" className="text-white font-bold text-lg hover:text-teal-300 mr-6">
+              <FaEnvelope className="inline-block mr-2" /> My Messages
             </Link>
-          </li> */}
+          </li>
           <li>
-  <Link to="/application" className="text-white font-bold text-lg hover:text-teal-300 mr-6">
-    <FaClipboardList className="inline-block mr-2" /> My Posts
-  </Link>
-</li>
-<li>
-  <Link to="/message" className="text-white font-bold text-lg hover:text-teal-300 mr-6">
-    <FaEnvelope className="inline-block mr-2" /> My Messages
-  </Link>
-</li>
-
-          <li>
-            <Link to="/notifications" className=" text-white font-bold text-lg hover:text-teal-300">
+            <Link to="/notifications" className="text-white font-bold text-lg hover:text-teal-300 mr-6">
               <FaBell className="inline-block mr-2" /> Notifications
             </Link>
           </li>
         </ul>
+
 
         {/* Right side: Logout Button */}
         <div className="logout-section">
