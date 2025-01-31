@@ -35,6 +35,7 @@ const JobAnalyticsPage = () => {
   const [showInterviewPopup, setShowInterviewPopup] = useState(false);
   const [selectedApplicant, setSelectedApplicant] = useState(null);
   
+  
   // Interview related state variables
   const [interviewType, setInterviewType] = useState('');
   const [meetingLink, setMeetingLink] = useState('');

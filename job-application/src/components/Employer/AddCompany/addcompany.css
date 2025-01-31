@@ -1,0 +1,204 @@
+/* General Styles */
+body {
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f7fc;  /* Soft background color */
+}
+
+h2, h3 {
+  font-family: 'Roboto', sans-serif;
+  color: #333;
+  text-align: center;
+}
+
+.add-company-container {
+  padding: 40px;
+  max-width: 800px;
+  margin: 30px auto;
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.form-container {
+  margin-bottom: 40px;
+}
+
+.form-heading {
+  font-size: 28px;
+  margin-bottom: 20px;
+  color: #4CAF50;
+  font-weight: bold;
+}
+
+.company-form .input-group {
+  margin-bottom: 25px;
+}
+
+.company-form label {
+  font-size: 16px;
+  margin-bottom: 10px;
+  color: #666;
+}
+
+.input-field {
+  width: 100%;
+  padding: 16px;
+  font-size: 16px;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+  box-sizing: border-box;
+  transition: all 0.3s ease;
+  outline: none;
+}
+
+.input-field:focus {
+  border-color: #4CAF50;
+  background-color: #fff;
+  box-shadow: 0 0 8px rgba(76, 175, 80, 0.3);
+}
+
+.submit-button {
+  padding: 12px 22px;
+  font-size: 16px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 25px;  /* Rounded corners */
+  cursor: pointer;
+  width: auto;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  margin-top: 20px;
+}
+
+.submit-button:hover {
+  background-color: #45a049;
+  transform: translateY(-2px);  /* Slight lift on hover */
+}
+
+.submit-button:active {
+  transform: translateY(1px);  /* Button "press" effect */
+}
+
+.error-message {
+  color: #d9534f;
+  font-size: 16px;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* Company List Styles */
+.companies-list-container {
+  margin-top: 40px;
+}
+
+.companies-list-heading {
+  font-size: 24px;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.companies-list .company-item {
+  background-color: #fafafa;
+  padding: 20px;
+  margin-bottom: 25px;
+  border-radius: 12px;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.company-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
+}
+
+.company-name {
+  font-size: 22px;
+  margin-bottom: 12px;
+  color: #333;
+  font-weight: bold;
+}
+
+.company-description,
+.company-website,
+.company-about {
+  font-size: 15px;
+  color: #555;
+}
+
+.company-website a {
+  color: #4CAF50;
+  text-decoration: none;
+}
+
+.company-website a:hover {
+  text-decoration: underline;
+}
+
+/* Animation for Modal/Popups */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0.3s, opacity 0.3s;
+}
+
+.modal-overlay.show {
+  visibility: visible;
+  opacity: 1;
+}
+
+.modal-content {
+  background-color: #ffffff;
+  padding: 20px 30px;
+  border-radius: 10px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  width: 300px;
+  animation: fadeIn 0.5s ease;
+}
+
+.modal-content h3 {
+  font-size: 20px;
+  margin-bottom: 10px;
+  color: #4CAF50;
+}
+
+.modal-content p {
+  font-size: 16px;
+  color: #666;
+}
+
+.modal-close {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 8px;
+  cursor: pointer;
+  width: 100%;
+  font-size: 16px;
+  margin-top: 15px;
+}
+
+.modal-close:hover {
+  background-color: #45a049;
+}

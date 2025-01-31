@@ -1,0 +1,71 @@
+/* Styling for the Activity Logs Table */
+.activity-logs-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .activity-logs-table th, .activity-logs-table td {
+    padding: 12px;
+    border: 1px solid #ddd;
+    text-align: left;
+  }
+  
+  .activity-logs-table th {
+    cursor: pointer;
+    background-color: #f4f4f4;
+  }
+  
+  .activity-logs-table tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+  
+  .activity-logs-table tbody tr:hover {
+    background-color: #f1f1f1;
+  }
+  
+  /* Color coding for different action types */
+  .activity-logs-table .log-row.update {
+    background-color: #d3f9d8; /* Green for updates */
+  }
+  
+  .activity-logs-table .log-row.delete {
+    background-color: #f9d8d8; /* Red for deletions */
+  }
+  
+  .activity-logs-table .log-row.create {
+    background-color: #d8eaff; /* Blue for creations */
+  }
+  
+  .activity-logs-table .log-row.approve {
+    background-color: #fff4d8; /* Yellow for approvals */
+  }
+  
+  /* Filters Section */
+  .filters {
+    margin-bottom: 20px;
+  }
+  
+  .filters input {
+    padding: 8px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+  }
+  
+  .filters input[type="date"] {
+    width: 160px;
+  }
+  
+  /* Responsive Styles */
+  @media (max-width: 768px) {
+    .activity-logs-table th, .activity-logs-table td {
+      font-size: 14px;
+      padding: 8px;
+    }
+  
+    .filters input {
+      width: 100%;
+      margin-bottom: 10px;
+    }
+  }
+  

@@ -41,6 +41,7 @@ const Sidenavbar = () => {
                     <li><Link to="/admin-job-applications"><FaRegPaperPlane /> Job Applications</Link></li>
                     <li><Link to="/admin-reports"><FaChartBar /> Reports</Link></li>
                     <li><Link to="/admin-settings"><FaCog /> Settings</Link></li>
+                    <li><Link to="/admin-activity-logs"><FaCog /> Activity Logs</Link></li>
                 </ul>
             </div>
         </>

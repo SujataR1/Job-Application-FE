@@ -178,3 +178,66 @@ h2 {
     height: 35vh;
   }
 }
+.home-page {
+  display: flex;
+  flex-direction: column;
+}
+
+.dashboard-container {
+  margin-left: 200px;
+  padding: 20px;
+}
+
+.dashboard-header {
+  margin-bottom: 20px;
+}
+
+.add-company-section,
+.send-invitation-section {
+  margin-bottom: 40px;
+}
+
+.add-company-section h3,
+.send-invitation-section h3 {
+  margin-bottom: 20px;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  font-weight: bold;
+}
+
+input[type="text"],
+input[type="email"],
+textarea {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+
+button {
+  padding: 10px 20px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #45a049;
+}
+
+.companies-section ul {
+  list-style: none;
+  padding: 0;
+}
+
+.companies-section li {
+  margin-bottom: 10px;
+}

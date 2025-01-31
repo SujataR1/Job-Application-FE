@@ -63,7 +63,7 @@ const HomePage = () => {
       const response = await fetch('http://localhost:7000/jobs/applications', {
         method: 'GET',
         headers: {
-          'Authorization': `Bearer ${token}`,
+          'Authorization': ` ${token}`,
         },
       });
 

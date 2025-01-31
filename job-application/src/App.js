@@ -121,6 +121,8 @@ import ManageCompanies from './components/Admin/ManageCompanies/Companies';
 import AdminReports from './components/Admin/Reports/Reports';
 import AdminSettings from './components/Admin/Settings/Settings';
 import AdminJobApplications from './components/Admin/AdminJob/adminjobapplications';
+import AdminActivityLogs from './components/Admin/AdminLog/AdminActivityLogs';
+import AddCompany from './components/Employer/AddCompany/addcompany';
 
 import JobProfile from './components/Applicant/jobprofile/jobprofile';
 import Setting from './components/Applicant/UserSettings/Setting';
@@ -277,6 +279,8 @@ const App = () => {
                 <Route path="/admin-reports" element={<AdminReports />} />
                 <Route path="/admin-settings" element={<AdminSettings />} />
                 <Route path="/admin-job-applications" element={<AdminJobApplications />}/>
+                <Route path="/admin-activity-logs" element={<AdminActivityLogs />}/>
+                <Route path="/add-company" element={<AddCompany />} />
 
 
                 <Route path="/jobprofile" element={<JobProfile />} />
