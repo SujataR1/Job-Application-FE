@@ -4,7 +4,7 @@ import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, ArcElement, T
 import EmployerNavbar from '../Navbar/Navbar';
 import EmployerSidebar from '../Sidebar/Sidebar';
 
-import './CompanyAnalytics.css';
+import './Applications.css';
 
 ChartJS.register(
   CategoryScale,

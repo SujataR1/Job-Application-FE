@@ -105,7 +105,7 @@ import CompanyProfile from './components/Employer/CompanyProfile/Profile';
 import Network from './components/Employer/Network/Network';
 import ApplicantNetwork from './components/Applicant/Network/Network';
 import JobDetailsPage from './components/Applicant/Jobs/JobDetailsPage';
-import CompanyAnalyticsPage from './components/Employer/CompanyAnalytics/CompanyAnalytics';
+import Application from './components/Employer/Applications/Applications';
 import ForgetPassword from './components/auth/ForgetPassword';
 import AdminNavbar from './components/Admin/Navbar/Navbar';
 import AdminSidenavbar from './components/Admin/Sidenavbar/Sidenavbar';
@@ -260,7 +260,7 @@ const App = () => {
                 <Route path="/network" element={<Network/>}/>
                 <Route path="/networks" element={<ApplicantNetwork/>}/>
                 <Route path="/job/:jobId" element={<JobDetailsPage />} />
-                <Route path="/companyanalytics" element={<CompanyAnalyticsPage />} />
+                <Route path="/companyanalytics" element={<Application />} />
                 <Route path="/forgot-password" element={<ForgetPassword />} />
                 <Route path="/adnavbar" element={<AdminNavbar />} />
                 <Route path="/adsidenavbar" element={<AdminSidenavbar />} />
