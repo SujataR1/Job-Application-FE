@@ -1,111 +1,205 @@
-
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import './JobApplication.css';
 import EmployerNavbar from '../Navbar/Navbar';
 import EmployerSidebar from '../Sidebar/Sidebar';
-
-// Dummy Data for job and applicants
-const initialJobs = [
-  {
-    id: 1,
-    title: 'Software Engineer',
-    company: 'Tech Innovators',
-    description: 'Join our team of innovators working on cutting-edge projects.',
-    salary: '₹50,000 - ₹70,000',
-    location: 'New York, NY',
-    employmentType: 'Full-time',
-    status: 'active',
-    totalApplications: 3,
-    applicants: [
-      { id: 1, name: 'John Doe', status: 'Applied' },
-      { id: 2, name: 'Jane Smith', status: 'Shortlisted' },
-      { id: 3, name: 'Emma Watson', status: 'Rejected' },
-    ],
-    postedDate: new Date() - 5 * 60 * 60 * 1000, // 5 hours ago
-    deadline: new Date() + 7 * 24 * 60 * 60 * 1000, // 1 week later
-  },
-  {
-    id: 2,
-    title: 'Product Manager',
-    company: 'Innovative Solutions',
-    description: 'Lead product strategy for an exciting new product.',
-    salary: '₹70,000 - ₹90,000',
-    location: 'San Francisco, CA',
-    employmentType: 'Full-time',
-    status: 'active',
-    totalApplications: 3,
-    applicants: [
-      { id: 4, name: 'Mark Lee', status: 'Applied' },
-      { id: 5, name: 'Sally Green', status: 'Shortlisted' },
-    ],
-    postedDate: new Date() - 30 * 60 * 60 * 1000, // 30 hours ago
-    deadline: new Date() - 2 * 24 * 60 * 60 * 1000, // 2 days ago
-  },
-];
+import './JobApplication.css';
 
 const JobApplicationPage = () => {
-  const [jobs, setJobs] = useState(initialJobs);
-  const [selectedJobId, setSelectedJobId] = useState(null);
-  const [editedJob, setEditedJob] = useState(null);
-  const [showEditJobPopup, setShowEditJobPopup] = useState(false);
-  const [showApplicantPopup, setShowApplicantPopup] = useState(false);
-  const [showCloseJobPopup, setShowCloseJobPopup] = useState(false);
-
+  const [jobsByCompany, setJobsByCompany] = useState([]);
+  const [userPostedJobs, setUserPostedJobs] = useState({});
+  const [companies, setCompanies] = useState([]);
+  const [selectedCompany, setSelectedCompany] = useState('');
+  const [token, setToken] = useState('');
+  const [editingJobId, setEditingJobId] = useState(null); // Track which job is being edited
+  const [editedJobData, setEditedJobData] = useState({});
   const navigate = useNavigate();
 
-  // Function to calculate time passed since job posting
-  const timeAgo = (postedDate) => {
-    const now = new Date();
-    const diff = now - new Date(postedDate); // Difference in milliseconds
-    const hours = Math.floor(diff / (1000 * 60 * 60)); // Calculate hours
-    const days = Math.floor(hours / 24); // Calculate days
-    return hours < 24 ? `${hours} hours ago` : `${days} days ago`;
-  };
+  useEffect(() => {
+    const authToken = localStorage.getItem('token');
+    setToken(authToken);
 
-  // Function to format the deadline in a readable format
-  const formatDeadline = (deadlineDate) => {
-    const date = new Date(deadlineDate);
-    return date.toLocaleDateString();
+    if (authToken) {
+      axios
+        .get('http://localhost:7000/jobposts/companies-user-can-post-jobs-for', {
+          headers: {
+            Authorization: ` ${authToken}`,
+          },
+        })
+        .then((response) => {
+          setCompanies(response.data.companies || []);
+        })
+        .catch((error) => console.error('Error fetching companies:', error));
+    }
+  }, []);
+
+  useEffect(() => {
+    if (token) {
+      axios
+        .get('http://localhost:7000/jobposts/user-posted-jobs/?limit=1-12&companySwitch=false', {
+          headers: {
+            Authorization: ` ${token}`,
+          },
+        })
+        .then((response) => {
+          if (response.data.message === 'Jobs posted by user retrieved successfully.') {
+            setUserPostedJobs(response.data.jobs || {});
+          }
+        })
+        .catch((error) => console.error('Error fetching jobs:', error));
+    }
+  }, [token]);
+
+  useEffect(() => {
+    if (selectedCompany && token) {
+      axios
+        .post(
+          `http://localhost:7000/jobposts/company/${selectedCompany}`,
+          { limit: '1-12' },
+          {
+            headers: {
+              Authorization: ` ${token}`,
+            },
+          }
+        )
+        .then((response) => {
+          setJobsByCompany(response.data || []);
+        })
+        .catch((error) => {
+          console.error('Error fetching jobs:', error);
+          setJobsByCompany([]);
+        });
+    }
+  }, [selectedCompany, token]);
+
+  const formatDate = (postedDate) => {
+    const date = new Date(postedDate);
+    return `${date.toLocaleDateString()} ${date.toLocaleTimeString()}`;
   };
 
   const handleViewApplicants = (jobId) => {
     navigate(`/job-analytics/${jobId}`);
   };
 
+  // Edit job form handling
   const handleEditJob = (jobId) => {
-    const jobToEdit = jobs.find((job) => job.id === jobId);
-    if (jobToEdit) {
-      setEditedJob({ ...jobToEdit });
-      setSelectedJobId(jobId);
-      setShowEditJobPopup(true);
+    const job = jobsByCompany.find((job) => job.id === jobId);
+    setEditingJobId(jobId);
+    setEditedJobData({
+      title: job.title,
+      summary: job.summary,
+      description: job.description,
+      locations: job.locations.join(', '),
+      skills: job.skills.join(', '),
+      min_experience: job.min_experience,
+      max_experience: job.max_experience,
+      min_salary: job.min_salary,
+      max_salary: job.max_salary,
+      status: job.status,
+      requirements:job.requirements,
+      address: job.address || { street: '', city: '', zip: '' }, // Handle address object
+    });
+  };
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+
+    // If the field is an address property, update the address object
+    if (name.startsWith('address')) {
+      setEditedJobData({
+        ...editedJobData,
+        address: {
+          ...editedJobData.address,
+          [name.replace('address', '').toLowerCase()]: value, // Dynamically update street, city, or zip
+        },
+      });
+    } else {
+      setEditedJobData({
+        ...editedJobData,
+        [name]: value,
+      });
     }
   };
 
-  const handleSaveJob = () => {
-    const updatedJobs = jobs.map((job) =>
-      job.id === selectedJobId ? { ...job, ...editedJob } : job
-    );
-    setJobs(updatedJobs);  // Update the state with the new job data
-    alert('Job has been updated.');
-    setShowEditJobPopup(false);
+  const handleSaveEditedJob = () => {
+    const updatedJobData = {
+      ...editedJobData,
+      locations: editedJobData.locations.split(',').map((loc) => loc.trim()), // Ensure locations are an array
+      skills: editedJobData.skills.split(',').map((skill) => skill.trim()), // Ensure skills are an array
+    };
+
+    // Send the updated job data including the address as an object
+    axios
+      .patch(`http://localhost:7000/jobposts/${editingJobId}`, updatedJobData, {
+        headers: {
+          Authorization: ` ${token}`,
+        },
+      })
+      .then(() => {
+        alert('Job has been successfully updated!');
+        setEditingJobId(null);
+        setEditedJobData({});
+        // Optionally, refresh the jobs list
+        navigate(`/application`);
+      })
+      .catch((error) => {
+        console.error('Error updating job details:', error);
+        alert('Failed to update job.');
+      });
   };
 
-  // Close the popups
-  const handleClosePopup = () => {
-    setShowApplicantPopup(false);
-    setShowCloseJobPopup(false);
-    setShowEditJobPopup(false);
-  };
-
-  // Mark Job as Closed
   const handleCloseJob = (jobId) => {
-    const updatedJobs = jobs.map((job) =>
-      job.id === jobId ? { ...job, status: 'closed' } : job
-    );
-    setJobs(updatedJobs);
-    alert('Job has been closed.');
-    setShowCloseJobPopup(false);
+    axios
+      .patch(
+        `http://localhost:7000/jobposts/${jobId}`,
+        { status: 'Closed' },
+        {
+          headers: {
+            Authorization: ` ${token}`,
+          },
+        }
+      )
+      .then(() => {
+        setJobsByCompany(
+          jobsByCompany.map((job) =>
+            job.id === jobId ? { ...job, status: 'Closed' } : job
+          )
+        );
+        alert('Job has been closed.');
+      })
+      .catch((error) => {
+        console.error('Error closing job:', error);
+      });
+  };
+
+  const handleDeleteJob = (jobId) => {
+    axios
+      .delete(`http://localhost:7000/jobposts/${jobId}`, {
+        headers: {
+          Authorization: ` ${token}`,
+        },
+      })
+      .then(() => {
+        const updatedJobs = Object.keys(userPostedJobs).reduce((acc, companyId) => {
+          const companyJobs = userPostedJobs[companyId].jobs.filter(
+            (job) => job.jobId !== jobId
+          );
+          if (companyJobs.length > 0) {
+            acc[companyId] = { ...userPostedJobs[companyId], jobs: companyJobs };
+          }
+          return acc;
+        }, {});
+        setUserPostedJobs(updatedJobs);
+        alert('Job has been deleted.');
+      })
+      .catch((error) => {
+        console.error('Error deleting job:', error);
+      });
+  };
+
+  const handleCompanyChange = (e) => {
+    setSelectedCompany(e.target.value);
+    setJobsByCompany([]); // Clear jobs when changing company
   };
 
   return (
@@ -115,165 +209,221 @@ const JobApplicationPage = () => {
         <EmployerSidebar />
         <div className="job-application-page" style={{ width: '80%' }}>
           <h1>My Job Postings</h1>
-          {jobs.map((job) => (
-            <div key={job.id} className="job-card">
-              <h3>{job.title}</h3>
-              <p><strong>Company:</strong> {job.company}</p>
-              <p><strong>Location:</strong> {job.location}</p>
-              <p><strong>Salary:</strong> {job.salary}</p>
-              <p><strong>Employment Type:</strong> {job.employmentType}</p>
-              <p><strong>Status:</strong> {job.status === 'active' ? 'Active' : 'Closed'}</p>
-              <p><strong>Posted:</strong> {timeAgo(job.postedDate)}</p>
-              <p><strong>Deadline:</strong> {formatDeadline(job.deadline)}</p>
-              <div className="job-actions">
-                {job.status === 'active' && (
-                  <>
-                   <button 
-  onClick={() => handleViewApplicants(job.id)} 
-  className="action-button"
-  style={{
-    backgroundColor: '#2196f3', // Blue for View Applicants
-    color: 'white', 
-    padding: '10px 20px', 
-    border: 'none', 
-    borderRadius: '5px', 
-    cursor: 'pointer', 
-    fontSize: '14px', 
-    transition: 'background-color 0.3s ease', 
-  }}
-  onMouseOver={(e) => e.target.style.backgroundColor = '#1976d2'} // Darker blue on hover
-  onMouseOut={(e) => e.target.style.backgroundColor = '#2196f3'} // Reset to blue when mouse leaves
->
-  View Applicants
-</button>
 
-<button 
-  onClick={() => handleEditJob(job.id)} 
-  className="action-button"
-  style={{
-    backgroundColor: '#ff9800', // Orange for Edit Job
-    color: 'white', 
-    padding: '10px 20px', 
-    border: 'none', 
-    borderRadius: '5px', 
-    cursor: 'pointer', 
-    fontSize: '14px', 
-    transition: 'background-color 0.3s ease', 
-    marginLeft: '10px', // Gap between buttons
-  }}
-  onMouseOver={(e) => e.target.style.backgroundColor = '#fb8c00'} // Darker orange on hover
-  onMouseOut={(e) => e.target.style.backgroundColor = '#ff9800'} // Reset to orange when mouse leaves
->
-  Edit Job
-</button>
+          <div>
+            <label htmlFor="company">Select Company:</label>
+            <select
+              id="company"
+              name="company"
+              value={selectedCompany}
+              onChange={handleCompanyChange}
+              required
+            >
+              <option value="">Select a company</option>
+              {companies.length > 0 ? (
+                companies.map((company) => (
+                  <option key={company.id} value={company.id}>
+                    {company.name}
+                  </option>
+                ))
+              ) : (
+                <option disabled>No companies available</option>
+              )}
+            </select>
+          </div>
 
-<button 
-  onClick={() => handleCloseJob(job.id)} 
-  className="action-button"
-  style={{
-    backgroundColor: '#f44336', // Red for Close Job
-    color: 'white', 
-    padding: '10px 20px', 
-    border: 'none', 
-    borderRadius: '5px', 
-    cursor: 'pointer', 
-    fontSize: '14px', 
-    transition: 'background-color 0.3s ease', 
-    marginLeft: '10px', // Gap between buttons
-  }}
-  onMouseOver={(e) => e.target.style.backgroundColor = '#e53935'} // Darker red on hover
-  onMouseOut={(e) => e.target.style.backgroundColor = '#f44336'} // Reset to red when mouse leaves
->
-  Close Job
-</button>
+          {jobsByCompany.length > 0 ? (
+            <>
+              <h2>Jobs for Selected Company</h2>
+              {jobsByCompany.map((job) => (
+                <div key={job.id} className="job-card">
+                  <h3>{job.title}</h3>
+                  <p><strong>Summary:</strong> {job.summary}</p>
+                  <p><strong>Description:</strong> {job.description}</p>
+                  <p><strong>Location:</strong> {job.locations.join(', ')}</p>
+                  <p><strong>Address:</strong> {job.address ? `${job.address.street}, ${job.address.city}, ${job.address.zip}` : 'Address not available'}</p>
 
-                  </>
-                )}
-              </div>
+                  <p><strong>Requirements:</strong>{job.requirements}</p>
+                  <p><strong>Skills Required:</strong> {job.skills.join(', ')}</p>
+                  <p><strong>Experience:</strong> {`${job.min_experience} to ${job.max_experience} years`}</p>
+                  <p><strong>Salary:</strong> ${job.min_salary} - ${job.max_salary}</p>
+                  <p><strong>Posted:</strong> {formatDate(job.createdAt)}</p>
+                  <p><strong>Status:</strong> {job.status}</p>
+
+                  <div className="job-actions">
+                    <button onClick={() => handleViewApplicants(job.id)} className="action-button">
+                      View Applicants
+                    </button>
+
+                    <button onClick={() => handleEditJob(job.id)} className="action-button" style={{ marginLeft: '10px' }}>
+                      Edit Job
+                    </button>
+
+                    {job.status !== 'Closed' && (
+                      <button onClick={() => handleCloseJob(job.id)} className="action-button" style={{ marginLeft: '10px' }}>
+                        Close Job
+                      </button>
+                    )}
+                  </div>
+                </div>
+              ))}
+            </>
+          ) : (
+            <p>No jobs posted yet for the selected company.</p>
+          )}
+
+          {editingJobId && (
+            <div className="edit-job-form">
+              <h3>Edit Job Details</h3>
+              <form>
+                <label>
+                  Title:
+                  <input
+                    type="text"
+                    name="title"
+                    value={editedJobData.title}
+                    onChange={handleChange}
+                  />
+                </label>
+                <label>
+                  Summary:
+                  <input
+                    type="text"
+                    name="summary"
+                    value={editedJobData.summary}
+                    onChange={handleChange}
+                  />
+                </label>
+                <label>
+                  Description:
+                  <input
+                    type="text"
+                    name="description"
+                    value={editedJobData.description}
+                    onChange={handleChange}
+                  />
+                </label>
+                <label>
+                  Locations (comma-separated):
+                  <input
+                    type="text"
+                    name="locations"
+                    value={editedJobData.locations}
+                    onChange={handleChange}
+                  />
+                </label>
+                {/* Address Fields */}
+                <label>
+                  Street:
+                  <input
+                    type="text"
+                    name="addressStreet"
+                    value={editedJobData.address?.street || ''}
+                    onChange={handleChange}
+                  />
+                </label>
+
+                <label>
+                  City:
+                  <input
+                    type="text"
+                    name="addressCity"
+                    value={editedJobData.address?.city || ''}
+                    onChange={handleChange}
+                  />
+                </label>
+
+                <label>
+                  Zip Code:
+                  <input
+                    type="text"
+                    name="addressZip"
+                    value={editedJobData.address?.zip || ''}
+                    onChange={handleChange}
+                  />
+                </label>
+
+                <label>
+                  Requirements:
+                  <input
+                    type="text"
+                    name="requirements"
+                    value={editedJobData.requirements || ''}
+                    onChange={handleChange}
+                  />
+                </label>
+
+                <label>
+                  Skills (comma-separated):
+                  <input
+                    type="text"
+                    name="skills"
+                    value={editedJobData.skills}
+                    onChange={handleChange}
+                  />
+                </label>
+                <label>
+                  Min Experience:
+                  <input
+                    type="number"
+                    name="min_experience"
+                    value={editedJobData.min_experience}
+                    onChange={handleChange}
+                  />
+                </label>
+                <label>
+                  Max Experience:
+                  <input
+                    type="number"
+                    name="max_experience"
+                    value={editedJobData.max_experience}
+                    onChange={handleChange}
+                  />
+                </label>
+                <label>
+                  Min Salary:
+                  <input
+                    type="number"
+                    name="min_salary"
+                    value={editedJobData.min_salary}
+                    onChange={handleChange}
+                  />
+                </label>
+                <label>
+                  Max Salary:
+                  <input
+                    type="number"
+                    name="max_salary"
+                    value={editedJobData.max_salary}
+                    onChange={handleChange}
+                  />
+                </label>
+                <button type="button" onClick={handleSaveEditedJob}>
+                  Save Changes
+                </button>
+              </form>
             </div>
-          ))}
+          )}
 
-          {/* Edit Job Popup */}
-          {showEditJobPopup && editedJob && (
-            <div className="popup-overlay">
-              <div className="popup-content">
-                <h3>Edit Job: {editedJob.title}</h3>
-                {/* Job Title Fixed */}
-                <label>Job Title</label>
-                <input
-                  type="text"
-                  value={editedJob.title}
-                  readOnly
-                />
-                <label>Salary</label>
-                <input
-                  type="text"
-                  value={editedJob.salary}
-                  onChange={(e) => setEditedJob({ ...editedJob, salary: e.target.value })}
-                />
-                <label>Location</label>
-                <input
-                  type="text"
-                  value={editedJob.location}
-                  onChange={(e) => setEditedJob({ ...editedJob, location: e.target.value })}
-                />
-                <label>Employment Type</label>
-                <select
-                  value={editedJob.employmentType}
-                  onChange={(e) => setEditedJob({ ...editedJob, employmentType: e.target.value })}
-                >
-                  <option value="Full-time">Full-time</option>
-                  <option value="Part-time">Part-time</option>
-                  <option value="Contract">Contract</option>
-                  <option value="Internship">Internship</option>
-                </select>
-                <label>Deadline</label>
-                <input
-                  type="date"
-                  value={new Date(editedJob.deadline).toLocaleDateString('en-CA')}
-                  onChange={(e) => setEditedJob({ ...editedJob, deadline: new Date(e.target.value).getTime() })}
-                />
-               <button 
-  onClick={handleSaveJob} 
-  className="action-button"
-  style={{
-    backgroundColor: '#4caf50', // Green for Save
-    color: 'white', 
-    padding: '10px 20px', 
-    border: 'none', 
-    borderRadius: '5px', 
-    cursor: 'pointer', 
-    fontSize: '14px', 
-    transition: 'background-color 0.3s ease', 
-  }}
-  onMouseOver={(e) => e.target.style.backgroundColor = '#45a049'} // Darker green on hover
-  onMouseOut={(e) => e.target.style.backgroundColor = '#4caf50'} // Reset to green when mouse leaves
->
-  Save Changes
-</button>
+          {Object.keys(userPostedJobs).length > 0 && (
+            <>
+              <h2>Your Posted Jobs</h2>
+              {Object.entries(userPostedJobs).map(([companyId, companyData]) => (
+                <div key={companyId}>
+                  <h3>{companyData.companyName}</h3>
+                  {companyData.jobs.map((job) => (
+                    <div key={job.jobId} className="job-card">
+                      <h4>{job.title}</h4>
+                      <p><strong>Posted On:</strong> {formatDate(job.postedAt)}</p>
 
-<button 
-  onClick={handleClosePopup} 
-  className="cancel-button"
-  style={{
-    backgroundColor: '#f44336', // Red for Cancel
-    color: 'white', 
-    padding: '10px 20px', 
-    border: 'none', 
-    borderRadius: '5px', 
-    cursor: 'pointer', 
-    fontSize: '14px', 
-    transition: 'background-color 0.3s ease', 
-    marginLeft: '15px', // Add space between the buttons
-  }}
-  onMouseOver={(e) => e.target.style.backgroundColor = '#e53935'} // Darker red on hover
-  onMouseOut={(e) => e.target.style.backgroundColor = '#f44336'} // Reset to red when mouse leaves
->
-  Cancel
-</button>
-
-              </div>
-            </div>
+                      <button onClick={() => handleDeleteJob(job.jobId)} className="action-button" style={{ marginLeft: '10px' }}>
+                        Delete Job
+                      </button>
+                    </div>
+                  ))}
+                </div>
+              ))}
+            </>
           )}
         </div>
       </div>
@@ -282,4 +432,3 @@ const JobApplicationPage = () => {
 };
 
 export default JobApplicationPage;
-

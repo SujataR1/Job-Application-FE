@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "./Profile.css";
 import EmployerNavbar from "../Navbar/Navbar";
 import EmployerSidebar from '../Sidebar/Sidebar';
+import axios from "axios";
 
 // Sample company data (could be fetched dynamically from an API)
 const companyData = {
@@ -51,8 +52,14 @@ const companyData = {
 };
 
 const CompanyProfile = () => {
-  // State for company logo
   const [companyLogo, setCompanyLogo] = useState(companyData.logo);
+  const [isCreatingCompany, setIsCreatingCompany] = useState(false);
+  const [companyName, setCompanyName] = useState("");
+  const [companyDescription, setCompanyDescription] = useState("");
+  const [companyWebsite, setCompanyWebsite] = useState("");
+  const [companyAbout, setCompanyAbout] = useState("");
+  const [formError, setFormError] = useState(null);
+  const [formSuccess, setFormSuccess] = useState(null);
 
   // Function to handle image change (file upload)
   const handleLogoChange = (event) => {
@@ -68,7 +75,45 @@ const CompanyProfile = () => {
 
   // Function to handle company logo click
   const handleLogoClick = () => {
-    document.getElementById('logo-input').click(); // Trigger file input click when logo is clicked
+    document.getElementById("logo-input").click(); // Trigger file input click when logo is clicked
+  };
+
+  // Function to handle form submission for creating a company
+  const handleCreateCompany = async (event) => {
+    event.preventDefault();
+
+    if (!companyName || !companyDescription || !companyWebsite || !companyAbout) {
+      setFormError("All fields are required.");
+      return;
+    }
+
+    const token = localStorage.getItem("token");
+
+    try {
+      const response = await axios.post(
+        "http://localhost:7000/companies/create",
+        {
+          name: companyName,
+          description: companyDescription,
+          websiteLink: companyWebsite,
+          about: companyAbout,
+        },
+        {
+          headers: {
+            Authorization: ` ${token}`,
+            "Content-Type": "application/json",
+          },
+        }
+      );
+
+      if (response.status === 200) {
+        setFormSuccess("Company created successfully!");
+        setIsCreatingCompany(false); // Close the form after successful submission
+      }
+    } catch (error) {
+      setFormError("Failed to create company. Please try again.");
+      console.error(error);
+    }
   };
 
   return (
@@ -93,10 +138,70 @@ const CompanyProfile = () => {
           <input
             type="file"
             id="logo-input"
-            style={{ display: 'none' }} // Hide the file input
+            style={{ display: "none" }} // Hide the file input
             accept="image/*" // Only allow image files
             onChange={handleLogoChange} // Handle image file change
           />
+
+          {/* Option to create a new company */}
+          <button
+            className="create-company-button"
+            onClick={() => setIsCreatingCompany(true)}
+          >
+            Create New Company
+          </button>
+
+          {/* Create Company Form */}
+          {isCreatingCompany && (
+            <form onSubmit={handleCreateCompany} className="create-company-form">
+              <h2>Create Company</h2>
+
+              {formError && <p className="error">{formError}</p>}
+              {formSuccess && <p className="success">{formSuccess}</p>}
+
+              <div>
+                <label>Company Name</label>
+                <input
+                  type="text"
+                  value={companyName}
+                  onChange={(e) => setCompanyName(e.target.value)}
+                  placeholder="Enter company name"
+                />
+              </div>
+
+              <div>
+                <label>Description</label>
+                <textarea
+                  value={companyDescription}
+                  onChange={(e) => setCompanyDescription(e.target.value)}
+                  placeholder="Enter company description"
+                />
+              </div>
+
+              <div>
+                <label>Website Link</label>
+                <input
+                  type="url"
+                  value={companyWebsite}
+                  onChange={(e) => setCompanyWebsite(e.target.value)}
+                  placeholder="Enter website URL"
+                />
+              </div>
+
+              <div>
+                <label>About</label>
+                <textarea
+                  value={companyAbout}
+                  onChange={(e) => setCompanyAbout(e.target.value)}
+                  placeholder="About the company"
+                />
+              </div>
+
+              <button type="submit" className="submit-button">
+                Create Company
+              </button>
+            </form>
+          )}
 
           {/* Company Overview */}
           <section className="company-overview">
@@ -113,47 +218,41 @@ const CompanyProfile = () => {
           {/* Company Website & Social Links */}
           <section className="company-links">
             <h2>Company Links</h2>
-            <p>Website: <a href={companyData.website} target="_blank" rel="noopener noreferrer">{companyData.website}</a></p>
+            <p>
+              Website:{" "}
+              <a href={companyData.website} target="_blank" rel="noopener noreferrer">
+                {companyData.website}
+              </a>
+            </p>
             <div className="social-links">
-              <a href={companyData.socialMedia.linkedin} target="_blank" rel="noopener noreferrer">LinkedIn</a>
-              <a href={companyData.socialMedia.twitter} target="_blank" rel="noopener noreferrer">Twitter</a>
-              <a href={companyData.socialMedia.facebook} target="_blank" rel="noopener noreferrer">Facebook</a>
+              <a href={companyData.socialMedia.linkedin} target="_blank" rel="noopener noreferrer">
+                LinkedIn
+              </a>
+              <a href={companyData.socialMedia.twitter} target="_blank" rel="noopener noreferrer">
+                Twitter
+              </a>
+              <a href={companyData.socialMedia.facebook} target="_blank" rel="noopener noreferrer">
+                Facebook
+              </a>
             </div>
           </section>
 
           {/* Job Listings */}
           <section className="job-listings">
             <h2>Job Listings</h2>
-            <ul
-  style={{
-    padding: '0',
-    margin: '0',
-    listStyleType: 'none',
-  }}
->
-  {companyData.jobs.map((job, index) => (
-    <li
-      key={index}
-      className="job-listings"
-      style={{
-        padding: '15px',
-        backgroundColor: 'white', // Default background
-        borderRadius: '8px',
-        marginBottom: '10px',
-        transition: 'background-color 0.3s', // Smooth transition for hover effect
-      }}
-      onMouseOver={(e) => (e.target.style.backgroundColor = '#f0f0f0')} // Gray background on hover
-      onMouseOut={(e) => (e.target.style.backgroundColor = 'white')} // Reset background when not hovering
-    >
-      <h3>{job.title}</h3>
-      <p>{job.location}</p>
-      <p>{job.description}</p>
-      <p><em>Posted on {job.postedDate}</em></p>
-      <button className="apply-button" style={{ padding: '10px 20px', cursor: 'pointer' }}>Apply Now</button>
-    </li>
-  ))}
-</ul>
-
+            <ul>
+              {companyData.jobs.map((job, index) => (
+                <li key={index}>
+                  <h3>{job.title}</h3>
+                  <p>{job.location}</p>
+                  <p>{job.description}</p>
+                  <p>
+                    <em>Posted on {job.postedDate}</em>
+                  </p>
+                  <button className="apply-button">Apply Now</button>
+                </li>
+              ))}
+            </ul>
           </section>
 
           {/* Employees Section */}
