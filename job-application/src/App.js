@@ -95,7 +95,7 @@ import HiringProgress from './components/Employer/Progress/Progress';
 import JobpostingManagement from './components/Employer/JobPostingManagement/Jobposting';
 import Notifications from './components/Employer/Notifications/Notification';
 import JobApplication from './components/Employer/JobApplication/JobApplication';
-import Analytics from './components/Employer/Analytics/Analytics';
+import Applications from './components/Employer/Applications/Application';
 import EmployerNavbar from './components/Employer/Navbar/Navbar';
 import EmployerSidebar from './components/Employer/Sidebar/Sidebar';
 import Efeed from './components/Employer/Efeed/Efeed';
@@ -105,7 +105,7 @@ import CompanyProfile from './components/Employer/CompanyProfile/Profile';
 import Network from './components/Employer/Network/Network';
 import ApplicantNetwork from './components/Applicant/Network/Network';
 import JobDetailsPage from './components/Applicant/Jobs/JobDetailsPage';
-import Application from './components/Employer/Applications/Applications';
+import Analytics from './components/Employer/Analytics/Analytics';
 import ForgetPassword from './components/auth/ForgetPassword';
 import AdminNavbar from './components/Admin/Navbar/Navbar';
 import AdminSidenavbar from './components/Admin/Sidenavbar/Sidenavbar';
@@ -244,7 +244,7 @@ const App = () => {
                 <Route path="/feed" element={<Feed/>} />
                 <Route path="/messages" element={<Message/>} />
                 {/* <Route path="/analytics" element={<Analytics/>} /> */}
-                <Route path="/job-analytics/:jobId" element={<Analytics />} />
+                <Route path="/job-analytics/:jobId" element={<Applications />} />
                 <Route path="/employerdashboard" element={<EmployerDashboard/>} />
                 <Route path="/interview" element={<HiringProgress/>} />
                 <Route path="/application" element={<JobApplication/>} />
@@ -260,7 +260,7 @@ const App = () => {
                 <Route path="/network" element={<Network/>}/>
                 <Route path="/networks" element={<ApplicantNetwork/>}/>
                 <Route path="/job/:jobId" element={<JobDetailsPage />} />
-                <Route path="/companyanalytics" element={<Application />} />
+                <Route path="/companyanalytics" element={<Analytics />} />
                 <Route path="/forgot-password" element={<ForgetPassword />} />
                 <Route path="/adnavbar" element={<AdminNavbar />} />
                 <Route path="/adsidenavbar" element={<AdminSidenavbar />} />
