@@ -47,6 +47,36 @@ const AddCompany = () => {
     fetchCompanies();
   }, []);
 
+  // Handle company deletion
+  const handleDeleteCompany = async (companyId) => {
+    const token = localStorage.getItem('token');
+    
+    try {
+      const response = await fetch('http://localhost:7000/companies/delete', {
+        method: 'DELETE',
+        headers: {
+          'Authorization': `${token}`,
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ companyId: companyId }),
+      });
+
+      if (response.ok) {
+        const result = await response.json();
+        alert(result.message); // Show success message
+        // Update the companies list by removing the deleted company
+        setCompanies(companies.filter((company) => company.id !== companyId));
+      } else {
+        const errorData = await response.json();
+        console.error("Error deleting company:", errorData);
+        setErrorMessage(errorData.message || 'Failed to delete company. Please try again.');
+      }
+    } catch (error) {
+      console.error('Error deleting company:', error);
+      setErrorMessage('An error occurred while deleting the company.');
+    }
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -81,7 +111,7 @@ const AddCompany = () => {
         setCompanyWebsite('');
         setCompanyAbout('');
         setErrorMessage('');
-        fetchCompanies();
+        fetchCompanies(); // Re-fetch the list of companies after adding
         navigate('/employerdashboard');
       } else {
         const error = await response.json();
@@ -98,7 +128,7 @@ const AddCompany = () => {
       <div className="form-container">
         <h2 className="form-heading">Add a New Company</h2>
         {errorMessage && <p className="error-message">{errorMessage}</p>}
-        
+
         <form onSubmit={handleSubmit} className="company-form">
           <div className="input-group">
             <label htmlFor="companyName">Company Name</label>
@@ -162,6 +192,12 @@ const AddCompany = () => {
                   Website: <a href={company.websiteLink} target="_blank" rel="noopener noreferrer">{company.websiteLink}</a>
                 </p>
                 <p className="company-about">About: {company.about}</p>
+                <button
+                  className="delete-button"
+                  onClick={() => handleDeleteCompany(company.id)}
+                >
+                  Delete
+                </button>
               </div>
             ))
           ) : (

@@ -202,3 +202,29 @@ h2, h3 {
 .modal-close:hover {
   background-color: #45a049;
 }
+.delete-button {
+  background-color: #e74c3c; /* Red color */
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 5px; /* Rounded corners */
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s; /* Smooth transition */
+  margin-top: 10px;
+  display: inline-block;
+  text-align: center;
+}
+
+.delete-button:hover {
+  background-color: #c0392b; /* Darker red on hover */
+  transform: scale(1.05); /* Slight scaling effect */
+}
+
+.delete-button:focus {
+  outline: none; /* Remove the outline when focused */
+}
+
+.delete-button:active {
+  background-color: #d35400; /* Orange color when pressed */
+}
