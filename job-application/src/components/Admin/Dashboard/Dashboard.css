@@ -1,119 +1,243 @@
 /* Dashboard Layout */
 .dashboard-container {
-    padding: 20px;
-    flex: 1;
-    margin-left: 300px;
+  padding: 20px;
+  flex: 1;
+  margin-left: 300px;
+  background-color: #f4f7fb; /* Light background for the whole dashboard */
+}
+
+.dashboard-header {
+  margin-bottom: 20px;
+}
+
+h2 {
+  font-size: 32px;
+  font-weight: bold;
+  color: #2b3b56; /* Darker blue for the header text */
+}
+
+/* Overview Section */
+.overview-section, .job-listings-section {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 30px;
+}
+
+.overview-card, .dashboard-card {
+  background-color: #ffffff; /* Clean white background */
+  padding: 20px;
+  border-radius: 8px;
+  width: 220px;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border: 1px solid #e1e7f2; /* Subtle border for neatness */
+}
+
+.overview-card h3, .dashboard-card h3 {
+  margin-bottom: 10px;
+  color: #4a4a4a; /* Dark gray for card titles */
+}
+
+.overview-card p, .dashboard-card p {
+  font-size: 24px;
+  font-weight: bold;
+  color: #2b3b56; /* Dark blue for values */
+}
+
+/* Chart Section */
+.chart-section {
+  margin-top: 30px;
+}
+
+.chart-section h3 {
+  margin-bottom: 15px;
+  font-size: 24px;
+  font-weight: bold;
+  color: #2b3b56;
+}
+
+.chart-container {
+  background-color: #ffffff; /* Clean background for the chart container */
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 800px;
+  height: 35vh; /* Reasonable height for chart */
+  margin: 20px auto;
+}
+
+/* Chart.js Custom Styles */
+.chart-container canvas {
+  background-color: #fff; /* Clean background for the chart */
+}
+
+.chart-container .chartjs-render-monitor {
+  background-color: #fff; /* Match the background */
+}
+
+.chartjs-legend li {
+  color: #2b3b56; /* Dark text for chart legend */
+}
+
+.chartjs-tooltip {
+  background-color: rgba(0, 0, 0, 0.8); /* Slightly darker tooltip */
+  color: #fff;
+}
+
+/* Modify Bar Colors for Chart */
+.chartjs-bar {
+  border-color: #3b82f6; /* Bright blue for borders */
+}
+
+.chartjs-bar {
+  background-color: #3b82f6; /* Bright blue for bars */
+}
+
+/* Modify Chart.js Title Color */
+.chartjs-title {
+  color: #2b3b56; /* Dark blue title color */
+}
+
+/* Latest Applications Table */
+.latest-applications {
+  margin-top: 30px;
+}
+
+.latest-applications h3 {
+  margin-bottom: 15px;
+  color: #2b3b56;
+}
+
+.latest-applications table {
+  width: 100%;
+  border-collapse: collapse;
+  border-radius: 8px;
+  overflow: hidden; /* Prevents rounded corners from getting cut off */
+}
+
+.latest-applications table th,
+.latest-applications table td {
+  padding: 12px 15px;
+  border: 1px solid #e1e7f2;
+  text-align: left;
+}
+
+.latest-applications table th {
+  background-color: #2b3b56; /* Dark blue for header */
+  color: white;
+}
+
+.latest-applications table tr:nth-child(even) {
+  background-color: #f7f7f7; /* Light gray for alternating rows */
+}
+
+.latest-applications table tr:hover {
+  background-color: #f1f5fb; /* Light hover effect for rows */
+}
+
+/* Latest Activities Section */
+.latest-activities {
+  margin-top: 30px;
+}
+
+.latest-activities h3 {
+  margin-bottom: 15px;
+  color: #2b3b56;
+}
+
+.latest-activities ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.latest-activities li {
+  background-color: #fff; /* White background for activities */
+  padding: 15px;
+  margin-bottom: 10px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-left: 5px solid #3b82f6; /* Colorful left border */
+}
+
+.latest-activities li:hover {
+  background-color: #f1f5fb; /* Light hover effect */
+  cursor: pointer;
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 768px) {
+  .chart-container, .pie-chart-container {
+    max-width: 100%;
+    height: 40vh;
   }
-  
-  .dashboard-header {
-    margin-bottom: 20px;
+}
+
+@media (max-width: 480px) {
+  .chart-container, .pie-chart-container {
+    height: 35vh;
   }
-  
-  h2 {
-    font-size: 32px;
-    font-weight: bold;
-    color: #333;
-  }
-  
-  /* Overview Section */
-  .overview-section, .job-listings-section {
-    display: flex;
-    gap: 20px;
-    margin-bottom: 30px;
-  }
-  
-  .overview-card, .dashboard-card {
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 8px;
-    width: 220px;
-    text-align: center;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  }
-  
-  .overview-card h3, .dashboard-card h3 {
-    margin-bottom: 10px;
-  }
-  
-  .overview-card p, .dashboard-card p {
-    font-size: 24px;
-    font-weight: bold;
-    color: #2f3b52;
-  }
-  
-  /* Chart Section */
-  .chart-section {
-    margin-top: 30px;
-  }
-  
-  .chart-section h3 {
-    margin-bottom: 15px;
-    font-size: 24px;
-    font-weight: bold;
-    color: #333;
-  }
-  
-  .chart-container {
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  }
-  
-  /* Latest Applications Table */
-  .latest-applications {
-    margin-top: 30px;
-  }
-  
-  .latest-applications h3 {
-    margin-bottom: 15px;
-  }
-  
-  .latest-applications table {
-    width: 100%;
-    border-collapse: collapse;
-  }
-  
-  .latest-applications table th,
-  .latest-applications table td {
-    padding: 10px;
-    border: 1px solid #ddd;
-    text-align: left;
-  }
-  
-  .latest-applications table th {
-    background-color: #2f3b52;
-    color: white;
-  }
-  
-  .latest-applications table tr:nth-child(even) {
-    background-color: #f9f9f9;
-  }
-  
-  /* Latest Activities Section */
-  .latest-activities {
-    margin-top: 30px;
-  }
-  
-  .latest-activities h3 {
-    margin-bottom: 15px;
-  }
-  
-  .latest-activities ul {
-    list-style-type: none;
-    padding: 0;
-  }
-  
-  .latest-activities li {
-    background-color: #fff;
-    padding: 15px;
-    margin-bottom: 10px;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  }
-  
-  .latest-activities li:hover {
-    background-color: #f1f1f1;
-    cursor: pointer;
-  }
-  
+}
+.home-page {
+  display: flex;
+  flex-direction: column;
+}
+
+.dashboard-container {
+  margin-left: 200px;
+  padding: 20px;
+}
+
+.dashboard-header {
+  margin-bottom: 20px;
+}
+
+.add-company-section,
+.send-invitation-section {
+  margin-bottom: 40px;
+}
+
+.add-company-section h3,
+.send-invitation-section h3 {
+  margin-bottom: 20px;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  font-weight: bold;
+}
+
+input[type="text"],
+input[type="email"],
+textarea {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+
+button {
+  padding: 10px 20px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #45a049;
+}
+
+.companies-section ul {
+  list-style: none;
+  padding: 0;
+}
+
+.companies-section li {
+  margin-bottom: 10px;
+}

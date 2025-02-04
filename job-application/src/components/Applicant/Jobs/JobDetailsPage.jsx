@@ -1,10 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import { useParams } from "react-router-dom";
 import "./JobDetailsPage.css"; // Import the custom CSS file
 
 const JobDetailsPage = () => {
     const { jobId } = useParams(); // Get job ID from URL
-    
+
     // Sample job listings data
     const jobListings = [
         {
@@ -57,12 +57,27 @@ const JobDetailsPage = () => {
         },
     ];
 
+    // Ensure useState is called unconditionally, at the top of the component
+    const [isApplied, setIsApplied] = useState(false);
+    const [isModalOpen, setIsModalOpen] = useState(false); // To control modal visibility
+
     // Find the job by ID
     const job = jobListings.find((job) => job.id === parseInt(jobId));
 
     if (!job) {
         return <p>Job not found</p>;
     }
+
+    // Handle Apply Now button click
+    const handleApplyClick = () => {
+        setIsApplied(true);
+        setIsModalOpen(true); // Open the modal
+    };
+
+    // Close the modal
+    const closeModal = () => {
+        setIsModalOpen(false);
+    };
 
     return (
         <div className="job-details">
@@ -77,6 +92,7 @@ const JobDetailsPage = () => {
             </div>
 
             <div className="job-actions">
+                <button className="contact-hr-button">Contact HR</button>
                 <button className="save-button">Save</button>
                 <button className="share-button">Share</button>
             </div>
@@ -96,6 +112,7 @@ const JobDetailsPage = () => {
                 <h2>Skills Required</h2>
                 <p>{job.skills.join(", ")}</p>
             </div>
+
             <div className="certifications">
                 <h2>Earn certifications in these skills</h2>
                 <ul>
@@ -133,17 +150,37 @@ const JobDetailsPage = () => {
                 <p>{job.additionalInfo}</p>
             </div>
 
-            <div className="company-infor">
+            <div className="company-info">
                 <h2>About Attribution Private Limited</h2>
                 <p>{job.companyDescription}</p>
             </div>
 
             <div className="activity-box">
-                <h2>Activity on Internshala</h2>
+                <h2>Activity on Jobs</h2>
                 <p>Hiring since {job.activity.hiringSince}</p>
                 <p>{job.activity.opportunitiesPosted} opportunities posted</p>
                 <p>{job.activity.candidatesHired} candidate hired</p>
             </div>
+
+            <div className="job-actions">
+                {isApplied ? (
+                    <p>You Have applied for this Job. Will Get Back to you shortly</p>
+                ) : (
+                    <button className="apply-button" onClick={handleApplyClick}>Apply Now</button>
+                )}
+            </div>
+
+            {/* Modal Pop-up */}
+            {isModalOpen && (
+                <div className="modal">
+                    <div className="modal-content">
+                        <div className="checkmark">✔</div> {/* Green checkmark */}
+                        <h2>Applied Done</h2>
+                        <p>You have successfully applied for the job!</p>
+                        <button className="close-modal-button" onClick={closeModal}>Close</button>
+                    </div>
+                </div>
+            )}
         </div>
     );
 };

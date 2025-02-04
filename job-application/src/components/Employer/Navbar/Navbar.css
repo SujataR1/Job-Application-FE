@@ -85,3 +85,20 @@
 .logout-btn .nav-icon {
   margin-right: 8px;
 }
+.nav-links {
+  display: flex;
+  justify-content: space-between;  /* Evenly space the items */
+  flex-wrap: wrap;
+}
+
+.nav-links li {
+  margin-right: 20px;
+}
+.nav-links li {
+  margin-right: 20px; /* Adjust as needed */
+}
+
+/* If you need specific spacing between certain items */
+.nav-links li:nth-child(4) {
+  margin-right: 20px; /* Adjust to create space after Notifications */
+}

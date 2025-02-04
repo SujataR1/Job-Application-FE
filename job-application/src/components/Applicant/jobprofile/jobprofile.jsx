@@ -2,12 +2,18 @@
 // import './jobprofile.css';
 
 // const JobProfile = () => {
+<<<<<<< HEAD
 //   const companyProfile = {
+=======
+//   // Default profile data
+//   const initialProfile = {
+>>>>>>> f50fe3efe61107659a90607521e1ee0dc91b6ce2
 //     name: 'TechCorp',
 //     description: 'Leading tech company in software development.',
 //     logo: 'https://randomuser.me/api/portraits/men/1.jpg',
 //     company: 'TechCorp Ltd',
 //     connections: 500,
+<<<<<<< HEAD
 //     posts: [
 //       { content: 'We are hiring software engineers! Apply now!', date: '2024-11-29' },
 //       { content: 'Join us for our tech conference next month.', date: '2024-11-20' }
@@ -29,6 +35,21 @@
 //   const [videoFile, setVideoFile] = useState(null);
 //   const [videoPreview, setVideoPreview] = useState(null);
 
+=======
+//   };
+
+//   const [profile, setProfile] = useState(initialProfile);
+//   const [profilePhoto, setProfilePhoto] = useState(initialProfile.logo);
+//   const [isEditMode, setIsEditMode] = useState(false);
+//   const [newProfileData, setNewProfileData] = useState({
+//     name: profile.name,
+//     description: profile.description,
+//     company: profile.company,
+//     connections: profile.connections,
+//   });
+
+//   // Handle profile photo change
+>>>>>>> f50fe3efe61107659a90607521e1ee0dc91b6ce2
 //   const handleProfilePhotoChange = (e) => {
 //     const file = e.target.files[0];
 //     if (file) {
@@ -40,6 +61,7 @@
 //     }
 //   };
 
+<<<<<<< HEAD
 //   const handlePostChange = (e) => {
 //     setNewPost(e.target.value);
 //   };
@@ -70,15 +92,48 @@
 //         <div className="profile-photo-container">
 //           <label htmlFor="profile-photo-upload">
 //             <img src={profilePhoto} alt="Company Logo" className="profile-photo" />
+=======
+//   // Handle input changes in edit mode
+//   const handleInputChange = (e) => {
+//     const { name, value } = e.target;
+//     setNewProfileData((prevState) => ({
+//       ...prevState,
+//       [name]: value,
+//     }));
+//   };
+
+//   // Toggle edit mode and update profile data
+//   const handleEditToggle = () => {
+//     if (isEditMode) {
+//       setProfile({
+//         ...profile,
+//         ...newProfileData, // Update profile with new data
+//       });
+//     }
+//     setIsEditMode(!isEditMode);
+//   };
+
+//   return (
+//     <div className="profile-main-content">
+//       <div className="profile-header">
+//         <div className="profile-photo">
+//           <label htmlFor="profile-photo-upload">
+//             <img src={profilePhoto} alt="Profile" className="profile-photo-img" />
+>>>>>>> f50fe3efe61107659a90607521e1ee0dc91b6ce2
 //           </label>
 //           <input
 //             id="profile-photo-upload"
 //             type="file"
+<<<<<<< HEAD
 //             className="file-input"
+=======
+//             style={{ display: 'none' }}
+>>>>>>> f50fe3efe61107659a90607521e1ee0dc91b6ce2
 //             onChange={handleProfilePhotoChange}
 //           />
 //         </div>
 //         <div className="profile-info">
+<<<<<<< HEAD
 //           <h2 className="profile-name">{companyProfile.name}</h2>
 //           <p className="profile-company">{companyProfile.company}</p>
 //           <p className="profile-description">{companyProfile.description}</p>
@@ -203,6 +258,54 @@
 //             )}
 //           </div>
 //         </section>
+=======
+//           <h2>
+//             {isEditMode ? (
+//               <input
+//                 type="text"
+//                 name="name"
+//                 value={newProfileData.name}
+//                 onChange={handleInputChange}
+//                 placeholder="Company Name"
+//                 className="profile-input"
+//               />
+//             ) : (
+//               profile.name
+//             )}
+//           </h2>
+//           <p>
+//             {isEditMode ? (
+//               <input
+//                 type="text"
+//                 name="company"
+//                 value={newProfileData.company}
+//                 onChange={handleInputChange}
+//                 placeholder="Company Name"
+//                 className="profile-input"
+//               />
+//             ) : (
+//               profile.company
+//             )}
+//           </p>
+//           <p>
+//             {isEditMode ? (
+//               <textarea
+//                 name="description"
+//                 value={newProfileData.description}
+//                 onChange={handleInputChange}
+//                 placeholder="Company Description"
+//                 className="profile-textarea"
+//               />
+//             ) : (
+//               profile.description
+//             )}
+//           </p>
+//           <p>{profile.connections} Connections</p>
+//           <button className="enhance-profile-button" onClick={handleEditToggle}>
+//             {isEditMode ? 'Save Changes' : 'Edit Profile'}
+//           </button>
+//         </div>
+>>>>>>> f50fe3efe61107659a90607521e1ee0dc91b6ce2
 //       </div>
 //     </div>
 //   );
@@ -215,57 +318,79 @@ import React, { useState } from 'react';
 import './jobprofile.css';
 
 const JobProfile = () => {
-  const companyProfile = {
-    name: 'TechCorp',
-    description: 'Leading tech company in software development.',
-    logo: 'https://randomuser.me/api/portraits/men/1.jpg',
-    company: 'TechCorp Ltd',
-    connections: 500,
-    posts: [
-      { content: 'We are hiring software engineers! Apply now!', date: '2024-11-29' },
-      { content: 'Join us for our tech conference next month.', date: '2024-11-20' }
-    ],
-    experiences: [
-      { title: 'Software Engineer', company: 'TechCorp', duration: '2 years' },
-      { title: 'Frontend Developer', company: 'DevCo', duration: '1 year' }
-    ],
-    education: [
-      { degree: 'B.Tech in Computer Science', school: 'XYZ University' }
-    ],
+  // Default profile data
+  const initialProfile = {
+    name: 'John Doe',
+    college: 'XYZ University',
+    jobTitle: 'Software Engineer',
+    jobPreferences: 'Frontend Developer, Full Stack Developer',
     skills: ['JavaScript', 'React', 'Node.js'],
-    interests: ['Tech Innovations', 'Software Engineering', 'AI'],
+    experience: [
+      { title: 'Software Engineer', company: 'TechCorp', duration: '2 years' },
+      { title: 'Frontend Developer', company: 'DevCo', duration: '1 year' },
+    ],
+    profilePhoto: 'https://randomuser.me/api/portraits/men/1.jpg',
   };
 
-  const [profilePhoto, setProfilePhoto] = useState(companyProfile.logo);
+  const [profile, setProfile] = useState(initialProfile);
   const [isEditMode, setIsEditMode] = useState(false);
+<<<<<<< HEAD
   const [newPost, setNewPost] = useState('');
   const [videoFile, setVideoFile] = useState(null);
   const [videoPreview, setVideoPreview] = useState(null);
   const [isVideoUploaded, setIsVideoUploaded] = useState(false); // New state for video upload status
+=======
+  const [newProfileData, setNewProfileData] = useState({
+    name: profile.name,
+    college: profile.college,
+    jobTitle: profile.jobTitle,
+    jobPreferences: profile.jobPreferences,
+    skills: profile.skills.join(', '),
+    experience: profile.experience,
+  });
+>>>>>>> f50fe3efe61107659a90607521e1ee0dc91b6ce2
 
   const handleProfilePhotoChange = (e) => {
     const file = e.target.files[0];
     if (file) {
       const reader = new FileReader();
       reader.onloadend = () => {
-        setProfilePhoto(reader.result);
+        setProfile((prevProfile) => ({ ...prevProfile, profilePhoto: reader.result }));
       };
       reader.readAsDataURL(file);
     }
   };
 
+<<<<<<< HEAD
   const handlePostChange = (e) => {
     setNewPost(e.target.value);
+=======
+  // Handle input changes in edit mode
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setNewProfileData((prevState) => ({
+      ...prevState,
+      [name]: value,
+    }));
+>>>>>>> f50fe3efe61107659a90607521e1ee0dc91b6ce2
   };
 
-  const handlePostSubmit = () => {
-    if (newPost) {
-      companyProfile.posts.push({ content: newPost, date: new Date().toISOString() });
-      setNewPost('');
+  // Toggle edit mode and update profile data
+  const handleEditToggle = () => {
+    if (isEditMode) {
+      const updatedSkills = newProfileData.skills.split(',').map((skill) => skill.trim());
+      setProfile({
+        ...profile,
+        ...newProfileData,
+        skills: updatedSkills,
+      });
     }
+<<<<<<< HEAD
   };
 
   const handleProfileEnhance = () => {
+=======
+>>>>>>> f50fe3efe61107659a90607521e1ee0dc91b6ce2
     setIsEditMode(!isEditMode);
   };
 
@@ -286,20 +411,33 @@ const JobProfile = () => {
   };
 
   return (
+<<<<<<< HEAD
     <div className="profile-container">
       <header className="profile-header">
         <div className="profile-photo-container">
           <label htmlFor="profile-photo-upload">
             <img src={profilePhoto} alt="Company Logo" className="profile-photo" />
+=======
+    <div className="profile-main-content">
+      <div className="profile-header">
+        <div className="profile-photo">
+          <label htmlFor="profile-photo-upload">
+            <img src={profile.profilePhoto} alt="Profile" className="profile-photo-img" />
+>>>>>>> f50fe3efe61107659a90607521e1ee0dc91b6ce2
           </label>
           <input
             id="profile-photo-upload"
             type="file"
+<<<<<<< HEAD
             className="file-input"
+=======
+            style={{ display: 'none' }}
+>>>>>>> f50fe3efe61107659a90607521e1ee0dc91b6ce2
             onChange={handleProfilePhotoChange}
           />
         </div>
         <div className="profile-info">
+<<<<<<< HEAD
           <h2 className="profile-name">{companyProfile.name}</h2>
           <p className="profile-company">{companyProfile.company}</p>
           <p className="profile-description">{companyProfile.description}</p>
@@ -442,6 +580,97 @@ const JobProfile = () => {
 
           </div>
         </section>
+=======
+          <h2>
+            {isEditMode ? (
+              <input
+                type="text"
+                name="name"
+                value={newProfileData.name}
+                onChange={handleInputChange}
+                placeholder="Name"
+                className="profile-input"
+              />
+            ) : (
+              profile.name
+            )}
+          </h2>
+          <p>
+            {isEditMode ? (
+              <input
+                type="text"
+                name="college"
+                value={newProfileData.college}
+                onChange={handleInputChange}
+                placeholder="College Name"
+                className="profile-input"
+              />
+            ) : (
+              profile.college
+            )}
+          </p>
+          <p>
+            {isEditMode ? (
+              <input
+                type="text"
+                name="jobTitle"
+                value={newProfileData.jobTitle}
+                onChange={handleInputChange}
+                placeholder="Job Title"
+                className="profile-input"
+              />
+            ) : (
+              profile.jobTitle
+            )}
+          </p>
+          <p>
+            {isEditMode ? (
+              <textarea
+                name="jobPreferences"
+                value={newProfileData.jobPreferences}
+                onChange={handleInputChange}
+                placeholder="Job Preferences"
+                className="profile-textarea"
+              />
+            ) : (
+              profile.jobPreferences
+            )}
+          </p>
+          <p>
+            {isEditMode ? (
+              <textarea
+                name="skills"
+                value={newProfileData.skills}
+                onChange={handleInputChange}
+                placeholder="Skills (comma separated)"
+                className="profile-textarea"
+              />
+            ) : (
+              profile.skills.join(', ')
+            )}
+          </p>
+
+          {/* Experience Section */}
+          <div className="experience-section">
+            <h4>Experience</h4>
+            {profile.experience.map((exp, index) => (
+              <div key={index} className="experience-item">
+                <p>{exp.title} at {exp.company} ({exp.duration})</p>
+              </div>
+            ))}
+            {isEditMode && (
+              <div className="add-experience">
+                <input type="text" name="title" placeholder="Job Title" onChange={handleInputChange} />
+                <input type="text" name="company" placeholder="Company" onChange={handleInputChange} />
+                <input type="text" name="duration" placeholder="Duration" onChange={handleInputChange} />
+              </div>
+            )}
+          </div>
+          <button className="enhance-profile-button" onClick={handleEditToggle}>
+            {isEditMode ? 'Save Changes' : 'Edit Profile'}
+          </button>
+        </div>
+>>>>>>> f50fe3efe61107659a90607521e1ee0dc91b6ce2
       </div>
     </div>
   );

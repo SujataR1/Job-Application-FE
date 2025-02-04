@@ -367,3 +367,43 @@
     padding: 20px;
   }
 }
+/* Dark Mode Styles */
+body.dark-mode {
+  background-color: #121212;
+  color: #ffffff;
+}
+
+body.dark-mode .admin-settings-page {
+  background-color: #121212;
+}
+
+body.dark-mode .admin-settings-container {
+  background-color: #1e1e1e;
+}
+
+body.dark-mode .admin-settings-form-container {
+  background-color: #2c2c2c;
+}
+
+body.dark-mode .settings-item label {
+  color: #ffffff;
+}
+
+body.dark-mode .submit-button {
+  background-color: #444;
+  color: #fff;
+}
+
+body.dark-mode .delete-account-button {
+  background-color: #444;
+  color: #fff;
+}
+
+body.dark-mode .error-message, body.dark-mode .success-message {
+  color: #f5c6cb;
+}
+
+body.dark-mode .delete-account-modal-content {
+  background-color: #2c2c2c;
+  color: #fff;
+}

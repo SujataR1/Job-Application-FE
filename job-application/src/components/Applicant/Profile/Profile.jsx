@@ -219,20 +219,20 @@ const Profile = () => {
             <div
               className="profile-image"
               style={{
-                backgroundImage: `url(${newImage || user?.profilePicture})`, // Display new or fetched image
+                backgroundImage: `url(${newImage || user?.profilePicture || '/images/default-profile.png'})`, // Display new or fetched image, or a default image
                 backgroundSize: 'cover',
                 backgroundPosition: 'center',
               }}
-              onClick={() => setIsImageEditing(true)} // Click on the image to start editing
+              onClick={() => document.getElementById('imageUploadInput').click()} // Trigger the file input click
             ></div>
 
-            {/* Edit image modal */}
-            {isImageEditing && (
-              <div className="edit-image-modal">
-                <input type="file" onChange={handleImageChange} />
-                <button onClick={() => setIsImageEditing(false)}>Cancel</button>
-              </div>
-            )}
+            {/* Image input (hidden until clicked on the profile image) */}
+            <input
+              type="file"
+              id="imageUploadInput"
+              style={{ display: 'none' }} // Hide the file input
+              onChange={handleImageChange}
+            />
           </div>
 
           <div className="profile-details">

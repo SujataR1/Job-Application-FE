@@ -153,4 +153,80 @@
   .cancel-btn:hover {
     background-color: #c82333;
   }
-    
+    /* Styling for company list */
+.company-list table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.company-list th, .company-list td {
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+.company-list th {
+  background-color: #007bff;
+  color: white;
+}
+
+.company-list tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.company-list tr:hover {
+  background-color: #f1f1f1;
+}
+
+button.status-btn, button.delete-btn {
+  padding: 8px 15px;
+  margin-right: 10px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+button.status-btn {
+  background-color: #ffc107;
+}
+
+button.status-btn:hover {
+  background-color: #e0a800;
+}
+
+button.delete-btn {
+  background-color: #dc3545;
+  color: white;
+}
+
+button.delete-btn:hover {
+  background-color: #c82333;
+}
+
+.search-container {
+  margin-bottom: 20px;
+}
+
+.search-input {
+  padding: 8px;
+  font-size: 14px;
+  width: 100%;
+  max-width: 300px;
+  margin-right: 10px;
+}
+
+.add-company-btn {
+  padding: 10px 20px;
+  background-color: #28a745;
+  color: white;
+  font-size: 14px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.add-company-btn:hover {
+  background-color: #218838;
+}

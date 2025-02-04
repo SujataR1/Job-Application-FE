@@ -1,151 +1,198 @@
+/* General Container Styles */
+.contacts-container {
+  max-width: 1200px;
+  margin: 0 auto; /* Center the container */
+  padding: 50px;
+  background-color: #f9f9f9;
+  font-family: 'Arial', sans-serif;
+  text-align: center; /* Center content in the container */
+}
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-  
-  body {
-    font-family: 'Arial', sans-serif;
-    background-color: #f4f7fb;
-    color: #333;
-  }
-  
-  h2, h3 {
-    color: #333;
-    font-size: 24px;
-  }
-  
-  button {
-    cursor: pointer;
-  }
-  
- 
-  .contacts-container {
-    width: 100%;
-    padding: 20px;
-    max-width: 1200px;
-    margin: 0 auto;
-    background-color: #ffffff;
-    border-radius: 8px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  }
-  
-  .contacts-sections {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-gap: 30px;
-    margin-top: 20px;
-  }
-  
+/* Main Header */
+h2 {
+  font-size: 3.5rem;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 50px;
+  letter-spacing: 1px;
+}
+
+/* Flex Container for Section Layout */
+.contacts-sections {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+  justify-content: center;
+}
+
+/* Section Styles */
+.section {
+  width: 45%; /* Make each section take more width */
+  background-color: #ffffff;
+  border-radius: 10px;
+  padding: 40px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  text-align: left; /* Align content to the left for readability */
+}
+
+.section:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+}
+
+/* Section Header (h3) */
+h3 {
+  font-size: 2rem;
+  color: #444;
+  margin-bottom: 25px;
+  font-weight: 600;
+  border-bottom: 3px solid #007BFF;
+  padding-bottom: 10px;
+  margin-bottom: 25px;
+}
+
+/* Suggestion Item Styling */
+.suggestion-item,
+.group-item,
+.tech-stack-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px;
+  margin-bottom: 30px;
+  background-color: #f7f7f7;
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.suggestion-item:hover,
+.group-item:hover,
+.tech-stack-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+/* Profile Image Styles */
+.suggestion-img img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  margin-right: 30px;
+  object-fit: cover;
+}
+
+/* Suggestion Info */
+.suggestion-info {
+  flex-grow: 1;
+}
+
+.suggestion-name {
+  font-weight: bold;
+  font-size: 1.4rem;
+  color: #333;
+  margin-bottom: 8px;
+}
+
+.suggestion-position {
+  font-size: 1.1rem;
+  color: #777;
+}
+
+/* Group Info */
+.group-info {
+  flex-grow: 1;
+}
+
+.group-name {
+  font-weight: bold;
+  font-size: 1.4rem;
+  color: #333;
+  margin-bottom: 8px;
+}
+
+.group-description {
+  font-size: 1.1rem;
+  color: #777;
+}
+
+/* Tech Stack Info */
+.tech-stack-info {
+  flex-grow: 1;
+}
+
+.tech-stack-name {
+  font-weight: bold;
+  font-size: 1.4rem;
+  color: #333;
+  margin-bottom: 8px;
+}
+
+.tech-stack-description {
+  font-size: 1.1rem;
+  color: #777;
+}
+
+/* Button Styles */
+button {
+  padding: 18px 30px;
+  font-size: 1.2rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  text-transform: uppercase;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.connect-button {
+  background-color: #007BFF;
+  color: white;
+}
+
+.connect-button:hover {
+  background-color: #0056b3;
+  transform: scale(1.05);
+}
+
+.join-button {
+  background-color: #28a745;
+  color: white;
+}
+
+.join-button:hover {
+  background-color: #218838;
+  transform: scale(1.05);
+}
+
+.learn-more-button {
+  background-color: #ffc107;
+  color: white;
+}
+
+.learn-more-button:hover {
+  background-color: #e0a800;
+  transform: scale(1.05);
+}
+
+/* Responsive Styles for Mobile */
+@media (max-width: 768px) {
   .section {
-    background-color: #ffffff;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    width: 100%; /* Stack sections for small screens */
+    padding: 30px;
   }
-  
-  
-  .suggestions-section ul,
-  .people-you-may-know ul,
-  .groups-section ul,
-  .tech-stack-section ul {
-    list-style: none;
-    padding: 10;
-  }
-  
-  .suggestion-item {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #fafafa;
-    padding: 10px;
-    margin-bottom: 10px;
-    border-radius: 8px;
- 
-    min-height: 60px; 
-  }
-  
-  .suggestion-item:hover {
-    background-color: #ebf2fb;
-  }
-  
- 
-  .suggestion-img img,
-  .group-info img,
-  .tech-stack-info img {
-    width: 40px; 
-    height: 40px; 
-    border-radius: 10%;
-    margin-right: 5px;
-  }
-  
-  .suggestion-info,
-  .group-info,
-  .tech-stack-info {
-    flex-grow: 1;
-  }
-  
 
-  .suggestion-name,
-  .group-name,
-  .tech-stack-name {
-    font-weight: bold;
-    font-size: 14px; 
+  .contacts-sections {
+    flex-direction: column;
   }
-  
-  .suggestion-position,
-  .group-description,
-  .tech-stack-description {
-    color: #777;
-    font-size: 12px; 
+
+  .suggestion-img img {
+    width: 80px; /* Adjust image size for smaller screens */
+    height: 80px;
   }
-  
- 
-  .connect-button,
-  .join-button,
-  .learn-more-button {
-    padding: 4px 8px; 
-    border-radius: 20px;
-    font-size: 12px; 
-    transition: background-color 0.3s ease;
+
+  button {
+    padding: 12px 25px; /* Smaller buttons for mobile */
   }
-  
-  .connect-button {
-    background-color: #3498db;
-    color: white;
-  }
-  
-  .connect-button:hover {
-    background-color: #2980b9;
-  }
-  
-  .join-button {
-    background-color: #2ecc71;
-    color: white;
-  }
-  
-  .join-button:hover {
-    background-color: #27ae60;
-  }
-  
-  .learn-more-button {
-    background-color: #f39c12;
-    color: white;
-  }
-  
-  .learn-more-button:hover {
-    background-color: #e67e22;
-  }
-  
- 
-  @media (max-width: 768px) {
-    .contacts-sections {
-      grid-template-columns: 1fr; 
-    }
-  
-    .contacts-sections .section {
-      margin-bottom: 20px;
-    }
-  }
-  
+}

@@ -13,17 +13,18 @@ const AdminSettings = () => {
     adminPanelAccess: true,
   });
 
+  const [darkMode, setDarkMode] = useState(false);  // State to manage dark mode
   const [error, setError] = useState('');
   const [successMessage, setSuccessMessage] = useState('');
   const [showDeleteAccountModal, setShowDeleteAccountModal] = useState(false);
   const [passwordForDeletion, setPasswordForDeletion] = useState('');
+  const [searchTerm, setSearchTerm] = useState('');
   const navigate = useNavigate();
 
   // Fetch settings from API on component mount
   useEffect(() => {
     const fetchSettings = async () => {
       const token = localStorage.getItem('token');
-
       if (!token) {
         navigate('/login');
         return;
@@ -50,23 +51,47 @@ const AdminSettings = () => {
     };
 
     fetchSettings();
+
+    // Check for dark mode preference in localStorage
+    const savedDarkMode = localStorage.getItem('darkMode') === 'true';
+    setDarkMode(savedDarkMode);
+
+    // Apply dark mode class to body based on stored preference
+    if (savedDarkMode) {
+      document.body.classList.add('dark-mode');
+    } else {
+      document.body.classList.remove('dark-mode');
+    }
   }, [navigate]);
 
   // Handle toggle switch changes for Admin settings
   const handleToggleChange = (event) => {
     const { name, checked } = event.target;
-
     setSettings((prevSettings) => ({
       ...prevSettings,
       [name]: checked,
     }));
   };
 
+  // Dark mode toggle handler
+  const handleDarkModeToggle = () => {
+    setDarkMode((prevMode) => {
+      const newMode = !prevMode;
+      // Store the user's dark mode preference in localStorage
+      localStorage.setItem('darkMode', newMode);
+      if (newMode) {
+        document.body.classList.add('dark-mode');
+      } else {
+        document.body.classList.remove('dark-mode');
+      }
+      return newMode;
+    });
+  };
+
   // Handle form submit (update settings)
   const handleSubmit = async (event) => {
     event.preventDefault();
     const token = localStorage.getItem('token');
-
     if (!token) {
       setError('Please login to update settings.');
       return;
@@ -106,7 +131,6 @@ const AdminSettings = () => {
       return;
     }
 
-    // Ensure password for deletion is entered
     if (!passwordForDeletion) {
       setError('Please enter your password to confirm deletion.');
       return;
@@ -118,17 +142,17 @@ const AdminSettings = () => {
           method: 'DELETE',
           headers: {
             'Content-Type': 'application/json',
-            Authorization: ` ${token}`, // Include the Authorization token
+            Authorization: ` ${token}`,
           },
-          body: JSON.stringify({ password: passwordForDeletion }), // Pass password in the body
+          body: JSON.stringify({ password: passwordForDeletion }),
         });
 
         const data = await response.json();
 
         if (response.ok) {
           setSuccessMessage('Account deleted successfully.');
-          localStorage.removeItem('token'); // Log the user out
-          navigate('/login'); // Redirect to login page
+          localStorage.removeItem('token');
+          navigate('/login');
         } else {
           setError(data.message || 'Failed to delete account');
         }
@@ -139,6 +163,11 @@ const AdminSettings = () => {
     }
   };
 
+  // Filter settings based on search term
+  const filteredSettings = Object.keys(settings).filter((key) =>
+    key.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
   return (
     <div className="admin-settings-page">
       <AdminNavbar />
@@ -147,55 +176,93 @@ const AdminSettings = () => {
           <AdminSidenavbar />
           <div className="admin-settings-form-container">
             <h2>Admin Settings</h2>
+
+            <div className="settings-search-bar">
+              <input
+                type="text"
+                placeholder="Search Settings"
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+                className="search-input"
+              />
+            </div>
+
             <form onSubmit={handleSubmit} className="admin-settings-form">
-              <div className="settings-item">
-                <label>Allow User Registration</label>
-                <input
-                  type="checkbox"
-                  name="allowUserRegistration"
-                  checked={settings.allowUserRegistration}
-                  onChange={handleToggleChange}
-                />
+              <div className="settings-category">
+                <h3>Account Settings</h3>
+                <div className="settings-item">
+                  <label>Allow User Registration</label>
+                  <input
+                    type="checkbox"
+                    name="allowUserRegistration"
+                    checked={settings.allowUserRegistration}
+                    onChange={handleToggleChange}
+                  />
+                  <p>Allow new users to register on the platform.</p>
+                </div>
+
+                <div className="settings-item">
+                  <label>Restrict Inactive Accounts</label>
+                  <input
+                    type="checkbox"
+                    name="restrictInactiveAccounts"
+                    checked={settings.restrictInactiveAccounts}
+                    onChange={handleToggleChange}
+                  />
+                  <p>Automatically disable accounts that have been inactive for a long period.</p>
+                </div>
               </div>
 
-              <div className="settings-item">
-                <label>Enable Job Post Approval</label>
-                <input
-                  type="checkbox"
-                  name="enableJobPostApproval"
-                  checked={settings.enableJobPostApproval}
-                  onChange={handleToggleChange}
-                />
+              <div className="settings-category">
+                <h3>Job Post Settings</h3>
+                <div className="settings-item">
+                  <label>Enable Job Post Approval</label>
+                  <input
+                    type="checkbox"
+                    name="enableJobPostApproval"
+                    checked={settings.enableJobPostApproval}
+                    onChange={handleToggleChange}
+                  />
+                  <p>Require admin approval for job posts before they go live.</p>
+                </div>
+
+                <div className="settings-item">
+                  <label>Allow Job Posting Without Verification</label>
+                  <input
+                    type="checkbox"
+                    name="allowJobPostingWithoutVerification"
+                    checked={settings.allowJobPostingWithoutVerification}
+                    onChange={handleToggleChange}
+                  />
+                  <p>Allow recruiters to post jobs without verifying their account.</p>
+                </div>
               </div>
 
-              <div className="settings-item">
-                <label>Restrict Inactive Accounts</label>
-                <input
-                  type="checkbox"
-                  name="restrictInactiveAccounts"
-                  checked={settings.restrictInactiveAccounts}
-                  onChange={handleToggleChange}
-                />
+              <div className="settings-category">
+                <h3>Admin Settings</h3>
+                <div className="settings-item">
+                  <label>Admin Panel Access</label>
+                  <input
+                    type="checkbox"
+                    name="adminPanelAccess"
+                    checked={settings.adminPanelAccess}
+                    onChange={handleToggleChange}
+                  />
+                  <p>Give admin access to manage platform settings and user accounts.</p>
+                </div>
               </div>
 
-              <div className="settings-item">
-                <label>Allow Job Posting Without Verification</label>
-                <input
-                  type="checkbox"
-                  name="allowJobPostingWithoutVerification"
-                  checked={settings.allowJobPostingWithoutVerification}
-                  onChange={handleToggleChange}
-                />
-              </div>
-
-              <div className="settings-item">
-                <label>Admin Panel Access</label>
-                <input
-                  type="checkbox"
-                  name="adminPanelAccess"
-                  checked={settings.adminPanelAccess}
-                  onChange={handleToggleChange}
-                />
+              <div className="settings-category">
+                <h3>Theme Settings</h3>
+                <div className="settings-item">
+                  <label>Enable Dark Mode</label>
+                  <input
+                    type="checkbox"
+                    checked={darkMode}
+                    onChange={handleDarkModeToggle}
+                  />
+                  <p>Switch between light and dark mode for the admin panel interface.</p>
+                </div>
               </div>
 
               <button type="submit" className="submit-button">

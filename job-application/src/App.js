@@ -120,13 +120,19 @@ import EmployerProfile from './components/Employer/MyProfile/Myprofile';
 import ManageCompanies from './components/Admin/ManageCompanies/Companies';
 import AdminReports from './components/Admin/Reports/Reports';
 import AdminSettings from './components/Admin/Settings/Settings';
+<<<<<<< HEAD
 import AdmiJobApplication from './components/Admin/JobApplication/JobApplication';
+=======
+import AdminJobApplications from './components/Admin/AdminJob/adminjobapplications';
+import AdminActivityLogs from './components/Admin/AdminLog/AdminActivityLogs';
+import AddCompany from './components/Employer/AddCompany/addcompany';
+
+>>>>>>> f50fe3efe61107659a90607521e1ee0dc91b6ce2
 import JobProfile from './components/Applicant/jobprofile/jobprofile';
 import Setting from './components/Applicant/UserSettings/Setting';
 import JobStatus from './components/Applicant/JobStatusPage/JobStatus';
 import HelpAndSupport from './components/Applicant/HelpandSupport/Help';
 import Reviews from './components/Employer/Reviews/Reviews';
-
 
 //This component is used to conditionally render Navbar based on the current path
 const ConditionalNavbar = () => {
@@ -275,7 +281,15 @@ const App = () => {
                 <Route path="/manage-companies" element={<ManageCompanies />} />
                 <Route path="/admin-reports" element={<AdminReports />} />
                 <Route path="/admin-settings" element={<AdminSettings />} />
+<<<<<<< HEAD
                 <Route path="/admin-job-applications" element={<AdmiJobApplication />} />
+=======
+                <Route path="/admin-job-applications" element={<AdminJobApplications />}/>
+                <Route path="/admin-activity-logs" element={<AdminActivityLogs />}/>
+                <Route path="/add-company" element={<AddCompany />} />
+
+
+>>>>>>> f50fe3efe61107659a90607521e1ee0dc91b6ce2
                 <Route path="/jobprofile" element={<JobProfile />} />
                 <Route path="/setting" element={<Setting />} />
                 <Route path="/job-status/:jobId" element={<JobStatus />} />

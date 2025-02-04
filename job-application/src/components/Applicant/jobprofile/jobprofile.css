@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 .profile-container {
   width: 80%;
   margin: 0 auto;
@@ -127,4 +128,118 @@
 
 .submit-video-btn:hover {
   background-color: #45a049;
+=======
+/* General Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  background-color: #f4f7fa;
+  color: #333;
+}
+
+/* Main Profile Container */
+.profile-main-content {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  max-width: 800px;
+  margin: 30px auto;
+}
+
+/* Profile Header */
+.profile-header {
+  display: flex;
+  gap: 20px;
+  border-bottom: 2px solid #e0e0e0;
+  padding-bottom: 20px;
+  margin-bottom: 20px;
+}
+
+.profile-photo {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 3px solid #ddd;
+}
+
+.profile-photo-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.profile-info {
+  flex-grow: 1;
+}
+
+.profile-info h2 {
+  font-size: 28px;
+  font-weight: 600;
+  color: #333;
+}
+
+.profile-info p {
+  font-size: 16px;
+  color: #777;
+  margin-bottom: 10px;
+}
+
+/* Input and Textarea Styles */
+.profile-input,
+.profile-textarea {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+.profile-textarea {
+  height: 80px;
+  resize: vertical;
+}
+
+/* Button Styles */
+.enhance-profile-button {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.enhance-profile-button:hover {
+  background-color: #0056b3;
+}
+
+/* Experience Section */
+.experience-section {
+  margin-top: 20px;
+}
+
+.experience-item {
+  background-color: #f4f7fa;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 4px;
+}
+
+.add-experience input {
+  width: 30%;
+  padding: 10px;
+  margin-right: 10px;
+  margin-top: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+>>>>>>> f50fe3efe61107659a90607521e1ee0dc91b6ce2
 }

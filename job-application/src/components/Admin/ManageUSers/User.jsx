@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState } from 'react'; 
 import './User.css'; // CSS for styling
-import {  FaTrashAlt, FaEye } from 'react-icons/fa'; // Import icons
+import { FaTrashAlt, FaEye } from 'react-icons/fa'; // Import icons
 import AdminNavbar from '../Navbar/Navbar';
 import AdminSidenavbar from '../Sidenavbar/Sidenavbar';
 
@@ -10,25 +10,32 @@ const initialUsers = [
   { id: 2, name: 'Jane Smith', email: 'jane.smith@example.com', role: 'Employer', status: 'Inactive' },
   { id: 3, name: 'Michael Johnson', email: 'michael.johnson@example.com', role: 'Applicant', status: 'Active' },
   { id: 4, name: 'Emily Davis', email: 'emily.davis@example.com', role: 'Employer', status: 'Active' },
+  // Add more users as needed for testing pagination
 ];
 
 const ManageUsers = () => {
   const [users, setUsers] = useState(initialUsers);
   const [selectedUser, setSelectedUser] = useState(null); // For the View modal
   const [isModalOpen, setIsModalOpen] = useState(false); // Modal visibility state
+  const [searchQuery, setSearchQuery] = useState(''); // Search query state
+  const [currentPage, setCurrentPage] = useState(1); // Pagination state
+  const usersPerPage = 2; // Number of users per page
 
+  // Handle Delete action with confirmation
   const handleDelete = (id) => {
-    // Handle deleting the user
-    setUsers(users.filter((user) => user.id !== id));
+    const confirmation = window.confirm('Are you sure you want to delete this user?');
+    if (confirmation) {
+      setUsers(users.filter((user) => user.id !== id));
+    }
   };
 
+  // Handle Edit action (this can be redirected to another page or modal)
   const handleEdit = (id) => {
-    // Handle editing the user (redirect to edit user page or show modal)
     alert(`Edit user with ID: ${id}`);
   };
 
+  // Handle View action
   const handleView = (user) => {
-    // Open modal to show user details
     setSelectedUser(user);
     setIsModalOpen(true);
   };
@@ -37,6 +44,24 @@ const ManageUsers = () => {
     setIsModalOpen(false);
     setSelectedUser(null);
   };
+
+  // Search filter
+  const filteredUsers = users.filter(
+    (user) =>
+      user.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      user.email.toLowerCase().includes(searchQuery.toLowerCase())
+  );
+
+  // Pagination Logic
+  const indexOfLastUser = currentPage * usersPerPage;
+  const indexOfFirstUser = indexOfLastUser - usersPerPage;
+  const currentUsers = filteredUsers.slice(indexOfFirstUser, indexOfLastUser);
+  
+  const totalPages = Math.ceil(filteredUsers.length / usersPerPage);
+
+  // Change page handler
+  const paginate = (pageNumber) => setCurrentPage(pageNumber);
+
   const homePageStyle = {
     backgroundImage: 'url(./components/Admin/background.jpg)', // Replace with your image URL
     backgroundSize: 'cover',
@@ -46,6 +71,7 @@ const ManageUsers = () => {
     display: 'flex',
     flexDirection: 'column',
   };
+
   return (
     <div className="home-page" style={homePageStyle}>
       <AdminNavbar />
@@ -53,6 +79,17 @@ const ManageUsers = () => {
         <AdminSidenavbar />
         <div className="manage-users-container">
           <h2>Manage Users</h2>
+          
+          {/* Search Bar */}
+          <div className="search-container">
+            <input
+              type="text"
+              placeholder="Search by name or email"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+            />
+          </div>
+
           <div className="user-table-container">
             <table>
               <thead>
@@ -65,7 +102,7 @@ const ManageUsers = () => {
                 </tr>
               </thead>
               <tbody>
-                {users.map((user) => (
+                {currentUsers.map((user) => (
                   <tr key={user.id}>
                     <td>{user.name}</td>
                     <td>{user.email}</td>
@@ -74,30 +111,13 @@ const ManageUsers = () => {
                     <td>
                       <button
                         onClick={() => handleView(user)}
-                        style={{
-                          backgroundColor: 'transparent',
-                          border: 'none',
-                          cursor: 'pointer',
-                          margin: '0 10px',
-                          fontSize: '18px',
-                          color: '#007bff',
-                          transition: 'color 0.3s ease',
-                        }}
+                        className="action-button view-button"
                       >
                         <FaEye /> View
                       </button>
-                     
                       <button
                         onClick={() => handleDelete(user.id)}
-                        style={{
-                          backgroundColor: 'transparent',
-                          border: 'none',
-                          cursor: 'pointer',
-                          margin: '0 10px',
-                          fontSize: '18px',
-                          color: '#dc3545',
-                          transition: 'color 0.3s ease',
-                        }}
+                        className="action-button delete-button"
                       >
                         <FaTrashAlt /> Delete
                       </button>
@@ -106,6 +126,17 @@ const ManageUsers = () => {
                 ))}
               </tbody>
             </table>
+          </div>
+
+          {/* Pagination */}
+          <div className="pagination-container">
+            <button onClick={() => paginate(currentPage - 1)} disabled={currentPage === 1}>
+              Prev
+            </button>
+            <span>{currentPage}</span>
+            <button onClick={() => paginate(currentPage + 1)} disabled={currentPage === totalPages}>
+              Next
+            </button>
           </div>
         </div>
       </div>
