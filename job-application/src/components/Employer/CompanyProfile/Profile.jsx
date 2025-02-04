@@ -3,7 +3,6 @@ import { useNavigate } from "react-router-dom";
 import "./Profile.css";
 import EmployerNavbar from "../Navbar/Navbar";
 import EmployerSidebar from '../Sidebar/Sidebar';
-import axios from "axios";
 
 const CompanyProfile = () => {
   const [companies, setCompanies] = useState([]);
@@ -27,6 +26,7 @@ const CompanyProfile = () => {
   const [flagTag, setFlagTag] = useState("");  // Initialize flagTag state
   const [companyId, setCompanyId] = useState('');  // Company ID state
   const [limitRange, setLimitRange] = useState('');  // Limit Range state
+ 
 
 
   const navigate = useNavigate();
@@ -92,9 +92,9 @@ const CompanyProfile = () => {
       alert("Please select a company to flag.");
       return;
     }
-  
+ 
     // const token = localStorage.getItem('token');
-  
+ 
     // Ensure that flagReason is provided and valid
     const flagCompany = async () => {
       // Ensure the company is selected
@@ -102,15 +102,15 @@ const CompanyProfile = () => {
         alert("Please select a company to flag.");
         return;
       }
-    
+   
       // Ensure that both flagTag and flagReason are provided
       if (!flagTag || !flagReason) {
         alert("Please provide a flag type and a reason for flagging the company.");
         return;
       }
-    
+   
       const token = localStorage.getItem('token');
-    
+   
       try {
         // Making the POST request to the backend API
         const response = await fetch('http://localhost:7000/companies/create-flag', {
@@ -125,7 +125,7 @@ const CompanyProfile = () => {
             reasonForFlag: flagReason,       // The reason provided by the user
           }),
         });
-    
+   
         // Handle response from the backend
         if (response.ok) {
           alert("Company flagged successfully.");
@@ -137,10 +137,9 @@ const CompanyProfile = () => {
         console.error("Error flagging company:", error);
       }
     };
-
     const fetchFlags = async () => {
       const token = localStorage.getItem('token');
-      
+     
       try {
         const response = await fetch('http://localhost:7000/companies/flags/company', {
           method: 'POST',
@@ -153,7 +152,7 @@ const CompanyProfile = () => {
             limitRange: limitRange,
           }),
         });
-    
+ 
         if (response.ok) {
           const data = await response.json();
           setFlags(data); // Assuming setFlags is a state update function
@@ -165,10 +164,10 @@ const CompanyProfile = () => {
         console.error("Error fetching flags:", error);
       }
     };
-    
-    // Example usage
-    fetchFlags("12345", "1-10");  // Replace "12345" and "1-10" with dynamic values
-    
+ 
+    useEffect(() => {
+      fetchFlags(); // Call fetchFlags when the component mounts
+    }, []);
   }
 
   // Check if the user is an admin of the selected company
