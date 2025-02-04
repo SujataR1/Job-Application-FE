@@ -23,7 +23,6 @@ const initialApplicants = [
   { id: 4, name: 'Chris Brown', status: 'Rejected', domain: 'Marketing', interviewMode: '', interviewStatus: '', designation: 'Marketing Executive' },
 ];
 
-<<<<<<< HEAD
 const companyAnalyticsData = {
   totalJobsPosted: 25,
   totalApplicants: initialApplicants.length,
@@ -34,22 +33,6 @@ const companyAnalyticsData = {
   employees: 50,
   averageSalary: 75000, // Just a sample average salary
 };
-=======
-const JobAnalyticsPage = () => {
-  const { jobId } = useParams();
-  const job = initialJobs.find((job) => job.id === parseInt(jobId));
-  const [applicants, setApplicants] = useState(job ? job.applicants : []);
-  const [showAssessmentPopup, setShowAssessmentPopup] = useState(false);
-  const [showInterviewPopup, setShowInterviewPopup] = useState(false);
-  const [selectedApplicant, setSelectedApplicant] = useState(null);
-  
-  
-  // Interview related state variables
-  const [interviewType, setInterviewType] = useState('');
-  const [meetingLink, setMeetingLink] = useState('');
-  const [address, setAddress] = useState('');
-  const [interviewDateTime, setInterviewDateTime] = useState('');
->>>>>>> f50fe3efe61107659a90607521e1ee0dc91b6ce2
 
 const CompanyAnalyticsPage = () => {
   const [applicants, setApplicants] = useState(initialApplicants);
