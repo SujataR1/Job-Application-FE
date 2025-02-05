@@ -24,7 +24,8 @@ const JobPost = () => {
     max_experience: '',
     min_salary: '',
     max_salary: '',
-    companyId: ''
+    companyId: '',
+    tags:['']
   });
   const [token, setToken] = useState('');
 
@@ -84,7 +85,8 @@ const JobPost = () => {
       min_salary: job.min_salary,
       max_salary: job.max_salary,
       companyId: selectedCompanyId || job.companyId,
-      status: "Open" // Ensure the status is always "Open"
+      status: "Open",
+      tags:job.tags // Ensure the status is always "Open"
     };
 
     // Send the job post data to API
@@ -440,7 +442,29 @@ const JobPost = () => {
               ))}
             </select>
           </div>
-
+{/* Job Tags */}
+<div style={{ marginBottom: '15px' }}>
+            <label style={{ display: 'block', fontWeight: 'bold' }}>Tags</label>
+            <input
+              type="text"
+              value={job.tags.join(', ')}
+              onChange={(e) =>
+                setJob({
+                  ...job,
+                  tags: e.target.value.split(',').map((req) => req.trim())
+                })
+              }
+              required
+              style={{
+                width: '100%',
+                padding: '12px',
+                borderRadius: '6px',
+                border: '1px solid #ccc',
+                marginTop: '5px',
+                fontSize: '16px'
+              }}
+            />
+          </div>
           {/* Submit Button */}
           <button
             type="submit"

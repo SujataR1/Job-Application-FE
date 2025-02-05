@@ -97,7 +97,8 @@ const JobApplicationPage = () => {
       max_salary: job.max_salary,
       status: job.status,
       requirements:job.requirements,
-      address: job.address || { street: '', city: '', zip: '' }, // Handle address object
+      address: job.address || { street: '', city: '', zip: '' },
+      tags: job.JobPostingsTags.map(tag => tag.tagId).join(', '), // Handle address object
     });
   };
 
@@ -249,6 +250,7 @@ const JobApplicationPage = () => {
                   <p><strong>Salary:</strong> ${job.min_salary} - ${job.max_salary}</p>
                   <p><strong>Posted:</strong> {formatDate(job.createdAt)}</p>
                   <p><strong>Status:</strong> {job.status}</p>
+                  <p><strong>Tags:</strong> {job.JobPostingsTags.map(tags => tags.tagId).join(', ')}</p>
 
                   <div className="job-actions">
                     <button onClick={() => handleViewApplicants(job.id)} className="action-button">
@@ -352,6 +354,15 @@ const JobApplicationPage = () => {
                     onChange={handleChange}
                   />
                 </label>
+
+                <label>
+            Tags (comma-separated):
+           <input
+         name="tags"
+          value={editedJobData.tags } // Display current tags as a comma-separated string
+         onChange={handleChange} // Call a new handler function for tags
+         />
+       </label>
 
                 <label>
                   Skills (comma-separated):
