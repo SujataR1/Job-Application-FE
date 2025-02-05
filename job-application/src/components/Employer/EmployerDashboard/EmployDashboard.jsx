@@ -1,38 +1,23 @@
-import React, { useState } from 'react';
-
-import EmployerSidebar from '../Sidebar/Sidebar'; // Create Sidebar Component
-import Efeed from '../Efeed/Efeed';  // Create Feed Component
-import './EmployDashboard.css';
+import React from 'react';
 import EmployerNavbar from '../Navbar/Navbar';
+import ESidebar from '../Sidebar/Sidebar';
+import Efeed from '../Efeed/Efeed';
 
 const HomePage = () => {
-  const [postText, setPostText] = useState('');
-  
-  const handlePostSubmit = (e) => {
-    e.preventDefault();
-    if (postText.trim() !== '') {
-      alert(`Post Created: ${postText}`);
-      setPostText(''); // Clear the text after post submission
-    }
-  };
-
   return (
-    <div className="home-page">
-      {/* Navbar/Header */}
-     <EmployerNavbar/>
-
-      <div className="home-content flex flex-row">
-        {/* Sidebar */}
-        <EmployerSidebar />
-
-        {/* Main Content Area */}
+    <div className="min-h-screen bg-gray-100">
+      <EmployerNavbar />
+      
+      <div className="flex pt-16">
+        <ESidebar />
         
-
-          {/* Feed Section */}
-          <Efeed />
-        </div>
+        <main className="flex-1 transition-all duration-300 md:ml-16">
+          <div className="p-6">
+            <Efeed />
+          </div>
+        </main>
       </div>
-
+    </div>
   );
 };
 

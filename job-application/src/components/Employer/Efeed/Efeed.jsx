@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { FaHeart, FaShareAlt, FaEdit, FaTrash, FaComment } from "react-icons/fa";
-import './Efeed.css';
 
 const CreateAndFeed = () => {
   const [posts, setPosts] = useState([]);
@@ -360,41 +359,34 @@ const CreateAndFeed = () => {
 
   
   const PostActions = ({ post }) => {
-        const [visibility, setVisibility] = useState("Everyone");  // Set default visibility to "Everyone"
-      
-        const handleRepostClick = () => {
-          if (!visibility) {
-            alert("Please select a visibility for the repost.");
-            return;
-          }
-          handleRepost(post.id, visibility);
-        };
+    const [visibility, setVisibility] = useState("Everyone");
+
+    const handleRepostClick = () => {
+      if (!visibility) {
+        alert("Please select a visibility for the repost.");
+        return;
+      }
+      handleRepost(post.id, visibility);
+    };
+
     return (
-      <div className="post-actions">
+      <div className="flex items-center space-x-4 mt-4">
         <button
           onClick={() => handleLike(post.id, post.isLiked)}
-          className={`like-button ${post.isLiked ? "liked" : ""}`}
+          className={`flex items-center space-x-1 ${post.isLiked ? "text-red-500" : "text-gray-600"}`}
         >
           <FaHeart />
           <span>{post.likeCount}</span>
         </button>
-        <button onClick={() => handleCreateComment(post.id, newComment)}>
-          <FaComment /> Comment
+        
+        <button className="flex items-center space-x-1 text-gray-600">
+          <FaComment /> 
+          <span>Comment</span>
         </button>
-        <button onClick={() => handleRepost(post.id, visibility)}>
-          <FaShareAlt /> Repost
-        </button>
-        <button onClick={() => handleEditPostClick(post.id)}>
-          <FaEdit /> Edit
-        </button>
-        <button onClick={() => handleDeletePost(post.id)}>
-          <FaTrash /> Delete
-        </button>
-  
-        <div>
-          <label htmlFor="visibility">Repost Visibility:</label>
+
+        <div className="flex items-center space-x-2">
           <select
-            id="visibility"
+            className="rounded border border-gray-300 p-1"
             value={visibility}
             onChange={(e) => setVisibility(e.target.value)}
           >
@@ -402,12 +394,34 @@ const CreateAndFeed = () => {
             <option value="Connections">Connections</option>
             <option value="OnlyMe">Only Me</option>
           </select>
+          <button 
+            onClick={handleRepostClick}
+            className="flex items-center space-x-1 text-gray-600"
+          >
+            <FaShareAlt /> 
+            <span>Repost</span>
+          </button>
         </div>
+
+        <button 
+          onClick={() => handleEditPostClick(post.id)}
+          className="flex items-center space-x-1 text-gray-600"
+        >
+          <FaEdit /> 
+          <span>Edit</span>
+        </button>
+
+        <button 
+          onClick={() => handleDeletePost(post.id)}
+          className="flex items-center space-x-1 text-red-600"
+        >
+          <FaTrash /> 
+          <span>Delete</span>
+        </button>
       </div>
     );
   };
   
-
   const PostWithAttachments = ({ postId }) => {
     const [attachments, setAttachments] = useState({});
     const [error, setError] = useState(null);
@@ -445,16 +459,15 @@ const CreateAndFeed = () => {
     }, [postId]);
 
     return (
-      <div className="post-attachments">
-        {error && <p style={{ color: "red" }}>{error}</p>}
-
-        <div className="attachments-container">
+      <div className="mt-4">
+        {error && <p className="text-red-500">{error}</p>}
+        <div className="flex flex-wrap gap-4">
           {Object.entries(attachments).map(([filePath, base64Data]) => (
-            <div key={filePath} className="attachment">
+            <div key={filePath} className="w-full max-w-md">
               <img
                 src={base64Data}
                 alt="Attachment"
-                style={{ maxWidth: "100%", maxHeight: "400px", marginBottom: "10px" }}
+                className="rounded-lg shadow-md"
               />
             </div>
           ))}
@@ -464,126 +477,149 @@ const CreateAndFeed = () => {
   };
 
   return (
-    <div className="News-Feed">
-      <h1>News Feed</h1>
+    <div className="max-w-4xl mx-auto p-6">
+      <h1 className="text-3xl font-bold mb-8 text-center">News Feed</h1>
 
       {!isCreatingPost && (
-        <button onClick={handleCreatePostClick}>Create Post</button>
+        <button
+          onClick={handleCreatePostClick}
+          className="mb-6 bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition-colors"
+        >
+          Create Post
+        </button>
       )}
 
       {isCreatingPost && (
-        <div className="create-post-form">
-          <h2>{editPostId ? "Edit Post" : "Create a New Post"}</h2>
-          <form onSubmit={handleSubmit}>
+        <div className="bg-gray-50 p-6 rounded-lg shadow-md mb-8">
+          <h2 className="text-2xl font-semibold mb-4">
+            {editPostId ? "Edit Post" : "Create a New Post"}
+          </h2>
+          <form onSubmit={handleSubmit} className="space-y-4">
             <div>
-              <label htmlFor="title">Title</label>
+              <label className="block text-sm font-medium text-gray-700">Title</label>
               <input
                 type="text"
-                id="title"
                 value={title}
                 onChange={(e) => setTitle(e.target.value)}
+                className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
                 required
               />
             </div>
+
             <div>
-              <label htmlFor="content">Content</label>
+              <label className="block text-sm font-medium text-gray-700">Content</label>
               <textarea
-                id="content"
                 value={content}
                 onChange={(e) => setContent(e.target.value)}
+                className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 h-32"
                 required
               />
             </div>
-            <div>
-              <label htmlFor="visibility">Visibility</label>
-              <select
-                id="visibility"
-                value={visibility}
-                onChange={(e) => setVisibility(e.target.value)}
-                required
-              >
-                <option value="Everyone">Everyone</option>
-                <option value="Connections">Connections</option>
-                <option value="OnlyMe">Only Me</option>
-              </select>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div>
+                <label className="block text-sm font-medium text-gray-700">Visibility</label>
+                <select
+                  value={visibility}
+                  onChange={(e) => setVisibility(e.target.value)}
+                  className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                >
+                  <option value="Everyone">Everyone</option>
+                  <option value="Connections">Connections</option>
+                  <option value="OnlyMe">Only Me</option>
+                </select>
+              </div>
+
+              <div className="space-y-2">
+                <label className="flex items-center space-x-2">
+                  <input
+                    type="checkbox"
+                    checked={allowSharing}
+                    onChange={(e) => setAllowSharing(e.target.checked)}
+                    className="rounded border-gray-300 text-blue-600 focus:ring-blue-500"
+                  />
+                  <span className="text-sm text-gray-700">Allow Sharing</span>
+                </label>
+
+                <label className="flex items-center space-x-2">
+                  <input
+                    type="checkbox"
+                    checked={allowReposts}
+                    onChange={(e) => setAllowReposts(e.target.checked)}
+                    className="rounded border-gray-300 text-blue-600 focus:ring-blue-500"
+                  />
+                  <span className="text-sm text-gray-700">Allow Reposts</span>
+                </label>
+              </div>
             </div>
+
             <div>
-              <label htmlFor="allowSharing">Allow Sharing</label>
-              <input
-                type="checkbox"
-                id="allowSharing"
-                checked={allowSharing}
-                onChange={(e) => setAllowSharing(e.target.checked)}
-              />
-            </div>
-            <div>
-              <label htmlFor="allowReposts">Allow Reposts</label>
-              <input
-                type="checkbox"
-                id="allowReposts"
-                checked={allowReposts}
-                onChange={(e) => setAllowReposts(e.target.checked)}
-              />
-            </div>
-            <div>
-              <label htmlFor="image">Select Image</label>
+              <label className="block text-sm font-medium text-gray-700">Image</label>
               <input
                 type="file"
-                id="image"
                 accept="image/*"
                 multiple
                 onChange={(e) => setImage(e.target.files)}
+                className="mt-1 block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100"
               />
             </div>
-            {formError && <p style={{ color: "red" }}>{formError}</p>}
-            <button type="submit" disabled={formLoading}>
-              {formLoading ? "Submitting..." : "Submit"}
-            </button>
+
+            {formError && <p className="text-red-500">{formError}</p>}
+
+            <div className="flex justify-end space-x-4">
+              <button
+                type="button"
+                onClick={resetForm}
+                className="px-4 py-2 border border-gray-300 rounded-md text-gray-700 hover:bg-gray-50"
+              >
+                Cancel
+              </button>
+              <button
+                type="submit"
+                disabled={formLoading}
+                className="px-6 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed"
+              >
+                {formLoading ? "Submitting..." : "Submit"}
+              </button>
+            </div>
           </form>
         </div>
       )}
 
-      {error && <p style={{ color: "red" }}>{error}</p>}
+      {error && <p className="text-red-500 mb-4">{error}</p>}
 
       {loading ? (
-        <p>Loading...</p>
+        <div className="text-center py-8">
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto"></div>
+        </div>
       ) : (
-        <div className="feed">
+        <div className="space-y-6">
           {posts.map((post) => (
-            <div key={post.id} className="post">
-              <h2>{post.title}</h2>
-              <p>{post.content}</p>
-              <p>{post.user.name}</p>
-              <p>{post.date}</p>
+            <div key={post.id} className="bg-white p-6 rounded-lg shadow-md">
+              <div className="flex justify-between items-start mb-4">
+                <div>
+                  <h2 className="text-xl font-semibold">{post.title}</h2>
+                  <p className="text-gray-600 text-sm mt-1">{post.date}</p>
+                </div>
+                <span className="text-sm text-gray-500">{post.user.name}</span>
+              </div>
+
+              <p className="text-gray-700 mb-4">{post.content}</p>
 
               <PostWithAttachments postId={post.id} />
 
-              <div className="post-actions">
-                <button
-                  onClick={() => handleLike(post.id, post.isLiked)}
-                  className={`like-button ${post.isLiked ? "liked" : ""}`}
-                >
-                  <FaHeart />
-                  <span>{post.likeCount}</span>
-                </button>
+              <div className="mt-6">
+                <PostActions post={post} />
+              </div>
+
+              <div className="mt-4">
                 <input
                   type="text"
                   value={newComment}
                   onChange={(e) => setNewComment(e.target.value)}
                   placeholder="Write a comment..."
+                  className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                 />
-                <button onClick={() => handleCreateComment(post.id, newComment)}>
-                  <FaComment /> Comment
-                </button>
-                <button onClick={() => handleRepost(post.id)}>
-                  <FaShareAlt /> Repost
-                </button>
-                <button onClick={() => handleEditPostClick(post.id)}>
-                  <FaEdit /> Edit
-                </button>
-                <button onClick={() => handleDeletePost(post.id)}>
-                  <FaTrash /> Delete
-                </button>
               </div>
             </div>
           ))}
