@@ -1,31 +1,26 @@
 import React from 'react';
-import { Link, useNavigate } from 'react-router-dom';  // useNavigate for redirection
-import { FaNetworkWired, FaSignOutAlt, FaBell, FaClipboardList, FaUserCircle, FaHome, FaEnvelope, FaBuilding } from 'react-icons/fa'; // Importing additional icons
-import './Navbar.css';
-
+import { Link, useNavigate } from 'react-router-dom';
+import { FaNetworkWired, FaSignOutAlt, FaBell, FaClipboardList, FaUserCircle, FaHome, FaEnvelope } from 'react-icons/fa';
 
 function EmployerNavbar({ toggleSidebar, profileImageUrl }) {
-  const navigate = useNavigate();  // To navigate to login page after logout
+  const navigate = useNavigate();
 
-  // Function to handle logout
+ 
   const handleLogout = async () => {
-    const token = localStorage.getItem('token');  // Get the token from localStorage
+    const token = localStorage.getItem('token');  
 
     if (token) {
       try {
-        // Ensure the token does not have the 'Bearer ' prefix (if already present)
+        
         const tokenToSend = token.startsWith('Bearer ') ? token.substring(7) : token;
-
-        // Send a POST request to logout
         const response = await fetch('http://localhost:7000/auth/logout', {
           method: 'POST',
           headers: {
-            'Authorization': `Bearer ${tokenToSend}`, // Send only one 'Bearer' prefix
+            'Authorization': `Bearer ${tokenToSend}`, 
           },
         });
 
         if (response.ok) {
-          // If the logout is successful, remove the token from localStorage and navigate to login page
           localStorage.removeItem('token');
           navigate('/login');
         } else {
@@ -42,58 +37,55 @@ function EmployerNavbar({ toggleSidebar, profileImageUrl }) {
   };
 
   return (
-    <nav className="employer-navbar">
-      <div className="navbar-container">
-        {/* Left side: Profile Image */}
-        <div className="account-icon" onClick={toggleSidebar}>
-          {/* Display profile image if available, otherwise fallback to default icon */}
-          {profileImageUrl ? (
-            <div className="profile-img">
-              <img
-                src={profileImageUrl}
-                alt="Profile"
-                className="profile-img-thumbnail"
-              />
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-gray-800 text-white shadow-lg">
+      <div className="container mx-auto px-4">
+        <div className="flex justify-between items-center h-16">
+          <div className="flex items-center space-x-4">
+            <button
+              onClick={toggleSidebar}
+              className="flex items-center justify-center h-10 w-10 rounded-full overflow-hidden hover:bg-gray-700 transition-colors"
+            >
+              {profileImageUrl ? (
+                <img
+                  src={profileImageUrl}
+                  alt="Profile"
+                  className="h-full w-full object-cover"
+                />
+              ) : (
+                <FaUserCircle className="h-8 w-8" />
+              )}
+            </button>
+
+            <div className="hidden md:flex space-x-6">
+              <Link to="/employerdashboard" className="flex items-center space-x-2 hover:text-blue-400 transition-colors">
+                <FaHome className="text-lg" />
+                <span>Home</span>
+              </Link>
+              <Link to="/network" className="flex items-center space-x-2 hover:text-blue-400 transition-colors">
+                <FaNetworkWired className="text-lg" />
+                <span>My Network</span>
+              </Link>
+              <Link to="/application" className="flex items-center space-x-2 hover:text-blue-400 transition-colors">
+                <FaClipboardList className="text-lg" />
+                <span>My Posts</span>
+              </Link>
+              <Link to="/message" className="flex items-center space-x-2 hover:text-blue-400 transition-colors">
+                <FaEnvelope className="text-lg" />
+                <span>Messages</span>
+              </Link>
+              <Link to="/notifications" className="flex items-center space-x-2 hover:text-blue-400 transition-colors">
+                <FaBell className="text-lg" />
+                <span>Notifications</span>
+              </Link>
             </div>
-          ) : (
-            <FaUserCircle size={30} color="#fff" />
-          )}
-        </div>
+          </div>
 
-        {/* Center: Navbar Links */}
-        <ul className="nav-links">
-          <li>
-            <Link to="/employerdashboard" className="text-white font-bold text-lg hover:text-teal-300 mr-6">
-              <FaHome className="inline-block mr-2" /> Home
-            </Link>
-          </li>
-          <li>
-            <Link to="/network" className="text-white font-bold text-lg hover:text-teal-300 mr-6">
-              <FaNetworkWired className="inline-block mr-2" /> My Network
-            </Link>
-          </li>
-          <li>
-            <Link to="/application" className="text-white font-bold text-lg hover:text-teal-300 mr-6">
-              <FaClipboardList className="inline-block mr-2" /> My Posts
-            </Link>
-          </li>
-          <li>
-            <Link to="/message" className="text-white font-bold text-lg hover:text-teal-300 mr-6">
-              <FaEnvelope className="inline-block mr-2" /> My Messages
-            </Link>
-          </li>
-          <li>
-            <Link to="/notifications" className="text-white font-bold text-lg hover:text-teal-300 mr-6">
-              <FaBell className="inline-block mr-2" /> Notifications
-            </Link>
-          </li>
-        </ul>
-
-
-        {/* Right side: Logout Button */}
-        <div className="logout-section">
-          <button onClick={handleLogout} className="logout-btn">
-            <FaSignOutAlt className="nav-icon" /> Logout
+          <button
+            onClick={handleLogout}
+            className="flex items-center space-x-2 bg-red-600 hover:bg-red-700 px-4 py-2 rounded-md transition-colors"
+          >
+            <FaSignOutAlt />
+            <span>Logout</span>
           </button>
         </div>
       </div>
