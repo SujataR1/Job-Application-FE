@@ -1,22 +1,19 @@
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { FaNetworkWired, FaSignOutAlt, FaBell, FaClipboardList, FaUserCircle, FaHome, FaEnvelope } from 'react-icons/fa';
+import { FaNetworkWired, FaSignOutAlt, FaBell, FaClipboardList, FaHome, FaEnvelope, FaBars } from 'react-icons/fa';
 
-function EmployerNavbar({ toggleSidebar, profileImageUrl }) {
+function EmployerNavbar({ toggleSidebar }) {
   const navigate = useNavigate();
 
- 
   const handleLogout = async () => {
-    const token = localStorage.getItem('token');  
+    const token = localStorage.getItem('token');
 
     if (token) {
       try {
-        
-        const tokenToSend = token.startsWith('Bearer ') ? token.substring(7) : token;
         const response = await fetch('http://localhost:7000/auth/logout', {
           method: 'POST',
           headers: {
-            'Authorization': `Bearer ${tokenToSend}`, 
+            'Authorization': `Bearer ${token}`,
           },
         });
 
@@ -40,53 +37,50 @@ function EmployerNavbar({ toggleSidebar, profileImageUrl }) {
     <nav className="fixed top-0 left-0 right-0 z-50 bg-gray-800 text-white shadow-lg">
       <div className="container mx-auto px-4">
         <div className="flex justify-between items-center h-16">
-          <div className="flex items-center space-x-4">
+          {/* Hamburger Button at the extreme left */}
+          <div className="absolute left-4">
             <button
               onClick={toggleSidebar}
-              className="flex items-center justify-center h-10 w-10 rounded-full overflow-hidden hover:bg-gray-700 transition-colors"
+              className="flex items-center justify-center p-0.5 hover:bg-gray-700 transition-colors focus:outline-none"
             >
-              {profileImageUrl ? (
-                <img
-                  src={profileImageUrl}
-                  alt="Profile"
-                  className="h-full w-full object-cover"
-                />
-              ) : (
-                <FaUserCircle className="h-8 w-8" />
-              )}
+              <FaBars className="text-white text-3xl" />
             </button>
-
-            <div className="hidden md:flex space-x-6">
-              <Link to="/employerdashboard" className="flex items-center space-x-2 hover:text-blue-400 transition-colors">
-                <FaHome className="text-lg" />
-                <span>Home</span>
-              </Link>
-              <Link to="/network" className="flex items-center space-x-2 hover:text-blue-400 transition-colors">
-                <FaNetworkWired className="text-lg" />
-                <span>My Network</span>
-              </Link>
-              <Link to="/application" className="flex items-center space-x-2 hover:text-blue-400 transition-colors">
-                <FaClipboardList className="text-lg" />
-                <span>My Posts</span>
-              </Link>
-              <Link to="/message" className="flex items-center space-x-2 hover:text-blue-400 transition-colors">
-                <FaEnvelope className="text-lg" />
-                <span>Messages</span>
-              </Link>
-              <Link to="/notifications" className="flex items-center space-x-2 hover:text-blue-400 transition-colors">
-                <FaBell className="text-lg" />
-                <span>Notifications</span>
-              </Link>
-            </div>
           </div>
 
-          <button
-            onClick={handleLogout}
-            className="flex items-center space-x-2 bg-red-600 hover:bg-red-700 px-4 py-2 rounded-md transition-colors"
-          >
-            <FaSignOutAlt />
-            <span>Logout</span>
-          </button>
+          {/* Centered Content */}
+          <div className="flex space-x-6 mx-auto">
+            <Link to="/employerdashboard" className="flex items-center space-x-2 hover:text-blue-400 transition-colors">
+              <FaHome className="text-lg" />
+              <span>Home</span>
+            </Link>
+            <Link to="/network" className="flex items-center space-x-2 hover:text-blue-400 transition-colors">
+              <FaNetworkWired className="text-lg" />
+              <span>My Network</span>
+            </Link>
+            <Link to="/application" className="flex items-center space-x-2 hover:text-blue-400 transition-colors">
+              <FaClipboardList className="text-lg" />
+              <span>My Posts</span>
+            </Link>
+            <Link to="/message" className="flex items-center space-x-2 hover:text-blue-400 transition-colors">
+              <FaEnvelope className="text-lg" />
+              <span>Messages</span>
+            </Link>
+            <Link to="/notifications" className="flex items-center space-x-2 hover:text-blue-400 transition-colors">
+              <FaBell className="text-lg" />
+              <span>Notifications</span>
+            </Link>
+          </div>
+
+          {/* Logout Button (extreme right) */}
+          <div className="flex items-center">
+            <button
+              onClick={handleLogout}
+              className="flex items-center space-x-2 bg-red-600 hover:bg-red-700 px-4 py-2 rounded-md transition-colors focus:outline-none"
+            >
+              <FaSignOutAlt />
+              <span>Logout</span>
+            </button>
+          </div>
         </div>
       </div>
     </nav>
