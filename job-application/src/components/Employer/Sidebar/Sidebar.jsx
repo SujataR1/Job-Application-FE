@@ -65,3 +65,4 @@ const ESidebar = ({ isExpanded, toggleSidebar }) => {
 };
 
 export default ESidebar;
+

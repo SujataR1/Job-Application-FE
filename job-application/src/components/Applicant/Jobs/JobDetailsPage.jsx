@@ -60,6 +60,11 @@ const JobDetailsPage = () => {
     // Ensure useState is called unconditionally, at the top of the component
     const [isApplied, setIsApplied] = useState(false);
     const [isModalOpen, setIsModalOpen] = useState(false); // To control modal visibility
+    const [flagTag, setFlagTag] = useState(""); // Store flag type (e.g., "Spam")
+    const [flagReason, setFlagReason] = useState(""); // Store the reason for flagging
+    const [selectedCompany, setSelectedCompany] = useState(jobListings[0]); // Assume job is selected
+    const [isFlagged, setIsFlagged] = useState(false); // Track if the company is flagged
+    const [isFlagFormVisible, setIsFlagFormVisible] = useState(false); // Track if the flag form is visible
 
     // Find the job by ID
     const job = jobListings.find((job) => job.id === parseInt(jobId));
@@ -79,6 +84,64 @@ const JobDetailsPage = () => {
         setIsModalOpen(false);
     };
 
+    // Function to handle flagging company
+    const flagCompany = async (event) => {
+        event.preventDefault();
+
+        if (!selectedCompany) {
+            alert("Please select a company to flag.");
+            return;
+        }
+
+        if (!flagTag || !flagReason) {
+            alert("Please provide a flag type and a reason for flagging the company.");
+            return;
+        }
+
+        const token = localStorage.getItem('token');
+        if (!token) {
+            alert("User authentication token is missing. Please log in again.");
+            return;
+        }
+
+        try {
+            // Ensure companyId is a string
+            const response = await fetch('http://localhost:7000/companies/create-flag', {
+                method: 'POST',
+                headers: {
+                    'Authorization': ` ${token}`,
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    companyId: String(selectedCompany.id), // Ensure the companyId is a string
+                    flagTag: flagTag,
+                    reasonForFlag: flagReason,
+                }),
+            });
+
+            if (!response.ok) {
+                const data = await response.json();
+                throw new Error(data.message || "Unable to flag the company.");
+            }
+
+            alert("Company flagged successfully.");
+
+            // Store companyId in localStorage after flag creation
+            localStorage.setItem('companyId', String(selectedCompany.id)); // Ensure it's a string
+
+            setIsFlagged(true); // Update state to show that the company is flagged
+            setIsFlagFormVisible(false); // Hide the form after successful flagging
+        } catch (error) {
+            console.error("Error flagging company:", error);
+            alert(`Error: ${error.message}`);
+        }
+    };
+
+    // Function to show the flagging form
+    const showFlagForm = () => {
+        setIsFlagFormVisible(true);
+    };
+
     return (
         <div className="job-details">
             <div className="job-header">
@@ -95,7 +158,33 @@ const JobDetailsPage = () => {
                 <button className="contact-hr-button">Contact HR</button>
                 <button className="save-button">Save</button>
                 <button className="share-button">Share</button>
+
+                {/* Flag Company Button */}
+                <button className="flag-button" onClick={showFlagForm}>
+                    {isFlagged ? "Company Flagged" : "Flag Company"}
+                </button>
             </div>
+
+            {/* Flagging Form (only visible when isFlagFormVisible is true) */}
+            {isFlagFormVisible && (
+                <form onSubmit={flagCompany}>
+                    <label htmlFor="flagTag">Select Flag Type:</label>
+                    <select id="flagTag" value={flagTag} onChange={(e) => setFlagTag(e.target.value)}>
+                        <option value="Spam">Spam</option>
+                        <option value="Abusive">Abusive Content</option>
+                        <option value="Other">Other</option>
+                    </select>
+
+                    <label htmlFor="flagReason">Provide Reason:</label>
+                    <textarea
+                        id="flagReason"
+                        value={flagReason}
+                        onChange={(e) => setFlagReason(e.target.value)}
+                    ></textarea>
+
+                    <button type="submit">Submit Flag</button>
+                </form>
+            )}
 
             <hr />
 
@@ -164,20 +253,21 @@ const JobDetailsPage = () => {
 
             <div className="job-actions">
                 {isApplied ? (
-                    <p>You Have applied for this Job. Will Get Back to you shortly</p>
+                    <p>You Have applied for this Job. Check the status in your dashboard!</p>
                 ) : (
-                    <button className="apply-button" onClick={handleApplyClick}>Apply Now</button>
+                    <button className="apply-button" onClick={handleApplyClick}>
+                        Apply Now
+                    </button>
                 )}
             </div>
 
-            {/* Modal Pop-up */}
+            {/* Modal for confirmation after applying */}
             {isModalOpen && (
                 <div className="modal">
                     <div className="modal-content">
-                        <div className="checkmark">✔</div> {/* Green checkmark */}
-                        <h2>Applied Done</h2>
-                        <p>You have successfully applied for the job!</p>
-                        <button className="close-modal-button" onClick={closeModal}>Close</button>
+                        <h2>Thank you for applying!</h2>
+                        <p>We will get back to you shortly.</p>
+                        <button onClick={closeModal}>Close</button>
                     </div>
                 </div>
             )}

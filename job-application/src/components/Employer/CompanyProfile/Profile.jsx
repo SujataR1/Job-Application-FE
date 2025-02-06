@@ -14,7 +14,6 @@ const CompanyProfile = () => {
   const [logoUploadError, setLogoUploadError] = useState("");
   const [isLogoUploaded, setIsLogoUploaded] = useState(false);
   const [isLogoUploading, setIsLogoUploading] = useState(false);
-  //const [logoUrl, setLogoUrl] = useState(null);
   const [emailToInvite, setEmailToInvite] = useState("");
   const [otp, setOtp] = useState("");
   const [industryName, setIndustryName] = useState(""); // State for industry name
@@ -25,7 +24,6 @@ const CompanyProfile = () => {
   const [flags, setFlags] = useState([]);
   const [flagTag, setFlagTag] = useState("");  // Initialize flagTag state
   const [companyId, setCompanyId] = useState('');  // Company ID state
-  // const [limitRange, setLimitRange] = useState('');  // Limit Range state
   const [limitRange, setLimitRange] = useState(10);
 
   const navigate = useNavigate();
@@ -60,7 +58,6 @@ const CompanyProfile = () => {
     }
   };
 
-
   // Pagination handler
   const handlePageChange = (newPage) => {
     if (newPage > 0 && newPage <= totalPages) {
@@ -89,95 +86,94 @@ const CompanyProfile = () => {
     event.preventDefault();
 
     if (!selectedCompany) {
-        alert("Please select a company to flag.");
-        return;
+      alert("Please select a company to flag.");
+      return;
     }
 
     if (!flagTag || !flagReason) {
-        alert("Please provide a flag type and a reason for flagging the company.");
-        return;
+      alert("Please provide a flag type and a reason for flagging the company.");
+      return;
     }
 
     const token = localStorage.getItem('token');
     if (!token) {
-        alert("User authentication token is missing. Please log in again.");
-        return;
+      alert("User authentication token is missing. Please log in again.");
+      return;
     }
 
     try {
-        const response = await fetch('http://localhost:7000/companies/create-flag', {
-            method: 'POST',
-            headers: {
-                'Authorization': ` ${token}`,
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-                companyId: selectedCompany.id,
-                flagTag: flagTag,
-                reasonForFlag: flagReason,
-            }),
-        });
+      const response = await fetch('http://localhost:7000/companies/create-flag', {
+        method: 'POST',
+        headers: {
+          'Authorization': ` ${token}`,
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          companyId: selectedCompany.id,
+          flagTag: flagTag,
+          reasonForFlag: flagReason,
+        }),
+      });
 
-        if (!response.ok) {
-            const data = await response.json();
-            throw new Error(data.message || "Unable to flag the company.");
-        }
+      if (!response.ok) {
+        const data = await response.json();
+        throw new Error(data.message || "Unable to flag the company.");
+      }
 
-        alert("Company flagged successfully.");
+      alert("Company flagged successfully.");
 
-        // Store companyId in localStorage after flag creation
-        localStorage.setItem('companyId', selectedCompany.id);
+      // Store companyId in localStorage after flag creation
+      localStorage.setItem('companyId', selectedCompany.id);
 
-        fetchFlags(); // Refresh the flagged company list after flagging
+      fetchFlags(); // Refresh the flagged company list after flagging
 
     } catch (error) {
-        console.error("Error flagging company:", error);
-        alert(`Error: ${error.message}`);
+      console.error("Error flagging company:", error);
+      alert(`Error: ${error.message}`);
     }
-};
-const fetchFlags = async () => {
-  const token = localStorage.getItem('token');
-  const companyId = localStorage.getItem('companyId'); // Get companyId from localStorage
+  };
+  const fetchFlags = async () => {
+    const token = localStorage.getItem('token');
+    const companyId = localStorage.getItem('companyId'); // Get companyId from localStorage
 
-  if (!token) {
+    if (!token) {
       alert("User authentication token is missing. Please log in again.");
       return;
-  }
+    }
 
-  if (!companyId) {
+    if (!companyId) {
       alert("Company ID is missing. Please flag a company first.");
       return;
-  }
+    }
 
-  try {
+    try {
       // Ensure that you are sending the companyId and limitRange in the correct format
       const response = await fetch('http://localhost:7000/companies/flags/company', {
-          method: 'POST',
-          headers: {
-              'Authorization': ` ${token}`,
-              'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-              companyId: companyId, // Fetch flags for the specific company
-              limitRange: "1-10", // Set the range as needed
-          }),
+        method: 'POST',
+        headers: {
+          'Authorization': ` ${token}`,
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          companyId: companyId, // Fetch flags for the specific company
+          limitRange: "1-10", // Set the range as needed
+        }),
       });
 
       const data = await response.json();
       console.log("Flags API Response:", data);
 
       if (!response.ok) {
-          throw new Error(data.message?.join(", ") || "Unable to fetch flags.");
+        throw new Error(data.message?.join(", ") || "Unable to fetch flags.");
       }
 
       setFlags(data.flags); // Update state with flagged companies
 
-  } catch (error) {
+    } catch (error) {
       console.error("Error fetching flags:", error);
       alert(`Error: ${error.message}`);
-  }
-};
-
+    }
+  };
 
   // Check if the user is an admin of the selected company
   const checkAdminStatus = async (companyId) => {
@@ -291,8 +287,6 @@ const fetchFlags = async () => {
     }
   }, [selectedCompany]); // Remove logoUrl dependency
 
-
-
   // Navigate to the Add Company page
   const handleAddCompanyClick = () => {
     navigate('/add-company');
@@ -346,10 +340,13 @@ const fetchFlags = async () => {
       if (response.ok) {
         alert('OTP verified successfully!');
       } else {
-        console.error('Error verifying OTP:', await response.json());
+        const errorData = await response.json();
+        console.error('Error verifying OTP:', errorData);
+        setErrorMessage(errorData.message || 'Error verifying OTP');
       }
     } catch (error) {
       console.error('Error verifying OTP:', error);
+      setErrorMessage('Network error, please try again later.');
     }
   };
 
@@ -614,16 +611,13 @@ const fetchFlags = async () => {
             <button onClick={handleAddCompanyClick}>Add a Company</button>
           </div>
 
-          {/* Show error messages */}
-          {errorMessage && <div className="error-message">{errorMessage}</div>}
-          {logoUploadError && <div className="error-message">{logoUploadError}</div>}
           {selectedCompany && (
             <div className="company-description">
               {/* Display the logo if uploaded */}
               {logo && (
                 <div className="company-logo">
                   <h3>Company Logo</h3>
-                  <img src={logo} alt="Company Logo" />
+                  <img src={logo} alt="Company Logo" className="company-logo-img" />
                 </div>
               )}
 
@@ -632,6 +626,19 @@ const fetchFlags = async () => {
               <p><strong>Description:</strong> {selectedCompany.description}</p>
               <p><strong>Website:</strong> <a href={selectedCompany.websiteLink} target="_blank" rel="noopener noreferrer">{selectedCompany.websiteLink}</a></p>
               <p><strong>About:</strong> {selectedCompany.about}</p>
+
+              {/* Display Tags */}
+              <p><strong>Tags:</strong>
+                {selectedCompany.tags && selectedCompany.tags.length > 0 ? (
+                  <div className="tags-container">
+                    {selectedCompany.tags.map((tag, index) => (
+                      <span key={index} className="tag">{tag}</span>
+                    ))}
+                  </div>
+                ) : (
+                  <span className="no-tags">No tags available</span>
+                )}
+              </p>
             </div>
           )}
 
@@ -752,27 +759,26 @@ const fetchFlags = async () => {
           </form>
 
           <div>
-        {/* Button to trigger flag fetching */}
-        <button onClick={fetchFlags}>View Flagged Company</button>
+            {/* Button to trigger flag fetching */}
+            <button onClick={fetchFlags}>View Flagged Company</button>
 
-        {/* Render the list of flagged companies */}
-        {flags.length > 0 ? (
-            <ul>
+            {/* Render the list of flagged companies */}
+            {flags.length > 0 ? (
+              <ul>
                 {flags.map((flag) => (
-                    <li key={flag.id}>
-                        <strong>{flag.flagTag}</strong>: {flag.reasonForFlag}
-                        <br />
-                        Flagged by: {flag.user.fullName} ({flag.user.email})
-                        <br />
-                        Created on: {new Date(flag.createdAt).toLocaleString()}
-                    </li>
+                  <li key={flag.id}>
+                    <strong>{flag.flagTag}</strong>: {flag.reasonForFlag}
+                    <br />
+                    Flagged by: {flag.user.fullName} ({flag.user.email})
+                    <br />
+                    Created on: {new Date(flag.createdAt).toLocaleString()}
+                  </li>
                 ))}
-            </ul>
-        ) : (
-            <p>No flagged companies to show.</p>
-        )}
-    </div>
-
+              </ul>
+            ) : (
+              <p>No flagged companies to show.</p>
+            )}
+          </div>
 
           <div>
             <label htmlFor="company-logo">Upload Company Logo:</label>
@@ -785,8 +791,6 @@ const fetchFlags = async () => {
             {isLogoUploading && <p>Uploading...</p>}
             {isLogoUploaded && <p>Logo uploaded successfully!</p>}
           </div>
-
-
           {/* Pagination */}
           {renderPagination()}
         </div>
@@ -794,6 +798,4 @@ const fetchFlags = async () => {
     </div>
   );
 };
-
-
 export default CompanyProfile;
