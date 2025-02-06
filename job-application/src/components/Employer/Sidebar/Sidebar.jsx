@@ -29,9 +29,9 @@ const ESidebar = ({ isExpanded, toggleSidebar }) => {
             </Link>
           </li>
           <li>
-            <Link to="/interview" className="flex items-center space-x-3 p-2 rounded-md hover:bg-gray-700 transition-colors">
+            <Link to="/hiring-progress" className="flex items-center space-x-3 p-2 rounded-md hover:bg-gray-700 transition-colors">
               <FaBuilding className="text-xl" />
-              {isExpanded && <span>Interviews</span>}
+              {isExpanded && <span>Hiring Progress</span>}
             </Link>
           </li>
           <li>
