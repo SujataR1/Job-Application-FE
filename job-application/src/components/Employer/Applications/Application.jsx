@@ -1,475 +1,10 @@
-// import React, { useState, useEffect } from 'react';
-// import axios from 'axios';
-// import { useParams } from 'react-router-dom';
-// import EmployerNavbar from '../Navbar/Navbar';
-// import EmployerSidebar from '../Sidebar/Sidebar';
-// import './Application.css';
-
-// const Application = () => {
-//   const [applications, setApplications] = useState([]);
-//   const [companyId, setCompanyId] = useState('');
-//   const [jobDetails, setJobDetails] = useState(null);
-//   const [token, setToken] = useState('');
-//   const { jobId } = useParams(); // Extract jobId from the URL
-
-//   // Fetch job details based on jobId and extract companyId
-//   useEffect(() => {
-//     const authToken = localStorage.getItem('token');
-//     setToken(authToken);
-
-//     if (authToken && jobId) {
-//       // First, fetch the job details
-//       axios
-//         .get(`http://localhost:7000/jobposts/post-by-id/${jobId}`, {
-//           headers: {
-//             Authorization: ` ${authToken}`,
-//           },
-//         })
-//         .then((response) => {
-//           setJobDetails(response.data); // Set job details like title, description
-//           setCompanyId(response.data.companyId); // Extract companyId from the response
-//         })
-//         .catch((error) => {
-//           console.error('Error fetching job details:', error);
-//         });
-//     }
-//   }, [jobId]);
-
-//   // Fetch application IDs for the specific company and job posting
-//   useEffect(() => {
-//     if (companyId && jobId && token) {
-//       axios
-//         .get(
-//           `http://localhost:7000/application/company-applications/company/${companyId}/jobPost/${jobId}`,
-//           {
-//             headers: {
-//               Authorization: ` ${token}`,
-//             },
-//           }
-//         )
-//         .then((response) => {
-//           console.log('Applications fetched:', response.data);
-
-//           const applicationIds = response.data;
-
-//           if (applicationIds && applicationIds.length > 0) {
-//             applicationIds.forEach((applicationId) => {
-//               axios
-//                 .get(
-//                   `http://localhost:7000/application/get-application/${companyId}/${applicationId}`,
-//                   {
-//                     headers: {
-//                       Authorization: ` ${token}`,
-//                     },
-//                   }
-//                 )
-//                 .then((res) => {
-//                   setApplications((prevApplications) => [
-//                     ...prevApplications,
-//                     res.data,
-//                   ]);
-//                 })
-//                 .catch((error) => {
-//                   console.error('Error fetching individual application:', error);
-//                 });
-//             });
-//           } else {
-//             console.log('No applications found for this job.');
-//           }
-//         })
-//         .catch((error) => {
-//           if (error.response) {
-//             console.error('Error fetching application IDs:', error.response.data);
-//             if (error.response.status === 403) {
-//               alert('You do not have permission to access these applications.');
-//             }
-//           } else {
-//             console.error('Error fetching application IDs:', error);
-//           }
-//         });
-//     }
-//   }, [companyId, jobId, token]);
-
-//   // Format date for display
-//   const formatDate = (date) => {
-//     const formattedDate = new Date(date);
-//     return `${formattedDate.toLocaleDateString()} ${formattedDate.toLocaleTimeString()}`;
-//   };
-
-//   // Handle status change
-//   const handleStatusChange = (applicationId, newStatus) => {
-//     axios
-//       .patch(
-//         'http://localhost:7000/application/change-status',
-//         {
-//           applicationId,
-//           newStatus,
-//         },
-//         {
-//           headers: {
-//             Authorization: ` ${token}`,
-//           },
-//         }
-//       )
-//       .then((response) => {
-//         alert('Application status updated successfully!');
-//         setApplications((prevApplications) =>
-//           prevApplications.map((application) =>
-//             application.id === applicationId
-//               ? { ...application, status: newStatus }
-//               : application
-//           )
-//         );
-//       })
-//       .catch((error) => {
-//         console.error('Error changing status:', error);
-//         alert('Failed to update the status.');
-//       });
-//   };
-
-//   return (
-//     <div className="job-analytics-page">
-//       <EmployerNavbar />
-//       <div className="home-content flex flex-row">
-//         <EmployerSidebar />
-//         <div className="analytics-content">
-//           {jobDetails ? (
-//             <h1>Application Analytics for Job: {jobDetails.title}</h1>
-//           ) : (
-//             <p>Loading job details...</p>
-//           )}
-
-//           {applications.length > 0 ? (
-//             applications.map((application) => (
-//               <div key={application.id} className="application-card">
-//                 <h3>Applicant: {application.user.fullName}</h3>
-//                 <p><strong>Email:</strong> {application.user.email}</p>
-//                 <p><strong>Phone:</strong> {application.user.phoneNumber}</p>
-//                 <p><strong>Status:</strong> {application.status}</p>
-//                 {application.appliedAt ? (
-//                   <p><strong>Applied On:</strong> {formatDate(application.appliedAt)}</p>
-//                 ) : (
-//                   <p><strong>Applied On:</strong> N/A</p>
-//                 )}
-
-//                 <a href={application.resume} download>Download Attachments</a>
-
-//                 <div>
-                  
-//                   <button
-//                     className="status-change-btn"
-//                     onClick={() => handleStatusChange(application.id, 'Accepted')}
-//                   >
-//                     Mark as Accepted
-//                   </button>
-//                   <button
-//                     className="status-change-btn"
-//                     onClick={() => handleStatusChange(application.id, 'Rejected')}
-//                   >
-//                     Mark as Rejected
-//                   </button>
-//                 </div>
-
-//                 {application.interviewDetails && (
-//                   <div>
-//                     <p><strong>Interview Scheduled:</strong></p>
-//                     <p>Date & Time: {application.interviewDetails.date}</p>
-//                     <p>Type: {application.interviewDetails.type}</p>
-//                     {application.interviewDetails.type === 'Online' && (
-//                       <p>Meeting Link: {application.interviewDetails.meetingLink}</p>
-//                     )}
-//                     {application.interviewDetails.type === 'Physical' && (
-//                       <p>Address: {application.interviewDetails.address}</p>
-//                     )}
-//                   </div>
-//                 )}
-//               </div>
-//             ))
-//           ) : (
-//             <p>No applications for this job.</p>
-//           )}
-//         </div>
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default Application;
-
-
-// import React, { useState, useEffect } from 'react';
-// import axios from 'axios';
-// import { useParams } from 'react-router-dom';
-// import EmployerNavbar from '../Navbar/Navbar';
-// import EmployerSidebar from '../Sidebar/Sidebar';
-// import './Application.css';
-
-// const Application = () => {
-//   const [applications, setApplications] = useState([]);
-//   const [companyId, setCompanyId] = useState('');
-//   const [jobDetails, setJobDetails] = useState(null);
-//   const [token, setToken] = useState('');
-//   const { jobId } = useParams(); // Extract jobId from the URL
-
-//   // Fetch job details based on jobId and extract companyId
-//   useEffect(() => {
-//     const authToken = localStorage.getItem('token');
-//     setToken(authToken);
-
-//     if (authToken && jobId) {
-//       axios
-//         .get(`http://localhost:7000/jobposts/post-by-id/${jobId}`, {
-//           headers: {
-//             Authorization: ` ${authToken}`,
-//           },
-//         })
-//         .then((response) => {
-//           setJobDetails(response.data);
-//           setCompanyId(response.data.companyId); // Extract companyId from the response
-//         })
-//         .catch((error) => {
-//           console.error('Error fetching job details:', error);
-//         });
-//     }
-//   }, [jobId]);
-
-//   // Fetch application IDs for the specific company and job posting
-//   useEffect(() => {
-//     if (companyId && jobId && token) {
-//       axios
-//         .get(
-//           `http://localhost:7000/application/company-applications/company/${companyId}/jobPost/${jobId}`,
-//           {
-//             headers: {
-//               Authorization: ` ${token}`,
-//             },
-//           }
-//         )
-//         .then((response) => {
-//           console.log('Applications fetched:', response.data);
-
-//           const applicationIds = response.data;
-
-//           if (applicationIds && applicationIds.length > 0) {
-//             applicationIds.forEach((applicationId) => {
-//               axios
-//                 .get(
-//                   `http://localhost:7000/application/get-application/${companyId}/${applicationId}`,
-//                   {
-//                     headers: {
-//                       Authorization: ` ${token}`,
-//                     },
-//                   }
-//                 )
-//                 .then((res) => {
-//                   setApplications((prevApplications) => [
-//                     ...prevApplications,
-//                     res.data,
-//                   ]);
-//                 })
-//                 .catch((error) => {
-//                   console.error('Error fetching individual application:', error);
-//                 });
-//             });
-//           } else {
-//             console.log('No applications found for this job.');
-//           }
-//         })
-//         .catch((error) => {
-//           if (error.response) {
-//             console.error('Error fetching application IDs:', error.response.data);
-//             if (error.response.status === 403) {
-//               alert('You do not have permission to access these applications.');
-//             }
-//           } else {
-//             console.error('Error fetching application IDs:', error);
-//           }
-//         });
-//     }
-//   }, [companyId, jobId, token]);
-
-//   // Format date for display
-//   const formatDate = (date) => {
-//     const formattedDate = new Date(date);
-//     return `${formattedDate.toLocaleDateString()} ${formattedDate.toLocaleTimeString()}`;
-//   };
-
-//   // Handle status change
-//   const handleStatusChange = (applicationId, newStatus) => {
-//     axios
-//       .patch(
-//         'http://localhost:7000/application/change-status',
-//         {
-//           applicationId,
-//           newStatus,
-//         },
-//         {
-//           headers: {
-//             Authorization: ` ${token}`,
-//           },
-//         }
-//       )
-//       .then((response) => {
-//         alert('Application status updated successfully!');
-//         setApplications((prevApplications) =>
-//           prevApplications.map((application) =>
-//             application.id === applicationId
-//               ? { ...application, status: newStatus }
-//               : application
-//           )
-//         );
-//       })
-//       .catch((error) => {
-//         console.error('Error changing status:', error);
-//         alert('Failed to update the status.');
-//       });
-//   };
-
-//   // Post custom assessment
-//   const handleCustomAssessment = (applicationId) => {
-//     const formData = new FormData();
-//     formData.append('jobPostingId', jobId);
-//     formData.append('instructions', 'Assessment instructions here');
-//     // Add your attachment here (e.g., from an input field)
-//     // formData.append('attachments', selectedAttachment);
-
-//     axios
-//       .post('http://localhost:7000/application/assessments/post', formData, {
-//         headers: {
-//           'Authorization': ` ${token}`,
-//           'Content-Type': 'multipart/form-data',
-//         },
-//       })
-//       .then((response) => {
-//         console.log('Assessment posted:', response.data);
-//         // Update status to "UnderCustomAssessment"
-//         handleStatusChange(applicationId, 'UnderCustomAssessment');
-//       })
-//       .catch((error) => {
-//         console.error('Error posting custom assessment:', error);
-//         alert('Failed to post custom assessment.');
-//       });
-//   };
-
-//   // Schedule interview
-//   const handleScheduleInterview = (applicationId) => {
-//     const interviewData = {
-//       jobPostingId: jobId,
-//       date: '2025-02-15T10:00:00Z', // Example date
-//       type: 'Online', // or 'Physical'
-//       meetingLink: 'https://example.com/meeting-link', // For online interviews
-//       address: '123 Address St, City', // For physical interviews
-//     };
-
-//     axios
-//       .post('http://localhost:7000/application/interviews/schedule', interviewData, {
-//         headers: {
-//           'Authorization': ` ${token}`,
-//         },
-//       })
-//       .then((response) => {
-//         console.log('Interview scheduled:', response.data);
-//         // Update status to "InterviewScheduled"
-//         handleStatusChange(applicationId, 'InterviewScheduled');
-//       })
-//       .catch((error) => {
-//         console.error('Error scheduling interview:', error);
-//         alert('Failed to schedule interview.');
-//       });
-//   };
-
-//   return (
-//     <div className="job-analytics-page">
-//       <EmployerNavbar />
-//       <div className="home-content flex flex-row">
-//         <EmployerSidebar />
-//         <div className="analytics-content">
-//           {jobDetails ? (
-//             <h1>Application Analytics for Job: {jobDetails.title}</h1>
-//           ) : (
-//             <p>Loading job details...</p>
-//           )}
-
-//           {applications.length > 0 ? (
-//             applications.map((application) => (
-//               <div key={application.id} className="application-card">
-//                 <h3>Applicant: {application.user.fullName}</h3>
-//                 <p><strong>Email:</strong> {application.user.email}</p>
-//                 <p><strong>Phone:</strong> {application.user.phoneNumber}</p>
-//                 <p><strong>Status:</strong> {application.status}</p>
-//                 {application.appliedAt ? (
-//                   <p><strong>Applied On:</strong> {formatDate(application.appliedAt)}</p>
-//                 ) : (
-//                   <p><strong>Applied On:</strong> N/A</p>
-//                 )}
-
-//                 <a href={application.resume} download>Download Attachments</a>
-
-//                 <div>
-//                   <button
-//                     className="status-change-btn"
-//                     onClick={() => handleStatusChange(application.id, 'Accepted')}
-//                   >
-//                     Mark as Accepted
-//                   </button>
-//                   <button
-//                     className="status-change-btn"
-//                     onClick={() => handleStatusChange(application.id, 'Rejected')}
-//                   >
-//                     Mark as Rejected
-//                   </button>
-//                 </div>
-
-//                 {/* Show buttons for Accepted status */}
-//                 {application.status === 'Accepted' && (
-//                   <div>
-//                     <button
-//                       className="status-change-btn"
-//                       onClick={() => handleCustomAssessment(application.id)}
-//                     >
-//                       Post Custom Assessment
-//                     </button>
-//                     <button
-//                       className="status-change-btn"
-//                       onClick={() => handleScheduleInterview(application.id)}
-//                     >
-//                       Schedule Interview
-//                     </button>
-//                   </div>
-//                 )}
-
-//                 {application.interviewDetails && (
-//                   <div>
-//                     <p><strong>Interview Scheduled:</strong></p>
-//                     <p>Date & Time: {application.interviewDetails.date}</p>
-//                     <p>Type: {application.interviewDetails.type}</p>
-//                     {application.interviewDetails.type === 'Online' && (
-//                       <p>Meeting Link: {application.interviewDetails.meetingLink}</p>
-//                     )}
-//                     {application.interviewDetails.type === 'Physical' && (
-//                       <p>Address: {application.interviewDetails.address}</p>
-//                     )}
-//                   </div>
-//                 )}
-//               </div>
-//             ))
-//           ) : (
-//             <p>No applications for this job.</p>
-//           )}
-//         </div>
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default Application;
 
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
 import EmployerNavbar from '../Navbar/Navbar';
 import EmployerSidebar from '../Sidebar/Sidebar';
-import './Application.css';
+
 
 const Application = () => {
   const [applications, setApplications] = useState([]);
@@ -650,52 +185,59 @@ const Application = () => {
   };
 
   return (
-    <div className="job-analytics-page">
+    <div className="flex flex-col min-h-screen bg-gray-50">
       <EmployerNavbar />
-      <div className="home-content flex flex-row">
+      <div className="flex flex-1">
         <EmployerSidebar />
-        <div className="analytics-content">
+        <div className="flex-1 p-5 bg-white rounded-lg shadow-sm ml-[220px] md:ml-0">
           {jobDetails ? (
-            <h1>Application Analytics for Job: {jobDetails.title}</h1>
+            <h1 className="text-2xl font-semibold mb-5 text-gray-800">
+              Application Analytics for Job: {jobDetails.title}
+            </h1>
           ) : (
-            <p>Loading job details...</p>
+            <p className="text-gray-600">Loading job details...</p>
           )}
 
           {applications.length > 0 ? (
             applications.map((application) => (
-              <div key={application.id} className="application-card">
-                <h3>Applicant: {application.user.fullName}</h3>
-                <p><strong>Email:</strong> {application.user.email}</p>
-                <p><strong>Phone:</strong> {application.user.phoneNumber}</p>
-                <p><strong>Status:</strong> {application.status}</p>
-                {application.appliedAt ? (
-                  <p><strong>Applied On:</strong> {formatDate(application.appliedAt)}</p>
-                ) : (
-                  <p><strong>Applied On:</strong> N/A</p>
-                )}
+              <div key={application.id} className="bg-white border border-gray-200 rounded-lg shadow-sm p-5 mb-5">
+                <h3 className="text-xl font-semibold mb-3 text-gray-700">
+                  Applicant: {application.user.fullName}
+                </h3>
+                <p className="text-gray-600 mb-2"><span className="font-medium">Email:</span> {application.user.email}</p>
+                <p className="text-gray-600 mb-2"><span className="font-medium">Phone:</span> {application.user.phoneNumber}</p>
+                <p className="text-gray-600 mb-2"><span className="font-medium">Status:</span> {application.status}</p>
+                <p className="text-gray-600 mb-2">
+                  <span className="font-medium">Applied On:</span> {application.appliedAt ? formatDate(application.appliedAt) : 'N/A'}
+                </p>
 
-                <a href={application.resume} download>Download Attachments</a>
+                <a 
+                  href={application.resume} 
+                  download
+                  className="text-blue-600 hover:underline block mb-4"
+                >
+                  Download Attachments
+                </a>
 
-                <div>
+                <div className="space-x-3 mb-4">
                   <button
-                    className="status-change-btn"
+                    className="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded"
                     onClick={() => handleStatusChange(application.id, 'Accepted')}
                   >
                     Mark as Accepted
                   </button>
                   <button
-                    className="status-change-btn"
+                    className="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded"
                     onClick={() => handleStatusChange(application.id, 'Rejected')}
                   >
                     Mark as Rejected
                   </button>
                 </div>
 
-                {/* Show buttons for Accepted status */}
                 {application.status === 'Accepted' && (
-                  <div>
+                  <div className="space-x-3">
                     <button
-                      className="status-change-btn"
+                      className="bg-purple-500 hover:bg-purple-600 text-white px-4 py-2 rounded"
                       onClick={() => {
                         setCurrentApplicationId(application.id);
                         setIsAssessmentModalOpen(true);
@@ -704,7 +246,7 @@ const Application = () => {
                       Post Custom Assessment
                     </button>
                     <button
-                      className="status-change-btn"
+                      className="bg-orange-500 hover:bg-orange-600 text-white px-4 py-2 rounded"
                       onClick={() => {
                         setCurrentApplicationId(application.id);
                         setIsInterviewModalOpen(true);
@@ -716,57 +258,73 @@ const Application = () => {
                 )}
 
                 {application.interviewDetails && (
-                  <div>
-                    <p><strong>Interview Scheduled:</strong></p>
-                    <p>Date & Time: {application.interviewDetails.date}</p>
-                    <p>Type: {application.interviewDetails.type}</p>
+                  <div className="mt-4 pt-4 border-t border-gray-100">
+                    <p className="font-medium text-gray-700 mb-2">Interview Scheduled:</p>
+                    <p className="text-gray-600">Date & Time: {application.interviewDetails.date}</p>
+                    <p className="text-gray-600">Type: {application.interviewDetails.type}</p>
                     {application.interviewDetails.type === 'Online' && (
-                      <p>Meeting Link: {application.interviewDetails.meetingLink}</p>
+                      <p className="text-gray-600">Meeting Link: {application.interviewDetails.meetingLink}</p>
                     )}
                     {application.interviewDetails.type === 'Physical' && (
-                      <p>Address: {application.interviewDetails.address}</p>
+                      <p className="text-gray-600">Address: {application.interviewDetails.address}</p>
                     )}
                   </div>
                 )}
               </div>
             ))
           ) : (
-            <p>No applications for this job.</p>
+            <p className="text-red-600 font-semibold text-lg">No applications for this job.</p>
           )}
         </div>
       </div>
 
-      {/* Modal for Custom Assessment */}
+      {/* Assessment Modal */}
       {isAssessmentModalOpen && (
-        <div className="modal">
-          <div className="modal-content">
-            <h2>Post Custom Assessment</h2>
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
+          <div className="bg-white p-6 rounded-lg w-96">
+            <h2 className="text-xl font-semibold mb-4">Post Custom Assessment</h2>
             <textarea
+              className="w-full p-2 border rounded mb-4"
               placeholder="Enter instructions"
               value={assessmentInstructions}
               onChange={(e) => setAssessmentInstructions(e.target.value)}
             />
             <input
               type="file"
+              className="mb-4"
               onChange={(e) => setSelectedAssessmentAttachment(e.target.files[0])}
             />
-            <button onClick={handleCustomAssessment}>Post Assessment</button>
-            <button onClick={() => setIsAssessmentModalOpen(false)}>Close</button>
+            <div className="flex justify-end space-x-3">
+              <button
+                className="bg-gray-500 hover:bg-gray-600 text-white px-4 py-2 rounded"
+                onClick={() => setIsAssessmentModalOpen(false)}
+              >
+                Close
+              </button>
+              <button
+                className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded"
+                onClick={handleCustomAssessment}
+              >
+                Post Assessment
+              </button>
+            </div>
           </div>
         </div>
       )}
 
-      {/* Modal for Interview Schedule */}
+      {/* Interview Modal */}
       {isInterviewModalOpen && (
-        <div className="modal">
-          <div className="modal-content">
-            <h2>Schedule Interview</h2>
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
+          <div className="bg-white p-6 rounded-lg w-96">
+            <h2 className="text-xl font-semibold mb-4">Schedule Interview</h2>
             <input
               type="datetime-local"
+              className="w-full p-2 border rounded mb-4"
               value={interviewDate}
               onChange={(e) => setInterviewDate(e.target.value)}
             />
             <select
+              className="w-full p-2 border rounded mb-4"
               value={interviewType}
               onChange={(e) => setInterviewType(e.target.value)}
             >
@@ -776,13 +334,26 @@ const Application = () => {
             {interviewType === 'Offline' && (
               <input
                 type="text"
+                className="w-full p-2 border rounded mb-4"
                 placeholder="Enter interview location"
                 value={interviewLocation}
                 onChange={(e) => setInterviewLocation(e.target.value)}
               />
             )}
-            <button onClick={handleScheduleInterview}>Schedule Interview</button>
-            <button onClick={() => setIsInterviewModalOpen(false)}>Close</button>
+            <div className="flex justify-end space-x-3">
+              <button
+                className="bg-gray-500 hover:bg-gray-600 text-white px-4 py-2 rounded"
+                onClick={() => setIsInterviewModalOpen(false)}
+              >
+                Close
+              </button>
+              <button
+                className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded"
+                onClick={handleScheduleInterview}
+              >
+                Schedule
+              </button>
+            </div>
           </div>
         </div>
       )}
