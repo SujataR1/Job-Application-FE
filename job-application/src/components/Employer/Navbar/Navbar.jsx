@@ -37,17 +37,17 @@ function EmployerNavbar({ toggleSidebar }) {
     <nav className="fixed top-0 left-0 right-0 z-50 bg-gray-800 text-white shadow-lg">
       <div className="container mx-auto px-4">
         <div className="flex justify-between items-center h-16">
-          {/* Hamburger Button at the extreme left */}
-          <div className="absolute left-4">
-            <button
-              onClick={toggleSidebar}
-              className="flex items-center justify-center p-0.5 hover:bg-gray-700 transition-colors focus:outline-none"
-            >
-              <FaBars className="text-white text-3xl" />
-            </button>
+          {/* Hamburger Button aligned to the left */}
+          <div className="flex items-center ml-">
+          <button
+        onClick={toggleSidebar}
+        className="absolute left-1 top-1 flex items-center justify-center hover:bg-transparent focus:bg-transparent focus:outline-none"
+      >
+        <FaBars className="text-xl" />
+      </button>
           </div>
 
-          {/* Centered Content */}
+          {/* Centered Navigation Links */}
           <div className="flex space-x-6 mx-auto">
             <Link to="/employerdashboard" className="flex items-center space-x-2 hover:text-blue-400 transition-colors">
               <FaHome className="text-lg" />
@@ -71,7 +71,7 @@ function EmployerNavbar({ toggleSidebar }) {
             </Link>
           </div>
 
-          {/* Logout Button (extreme right) */}
+          {/* Logout Button */}
           <div className="flex items-center">
             <button
               onClick={handleLogout}

@@ -212,7 +212,7 @@
 //   className="submit-video-btn"
 //   onClick={handleVideoSubmit}
 //   style={{
-//     backgroundColor: '#4CAF50',
+//     backgroundColor: '#white',
 //     color: 'white',
 //     border: 'none',
 //     cursor: 'pointer',
@@ -445,7 +445,7 @@ const JobProfile = () => {
                 className="submit-video-btn"
                 onClick={handleVideoSubmit}
                 style={{
-                  backgroundColor: '#4CAF50',
+                  backgroundColor: '#white',
                   color: 'white',
                   border: 'none',
                   cursor: 'pointer',

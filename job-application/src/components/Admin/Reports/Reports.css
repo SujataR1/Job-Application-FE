@@ -15,7 +15,7 @@
   .reports-content {
     flex: 1;
     padding: 30px;
-    background-color: #ffffff; /* White background for the report area */
+    background-color: #white; /* White background for the report area */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     border-radius: 10px;
     margin-left: 20px;
@@ -33,7 +33,7 @@
   }
   
   .report-nav button {
-    background-color: #4caf50; /* Green button */
+    background-color: #white; /* Green button */
     color: white;
     border: none;
     padding: 12px 30px;
@@ -76,7 +76,7 @@
   }
   
   .report-table td {
-    background-color: #ffffff; /* White background for table data */
+    background-color: #white; /* White background for table data */
     color: #555;
   }
   
@@ -117,7 +117,7 @@
   .admin-earnings {
     margin-top: 40px;
     padding: 25px;
-    background-color: #ffffff; /* White background */
+    background-color: #white; /* White background */
     border-radius: 10px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   }
@@ -125,7 +125,7 @@
   .admin-earnings h2 {
     font-size: 1.5rem;
     margin-bottom: 10px;
-    color: #4caf50; /* Green for emphasis */
+    color: #white; /* Green for emphasis */
   }
   
   .admin-earnings p {

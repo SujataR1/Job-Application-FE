@@ -6,7 +6,7 @@
   }
   
   .content-area {
-    background-color: #ffffff;
+    background-color: #white;
     padding: 30px;
     border-radius: 10px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
@@ -86,7 +86,7 @@
   
 
   .form-container {
-    background-color: #ffffff;
+    background-color: #white;
     padding: 30px;
     border-radius: 8px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
@@ -117,7 +117,7 @@
   .form-group input:focus {
     border-color: #007bff;
     outline: none;
-    background-color: #ffffff;
+    background-color: #white;
   }
   
   .form-actions {

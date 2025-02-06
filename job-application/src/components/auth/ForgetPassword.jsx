@@ -157,7 +157,7 @@ const styles = {
     fontSize: '1.8rem',
     fontWeight: 'bold',
     color: 'white',
-    backgroundColor: '#4CAF50',
+    backgroundColor: '#white',
     padding: '1rem',
     margin: '0 0 1rem 0',
     borderRadius: '10px 10px 0 0',
@@ -183,7 +183,7 @@ const styles = {
   button: {
     width: '100%',
     padding: '1rem',
-    backgroundColor: '#4CAF50',
+    backgroundColor: '#white',
     color: 'white',
     border: 'none',
     borderRadius: '5px',
@@ -209,7 +209,7 @@ const styles = {
     marginTop: '1.5rem',
   },
   backToLoginLink: {
-    color: '#4CAF50',
+    color: '#white',
     textDecoration: 'none',
     fontSize: '1rem',
   },

@@ -148,7 +148,7 @@
 }
 
 .submit-video-btn {
-  background-color: #4CAF50;
+  background-color: #white;
   color: white;
   border: none;
   cursor: pointer;
@@ -200,7 +200,7 @@
 }
 
 input:checked + .slider {
-  background-color: #4CAF50;
+  background-color: #white;
 }
 
 input:checked + .slider:before {

@@ -24,7 +24,7 @@ h2 {
 }
 
 .overview-card, .dashboard-card {
-  background-color: #ffffff; /* Clean white background */
+  background-color: #white; /* Clean white background */
   padding: 20px;
   border-radius: 8px;
   width: 220px;
@@ -57,7 +57,7 @@ h2 {
 }
 
 .chart-container {
-  background-color: #ffffff; /* Clean background for the chart container */
+  background-color: #white; /* Clean background for the chart container */
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -222,7 +222,7 @@ textarea {
 
 button {
   padding: 10px 20px;
-  background-color: #4CAF50;
+  background-color: #white;
   color: white;
   border: none;
   border-radius: 4px;
