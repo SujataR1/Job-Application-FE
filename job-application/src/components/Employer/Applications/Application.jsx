@@ -186,7 +186,7 @@ const Application = () => {
       <EmployerNavbar />
       <div className="flex flex-1">
         <EmployerSidebar />
-        <div className="flex-1 p-8 ml-[220px]">
+        <div className="flex-1 p-24 ml-[220px]">
           {jobDetails ? (
             <h1 className="text-3xl font-bold mb-8 text-gray-800">
               Application Analytics for Job: {jobDetails.title}
