@@ -96,7 +96,7 @@ const JobApplicationPage = () => {
       min_salary: job.min_salary,
       max_salary: job.max_salary,
       status: job.status,
-      requirements:job.requirements,
+      requirements: job.requirements,
       address: job.address || { street: '', city: '', zip: '' },
       tags: job.JobPostingsTags.map(tag => tag.tagId).join(', '), // Handle address object
     });
@@ -127,6 +127,15 @@ const JobApplicationPage = () => {
       ...editedJobData,
       locations: editedJobData.locations.split(',').map((loc) => loc.trim()), // Ensure locations are an array
       skills: editedJobData.skills.split(',').map((skill) => skill.trim()), // Ensure skills are an array
+      requirements: typeof editedJobData.requirements === 'string' 
+        ? editedJobData.requirements.split(',').map((req) => req.trim()) 
+        : editedJobData.requirements, // Ensure requirements is an array
+      tags: editedJobData.tags.split(',').map((tag) => tag.trim()), // Ensure tags are an array
+      address: {
+        street: editedJobData.address?.street || '',
+        city: editedJobData.address?.city || '',
+        zip: editedJobData.address?.zip || '',
+      },
     };
 
     // Send the updated job data including the address as an object
@@ -356,13 +365,14 @@ const JobApplicationPage = () => {
                 </label>
 
                 <label>
-            Tags (comma-separated):
-           <input
-         name="tags"
-          value={editedJobData.tags } // Display current tags as a comma-separated string
-         onChange={handleChange} // Call a new handler function for tags
-         />
-       </label>
+                  Tags (comma-separated):
+                  <input
+                    type="text"
+                    name="tags"
+                    value={editedJobData.tags}
+                    onChange={handleChange}
+                  />
+                </label>
 
                 <label>
                   Skills (comma-separated):
@@ -443,5 +453,3 @@ const JobApplicationPage = () => {
 };
 
 export default JobApplicationPage;
-
-

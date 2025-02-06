@@ -1,9 +1,43 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { FaNetworkWired, FaSignOutAlt, FaBell, FaClipboardList, FaHome, FaEnvelope, FaBars } from 'react-icons/fa';
+import { FaNetworkWired, FaSignOutAlt, FaBell, FaClipboardList, FaHome, FaEnvelope, FaBars, FaUserCircle } from 'react-icons/fa';
 
 function EmployerNavbar({ toggleSidebar }) {
   const navigate = useNavigate();
+  const [profileImageUrl, setProfileImageUrl] = useState('');
+  const [isLoading, setIsLoading] = useState(true); // Add loading state
+
+  useEffect(() => {
+    const fetchProfileImage = async () => {
+      const token = localStorage.getItem('token');
+      if (!token) {
+        console.log('No token found');
+        setIsLoading(false);
+        return;
+      }
+      try {
+        const response = await fetch('http://localhost:7000/auth/profile-picture', {
+          method: 'GET',
+          headers: {
+            Authorization: ` ${token}`,
+          },
+        });
+
+        if (response.ok) {
+          const data = await response.json();
+          setProfileImageUrl(data.profilePicture); // Adjust according to your API response
+        } else {
+          console.error('Failed to fetch profile picture:', response.status);
+        }
+      } catch (error) {
+        console.error('Error fetching profile picture:', error);
+      } finally {
+        setIsLoading(false); // Set loading to false after fetch completes
+      }
+    };
+
+    fetchProfileImage();
+  }, []);
 
   const handleLogout = async () => {
     const token = localStorage.getItem('token');
@@ -71,8 +105,8 @@ function EmployerNavbar({ toggleSidebar }) {
             </Link>
           </div>
 
-          {/* Logout Button (extreme right) */}
-          <div className="flex items-center">
+          {/* Logout Button and Profile Image (extreme right) */}
+          <div className="flex items-center space-x-4">
             <button
               onClick={handleLogout}
               className="flex items-center space-x-2 bg-red-600 hover:bg-red-700 px-4 py-2 rounded-md transition-colors focus:outline-none"
@@ -80,6 +114,19 @@ function EmployerNavbar({ toggleSidebar }) {
               <FaSignOutAlt />
               <span>Logout</span>
             </button>
+
+            {/* Profile Image */}
+            {isLoading ? (
+              <FaUserCircle className="text-3xl text-gray-400" /> // Placeholder while loading
+            ) : profileImageUrl ? (
+              <img
+                src={profileImageUrl}
+                alt="Profile"
+                className="rounded-full h-8 w-8 object-cover" // Adjust size as needed
+              />
+            ) : (
+              <FaUserCircle className="text-3xl" /> // Default avatar if no image
+            )}
           </div>
         </div>
       </div>
