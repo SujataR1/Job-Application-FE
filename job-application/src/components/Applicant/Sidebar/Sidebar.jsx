@@ -39,7 +39,7 @@ const Sidebar = () => {
   }, []);
 
   return (
-    <div className="sidebar fixed top-0 left-0 h-screen w-[250px] bg-[#2c3e50] text-white transition-all duration-300 overflow-auto z-50">
+    <div className="sidebarr fixed top-0 left-0 h-screen w-[250px] bg-[#2c3e50] text-white transition-all duration-300 overflow-auto z-50">
       {/* Profile Section */}
       <div className="flex justify-center items-center mb-5 p-4">
         {isLoading ? (
