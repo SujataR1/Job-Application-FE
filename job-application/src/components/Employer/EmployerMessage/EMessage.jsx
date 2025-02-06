@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import './EMessage.css';
 import EmployerNavbar from '../Navbar/Navbar';
 import EmployerSidebar from '../Sidebar/Sidebar';
 
@@ -32,16 +31,15 @@ const EMessage = () => {
   const [messageText, setMessageText] = useState('');
 
   const handleConnectionClick = (connection) => {
-    setSelectedConnection(connection); // Set the selected connection
+    setSelectedConnection(connection);
   };
 
   const sendMessage = (e) => {
     e.preventDefault();
     if (messageText.trim() === '') return;
 
-    // Add new message to the chat
     const newMessage = {
-      from: 1, // Current logged-in user (dummy)
+      from: 1, // Dummy logged-in user
       to: selectedConnection.id,
       text: messageText,
     };
@@ -50,97 +48,113 @@ const EMessage = () => {
     setMessageText('');
   };
 
-  // Get messages for the current chat
   const getMessages = () => {
     return messages.filter(
-      (msg) => (msg.from === 1 && msg.to === selectedConnection.id) || (msg.to === 1 && msg.from === selectedConnection.id)
+      (msg) =>
+        (msg.from === 1 && msg.to === selectedConnection.id) ||
+        (msg.to === 1 && msg.from === selectedConnection.id)
     );
   };
 
   return (
-    <div className="home-page">
-    {/* Navbar/Header */}
-   <EmployerNavbar/>
+    <div className="min-h-screen bg-gray-100">
+      {/* Navbar/Header */}
+      <EmployerNavbar />
 
-    <div className="home-content flex flex-row">
-      {/* Sidebar */}
-      <EmployerSidebar />
-    <div className="app">
-      {selectedConnection ? (
-        <div className="chat-page">
-          <div className="chat-header">
-            <div className="chat-header-info">
-              <img
-                src={selectedConnection.profilePicture}
-                alt={`${selectedConnection.name}'s profile`}
-                className="profile-picture"
-              />
-              <h3>Chat with {selectedConnection.name}</h3>
-            </div>
-          </div>
+      <div className="flex">
+        {/* Sidebar */}
+        <EmployerSidebar />
 
-          <div className="chat-history">
-            {getMessages().map((msg, idx) => (
-              <div key={idx} className={`message ${msg.from === 1 ? 'sent' : 'received'}`}>
-                <div className="message-info">
-                  {msg.from === 1 ? (
-                    <img
-                      src='https://randomuser.me/api/portraits/men/5.jpg'  // Use logged-in user's profile image
-                      alt="User's profile"
-                      className="message-profile-picture"
-                    />
-                  ) : (
-                    <img
-                      src={selectedConnection.profilePicture}
-                      alt={`${selectedConnection.name}'s profile`}
-                      className="message-profile-picture"
-                    />
-                  )}
-                  <p>{msg.text}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-
-          {/* Message Input */}
-          <form onSubmit={sendMessage} className="message-input">
-            <textarea
-              value={messageText}
-              onChange={(e) => setMessageText(e.target.value)}
-              placeholder="Type your message..."
-              rows="3"
-            />
-            <button type="submit">Send</button>
-          </form>
-        </div>
-      ) : (
-        <div className="connections-list" style={{ width: '700px' }}>
-
-          <h2>Your Connections</h2>
-          <ul>
-            {connections.map((connection) => (
-              <li
-                key={connection.id}
-                className="connection-itemm"
-                onClick={() => handleConnectionClick(connection)}
-              >
+        {/* Main Content Area */}
+        <div className="flex-1 p-8">
+          {selectedConnection ? (
+            <div className="max-w-4xl mx-auto bg-white rounded-2xl shadow-lg overflow-hidden">
+              {/* Chat Header */}
+              <div className="bg-blue-600 px-6 py-4 flex items-center">
                 <img
-                  src={connection.profilePicture}
-                  alt={`${connection.name}'s profile`}
-                  className="profile-picture"
+                  src={selectedConnection.profilePicture}
+                  alt={`${selectedConnection.name}'s profile`}
+                  className="w-12 h-12 rounded-full mr-4 object-cover"
                 />
-                <span className="connection-name">{connection.name}</span> 
-              </li>
-            ))}
-          </ul>
+                <h3 className="text-2xl font-semibold text-white">
+                  Chat with {selectedConnection.name}
+                </h3>
+              </div>
+
+              {/* Chat History */}
+              <div className="px-6 py-4 max-h-96 overflow-y-auto space-y-4 bg-gray-50">
+                {getMessages().map((msg, idx) => (
+                  <div
+                    key={idx}
+                    className={`flex ${msg.from === 1 ? 'justify-end' : 'justify-start'}`}
+                  >
+                    <div className={`flex items-center ${msg.from === 1 ? 'flex-row-reverse' : ''}`}>
+                      <img
+                        src={
+                          msg.from === 1
+                            ? 'https://randomuser.me/api/portraits/men/5.jpg'
+                            : selectedConnection.profilePicture
+                        }
+                        alt="Profile"
+                        className="w-10 h-10 rounded-full mx-2 object-cover"
+                      />
+                      <div
+                        className={`px-4 py-3 rounded-lg max-w-xs ${
+                          msg.from === 1
+                            ? 'bg-blue-500 text-white rounded-br-none'
+                            : 'bg-gray-200 text-gray-800 rounded-bl-none'
+                        }`}
+                      >
+                        <p className="text-base">{msg.text}</p>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              {/* Message Input */}
+              <form onSubmit={sendMessage} className="px-6 py-4 border-t border-gray-200">
+                <textarea
+                  value={messageText}
+                  onChange={(e) => setMessageText(e.target.value)}
+                  placeholder="Type your message..."
+                  rows="3"
+                  className="w-full p-4 border border-gray-300 rounded-lg resize-none focus:outline-none focus:ring-2 focus:ring-blue-500"
+                />
+                <button
+                  type="submit"
+                  className="mt-4 w-full py-3 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition"
+                >
+                  Send
+                </button>
+              </form>
+            </div>
+          ) : (
+            // Added extra margin-top (mt-16) here to create space between Navbar and the Connections card.
+            <div className="max-w-lg mx-auto bg-white rounded-2xl shadow-lg p-8 mt-16">
+              <h2 className="text-3xl font-bold text-gray-800 mb-6">Your Connections</h2>
+              <ul className="space-y-4">
+                {connections.map((connection) => (
+                  <li
+                    key={connection.id}
+                    onClick={() => handleConnectionClick(connection)}
+                    className="flex items-center p-4 bg-blue-600 text-white rounded-xl cursor-pointer transition-colors hover:bg-blue-700"
+                  >
+                    <img
+                      src={connection.profilePicture}
+                      alt={`${connection.name}'s profile`}
+                      className="w-12 h-12 rounded-full mr-4 object-cover"
+                    />
+                    <span className="text-xl">{connection.name}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
         </div>
-      )}
-    </div>
-    </div>
+      </div>
     </div>
   );
 };
 
 export default EMessage;
-
-
