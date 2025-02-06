@@ -139,7 +139,7 @@ const ConditionalNavbar = () => {
 
     // Render Navbar only if the path is not in the excluded list and not a job analytics page
     return !['/login', '/signup', '/', '/Enavbar', '/Esidebar', '/employerdashboard', '/application', 
-             '/jobposting', '/job-analytics/:jobId', '/interview', '/notifications', '/analytics', 
+             '/jobposting', '/job-analytics/:jobId', '/hiring-progress', '/notifications', '/analytics', 
              '/message', '/jobposting', '/Esetting','/companyprofile','/network','/companyanalytics','/forgot-password','/adnavbar','/adsidenavbar','/admindashboard','/manage-users','/manage-jobs','/myprofile','/manage-companies','/admin-reports','/admin-settings','/admin-job-applications','/reviews'].includes(location.pathname) && !jobAnalyticsMatch && <Navbar />;
   };
    
@@ -248,7 +248,7 @@ const App = () => {
                 {/* <Route path="/analytics" element={<Analytics/>} /> */}
                 <Route path="/job-analytics/:jobId" element={<Applications />} />
                 <Route path="/employerdashboard" element={<EmployerDashboard/>} />
-                <Route path="/interview" element={<HiringProgress/>} />
+                <Route path="/hiring-progress" element={<HiringProgress/>} />
                 <Route path="/application" element={<JobApplication/>} />
                 <Route path="/jobposting" element={<JobpostingManagement/>} />
                 <Route path="/profile" element={<Profile/>} />
