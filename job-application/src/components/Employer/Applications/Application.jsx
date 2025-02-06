@@ -1,17 +1,15 @@
-
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
 import EmployerNavbar from '../Navbar/Navbar';
 import EmployerSidebar from '../Sidebar/Sidebar';
 
-
 const Application = () => {
   const [applications, setApplications] = useState([]);
   const [companyId, setCompanyId] = useState('');
   const [jobDetails, setJobDetails] = useState(null);
   const [token, setToken] = useState('');
-  const { jobId } = useParams(); // Extract jobId from the URL
+  const { jobId } = useParams();
 
   // Modal States
   const [isAssessmentModalOpen, setIsAssessmentModalOpen] = useState(false);
@@ -34,12 +32,12 @@ const Application = () => {
       axios
         .get(`http://localhost:7000/jobposts/post-by-id/${jobId}`, {
           headers: {
-            Authorization: ` ${authToken}`,
+            Authorization: `${authToken}`,
           },
         })
         .then((response) => {
           setJobDetails(response.data);
-          setCompanyId(response.data.companyId); // Extract companyId from the response
+          setCompanyId(response.data.companyId);
         })
         .catch((error) => {
           console.error('Error fetching job details:', error);
@@ -55,12 +53,11 @@ const Application = () => {
           `http://localhost:7000/application/company-applications/company/${companyId}/jobPost/${jobId}`,
           {
             headers: {
-              Authorization: ` ${token}`,
+              Authorization: `${token}`,
             },
           }
         )
         .then((response) => {
-          console.log('Applications fetched:', response.data);
           const applicationIds = response.data;
 
           if (applicationIds && applicationIds.length > 0) {
@@ -70,7 +67,7 @@ const Application = () => {
                   `http://localhost:7000/application/get-application/${companyId}/${applicationId}`,
                   {
                     headers: {
-                      Authorization: ` ${token}`,
+                      Authorization: `${token}`,
                     },
                   }
                 )
@@ -111,7 +108,7 @@ const Application = () => {
         },
         {
           headers: {
-            Authorization: ` ${token}`,
+            Authorization: `${token}`,
           },
         }
       )
@@ -143,14 +140,14 @@ const Application = () => {
     axios
       .post('http://localhost:7000/application/assessments/post', formData, {
         headers: {
-          'Authorization': ` ${token}`,
+          'Authorization': `${token}`,
           'Content-Type': 'multipart/form-data',
         },
       })
       .then((response) => {
         console.log('Assessment posted:', response.data);
         handleStatusChange(currentApplicationId, 'UnderCustomAssessment');
-        setIsAssessmentModalOpen(false); // Close the modal
+        setIsAssessmentModalOpen(false);
       })
       .catch((error) => {
         console.error('Error posting custom assessment:', error);
@@ -170,13 +167,13 @@ const Application = () => {
     axios
       .post('http://localhost:7000/application/interviews/schedule', interviewData, {
         headers: {
-          'Authorization': ` ${token}`,
+          'Authorization': `${token}`,
         },
       })
       .then((response) => {
         console.log('Interview scheduled:', response.data);
         handleStatusChange(currentApplicationId, 'InterviewScheduled');
-        setIsInterviewModalOpen(false); // Close the modal
+        setIsInterviewModalOpen(false);
       })
       .catch((error) => {
         console.error('Error scheduling interview:', error);
@@ -189,9 +186,9 @@ const Application = () => {
       <EmployerNavbar />
       <div className="flex flex-1">
         <EmployerSidebar />
-        <div className="flex-1 p-5 bg-white rounded-lg shadow-sm ml-[220px] md:ml-0">
+        <div className="flex-1 p-8 ml-[220px]">
           {jobDetails ? (
-            <h1 className="text-2xl font-semibold mb-5 text-gray-800">
+            <h1 className="text-3xl font-bold mb-8 text-gray-800">
               Application Analytics for Job: {jobDetails.title}
             </h1>
           ) : (
@@ -200,8 +197,8 @@ const Application = () => {
 
           {applications.length > 0 ? (
             applications.map((application) => (
-              <div key={application.id} className="bg-white border border-gray-200 rounded-lg shadow-sm p-5 mb-5">
-                <h3 className="text-xl font-semibold mb-3 text-gray-700">
+              <div key={application.id} className="bg-white border border-gray-200 rounded-lg shadow-lg p-6 mb-6 transition-transform transform hover:scale-105">
+                <h3 className="text-2xl font-semibold mb-4 text-gray-800">
                   Applicant: {application.user.fullName}
                 </h3>
                 <p className="text-gray-600 mb-2"><span className="font-medium">Email:</span> {application.user.email}</p>
@@ -221,13 +218,13 @@ const Application = () => {
 
                 <div className="space-x-3 mb-4">
                   <button
-                    className="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded"
+                    className="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded transition-colors"
                     onClick={() => handleStatusChange(application.id, 'Accepted')}
                   >
                     Mark as Accepted
                   </button>
                   <button
-                    className="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded"
+                    className="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded transition-colors"
                     onClick={() => handleStatusChange(application.id, 'Rejected')}
                   >
                     Mark as Rejected
@@ -237,7 +234,7 @@ const Application = () => {
                 {application.status === 'Accepted' && (
                   <div className="space-x-3">
                     <button
-                      className="bg-purple-500 hover:bg-purple-600 text-white px-4 py-2 rounded"
+                      className="bg-purple-500 hover:bg-purple-600 text-white px-4 py-2 rounded transition-colors"
                       onClick={() => {
                         setCurrentApplicationId(application.id);
                         setIsAssessmentModalOpen(true);
@@ -246,7 +243,7 @@ const Application = () => {
                       Post Custom Assessment
                     </button>
                     <button
-                      className="bg-orange-500 hover:bg-orange-600 text-white px-4 py-2 rounded"
+                      className="bg-orange-500 hover:bg-orange-600 text-white px-4 py-2 rounded transition-colors"
                       onClick={() => {
                         setCurrentApplicationId(application.id);
                         setIsInterviewModalOpen(true);
@@ -296,13 +293,13 @@ const Application = () => {
             />
             <div className="flex justify-end space-x-3">
               <button
-                className="bg-gray-500 hover:bg-gray-600 text-white px-4 py-2 rounded"
+                className="bg-gray-500 hover:bg-gray-600 text-white px-4 py-2 rounded transition-colors"
                 onClick={() => setIsAssessmentModalOpen(false)}
               >
                 Close
               </button>
               <button
-                className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded"
+                className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded transition-colors"
                 onClick={handleCustomAssessment}
               >
                 Post Assessment
@@ -342,13 +339,13 @@ const Application = () => {
             )}
             <div className="flex justify-end space-x-3">
               <button
-                className="bg-gray-500 hover:bg-gray-600 text-white px-4 py-2 rounded"
+                className="bg-gray-500 hover:bg-gray-600 text-white px-4 py-2 rounded transition-colors"
                 onClick={() => setIsInterviewModalOpen(false)}
               >
                 Close
               </button>
               <button
-                className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded"
+                className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded transition-colors"
                 onClick={handleScheduleInterview}
               >
                 Schedule
