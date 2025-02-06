@@ -3,7 +3,6 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import EmployerNavbar from '../Navbar/Navbar';
 import EmployerSidebar from '../Sidebar/Sidebar';
-import './JobApplication.css';
 
 const JobApplicationPage = () => {
   const [jobsByCompany, setJobsByCompany] = useState([]);
@@ -98,20 +97,19 @@ const JobApplicationPage = () => {
       status: job.status,
       requirements: job.requirements,
       address: job.address || { street: '', city: '', zip: '' },
-      tags: job.JobPostingsTags.map(tag => tag.tagId).join(', '), // Handle address object
+      tags: job.JobPostingsTags.map((tag) => tag.tagId).join(', '),
     });
   };
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-
-    // If the field is an address property, update the address object
+    // If the field is for an address property, update the address object
     if (name.startsWith('address')) {
       setEditedJobData({
         ...editedJobData,
         address: {
           ...editedJobData.address,
-          [name.replace('address', '').toLowerCase()]: value, // Dynamically update street, city, or zip
+          [name.replace('address', '').toLowerCase()]: value,
         },
       });
     } else {
@@ -125,12 +123,13 @@ const JobApplicationPage = () => {
   const handleSaveEditedJob = () => {
     const updatedJobData = {
       ...editedJobData,
-      locations: editedJobData.locations.split(',').map((loc) => loc.trim()), // Ensure locations are an array
-      skills: editedJobData.skills.split(',').map((skill) => skill.trim()), // Ensure skills are an array
-      requirements: typeof editedJobData.requirements === 'string' 
-        ? editedJobData.requirements.split(',').map((req) => req.trim()) 
-        : editedJobData.requirements, // Ensure requirements is an array
-      tags: editedJobData.tags.split(',').map((tag) => tag.trim()), // Ensure tags are an array
+      locations: editedJobData.locations.split(',').map((loc) => loc.trim()),
+      skills: editedJobData.skills.split(',').map((skill) => skill.trim()),
+      requirements:
+        typeof editedJobData.requirements === 'string'
+          ? editedJobData.requirements.split(',').map((req) => req.trim())
+          : editedJobData.requirements,
+      tags: editedJobData.tags.split(',').map((tag) => tag.trim()),
       address: {
         street: editedJobData.address?.street || '',
         city: editedJobData.address?.city || '',
@@ -138,7 +137,6 @@ const JobApplicationPage = () => {
       },
     };
 
-    // Send the updated job data including the address as an object
     axios
       .patch(`http://localhost:7000/jobposts/${editingJobId}`, updatedJobData, {
         headers: {
@@ -213,21 +211,29 @@ const JobApplicationPage = () => {
   };
 
   return (
-    <div className="home-page">
+    <div className="min-h-screen bg-gray-100">
       <EmployerNavbar />
-      <div className="home-content flex flex-row">
+      <div className="flex">
         <EmployerSidebar />
-        <div className="job-application-page" style={{ width: '80%' }}>
-          <h1>My Job Postings</h1>
+        {/* Added mt-20 to create extra gap below the navbar */}
+        <div className="w-full md:w-4/5 mx-auto mt-20 mb-10 p-8 bg-white rounded-xl shadow-xl">
+          <h1 className="text-4xl font-bold text-center mb-8">My Job Postings</h1>
 
-          <div>
-            <label htmlFor="company">Select Company:</label>
+          {/* Company Selector */}
+          <div className="mb-10">
+            <label
+              htmlFor="company"
+              className="block text-xl font-medium text-gray-800 mb-3"
+            >
+              Select Company:
+            </label>
             <select
               id="company"
               name="company"
               value={selectedCompany}
               onChange={handleCompanyChange}
               required
+              className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500"
             >
               <option value="">Select a company</option>
               {companies.length > 0 ? (
@@ -242,209 +248,279 @@ const JobApplicationPage = () => {
             </select>
           </div>
 
+          {/* Jobs for Selected Company */}
           {jobsByCompany.length > 0 ? (
             <>
-              <h2>Jobs for Selected Company</h2>
-              {jobsByCompany.map((job) => (
-                <div key={job.id} className="job-card">
-                  <h3>{job.title}</h3>
-                  <p><strong>Summary:</strong> {job.summary}</p>
-                  <p><strong>Description:</strong> {job.description}</p>
-                  <p><strong>Location:</strong> {job.locations.join(', ')}</p>
-                  <p><strong>Address:</strong> {job.address ? `${job.address.street}, ${job.address.city}, ${job.address.zip}` : 'Address not available'}</p>
-
-                  <p><strong>Requirements:</strong>{job.requirements}</p>
-                  <p><strong>Skills Required:</strong> {job.skills.join(', ')}</p>
-                  <p><strong>Experience:</strong> {`${job.min_experience} to ${job.max_experience} years`}</p>
-                  <p><strong>Salary:</strong> ${job.min_salary} - ${job.max_salary}</p>
-                  <p><strong>Posted:</strong> {formatDate(job.createdAt)}</p>
-                  <p><strong>Status:</strong> {job.status}</p>
-                  <p><strong>Tags:</strong> {job.JobPostingsTags.map(tags => tags.tagId).join(', ')}</p>
-
-                  <div className="job-actions">
-                    <button onClick={() => handleViewApplicants(job.id)} className="action-button">
-                      View Applicants
-                    </button>
-
-                    <button onClick={() => handleEditJob(job.id)} className="action-button" style={{ marginLeft: '10px' }}>
-                      Edit Job
-                    </button>
-
-                    {job.status !== 'Closed' && (
-                      <button onClick={() => handleCloseJob(job.id)} className="action-button" style={{ marginLeft: '10px' }}>
-                        Close Job
+              <h2 className="text-3xl font-semibold text-gray-700 mb-6">
+                Jobs for Selected Company
+              </h2>
+              <div className="grid gap-6 sm:grid-cols-1 md:grid-cols-2">
+                {jobsByCompany.map((job) => (
+                  <div
+                    key={job.id}
+                    className="bg-gray-50 p-6 rounded-lg shadow border border-gray-200"
+                  >
+                    <h3 className="text-2xl font-bold text-gray-800">{job.title}</h3>
+                    <p className="mt-2 text-gray-600">
+                      <strong>Summary:</strong> {job.summary}
+                    </p>
+                    <p className="mt-2 text-gray-600">
+                      <strong>Description:</strong> {job.description}
+                    </p>
+                    <p className="mt-2 text-gray-600">
+                      <strong>Location:</strong> {job.locations.join(', ')}
+                    </p>
+                    <p className="mt-2 text-gray-600">
+                      <strong>Address:</strong>{' '}
+                      {job.address
+                        ? `${job.address.street}, ${job.address.city}, ${job.address.zip}`
+                        : 'Address not available'}
+                    </p>
+                    <p className="mt-2 text-gray-600">
+                      <strong>Requirements:</strong> {job.requirements}
+                    </p>
+                    <p className="mt-2 text-gray-600">
+                      <strong>Skills Required:</strong> {job.skills.join(', ')}
+                    </p>
+                    <p className="mt-2 text-gray-600">
+                      <strong>Experience:</strong> {`${job.min_experience} to ${job.max_experience} years`}
+                    </p>
+                    <p className="mt-2 text-gray-600">
+                      <strong>Salary:</strong> ${job.min_salary} - ${job.max_salary}
+                    </p>
+                    <p className="mt-2 text-gray-600">
+                      <strong>Posted:</strong> {formatDate(job.createdAt)}
+                    </p>
+                    <p className="mt-2 text-gray-600">
+                      <strong>Status:</strong> {job.status}
+                    </p>
+                    <p className="mt-2 text-gray-600">
+                      <strong>Tags:</strong> {job.JobPostingsTags.map((tag) => tag.tagId).join(', ')}
+                    </p>
+                    <div className="mt-4 flex flex-wrap gap-3">
+                      <button
+                        onClick={() => handleViewApplicants(job.id)}
+                        className="py-2 px-5 bg-blue-500 text-white rounded hover:bg-blue-600 transition"
+                      >
+                        View Applicants
                       </button>
-                    )}
+                      <button
+                        onClick={() => handleEditJob(job.id)}
+                        className="py-2 px-5 bg-green-500 text-white rounded hover:bg-green-600 transition"
+                      >
+                        Edit Job
+                      </button>
+                      {job.status !== 'Closed' && (
+                        <button
+                          onClick={() => handleCloseJob(job.id)}
+                          className="py-2 px-5 bg-red-500 text-white rounded hover:bg-red-600 transition"
+                        >
+                          Close Job
+                        </button>
+                      )}
+                    </div>
                   </div>
-                </div>
-              ))}
+                ))}
+              </div>
             </>
           ) : (
-            <p>No jobs posted yet for the selected company.</p>
+            <p className="text-xl text-gray-600 text-center my-10">
+              No jobs posted yet for the selected company.
+            </p>
           )}
 
+          {/* Edit Job Form */}
           {editingJobId && (
-            <div className="edit-job-form">
-              <h3>Edit Job Details</h3>
-              <form>
-                <label>
-                  Title:
+            <div className="bg-white p-8 mt-12 border-t-4 border-indigo-500 rounded-lg shadow-lg">
+              <h3 className="text-3xl font-bold text-gray-800 mb-6">Edit Job Details</h3>
+              <form className="grid gap-6 md:grid-cols-2">
+                <div className="flex flex-col col-span-2">
+                  <label className="font-medium text-gray-700">Title:</label>
                   <input
                     type="text"
                     name="title"
                     value={editedJobData.title}
                     onChange={handleChange}
+                    className="p-3 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-indigo-500"
                   />
-                </label>
-                <label>
-                  Summary:
+                </div>
+                <div className="flex flex-col col-span-2">
+                  <label className="font-medium text-gray-700">Summary:</label>
                   <input
                     type="text"
                     name="summary"
                     value={editedJobData.summary}
                     onChange={handleChange}
+                    className="p-3 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-indigo-500"
                   />
-                </label>
-                <label>
-                  Description:
+                </div>
+                <div className="flex flex-col col-span-2">
+                  <label className="font-medium text-gray-700">Description:</label>
                   <input
                     type="text"
                     name="description"
                     value={editedJobData.description}
                     onChange={handleChange}
+                    className="p-3 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-indigo-500"
                   />
-                </label>
-                <label>
-                  Locations (comma-separated):
+                </div>
+                <div className="flex flex-col">
+                  <label className="font-medium text-gray-700">Locations (comma-separated):</label>
                   <input
                     type="text"
                     name="locations"
                     value={editedJobData.locations}
                     onChange={handleChange}
+                    className="p-3 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-indigo-500"
                   />
-                </label>
+                </div>
                 {/* Address Fields */}
-                <label>
-                  Street:
+                <div className="flex flex-col">
+                  <label className="font-medium text-gray-700">Street:</label>
                   <input
                     type="text"
                     name="addressStreet"
                     value={editedJobData.address?.street || ''}
                     onChange={handleChange}
+                    className="p-3 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-indigo-500"
                   />
-                </label>
-
-                <label>
-                  City:
+                </div>
+                <div className="flex flex-col">
+                  <label className="font-medium text-gray-700">City:</label>
                   <input
                     type="text"
                     name="addressCity"
                     value={editedJobData.address?.city || ''}
                     onChange={handleChange}
+                    className="p-3 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-indigo-500"
                   />
-                </label>
-
-                <label>
-                  Zip Code:
+                </div>
+                <div className="flex flex-col">
+                  <label className="font-medium text-gray-700">Zip Code:</label>
                   <input
                     type="text"
                     name="addressZip"
                     value={editedJobData.address?.zip || ''}
                     onChange={handleChange}
+                    className="p-3 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-indigo-500"
                   />
-                </label>
-
-                <label>
-                  Requirements:
+                </div>
+                <div className="flex flex-col col-span-2">
+                  <label className="font-medium text-gray-700">Requirements:</label>
                   <input
                     type="text"
                     name="requirements"
                     value={editedJobData.requirements || ''}
                     onChange={handleChange}
+                    className="p-3 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-indigo-500"
                   />
-                </label>
-
-                <label>
-                  Tags (comma-separated):
+                </div>
+                <div className="flex flex-col">
+                  <label className="font-medium text-gray-700">Tags (comma-separated):</label>
                   <input
                     type="text"
                     name="tags"
                     value={editedJobData.tags}
                     onChange={handleChange}
+                    className="p-3 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-indigo-500"
                   />
-                </label>
-
-                <label>
-                  Skills (comma-separated):
+                </div>
+                <div className="flex flex-col">
+                  <label className="font-medium text-gray-700">Skills (comma-separated):</label>
                   <input
                     type="text"
                     name="skills"
                     value={editedJobData.skills}
                     onChange={handleChange}
+                    className="p-3 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-indigo-500"
                   />
-                </label>
-                <label>
-                  Min Experience:
+                </div>
+                <div className="flex flex-col">
+                  <label className="font-medium text-gray-700">Min Experience:</label>
                   <input
                     type="number"
                     name="min_experience"
                     value={editedJobData.min_experience}
                     onChange={handleChange}
+                    className="p-3 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-indigo-500"
                   />
-                </label>
-                <label>
-                  Max Experience:
+                </div>
+                <div className="flex flex-col">
+                  <label className="font-medium text-gray-700">Max Experience:</label>
                   <input
                     type="number"
                     name="max_experience"
                     value={editedJobData.max_experience}
                     onChange={handleChange}
+                    className="p-3 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-indigo-500"
                   />
-                </label>
-                <label>
-                  Min Salary:
+                </div>
+                <div className="flex flex-col">
+                  <label className="font-medium text-gray-700">Min Salary:</label>
                   <input
                     type="number"
                     name="min_salary"
                     value={editedJobData.min_salary}
                     onChange={handleChange}
+                    className="p-3 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-indigo-500"
                   />
-                </label>
-                <label>
-                  Max Salary:
+                </div>
+                <div className="flex flex-col">
+                  <label className="font-medium text-gray-700">Max Salary:</label>
                   <input
                     type="number"
                     name="max_salary"
                     value={editedJobData.max_salary}
                     onChange={handleChange}
+                    className="p-3 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-indigo-500"
                   />
-                </label>
-                <button type="button" onClick={handleSaveEditedJob}>
-                  Save Changes
-                </button>
+                </div>
+                <div className="col-span-2 flex justify-end">
+                  <button
+                    type="button"
+                    onClick={handleSaveEditedJob}
+                    className="py-3 px-8 bg-indigo-600 text-white rounded-full hover:bg-indigo-700 transition"
+                  >
+                    Save Changes
+                  </button>
+                </div>
               </form>
             </div>
           )}
 
+          {/* Your Posted Jobs */}
           {Object.keys(userPostedJobs).length > 0 && (
-            <>
-              <h2>Your Posted Jobs</h2>
+            <div className="mt-16">
+              <h2 className="text-3xl font-semibold text-gray-700 mb-8">Your Posted Jobs</h2>
               {Object.entries(userPostedJobs).map(([companyId, companyData]) => (
-                <div key={companyId}>
-                  <h3>{companyData.companyName}</h3>
-                  {companyData.jobs.map((job) => (
-                    <div key={job.jobId} className="job-card">
-                      <h4>{job.title}</h4>
-                      <p><strong>Posted On:</strong> {formatDate(job.postedAt)}</p>
-
-                      <button onClick={() => handleDeleteJob(job.jobId)} className="action-button" style={{ marginLeft: '10px' }}>
-                        Delete Job
-                      </button>
-                    </div>
-                  ))}
+                <div key={companyId} className="mb-12">
+                  <h3 className="text-2xl font-bold text-gray-800 mb-4">
+                    {companyData.companyName}
+                  </h3>
+                  <div className="grid gap-6 sm:grid-cols-1 md:grid-cols-2">
+                    {companyData.jobs.map((job) => (
+                      <div
+                        key={job.jobId}
+                        className="bg-gray-50 p-6 rounded-lg shadow border border-gray-200"
+                      >
+                        <h4 className="text-xl font-semibold text-gray-800">
+                          {job.title}
+                        </h4>
+                        <p className="mt-2 text-gray-600">
+                          <strong>Posted On:</strong> {formatDate(job.postedAt)}
+                        </p>
+                        <button
+                          onClick={() => handleDeleteJob(job.jobId)}
+                          className="mt-4 py-2 px-5 bg-red-500 text-white rounded hover:bg-red-600 transition"
+                        >
+                          Delete Job
+                        </button>
+                      </div>
+                    ))}
+                  </div>
                 </div>
               ))}
-            </>
+            </div>
           )}
         </div>
       </div>
