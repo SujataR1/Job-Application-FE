@@ -5,7 +5,7 @@ import { FaNetworkWired, FaSignOutAlt, FaBell, FaClipboardList, FaHome, FaEnvelo
 function EmployerNavbar({ toggleSidebar }) {
   const navigate = useNavigate();
   const [profileImageUrl, setProfileImageUrl] = useState('');
-  const [isLoading, setIsLoading] = useState(true); // Add loading state
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const fetchProfileImage = async () => {
@@ -72,13 +72,13 @@ function EmployerNavbar({ toggleSidebar }) {
       <div className="container mx-auto px-4">
         <div className="flex justify-between items-center h-16">
           {/* Hamburger Button aligned to the left */}
-          <div className="flex items-center ml-">
-          <button
-        onClick={toggleSidebar}
-        className="absolute left-1 top-1 flex items-center justify-center hover:bg-transparent focus:bg-transparent focus:outline-none"
-      >
-        <FaBars className="text-xl" />
-      </button>
+          <div className="flex items-center ml-0">
+            <button
+              onClick={toggleSidebar}
+              className="absolute left-1 top-1 flex items-center justify-center hover:bg-transparent focus:bg-transparent focus:outline-none"
+            >
+              <FaBars className="text-xl" />
+            </button>
           </div>
 
           {/* Centered Navigation Links */}
@@ -105,19 +105,9 @@ function EmployerNavbar({ toggleSidebar }) {
             </Link>
           </div>
 
-
-          
+          {/* Profile and Logout Button */}
           <div className="flex items-center">
-          <div className="flex items-center space-x-4">
-
-            <button
-              onClick={handleLogout}
-              className="flex items-center space-x-2 bg-red-600 hover:bg-red-700 px-4 py-2 rounded-md transition-colors focus:outline-none" >
-              <FaSignOutAlt />
-              <span>Logout</span>
-            </button>
-
-            {/* Profile Image */}
+            {/* Display Profile Image or Default Avatar */}
             {isLoading ? (
               <FaUserCircle className="text-3xl text-gray-400" /> // Placeholder while loading
             ) : profileImageUrl ? (
@@ -129,6 +119,14 @@ function EmployerNavbar({ toggleSidebar }) {
             ) : (
               <FaUserCircle className="text-3xl" /> // Default avatar if no image
             )}
+
+            <button
+              onClick={handleLogout}
+              className=" absolute right-16 top-1 flex items-center space-x-2 bg-red-600 hover:bg-red-700 px-4 py-2 rounded-md transition-colors focus:outline-none"
+            >
+              <FaSignOutAlt />
+              <span>Logout</span>
+            </button>
           </div>
         </div>
       </div>
