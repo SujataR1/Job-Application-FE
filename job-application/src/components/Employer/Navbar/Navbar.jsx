@@ -13,7 +13,7 @@ function EmployerNavbar({ toggleSidebar }) {
         const response = await fetch('http://localhost:7000/auth/logout', {
           method: 'POST',
           headers: {
-            'Authorization': `Bearer ${token}`,
+            'Authorization': ` ${token}`,
           },
         });
 
