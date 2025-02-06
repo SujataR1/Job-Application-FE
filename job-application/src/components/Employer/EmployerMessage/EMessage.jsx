@@ -66,7 +66,7 @@ const EMessage = () => {
         <EmployerSidebar />
 
         {/* Main Content Area */}
-        <div className="flex-1 p-8">
+        <div className="flex-1 p-36">
           {selectedConnection ? (
             <div className="max-w-4xl mx-auto bg-white rounded-2xl shadow-lg overflow-hidden">
               {/* Chat Header */}
