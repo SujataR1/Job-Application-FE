@@ -33,7 +33,7 @@ body {
 
 .search-button {
   padding: 10px 20px;
-  background-color: #4CAF50;
+  background-color: #white;
   color: white;
   border: none;
   border-radius: 5px;
@@ -139,7 +139,7 @@ body {
 }
 
 .interested-button {
-  background-color: #4CAF50;
+  background-color: #white;
   color: white;
   margin-top: 10px;
 }
@@ -170,7 +170,7 @@ button:hover {
 
 .submit-comment-button {
   padding: 10px 15px;
-  background-color: #4CAF50;
+  background-color: #white;
   color: white;
   border: none;
   border-radius: 5px;

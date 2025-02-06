@@ -111,7 +111,7 @@
 }
 
 .settings-item input[type="checkbox"]:checked {
-  background-color: #4caf50; /* Green when checked */
+  background-color: #white; /* Green when checked */
 }
 
 .settings-item input[type="checkbox"]::before {
@@ -132,7 +132,7 @@
 
 /* Submit button */
 .submit-button {
-  background-color: #4caf50;
+  background-color: #white;
   color: white;
   border: none;
   padding: 12px 20px;
@@ -196,7 +196,7 @@
 }
 
 .success-message {
-  background-color: #4caf50;
+  background-color: #white;
   color: white;
 }
 
@@ -319,7 +319,7 @@
 }
 
 .delete-account-modal-content .cancel-button {
-  background-color: #4caf50;
+  background-color: #white;
   color: white;
   padding: 10px 20px;
   border-radius: 5px;
@@ -370,7 +370,7 @@
 /* Dark Mode Styles */
 body.dark-mode {
   background-color: #121212;
-  color: #ffffff;
+  color: #white;
 }
 
 body.dark-mode .admin-settings-page {
@@ -386,7 +386,7 @@ body.dark-mode .admin-settings-form-container {
 }
 
 body.dark-mode .settings-item label {
-  color: #ffffff;
+  color: #white;
 }
 
 body.dark-mode .submit-button {

@@ -59,7 +59,7 @@ const CompanyAnalyticsPage = () => {
         applicants.filter(applicant => applicant.interviewMode === 'Online').length,
         applicants.filter(applicant => applicant.interviewMode === 'Physical').length
       ],
-      backgroundColor: ['#4CAF50', '#FF9800'],
+      backgroundColor: ['#white', '#FF9800'],
     }],
   };
 

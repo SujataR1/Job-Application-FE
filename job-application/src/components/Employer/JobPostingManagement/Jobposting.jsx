@@ -469,7 +469,7 @@ const JobPost = () => {
           <button
             type="submit"
             style={{
-              backgroundColor: '#4CAF50',
+              backgroundColor: '#white',
               color: 'white',
               padding: '12px 20px',
               border: 'none',
