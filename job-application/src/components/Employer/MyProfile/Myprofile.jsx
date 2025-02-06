@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import './Myprofile.css';
 import EmployerNavbar from '../Navbar/Navbar';
 import EmployerSidebar from '../Sidebar/Sidebar';
 
 const Profile = () => {
   const [user, setUser] = useState(null);
   const [newImage, setNewImage] = useState(null); // Store the new uploaded image
-  const [isEditing, setIsEditing] = useState(false); // Toggle image editing mode
+  const [isEditing, setIsEditing] = useState(false); // Toggle editing mode
   const [error, setError] = useState(''); // For displaying errors
   const [successMessage, setSuccessMessage] = useState(''); // For displaying success message
   const [formData, setFormData] = useState({
@@ -16,7 +15,7 @@ const Profile = () => {
     email: '',
     phoneNumber: '',
     isEmailVerified: false // To track email verification status
-  }); // For editing user details
+  });
   const [isUpdated, setIsUpdated] = useState(false); // To track if the data has been modified
   const [isImageEditing, setIsImageEditing] = useState(false); // For controlling image editing modal visibility
   const [showOtpPopup, setShowOtpPopup] = useState(false); // To show the OTP input popup
@@ -35,21 +34,20 @@ const Profile = () => {
       }
 
       try {
-        // Fetch the user data from the API
         const response = await fetch('http://localhost:7000/auth/user-details', {
           method: 'GET',
           headers: {
-            Authorization: `${token}`, // Add token to Authorization header
+            Authorization: `${token}`,
           },
         });
 
-        const data = await response.json(); // Parse the response
+        const data = await response.json();
 
         if (response.ok) {
-          setUser(data); // Set user data if successful
-          setFormData(data); // Set initial form values
-          setSuccessMessage(''); // Reset success message
-          setError(''); // Reset error message
+          setUser(data);
+          setFormData(data);
+          setSuccessMessage('');
+          setError('');
         } else {
           setError(data.message || 'Failed to fetch user details');
         }
@@ -62,20 +60,20 @@ const Profile = () => {
     fetchUserData();
   }, [navigate]);
 
-  // Handle image change (user selects a new image)
+  // Handle image change
   const handleImageChange = (e) => {
     const file = e.target.files[0];
     if (file) {
       const reader = new FileReader();
       reader.onloadend = () => {
-        setNewImage(reader.result); // Set the selected image as base64
-        setIsUpdated(true); // Mark as updated
+        setNewImage(reader.result);
+        setIsUpdated(true);
       };
-      reader.readAsDataURL(file); // Convert image to base64
+      reader.readAsDataURL(file);
     }
   };
 
-  // Handle user details update (submit the form and the profile image together)
+  // Update user details (with optional new image)
   const handleUpdateDetails = async () => {
     const token = localStorage.getItem('token');
     const formDataObj = new FormData();
@@ -84,9 +82,8 @@ const Profile = () => {
     formDataObj.append('email', formData.email);
     formDataObj.append('phoneNumber', formData.phoneNumber);
 
-    // If a new image is selected, append it to FormData
     if (newImage) {
-      const imageBlob = dataURItoBlob(newImage); // Convert base64 to Blob
+      const imageBlob = dataURItoBlob(newImage);
       formDataObj.append('profileImage', imageBlob, 'profileImage.jpg');
     }
 
@@ -94,27 +91,27 @@ const Profile = () => {
       const response = await fetch('http://localhost:7000/auth/update', {
         method: 'PATCH',
         headers: {
-          'Authorization': ` ${token}`, // Include the token for authentication
+          Authorization: `${token}`,
         },
-        body: formDataObj, // Send the form data with the image
+        body: formDataObj,
       });
 
       const data = await response.json();
       if (response.ok) {
-        setUser(data); // Update user data with new details
-        setIsEditing(false); // Close the editing mode
-        setIsUpdated(false); // Reset the update flag
-        setSuccessMessage('User details updated successfully!'); // Display success message
-        setError(''); // Clear any previous errors
+        setUser(data);
+        setIsEditing(false);
+        setIsUpdated(false);
+        setSuccessMessage('User details updated successfully!');
+        setError('');
       } else {
         console.error(data.message || 'Failed to update user details');
         setError(data.message || 'Failed to update user details');
-        setSuccessMessage(''); // Clear any previous success message
+        setSuccessMessage('');
       }
     } catch (error) {
       console.error('Error updating details:', error);
       setError('An error occurred while updating details.');
-      setSuccessMessage(''); // Clear any previous success message
+      setSuccessMessage('');
     }
   };
 
@@ -138,7 +135,7 @@ const Profile = () => {
       ...prevData,
       [name]: value,
     }));
-    setIsUpdated(true); // Mark as updated whenever form changes
+    setIsUpdated(true);
   };
 
   // Send OTP for email verification
@@ -153,7 +150,7 @@ const Profile = () => {
       const response = await fetch('http://localhost:7000/auth/request-otp', {
         method: 'POST',
         headers: {
-          'Authorization': ` ${token}`,
+          Authorization: `${token}`,
           'Content-Type': 'application/json',
         },
         body: JSON.stringify(requestData),
@@ -162,8 +159,8 @@ const Profile = () => {
       const data = await response.json();
 
       if (response.ok) {
-        setShowOtpPopup(true); // Show OTP input modal
-        setOtpError(''); // Reset OTP error
+        setShowOtpPopup(true);
+        setOtpError('');
       } else {
         setOtpError(data.message || 'Failed to send OTP');
       }
@@ -173,7 +170,7 @@ const Profile = () => {
     }
   };
 
-  // Verify the OTP and confirm email
+  // Verify OTP for email confirmation
   const handleVerifyOtp = async () => {
     const token = localStorage.getItem('token');
 
@@ -181,12 +178,10 @@ const Profile = () => {
       const response = await fetch('http://localhost:7000/auth/verify-email-otp', {
         method: 'POST',
         headers: {
-          'Authorization': ` ${token}`, // Authorization header with Bearer token
+          Authorization: `${token}`,
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({
-          otp: otp, // OTP input by the user
-        }),
+        body: JSON.stringify({ otp }),
       });
 
       const data = await response.json();
@@ -196,7 +191,7 @@ const Profile = () => {
           ...prevData,
           isEmailVerified: true,
         }));
-        setShowOtpPopup(false); // Close OTP modal
+        setShowOtpPopup(false);
         setSuccessMessage('Email verified successfully!');
         setError('');
       } else {
@@ -209,141 +204,152 @@ const Profile = () => {
   };
 
   return (
-    <div className="home-page">
+    <div className="min-h-screen bg-gray-50 flex flex-col">
       <EmployerNavbar />
-      <div className="flex justify-center items-center min-h-screen bg-gray-100" style={{ backgroundImage: 'url(/images/background.png)' }}>
-      <div className="home-content flex flex-row">
-     
+      <div
+        className="flex flex-1"
+        style={{
+          backgroundImage: "url('/images/background.png')",
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+        }}
+      >
         <EmployerSidebar />
-  
-      <div className="profile-container">
-        <div className="profile-header">
-          <h2>My Profile</h2>
-        </div>
-
-        <div className="profile-card">
-          <div className="profile-image-container">
-            {/* Display the profile image */}
-            <div
-              className="profile-image"
-              style={{
-                backgroundImage: `url(${newImage || user?.profilePicture})`, // Display new or fetched image
-                backgroundSize: 'cover',
-                backgroundPosition: 'center',
-              }}
-              onClick={() => setIsImageEditing(true)} // Click on the image to start editing
-            ></div>
-
-            {/* Edit image modal */}
-            {isImageEditing && (
-              <div className="edit-image-modal">
-                <input type="file" onChange={handleImageChange} />
-                <button onClick={() => setIsImageEditing(false)}>Cancel</button>
-              </div>
-            )}
+        <main className="flex flex-col items-center justify-center flex-1 p-6">
+          {/* Profile Header */}
+          <div className="mb-8 text-center">
+            <h2 className="text-3xl md:text-4xl font-extrabold tracking-wide text-white bg-clip-text bg-gradient-to-r from-indigo-500 to-purple-600 py-2 px-6 rounded-full shadow-lg">
+              My Profile
+            </h2>
           </div>
 
-          <div className="profile-details">
-            {user ? (
-              <>
-                <div className="profile-detail-row">
-                  <label>Name:</label>
-                  <input
-                    type="text"
-                    name="fullName"
-                    value={formData.fullName}
-                    onChange={handleChange}
-                    disabled={!isEditing} // Disable input when not editing
-                  />
+          {/* Profile Card */}
+          <div className="bg-white rounded-2xl shadow-2xl p-8 w-full max-w-2xl space-y-6">
+            <div className="flex flex-col items-center relative">
+              {/* Profile Image */}
+              <div
+                className="w-32 h-32 rounded-full bg-gray-200 border-4 border-gray-300 cursor-pointer transition-transform transform hover:scale-105 hover:border-indigo-500"
+                style={{
+                  backgroundImage: `url(${newImage || user?.profilePicture})`,
+                  backgroundSize: 'cover',
+                  backgroundPosition: 'center',
+                }}
+                onClick={() => setIsImageEditing(true)}
+              ></div>
+
+              {/* Edit Image Modal */}
+              {isImageEditing && (
+                <div className="absolute top-full mt-4 bg-white border border-gray-200 rounded-xl p-4 shadow-lg w-72 z-10">
+                  <input type="file" onChange={handleImageChange} className="w-full mb-3" />
+                  <button
+                    onClick={() => setIsImageEditing(false)}
+                    className="w-full bg-red-500 text-white py-2 rounded hover:bg-red-600 transition-colors"
+                  >
+                    Cancel
+                  </button>
                 </div>
-                <div className="profile-detail-row">
-                  <label>About:</label>
-                  <input
-                    type="text"
-                    name="about"
-                    value={formData.about}
-                    onChange={handleChange}
-                    disabled={!isEditing} // Disable input when not editing
-                  />
-                </div>
-                <div className="profile-detail-row">
-                  <label>Email:</label>
+              )}
+            </div>
+
+            {/* Profile Details */}
+            <div className="space-y-5">
+              <div className="flex flex-col sm:flex-row items-center">
+                <label className="w-full sm:w-32 font-semibold text-gray-700">Name:</label>
+                <input
+                  type="text"
+                  name="fullName"
+                  value={formData.fullName}
+                  onChange={handleChange}
+                  disabled={!isEditing}
+                  className="mt-2 sm:mt-0 p-3 border border-gray-300 rounded-lg w-full focus:outline-none focus:ring-2 focus:ring-indigo-500 disabled:bg-gray-100"
+                />
+              </div>
+              <div className="flex flex-col sm:flex-row items-center">
+                <label className="w-full sm:w-32 font-semibold text-gray-700">About:</label>
+                <input
+                  type="text"
+                  name="about"
+                  value={formData.about}
+                  onChange={handleChange}
+                  disabled={!isEditing}
+                  className="mt-2 sm:mt-0 p-3 border border-gray-300 rounded-lg w-full focus:outline-none focus:ring-2 focus:ring-indigo-500 disabled:bg-gray-100"
+                />
+              </div>
+              <div className="flex flex-col sm:flex-row items-center">
+                <label className="w-full sm:w-32 font-semibold text-gray-700">Email:</label>
+                <div className="mt-2 sm:mt-0 flex items-center w-full">
                   <input
                     type="email"
                     name="email"
                     value={formData.email}
                     onChange={handleChange}
-                    disabled={!isEditing} // Disable input when not editing
+                    disabled={!isEditing}
+                    className="p-3 border border-gray-300 rounded-lg w-full focus:outline-none focus:ring-2 focus:ring-indigo-500 disabled:bg-gray-100"
                   />
                   {!formData.isEmailVerified ? (
-                    <button className="verify-email-button" onClick={handleVerifyEmail}>
+                    <button
+                      onClick={handleVerifyEmail}
+                      className="ml-3 bg-yellow-500 text-white py-2 px-4 rounded-lg hover:bg-yellow-600 transition-colors whitespace-nowrap"
+                    >
                       Verify Email
                     </button>
                   ) : (
-                    <span className="verified">Verified</span>
+                    <span className="ml-3 text-green-600 font-bold">Verified</span>
                   )}
                 </div>
-                <div className="profile-detail-row">
-                  <label>Phone Number:</label>
-                  <input
-                    type="text"
-                    name="phoneNumber"
-                    value={formData.phoneNumber}
-                    onChange={handleChange}
-                    disabled={!isEditing} // Disable input when not editing
-                  />
-                </div>
+              </div>
+              <div className="flex flex-col sm:flex-row items-center">
+                <label className="w-full sm:w-32 font-semibold text-gray-700">Phone Number:</label>
+                <input
+                  type="text"
+                  name="phoneNumber"
+                  value={formData.phoneNumber}
+                  onChange={handleChange}
+                  disabled={!isEditing}
+                  className="mt-2 sm:mt-0 p-3 border border-gray-300 rounded-lg w-full focus:outline-none focus:ring-2 focus:ring-indigo-500 disabled:bg-gray-100"
+                />
+              </div>
+            </div>
 
-                <button
-                  className="update-button"
-                  onClick={isEditing ? handleUpdateDetails : () => setIsEditing(true)}
-                  style={{
-                    padding: '6px 12px', // Smaller padding
-                    fontSize: '14px', // Smaller font size
-                    backgroundColor: isEditing ? '#28a745' : '#007bff', // Green for 'Update', Blue for 'Edit'
-                    color: 'white', // White text color
-                    border: 'none', // No border
-                    borderRadius: '5px', // Rounded corners
-                    cursor: 'pointer', // Pointer cursor on hover
-                    transition: 'background-color 0.3s ease',
-                    width: '100px', // Button width
-                  }}
-                >
-                  {isEditing ? 'Update Details' : 'Edit'}
-                </button>
-              </>
-            ) : (
-              <p>Loading...</p>
-            )}
+            <div className="flex justify-center">
+              <button
+                onClick={isEditing ? handleUpdateDetails : () => setIsEditing(true)}
+                className="mt-6 py-3 px-8 bg-indigo-600 hover:bg-indigo-700 text-white text-lg font-semibold rounded-full transition-colors"
+              >
+                {isEditing ? 'Update Details' : 'Edit'}
+              </button>
+            </div>
+
+            {error && <div className="p-4 bg-red-100 border border-red-400 text-red-700 rounded-lg text-center">{error}</div>}
+            {successMessage && <div className="p-4 bg-green-100 border border-green-400 text-green-700 rounded-lg text-center">{successMessage}</div>}
           </div>
-
-          {error && <div className="error-message">{error}</div>}
-          {successMessage && <div className="success-message">{successMessage}</div>}
-        </div>
+        </main>
       </div>
 
       {/* OTP Popup */}
       {showOtpPopup && (
-        <div className="otp-popup">
-          <div className="otp-popup-content">
-            <h3>Enter OTP sent to your email</h3>
+        <div className="fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center z-50">
+          <div className="bg-white rounded-2xl p-8 w-11/12 max-w-md shadow-xl">
+            <h3 className="mb-6 text-2xl font-bold text-gray-800 text-center">Enter OTP</h3>
             <input
               type="text"
               placeholder="OTP"
               value={otp}
               onChange={(e) => setOtp(e.target.value)}
+              className="w-full p-3 border border-gray-300 rounded-lg mb-4 focus:outline-none focus:ring-2 focus:ring-indigo-500"
             />
-            {otpError && <div className="error-message">{otpError}</div>}
-            <button onClick={handleVerifyOtp}>Verify OTP</button>
-            <button onClick={() => setShowOtpPopup(false)}>Cancel</button>
+            {otpError && <div className="mb-4 p-3 bg-red-100 border border-red-400 text-red-700 rounded-lg text-center">{otpError}</div>}
+            <button onClick={handleVerifyOtp} className="w-full py-3 bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg font-semibold transition-colors mb-3">
+              Verify OTP
+            </button>
+            <button onClick={() => setShowOtpPopup(false)} className="w-full py-3 bg-gray-400 hover:bg-gray-500 text-white rounded-lg font-semibold transition-colors">
+              Cancel
+            </button>
           </div>
         </div>
       )}
-    </div>
-    </div>
     </div>
   );
 };
 
 export default Profile;
-
