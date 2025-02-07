@@ -30,27 +30,23 @@ const JobPost = () => {
 
   // Fetch companies on component mount
   useEffect(() => {
-    const token = localStorage.getItem('token');
-    setToken(token);
-
-    const limit = '1-12';
-    axios
-      .post(
-        'http://localhost:7000/companies/all',
-        { limit },
-        {
-          headers: {
-            'Content-Type': 'application/json'
-          }
-        }
-      )
-      .then((response) => {
-        setCompanies(response.data);
-      })
-      .catch((error) => {
-        console.error('Error fetching companies:', error);
-      });
-  }, []);
+      const authToken = localStorage.getItem('token');
+      setToken(authToken);
+  
+      if (authToken) {
+        axios
+          .get('http://localhost:7000/jobposts/companies-user-can-post-jobs-for', {
+            headers: {
+              Authorization: ` ${authToken}`,
+            },
+          })
+          .then((response) => {
+            setCompanies(response.data.companies || []);
+          })
+          .catch((error) => console.error('Error fetching companies:', error));
+      }
+    }, []);
+  
 
   // Handle form submission
   const handleSubmit = (e) => {

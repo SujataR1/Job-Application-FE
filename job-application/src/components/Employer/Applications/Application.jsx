@@ -131,14 +131,15 @@ const Application = () => {
   // Post custom assessment
   const handleCustomAssessment = () => {
     const formData = new FormData();
-    formData.append('jobPostingId', jobId);
+    formData.append('applicantId', currentApplicationId); // Use applicationId here
     formData.append('instructions', assessmentInstructions);
+
     if (selectedAssessmentAttachment) {
       formData.append('attachments', selectedAssessmentAttachment);
     }
 
     axios
-      .post('http://localhost:7000/application/assessments/post', formData, {
+      .post(`http://localhost:7000/application/assessments/post/${jobId}`, formData, {
         headers: {
           'Authorization': `${token}`,
           'Content-Type': 'multipart/form-data',
@@ -158,14 +159,14 @@ const Application = () => {
   // Schedule interview
   const handleScheduleInterview = () => {
     const interviewData = {
-      jobPostingId: jobId,
+      applicationId: currentApplicationId, // Send the current applicationId dynamically in the body
       scheduledAt: interviewDate,
       mode: interviewType,
       location: interviewType === 'Offline' ? interviewLocation : undefined,
     };
 
     axios
-      .post('http://localhost:7000/application/interviews/schedule', interviewData, {
+      .post(`http://localhost:7000/application/interviews/schedule/${currentApplicationId}`, interviewData, {
         headers: {
           'Authorization': `${token}`,
         },
@@ -179,7 +180,8 @@ const Application = () => {
         console.error('Error scheduling interview:', error);
         alert('Failed to schedule interview.');
       });
-  };
+};
+
 
   return (
     <div className="flex flex-col min-h-screen bg-gray-50">
@@ -197,19 +199,28 @@ const Application = () => {
 
           {applications.length > 0 ? (
             applications.map((application) => (
-              <div key={application.id} className="bg-white border border-gray-200 rounded-lg shadow-lg p-6 mb-6 transition-transform transform hover:scale-105">
+              <div
+                key={application.id}
+                className="bg-white border border-gray-200 rounded-lg shadow-lg p-6 mb-6 transition-transform transform hover:scale-105"
+              >
                 <h3 className="text-2xl font-semibold mb-4 text-gray-800">
                   Applicant: {application.user.fullName}
                 </h3>
-                <p className="text-gray-600 mb-2"><span className="font-medium">Email:</span> {application.user.email}</p>
-                <p className="text-gray-600 mb-2"><span className="font-medium">Phone:</span> {application.user.phoneNumber}</p>
-                <p className="text-gray-600 mb-2"><span className="font-medium">Status:</span> {application.status}</p>
+                <p className="text-gray-600 mb-2">
+                  <span className="font-medium">Email:</span> {application.user.email}
+                </p>
+                <p className="text-gray-600 mb-2">
+                  <span className="font-medium">Phone:</span> {application.user.phoneNumber}
+                </p>
+                <p className="text-gray-600 mb-2">
+                  <span className="font-medium">Status:</span> {application.status}
+                </p>
                 <p className="text-gray-600 mb-2">
                   <span className="font-medium">Applied On:</span> {application.appliedAt ? formatDate(application.appliedAt) : 'N/A'}
                 </p>
 
-                <a 
-                  href={application.resume} 
+                <a
+                  href={application.resume}
                   download
                   className="text-blue-600 hover:underline block mb-4"
                 >
@@ -250,6 +261,29 @@ const Application = () => {
                       }}
                     >
                       Schedule Interview
+                    </button>
+                  </div>
+                )}
+
+                {application.status === 'InterviewScheduled' && (
+                  <div className="space-x-3 mt-4">
+                    <button
+                      className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded transition-colors"
+                      onClick={() => handleStatusChange(application.id, 'InterviewCompleted')}
+                    >
+                      Interview Completed
+                    </button>
+                    <button
+                      className="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded transition-colors"
+                      onClick={() => handleStatusChange(application.id, 'Rejected')}
+                    >
+                      Reject
+                    </button>
+                    <button
+                      className="bg-yellow-500 hover:bg-yellow-600 text-white px-4 py-2 rounded transition-colors"
+                      onClick={() => handleStatusChange(application.id, 'OnHold')}
+                    >
+                      On Hold
                     </button>
                   </div>
                 )}
