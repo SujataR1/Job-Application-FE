@@ -4,9 +4,9 @@ import Dasboard from './components/Dashboard/Homepage';
 import Sales from './components/Categories/SalesJobs/Sales';
 import IT from './components/Categories/ITjobs/ITjobs';
 import Jobs from './components/Applicant/Jobs/JobPage';
-import SignUpPage from './components/auth/SignUpPage'; // The new SignUp component
+import SignUpPage from './components/auth/SignUpPage'; 
 import Login from './components/auth/Login';
-import Footer from './components/Footer/Footer'; // Import Footer
+import Footer from './components/Footer/Footer'; 
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import Marketing from './components/Categories/Marketingjobs/Marketing';
 import DataScienceJobs from './components/Categories/DataScience/DataScience';
@@ -130,14 +130,10 @@ import JobStatus from './components/Applicant/JobStatusPage/JobStatus';
 import HelpAndSupport from './components/Applicant/HelpandSupport/Help';
 import Reviews from './components/Employer/Reviews/Reviews';
 
-//This component is used to conditionally render Navbar based on the current path
-const ConditionalNavbar = () => {
-   const location = useLocation();  // Get current location to conditionally render Navbar
-  
-    //Render Navbar only if the path is not '/dashboard'
-    const jobAnalyticsMatch = useMatch("/job-analytics/:jobId");  // Match dynamic route for job-analytics
 
-    // Render Navbar only if the path is not in the excluded list and not a job analytics page
+const ConditionalNavbar = () => {
+   const location = useLocation();  
+   const jobAnalyticsMatch = useMatch("/job-analytics/:jobId");  
     return !['/login', '/signup', '/', '/Enavbar', '/Esidebar', '/employerdashboard', '/application', 
              '/jobposting', '/job-analytics/:jobId', '/hiring-progress', '/notifications', '/analytics', 
              '/message', '/jobposting', '/Esetting','/companyprofile','/network','/companyanalytics','/forgot-password','/adnavbar','/adsidenavbar','/admindashboard','/manage-users','/manage-jobs','/myprofile','/manage-companies','/admin-reports','/admin-settings','/admin-job-applications','/reviews'].includes(location.pathname) && !jobAnalyticsMatch && <Navbar />;
@@ -202,7 +198,6 @@ const App = () => {
                 <Route path="/resume-quality-score" element={<ResumeQualityScore />} />
                 <Route path="/resume-samples" element={<ResumeSamples />} />
                 <Route path="/job-letter-samples" element={<JobLetterSamples />} />
-                {/* Add more routes here as needed */}
                 <Route path="/about-us" element={<Aboutus />} />
                 <Route path="/overview" element={<Overview />} />
                 <Route path="/help-center" element={<HelpCenter />} />
@@ -211,7 +206,6 @@ const App = () => {
                 <Route path="/report-issue" element={<ReportIssue />} />
                 <Route path="/careers" element={<Careers />} />
                 <Route path="/employer-home" element={<EmployerHome />} />
-                {/* Add more routes here as needed */}
                 <Route path="/sitemap" element={<SiteMap />} />
                 <Route path="/credits" element={<Credits />} />
                 <Route path="/privacy-policy" element={<Privacypolicy />} />
@@ -245,7 +239,6 @@ const App = () => {
                 <Route path="/sidebar" element={<Sidebar/>} />
                 <Route path="/feed" element={<Feed/>} />
                 <Route path="/messages" element={<Message/>} />
-                {/* <Route path="/analytics" element={<Analytics/>} /> */}
                 <Route path="/job-analytics/:jobId" element={<Applications />} />
                 <Route path="/employerdashboard" element={<EmployerDashboard/>} />
                 <Route path="/hiring-progress" element={<HiringProgress/>} />
@@ -280,8 +273,6 @@ const App = () => {
                 <Route path="/admin-job-applications" element={<AdminJobApplications />}/>
                 <Route path="/admin-activity-logs" element={<AdminActivityLogs />}/>
                 <Route path="/add-company" element={<AddCompany />} />
-
-
                 <Route path="/jobprofile" element={<JobProfile />} />
                 <Route path="/setting" element={<Setting />} />
                 <Route path="/job-status/:jobId" element={<JobStatus />} />
