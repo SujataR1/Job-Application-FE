@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from "react"; 
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import './addcompany.css'; // Ensure you have a CSS file for styling.
+
 
 const AddCompany = () => {
   const [companyName, setCompanyName] = useState('');
@@ -19,7 +20,7 @@ const AddCompany = () => {
   // Fetch the list of companies that the recruiter has added
   const fetchCompanies = async () => {
     const token = localStorage.getItem('token');
-    
+
     try {
       const response = await fetch('http://localhost:7000/companies/all', {
         method: 'POST',
@@ -47,15 +48,20 @@ const AddCompany = () => {
     }
   };
 
-  // Fetch companies when the component mounts
+  // // Fetch companies when the component mounts
+  // useEffect(() => {
+  //   fetchCompanies();
+  // }, []);
+  
   useEffect(() => {
     fetchCompanies();
-  }, []);
+  }, [fetchCompanies]);  // ✅ Fixed
+  
 
   // Handle company deletion
   const handleDeleteCompany = async () => {
     const token = localStorage.getItem('token');
-    
+
     try {
       const response = await fetch('http://localhost:7000/companies/delete', {
         method: 'DELETE',
@@ -124,7 +130,8 @@ const AddCompany = () => {
         const error = await response.json();
         setErrorMessage(error.message || 'Failed to add company. Please try again.');
       }
-    } catch (error) {
+    }
+    catch (error) {
       console.error('Error adding company:', error);
       setErrorMessage('An error occurred. Please try again.');
     }

@@ -12,6 +12,8 @@ const JobApplicationPage = () => {
   const [token, setToken] = useState('');
   const [editingJobId, setEditingJobId] = useState(null); // Track which job is being edited
   const [editedJobData, setEditedJobData] = useState({});
+  const [recruiterTimeline, setRecruiterTimeline] = useState([]);
+
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -46,6 +48,21 @@ const JobApplicationPage = () => {
           }
         })
         .catch((error) => console.error('Error fetching jobs:', error));
+    }
+  }, [token]);
+
+  useEffect(() => {
+    if (token) {
+      axios
+        .get('http://localhost:7000/application/timeline/by-recruiter?limit=1-7', {
+          headers: { Authorization: ` ${token}` },
+        })
+        .then((response) => {
+          setRecruiterTimeline(response.data.timeline || []);
+        })
+        .catch((error) => {
+          console.error('Error fetching recruiter timeline:', error);
+        });
     }
   }, [token]);
 
@@ -328,6 +345,23 @@ const JobApplicationPage = () => {
               No jobs posted yet for the selected company.
             </p>
           )}
+          {/* Recruiter Timeline */}
+<div className="mt-16">
+  <h2 className="text-3xl font-semibold text-gray-700 mb-8">Recruiter Timeline</h2>
+  {recruiterTimeline.length > 0 ? (
+    <ul className="space-y-4">
+      {recruiterTimeline.map((event, index) => (
+        <li key={index} className="bg-white p-4 shadow-md rounded-md border border-gray-200">
+          <p className="text-lg font-medium text-gray-900">{event.action}</p>
+          <p className="text-sm text-gray-600">{formatDate(event.timestamp)}</p>
+        </li>
+      ))}
+    </ul>
+  ) : (
+    <p className="text-xl text-gray-600 text-center my-10">No recent activity.</p>
+  )}
+</div>
+
 
           {/* Edit Job Form */}
           {editingJobId && (
