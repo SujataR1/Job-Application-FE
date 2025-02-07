@@ -587,215 +587,290 @@ const CompanyProfile = () => {
   );
 
   return (
-    <div className="company-profile-container">
+    <div className="min-h-screen bg-gray-50 flex flex-col">
       <EmployerNavbar />
-      <div className="main-content">
+      <div className="flex flex-1">
         <EmployerSidebar />
-        <div className="company-profile">
-          <header className="company-header">
-            <div className="company-header-content">
-              <h1>Select a Company</h1>
-              <select onChange={handleCompanySelect}>
-                <option value="">-- Select a Company --</option>
-                {companies.map((company) => (
-                  <option key={company.id} value={company.id}>
-                    {company.name}
-                  </option>
-                ))}
-              </select>
+        <div className="flex-1 p-20 space-y-8 max-w-6xl mx-auto w-full">
+          {/* Header Section */}
+          <div className="bg-white p-8 rounded-xl shadow-sm border border-gray-100">
+            <h1 className="text-2xl font-bold text-gray-800 mb-6">Company Profile Management</h1>
+            <div className="space-y-6">
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2">Select Company</label>
+                <select
+                  onChange={handleCompanySelect}
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all"
+                >
+                  <option value="">-- Choose a company --</option>
+                  {companies.map((company) => (
+                    <option key={company.id} value={company.id}>
+                      {company.name}
+                    </option>
+                  ))}
+                </select>
+              </div>
+              
+              <button
+                onClick={handleAddCompanyClick}
+                className="w-full sm:w-auto bg-blue-600 text-white px-6 py-2.5 rounded-lg hover:bg-blue-700 transition-colors text-sm font-medium"
+              >
+                + Add New Company
+              </button>
             </div>
-          </header>
-
-          {/* Add Company Button */}
-          <div className="add-company-button">
-            <button onClick={handleAddCompanyClick}>Add a Company</button>
           </div>
 
+          {/* Company Details Section */}
           {selectedCompany && (
-            <div className="company-description">
-              {/* Display the logo if uploaded */}
-              {logo && (
-                <div className="company-logo">
-                  <h3>Company Logo</h3>
-                  <img src={logo} alt="Company Logo" className="company-logo-img" />
+            <div className="bg-white p-8 rounded-xl shadow-sm border border-gray-100 space-y-6">
+              <div className="flex items-start gap-8">
+                {logo && (
+                  <div className="flex-shrink-0">
+                    <img
+                      src={logo}
+                      alt="Company Logo"
+                      className="w-32 h-32 object-contain rounded-lg border border-gray-200"
+                    />
+                  </div>
+                )}
+                <div className="space-y-2 flex-1">
+                  <h2 className="text-2xl font-bold text-gray-800">{selectedCompany.name}</h2>
+                  <p className="text-gray-600 text-sm">{selectedCompany.description}</p>
+                  <a
+                    href={selectedCompany.websiteLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-blue-600 hover:text-blue-800 text-sm inline-block"
+                  >
+                    {selectedCompany.websiteLink}
+                  </a>
+                  <div className="flex flex-wrap gap-2 mt-2">
+                    {selectedCompany.tags?.map((tag, index) => (
+                      <span key={index} className="px-3 py-1 bg-blue-50 text-blue-700 rounded-full text-xs font-medium">
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </div>
+
+              <div className="grid grid-cols-2 gap-4 text-sm">
+                <div className="flex items-center gap-2">
+                  <span className="font-medium text-gray-700">Admin Status:</span>
+                  <span className={`px-2 py-1 rounded ${isAdmin ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'}`}>
+                    {isAdmin ? 'Active' : 'Inactive'}
+                  </span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <span className="font-medium text-gray-700">Job Permissions:</span>
+                  <span className={`px-2 py-1 rounded ${hasJobPermission ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'}`}>
+                    {hasJobPermission ? 'Granted' : 'Restricted'}
+                  </span>
+                </div>
+              </div>
+            </div>
+          )}
+
+          {/* Management Sections */}
+          {selectedCompany && (
+            <div className="space-y-6">
+              {/* Invitation Section */}
+              {isAdmin && (
+                <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+                  <h3 className="text-lg font-semibold text-gray-800 mb-4">Team Management</h3>
+                  <div className="space-y-4">
+                    <div className="flex flex-col sm:flex-row gap-4">
+                      <input
+                        type="email"
+                        placeholder="Enter user's email"
+                        value={emailToInvite}
+                        onChange={(e) => setEmailToInvite(e.target.value)}
+                        className="flex-1 px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                      />
+                      <button
+                        onClick={() => inviteUser(emailToInvite)}
+                        className="sm:w-auto bg-blue-600 text-white px-6 py-2.5 rounded-lg hover:bg-blue-700 transition-colors text-sm font-medium"
+                      >
+                        Send Invitation
+                      </button>
+                    </div>
+                  </div>
                 </div>
               )}
 
-              <h2>Company Details</h2>
-              <p><strong>Name:</strong> {selectedCompany.name}</p>
-              <p><strong>Description:</strong> {selectedCompany.description}</p>
-              <p><strong>Website:</strong> <a href={selectedCompany.websiteLink} target="_blank" rel="noopener noreferrer">{selectedCompany.websiteLink}</a></p>
-              <p><strong>About:</strong> {selectedCompany.about}</p>
+              {/* Admin Management Section */}
+              {isAdmin && (
+                <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+                  <h3 className="text-lg font-semibold text-gray-800 mb-4">Admin Controls</h3>
+                  <div className="space-y-4">
+                    <div className="flex flex-col sm:flex-row gap-4">
+                      <input
+                        type="text"
+                        placeholder="Enter User ID"
+                        value={userId}
+                        onChange={(e) => setUserId(e.target.value)}
+                        className="flex-1 px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                      />
+                      <div className="flex gap-4">
+                        <button
+                          onClick={addAdmin}
+                          className="flex-1 sm:flex-none bg-green-600 text-white px-6 py-2.5 rounded-lg hover:bg-green-700 transition-colors text-sm font-medium"
+                        >
+                          Add Admin
+                        </button>
+                        <button
+                          onClick={removeAdmin}
+                          className="flex-1 sm:flex-none bg-red-600 text-white px-6 py-2.5 rounded-lg hover:bg-red-700 transition-colors text-sm font-medium"
+                        >
+                          Remove Admin
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              )}
 
-              {/* Display Tags */}
-              <p><strong>Tags:</strong>
-                {selectedCompany.tags && selectedCompany.tags.length > 0 ? (
-                  <div className="tags-container">
-                    {selectedCompany.tags.map((tag, index) => (
-                      <span key={index} className="tag">{tag}</span>
+              {/* Industry Management Section */}
+              {isAdmin && (
+                <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+                  <h3 className="text-lg font-semibold text-gray-800 mb-4">Industry Management</h3>
+                  <div className="flex flex-col sm:flex-row gap-4">
+                    <input
+                      type="text"
+                      placeholder="Enter Industry Name"
+                      value={industryName}
+                      onChange={(e) => setIndustryName(e.target.value)}
+                      className="flex-1 px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                    />
+                    <div className="flex gap-4">
+                      <button
+                        onClick={addIndustry}
+                        className="flex-1 sm:flex-none bg-green-600 text-white px-6 py-2.5 rounded-lg hover:bg-green-700 transition-colors text-sm font-medium"
+                      >
+                        Add Industry
+                      </button>
+                      <button
+                        onClick={removeIndustry}
+                        className="flex-1 sm:flex-none bg-red-600 text-white px-6 py-2.5 rounded-lg hover:bg-red-700 transition-colors text-sm font-medium"
+                      >
+                        Remove Industry
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              )}
+
+              {/* Flag Section */}
+              <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+                <h3 className="text-lg font-semibold text-gray-800 mb-4">Flag Company</h3>
+                <form onSubmit={flagCompany} className="space-y-4">
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">Flag Type</label>
+                    <select
+                      value={flagTag}
+                      onChange={(e) => setFlagTag(e.target.value)}
+                      className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
+                    >
+                      <option value="Spam">Spam</option>
+                      <option value="Abusive">Abusive Content</option>
+                      <option value="Other">Other</option>
+                    </select>
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">Reason</label>
+                    <textarea
+                      value={flagReason}
+                      onChange={(e) => setFlagReason(e.target.value)}
+                      className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 h-32"
+                    />
+                  </div>
+                  <button
+                    type="submit"
+                    className="bg-blue-600 text-white px-6 py-2.5 rounded-lg hover:bg-blue-700 transition-colors text-sm font-medium"
+                  >
+                    Submit Flag
+                  </button>
+                </form>
+              </div>
+
+              {/* Flagged Companies Section */}
+              <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+                <div className="flex justify-between items-center mb-6">
+                  <h3 className="text-lg font-semibold text-gray-800">Flagged Companies</h3>
+                  <button
+                    onClick={fetchFlags}
+                    className="bg-gray-100 text-gray-700 px-4 py-2 rounded-lg hover:bg-gray-200 transition-colors text-sm"
+                  >
+                    Refresh List
+                  </button>
+                </div>
+                {flags.length > 0 ? (
+                  <div className="space-y-4">
+                    {flags.map((flag) => (
+                      <div key={flag.id} className="p-4 bg-red-50 rounded-lg border border-red-100">
+                        <div className="flex items-center gap-2 mb-2">
+                          <span className="text-red-700 font-medium">{flag.flagTag}</span>
+                          <span className="text-gray-500 text-sm">•</span>
+                          <span className="text-gray-600 text-sm">
+                            {new Date(flag.createdAt).toLocaleDateString()}
+                          </span>
+                        </div>
+                        <p className="text-gray-700 text-sm mb-2">{flag.reasonForFlag}</p>
+                        <p className="text-gray-500 text-xs">
+                          Flagged by: {flag.user.fullName} ({flag.user.email})
+                        </p>
+                      </div>
                     ))}
                   </div>
                 ) : (
-                  <span className="no-tags">No tags available</span>
+                  <p className="text-gray-500 text-center py-8">No flagged companies found</p>
                 )}
-              </p>
+              </div>
+
+              {/* Logo Upload Section */}
+              <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+                <h3 className="text-lg font-semibold text-gray-800 mb-4">Company Logo</h3>
+                <div className="flex flex-col gap-4">
+                  <input
+                    type="file"
+                    onChange={handleLogoUpload}
+                    className="block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-medium file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100"
+                  />
+                  {isLogoUploading && (
+                    <div className="text-blue-600 text-sm">Uploading logo...</div>
+                  )}
+                  {isLogoUploaded && (
+                    <div className="text-green-600 text-sm">Logo uploaded successfully!</div>
+                  )}
+                </div>
+              </div>
             </div>
           )}
 
-          {/* Show admin status and job posting permissions */}
-          {selectedCompany && (
-            <div className="admin-job-permission-status">
-              <p><strong>Admin Status:</strong> {isAdmin ? "Yes" : "No"}</p>
-              <p><strong>Job Posting Permission:</strong> {hasJobPermission ? "Yes" : "No"}</p>
-            </div>
-          )}
-
-          {/* Admin invitation UI */}
-          {isAdmin && (
-            <div className="invite-user">
-              <h3>Invite User to Act on Behalf of Admin</h3>
-              <input
-                type="email"
-                placeholder="Enter user's email"
-                value={emailToInvite}
-                onChange={(e) => setEmailToInvite(e.target.value)}
-              />
-              <button onClick={() => inviteUser(emailToInvite)}>Send Invitation</button>
-            </div>
-          )}
-
-          {/* OTP verification UI for user */}
-          {!isAdmin && (
-            <div className="verify-invitation">
-              <h3>Enter OTP to Verify Invitation</h3>
-              <input
-                type="text"
-                placeholder="Enter OTP"
-                value={otp}
-                onChange={(e) => setOtp(e.target.value)}
-              />
-              <button onClick={() => verifyInvitationOTP(otp)}>Verify OTP</button>
-            </div>
-          )}
-
-          {/* Add/Remove Admin */}
-          {isAdmin && (
-            <div className="admin-management">
-              <h3>Manage Admins</h3>
-              <input
-                type="text"
-                placeholder="Enter User ID"
-                value={userId}
-                onChange={(e) => setUserId(e.target.value)}
-              />
-              <button onClick={addAdmin}>Add Admin</button>
-              <button onClick={removeAdmin}>Remove Admin</button>
-            </div>
-          )}
-
-          {/* Move Manage Recruitment Permissions Below Manage Admins */}
-          {isAdmin && (
-            <div className="recruitment-management">
-              <h3>Manage Recruitment Permissions</h3>
-              <input
-                type="text"
-                placeholder="Enter User ID"
-                value={userId}
-                onChange={(e) => setUserId(e.target.value)}
-              />
-              <button onClick={() => grantRecruitmentPermission(selectedCompany?.id, userId)}>
-                Add Recruitment Permission
-              </button>
-              <button onClick={() => revokeRecruitmentPermission(selectedCompany?.id, userId)}>
-                Remove Recruitment Permission
-              </button>
-
-              {/* User ID Input for Removing a User */}
-              <h3>Remove User from Company</h3>
-              <input
-                type="text"
-                placeholder="Enter User ID"
-                value={userId}
-                onChange={(e) => setUserId(e.target.value)}
-              />
-              <button onClick={() => removeUserFromInvolved(selectedCompany?.id, { userId })}>
-                Remove User from Company
-              </button>
-            </div>
-          )}
-
-          {/* Add/Remove Industry */}
-          {isAdmin && (
-            <div className="industry-management">
-              <h3>Manage Industries</h3>
-              <input
-                type="text"
-                placeholder="Enter Industry Name"
-                value={industryName}
-                onChange={(e) => setIndustryName(e.target.value)}
-              />
-              <button onClick={addIndustry}>Add Industry</button>
-              <button onClick={removeIndustry}>Remove Industry</button>
-            </div>
-          )}
-          <select onChange={(e) => setSelectedCompany(companies.find(c => c.id === e.target.value))}>
-            <option value="">Select a Company</option>
-            {companies.map((company) => (
-              <option key={company.id} value={company.id}>{company.name}</option>
-            ))}
-          </select>
-          <form onSubmit={flagCompany}>
-            <label for="flagTag">Select Flag Type:</label>
-            <select id="flagTag" value={flagTag} onChange={(e) => setFlagTag(e.target.value)}>
-              <option value="Spam">Spam</option>
-              <option value="Abusive">Abusive Content</option>
-              <option value="Other">Other</option>
-            </select>
-
-            <label for="flagReason">Provide Reason:</label>
-            <textarea id="flagReason" value={flagReason} onChange={(e) => setFlagReason(e.target.value)}></textarea>
-
-            <button onClick={flagCompany}>Flag Company</button>
-          </form>
-
-          <div>
-            {/* Button to trigger flag fetching */}
-            <button onClick={fetchFlags}>View Flagged Company</button>
-
-            {/* Render the list of flagged companies */}
-            {flags.length > 0 ? (
-              <ul>
-                {flags.map((flag) => (
-                  <li key={flag.id}>
-                    <strong>{flag.flagTag}</strong>: {flag.reasonForFlag}
-                    <br />
-                    Flagged by: {flag.user.fullName} ({flag.user.email})
-                    <br />
-                    Created on: {new Date(flag.createdAt).toLocaleString()}
-                  </li>
-                ))}
-              </ul>
-            ) : (
-              <p>No flagged companies to show.</p>
-            )}
-          </div>
-
-          <div>
-            <label htmlFor="company-logo">Upload Company Logo:</label>
-            <input
-              type="file"
-              id="company-logo"
-              accept="image/*"
-              onChange={handleLogoUpload}
-            />
-            {isLogoUploading && <p>Uploading...</p>}
-            {isLogoUploaded && <p>Logo uploaded successfully!</p>}
-          </div>
           {/* Pagination */}
-          {renderPagination()}
+          <div className="flex items-center justify-between bg-white px-6 py-4 rounded-xl shadow-sm border border-gray-100">
+            <button
+              onClick={() => handlePageChange(currentPage - 1)}
+              disabled={currentPage <= 1}
+              className="px-4 py-2 text-sm font-medium text-gray-700 bg-gray-100 rounded-lg hover:bg-gray-200 disabled:opacity-50 disabled:cursor-not-allowed"
+            >
+              Previous
+            </button>
+            <span className="text-sm text-gray-700">
+              Page {currentPage} of {totalPages}
+            </span>
+            <button
+              onClick={() => handlePageChange(currentPage + 1)}
+              disabled={currentPage >= totalPages}
+              className="px-4 py-2 text-sm font-medium text-gray-700 bg-gray-100 rounded-lg hover:bg-gray-200 disabled:opacity-50 disabled:cursor-not-allowed"
+            >
+              Next
+            </button>
+          </div>
         </div>
       </div>
     </div>
   );
 };
+
 export default CompanyProfile;
